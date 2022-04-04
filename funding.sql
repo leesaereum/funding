@@ -83,7 +83,9 @@ CREATE TABLE `calculate` (
   `calculate_seller` varchar(45) DEFAULT NULL,
   `calculate_admin` varchar(45) DEFAULT NULL,
   `calculate_cost` int unsigned DEFAULT NULL,
-  `calculate_At` datetime DEFAULT NULL,
+  `calculate_createAt` datetime DEFAULT NULL,
+  `calculate_approveAt` datetime DEFAULT NULL,
+  `calculate_state` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`calculate_num`),
   UNIQUE KEY `calculate_num_UNIQUE` (`calculate_num`),
   KEY `calculate_admin_idx` (`calculate_admin`),
@@ -630,4 +632,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-04 16:35:25
+-- Dump completed on 2022-04-04 18:25:15
