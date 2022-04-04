@@ -181,7 +181,6 @@ CREATE TABLE `funding` (
   `funding_seller` varchar(45) NOT NULL,
   `funding_banner` text,
   `funding_title` varchar(50) DEFAULT NULL,
-  `funding_promo` varchar(50) DEFAULT NULL,
   `funding_content` text,
   `funding_createAt` datetime DEFAULT NULL,
   `funding_deleteAt` datetime DEFAULT NULL,
@@ -535,6 +534,7 @@ CREATE TABLE `seller` (
   `seller_pw` varchar(45) DEFAULT NULL,
   `seller_licenese` text,
   `seller_number` varchar(15) DEFAULT NULL,
+  `seller_profile` text,
   `seller_name` varchar(50) DEFAULT NULL,
   `seller_phone` varchar(15) DEFAULT NULL,
   `seller_person_name` varchar(15) DEFAULT NULL,
@@ -628,4 +628,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-04 13:37:46
+-- Dump completed on 2022-04-04 13:56:49
