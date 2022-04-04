@@ -339,6 +339,7 @@ CREATE TABLE `funding_option` (
   `option_numbering` int DEFAULT NULL,
   `option_name` varchar(50) DEFAULT NULL,
   `option_price` int unsigned NOT NULL,
+  `option_amount` int DEFAULT NULL,
   PRIMARY KEY (`option_num`),
   UNIQUE KEY `detail_num_UNIQUE` (`option_num`),
   KEY `option_funding_idx` (`option_funding`),
@@ -629,4 +630,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-04 16:30:51
+-- Dump completed on 2022-04-04 16:35:25
