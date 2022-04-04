@@ -116,6 +116,8 @@ CREATE TABLE `customer` (
   `customer_pw` varchar(45) DEFAULT NULL,
   `customer_name` varchar(20) DEFAULT NULL,
   `customer_phone` varchar(15) DEFAULT NULL,
+  `customer_pw_q` varchar(50) DEFAULT NULL,
+  `customer_pw_a` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`customer_id`),
   UNIQUE KEY `user_id_UNIQUE` (`customer_id`),
   KEY `user_id_idx` (`customer_id`)
@@ -181,7 +183,6 @@ CREATE TABLE `funding` (
   `funding_seller` varchar(45) NOT NULL,
   `funding_banner` text,
   `funding_title` varchar(50) DEFAULT NULL,
-  `funding_content` text,
   `funding_createAt` datetime DEFAULT NULL,
   `funding_deleteAt` datetime DEFAULT NULL,
   `funding_openAt` datetime DEFAULT NULL,
@@ -491,7 +492,7 @@ DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
   `order_num` int unsigned NOT NULL AUTO_INCREMENT,
   `order_customer` varchar(45) NOT NULL,
-  `order_fundind` int unsigned NOT NULL,
+  `order_funding` int unsigned NOT NULL,
   `order_option` int unsigned DEFAULT NULL,
   `order_price` int unsigned DEFAULT NULL,
   `order_count` int DEFAULT NULL,
@@ -501,13 +502,13 @@ CREATE TABLE `order` (
   PRIMARY KEY (`order_num`),
   UNIQUE KEY `order_num_UNIQUE` (`order_num`),
   KEY `order_useri_id_idx` (`order_customer`),
-  KEY `order_funding_idx` (`order_fundind`),
+  KEY `order_funding_idx` (`order_funding`),
   KEY `order_option_idx` (`order_option`),
   KEY `order_price_idx` (`order_price`),
   KEY `order_address_idx` (`order_address`),
   CONSTRAINT `order_address` FOREIGN KEY (`order_address`) REFERENCES `address` (`address_num`) ON UPDATE CASCADE,
   CONSTRAINT `order_customer` FOREIGN KEY (`order_customer`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE,
-  CONSTRAINT `order_funding` FOREIGN KEY (`order_fundind`) REFERENCES `funding_option` (`option_funding`) ON UPDATE CASCADE,
+  CONSTRAINT `order_funding` FOREIGN KEY (`order_funding`) REFERENCES `funding_option` (`option_funding`) ON UPDATE CASCADE,
   CONSTRAINT `order_option` FOREIGN KEY (`order_option`) REFERENCES `funding_option` (`option_num`) ON UPDATE CASCADE,
   CONSTRAINT `order_price` FOREIGN KEY (`order_price`) REFERENCES `funding_option` (`option_num`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -628,4 +629,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-04 13:56:49
+-- Dump completed on 2022-04-04 16:30:51
