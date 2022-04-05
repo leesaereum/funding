@@ -14,7 +14,7 @@ import funding.command.FindidCommand;
 import funding.command.FindpwCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
-import funding.command.MainCommand;
+//import funding.command.MainCommand;
 import funding.command.SignupCommand;
 
 @WebServlet("*.do")
@@ -55,8 +55,8 @@ public class Fcontroller extends HttpServlet {
 			viewpage="signIn.jsp";
 			break;
 		case("/main.do"):
-			command = new MainCommand();
-			command.execute(request, response);
+			//command = new MainCommand();
+			//command.execute(request, response);
 			viewpage="main.jsp";
 			break;
 		case("/signUp_view.do"):
