@@ -1,6 +1,6 @@
 package funding.dto;
 
-public class FDtoS {
+public class FDtoSeller {
 
 	String seller_id;
 	String seller_pw;

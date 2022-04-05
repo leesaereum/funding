@@ -2,7 +2,7 @@ package funding.dto;
 
 import java.sql.Timestamp;
 
-public class FDtoN {
+public class FDtoNotice {
 
 	int notice_num;
 	String notice_admin;

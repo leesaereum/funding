@@ -2,7 +2,7 @@ package funding.dto;
 
 import java.sql.Timestamp;
 
-public class FDtoFA {
+public class FDtoFundingAnswer {
 
 	int answer_num;
 	String answer_seller;

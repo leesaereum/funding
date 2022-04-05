@@ -2,7 +2,7 @@ package funding.dto;
 
 import java.sql.Timestamp;
 
-public class FDtoO {
+public class FDtoOrder {
 
 	int order_num;
 	String order_customer;

@@ -1,6 +1,6 @@
 package funding.dto;
 
-public class FDtoFC {
+public class FDtoFundingContent {
 
 	int content_num;
 	int content_funding;
