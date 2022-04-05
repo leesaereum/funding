@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.font-color-main{
+	color: #00AB33;
+}
+.font-color-highlight{
+	color: #0091FF;
+}
+
+.bg-color-main{
+	background-color: #00AB33;
+}
+
+.bg-color-highlight{
+	background-color: #0091FF;
+}
