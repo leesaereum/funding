@@ -17,16 +17,14 @@ import funding.command.LogoutCommand;
 import funding.command.MainCommand;
 import funding.command.SignupCommand;
 
-@WebServlet("/Fcontroller")
+@WebServlet("*.do")
 public class Fcontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     public Fcontroller() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		actiondo(request, response);
 	}
 
@@ -35,18 +33,21 @@ public class Fcontroller extends HttpServlet {
 	}
 
 	private void actiondo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
 		FCommand command = null;
 		String uri = request.getRequestURI();
 		String copath = request.getContextPath();
 		String path = uri.substring(copath.length());
 		String viewpage = null;
+		System.out.println(path);
 		
 		//customer용 switch
 		switch(path){
-		case("/logIn.do"):
+		case("/login.do"):
 			command = new LoginCommand();
 			command.execute(request, response);
-			viewpage="main.do";
+			viewpage = (String) request.getAttribute("viewpage");
 			break;
 		case("/logOut.do"):
 			command = new LogoutCommand();

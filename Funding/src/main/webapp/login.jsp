@@ -226,7 +226,7 @@ background-position
 			<jsp:include page="/apis/socialLogin/kakaoLogin.jsp" />
 			<jsp:include page="/apis/socialLogin/naverLogin.jsp" />
 			<div class="signIn__divider"></div>
-			<form action="signIn.do" name="signInForm" method="post"
+			<form action="login.do" name="signInForm" method="post"
 				onsubmit="checkCheck()">
 				<div class="signIn__liner">
 					<p class="signIn__subTitle">아이디</p>
