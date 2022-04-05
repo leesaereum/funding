@@ -2,7 +2,7 @@ package funding.dto;
 
 import java.sql.Timestamp;
 
-public class FDtoFL {
+public class FDtoFundingLike {
 
 	int like_num;
 	String like_customer;
