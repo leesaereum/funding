@@ -41,7 +41,7 @@ public class Fcontroller extends HttpServlet {
 		String path = uri.substring(copath.length());
 		String viewpage = null;
 		System.out.println(path);
-		
+
 		//customer용 switch
 		switch(path){
 		case("/login.do"):
@@ -189,6 +189,25 @@ public class Fcontroller extends HttpServlet {
 		
 		//seller용 switch
 		switch(path){
+		case("/ssignUp_view.do"):
+			viewpage="";
+		break;
+		case("/ssignUp.do"):
+			command = new SignupCommand();
+			command.execute(request, response);
+			viewpage="ssignIn.jsp";
+			break;
+		case("/slogin.do"):
+			command = new LoginCommand();
+			command.execute(request, response);
+			viewpage= "main.jsp";
+			break;
+		case("/slogOut.do"):
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewpage="ssignIn.jsp";
+			break;
+			
 		case("/sFODetail.do"):
 			viewpage="";
 			break;
@@ -226,6 +245,7 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 			break;
 		}//seller
+		
 		
 		//admin용 switch
 		switch(path){

@@ -9,10 +9,11 @@ import javax.servlet.http.HttpSession;
 
 import funding.dao.FDaoC;
 
+
 public class LoginCommand implements FCommand {
 
-	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String input_id = request.getParameter("customer_id");
 		String input_pw = request.getParameter("customer_pw");
 		
