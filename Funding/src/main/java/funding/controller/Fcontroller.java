@@ -288,7 +288,7 @@ public class Fcontroller extends HttpServlet {
 		case("/nremove.do"):
 			viewpage="";
 			break;
-		}//admin
+		}//admin.
 		
 		RequestDispatcher rd = request.getRequestDispatcher(viewpage);
 		rd.forward(request, response);

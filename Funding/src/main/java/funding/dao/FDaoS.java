@@ -14,5 +14,5 @@ public class FDaoS {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}//constructor
 }
