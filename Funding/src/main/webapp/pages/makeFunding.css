@@ -1,0 +1,273 @@
+@charset "UTF-8";
+
+.MF__background {
+	width: 100%;
+	min-height: 100%;
+	background-color: #f5f5f5;
+}
+
+.MF__wrap {
+	width: 738px;
+	padding: 32px 60px;
+	background-color: white;
+	margin: 0 auto;
+}
+.MF__tabs{
+	height: 90px;
+	width: 100%;
+	overflow: hidden;
+}
+.MF__tab{
+	float:left;
+	width: 33%;
+	box-sizing: border-box;
+	height: 90px;
+	text-align: center;
+	padding: 20px 0;
+	cursor: pointer;
+}
+.MF__tab.selected{
+	background-color: #0091ff;
+	color: white;
+}
+.MF__moveTab{
+	width: 100%;
+	height: 60px;
+	margin: 60px 0 30px;
+	display: flex;
+	justify-content: space-between;
+}
+.MF__moveTab__btn{
+	width: 100px;
+	height: 60px;
+	box-sizing: border-box;
+	border-radius: 30px;
+	background-color: #666;
+	color: white;
+	line-height: 60px;
+	text-align: center;
+	cursor:pointer;
+}
+.MF__moveTab__btn.dimmed{
+	background-color: #ccc;
+	cursor: default;
+}
+.MF__moveTab__btn.finish{
+	background-color: #0091ff;
+}
+.MF__tabContent{
+	display:none;
+}
+.MF__tabContent.selected{
+	display:block;
+}
+
+.MF__basic__title{
+	margin-top: 32px;
+	font-size: 18px;
+}
+.MF__basic__description{
+	font-size: 14px;
+	color: #666;
+}
+.MF__basic__input{
+	height: 36px;
+	margin-top: 8px;
+	padding: 0 8px;
+}
+.MF__basic__input.large{
+	width: 100%;
+}
+.MF__basic__input.medium{
+	width: 360px;
+}
+.MF__basic__input.small{
+	width: 200px;
+}
+.MF__basic__imgPreview{
+	width: 252px;
+	height: 142px;
+	border: 1px solid #ccc;
+	overflow: hidden;
+}
+.MF__basic__imgPreview > img{
+	width: 100%;
+	height: auto;
+}
+.MF__basic__addImage{
+	display: none;
+}
+.MF__basic__addImage__label{
+	margin: 12px 0;
+	color: #0091ff;
+	display: inline-block;
+	cursor:pointer;
+}
+.MF__basic__warning{
+	color: red;
+	margin-top: 4px;
+	margin-bottom: -12px;
+	display:none;
+}
+.MF__basic__warning.block{
+	display:block;
+}
+
+
+.MF__item{
+	padding-top: 24px;
+	position:relative;
+	margin-top:24px;
+}
+
+.MF__subtitle{
+	padding: 32px;
+	font-size: 20px;
+	border-bottom: 2px solid #666;
+}
+.MF__content{
+	padding: 24px 0;
+	min-height: calc(100vh - 600px);
+}
+.MF__addItem{
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+.MF__close{
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 16px;
+	height: 16px;
+	cursor:pointer;
+	display:none;
+}
+
+.MF__addItem{
+	margin-top: 30px;
+	padding-top: 30px;
+	border-top: 2px solid #666;
+}
+.MF__addItem__box {
+	overflow: hidden;
+	height: 60px;
+}
+
+.MF__addItem__box>* {
+	float: left;
+}
+
+.MF__addItem__box>p {
+	margin-right: 9px;
+	width: 200px;
+	line-height: 60px;
+	height: 60px; text-align : center;
+	cursor: pointer;
+	border: 1px solid #e0e0e0;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.MF__addItem__box>p:hover {
+	background-color: #fafafa;
+}
+.MF__addImage{
+	display:none;
+}
+
+.inputLabel {
+	width: 200px;
+	line-height: 60px;
+	text-align: center;
+	cursor: pointer;
+	height: 60px;
+	border: 1px solid #e0e0e0;
+	box-sizing: border-box;
+}
+
+.inputLabel:hover {
+	background-color: #fafafa;
+}
+
+.MF__input__subTitle{
+	font-size: 19px;
+	border: none;
+	width: 100%;
+}
+.MF__input__paragraph{
+	border:none;
+	width: 100%;
+	min-height: 96px;
+	line-height: 24px;
+	font-size: 16px;
+	resize: vertical;
+}
+.MF__item:hover{
+	border-top: 2px solid royalblue;
+	border-bottom: 2px solid royalblue;
+	background-color: #faf5ff;
+}
+.MF__item:hover *{
+		background-color: #faf5ff;
+}
+
+.MF__item:hover > .MF__addItem{
+	display:block;
+}
+
+.MF__item:hover > .MF__close{
+	display:block;
+}
+.MF__item__image{
+	max-width: 100%;
+	height: auto;
+}
+
+.MF__addReward{
+	padding-top: 24px;
+	border-top: 2px solid #666;
+	text-align: center;
+	margin-bottom: 80px;
+}
+.MF__reward{
+	padding: 24px 32px;
+	position: relative;
+}
+.MF__reward__close{
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 16px;
+	height: 16px;
+	cursor:pointer;
+}
+.MF__reward__content{
+	width: 320px;
+	padding-right: 16px;
+}
+.MF__reward__warningBox{
+	margin-top: 12px;
+	height: 24px;
+	overflow:hidden;
+}
+
+.MF__reward__liner{
+	display: flex;
+	justify-content: space-between;
+	height: 40px;
+	margin-bottom: 4px;
+	line-height: 40px;
+}
+.MF__reward__liner > input{
+	text-align: right;
+}
+.MF__reward__warning{
+	width: 100%;
+	text-align: center;
+	color: red;
+	display: none;
+	line-height: 24px;
+}
+.MF__reward__warning.block{
+	display:block;
+}
