@@ -107,6 +107,10 @@
 	color: red;
 	margin-top: 4px;
 	margin-bottom: -12px;
+	display:none;
+}
+.MF__basic__warning.block{
+	display:block;
 }
 
 

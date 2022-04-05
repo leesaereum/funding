@@ -31,11 +31,11 @@
 				<h3 class="MF__subtitle">STEP1 - 펀딩 기본 정보 입력</h3>
 				<p class="MF__basic__title">펀딩 제목</p>
 				<p class="MF__basic__description">24자 이내의 매력적인 제목을 입력해주세요</p>
-				<input class="MF__basic__input large" placeholder="예) 국산 쌀과 고춧가루로 만든 말랑말랑 쌀떡볶이">
+				<input class="MF__basic__input large" id="MF__basic__title" placeholder="예) 국산 쌀과 고춧가루로 만든 말랑말랑 쌀떡볶이">
 				<p class="MF__basic__warning">6~24자의 제목을 입력해주세요</p>
 				<p class="MF__basic__title">펀딩 주체 이름</p>
 				<p class="MF__basic__description">펀딩을 개최하시는 분의 이름 혹은 업체명을 12자 이내로 입력해주세요</p>
-				<input class="MF__basic__input medium" placeholder="예) 해피펀딩">
+				<input class="MF__basic__input medium" id="MF__basic__seller" placeholder="예) 해피펀딩">
 				<p class="MF__basic__warning">2~12자의 이름을 입력해주세요</p>
 				<p class="MF__basic__title">메인(썸네일) 사진</p>
 				<p class="MF__basic__description">JPG, PNG 형식, 250 X 140 픽셀</p>
@@ -47,15 +47,15 @@
 				<p class="MF__basic__warning">썸네일 이미지는 필수입니다.</p>
 				<p class="MF__basic__title">펀딩 목표금액</p>
 				<p class="MF__basic__description">목표금액이 달성되지 않으면 결제, 정산되지 않고, 펀딩은 무효 처리됩니다.</p>
-				<input class="MF__basic__input small" type="number">
+				<input class="MF__basic__input small" id="MF__basic__goal" type="number">
 				<p class="MF__basic__warning">10만원 ~ 10억원 이내로 입력해주세요</p>
 				<p class="MF__basic__title">펀딩 오픈일</p>
 				<p class="MF__basic__description">펀딩을 시작할 날짜를 선택해주세요</p>
-				<input class="MF__basic__input small" type="date">
+				<input class="MF__basic__input small" type="date" id="MF__basic__startDate">
 				<p class="MF__basic__warning">오픈일을 오늘 이후로 설정해주세요</p>
 				<p class="MF__basic__title">펀딩 종료일</p>
 				<p class="MF__basic__description">종료일까지 목표금액이 달성된 경우 종료일에 일괄 결제됩니다.</p>
-				<input class="MF__basic__input small" type="date">
+				<input class="MF__basic__input small" type="date" id="MF__basic__endDate">
 				<p class="MF__basic__warning">종료일은 오픈일보다 최소 5일 이후여야 합니다.</p>
 				<p class="MF__basic__title">배송비</p>
 				<p class="MF__basic__description">펀딩 건 당 배송비를 알려주세요</p>
@@ -77,11 +77,11 @@
 						</div>
 						<div class="MF__reward__liner">
 							<p>후원 금액(원)</p>
-							<input type="number" value="10000">
+							<input class="MF__reward__price" type="number" value="10000">
 						</div>
 						<div class="MF__reward__liner">
 							<p>최대 수량</p>
-							<input type="number" value="99">
+							<input class="MF__reward__amount" type="number" value="99">
 						</div>
 						<div class="MF__reward__warningBox">
 							<p class="MF__reward__warning content">리워드 내용을 5자 이상으로
