@@ -63,13 +63,10 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage="main.jsp";
 			break;
-		case("/signUp_view.do"):
-			viewpage="singUp.jsp";
-			break;
 		case("/signUp.do"):
 			command = new SignupCommand();
 			command.execute(request, response);
-			viewpage="signIn.jsp";
+			viewpage="/pages/login.jsp";
 			break;
 		case("/findId_view.do"):
 			viewpage="findId_view.jsp";

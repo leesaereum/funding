@@ -25,7 +25,7 @@ public class LoginCommand implements FCommand {
 			session.setAttribute("customer_id", customer_id);
 		}
 		if(customer_id==null) {
-			request.setAttribute("viewpage", "./login.jsp?error=error");
+			request.setAttribute("viewpage", "./pages/login.jsp?error=error");
 		}else {
 			request.setAttribute("viewpage", "main.do");
 		}

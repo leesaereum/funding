@@ -42,33 +42,9 @@ keyframes gradientBG { 0% {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 %
 {
 background-position
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -82,49 +58,13 @@ background-position
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 100
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 %
 50
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -138,33 +78,9 @@ background-position
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 %
 {
 background-position
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -178,49 +94,13 @@ background-position
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 0
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 %
 50
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -323,83 +203,118 @@ background-position
 </style>
 </head>
 <script type="text/javascript">
-let emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-let namePattern = /^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/;
-function validate(){
+	let emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+	let namePattern = /^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/;
+	let phonePatern = /^[0-9]+$/;
+	function validate() {
 	const id = document.getElementById('id').value
 	const pw = document.getElementById('pw').value
 	const name = document.getElementById('name').value
-	
-	if(id.match(emailPattern) && pw.length >= 4 && name.match(namePattern)){
-		document.getElementById('submit').disabled = false;
-	}else{
-		document.getElementById('submit').disabled = true;
+	const phone2 = document.getElementById('phone2').value
+	const phone3 = document.getElementById('phone3').value
+		if (id.match(emailPattern) && pw.length >= 4 && name.match(namePattern)) {
+			document.getElementById('submit').disabled = false;
+		} else {
+			document.getElementById('submit').disabled = true;
+		}
 	}
-}
-function idFocus(){
-	document.getElementById('idValidate').innerHTML = ''
-}
-function pwFocus(){
-	document.getElementById('pwValidate').innerHTML = ''
-}
-function nameFocus(){
-	document.getElementById('nameValidate').innerHTML = ''
-}
-
-function idValidate(){
-	const id = document.getElementById('id').value
-	if(!id.match(emailPattern)){
-		document.getElementById('idValidate').innerHTML = '아이디는 이메일 형식으로 입력해야 합니다'
-	}else{
-
+	function idFocus() {
 		document.getElementById('idValidate').innerHTML = ''
 	}
-}
-function pwValidate(){
-	const pw = document.getElementById('pw').value
-	if(pw.length < 4){
-		document.getElementById('pwValidate').innerHTML = '4자 이상의 패스워드를 입력해주세요'
-	}else{
+	function pwFocus() {
 		document.getElementById('pwValidate').innerHTML = ''
 	}
-}
-function nameValidate(){
-	const name = document.getElementById('name').value
-	if(!name.match(namePattern)){
-		document.getElementById('nameValidate').innerHTML = '이름은 한글이나 영어로 입력해주세요'
-	}else{
-
+	function pw2Focus() {
+		document.getElementById('pw2Validate').innerHTML = ''
+	}
+	function nameFocus() {
 		document.getElementById('nameValidate').innerHTML = ''
 	}
-}
+	function phoneFocus() {
+		document.getElementById('phoneValidate').innerHTML = ''
+	}
+
+	function idValidate() {
+		const id = document.getElementById('id').value
+		if (!id.match(emailPattern)) {
+			document.getElementById('idValidate').innerHTML = '아이디는 이메일 형식으로 입력해야 합니다'
+		} else if (id.length > 45) {
+			document.getElementById('idValidate').innerHTML = '아이디는 45자 이내로 입력해주세요'
+		} else {
+			document.getElementById('idValidate').innerHTML = ''
+		}
+	}
+	function pwValidate() {
+		const pw = document.getElementById('pw').value
+		if (pw.length < 4) {
+			document.getElementById('pwValidate').innerHTML = '4자 이상의 패스워드를 입력해주세요'
+		} else {
+			document.getElementById('pwValidate').innerHTML = ''
+		}
+	}
+	function pw2Validate() {
+		const pw = document.getElementById('pw').value
+		const pw2 = document.getElementById('pw2').value
+		if (pw!=pw2) {
+			document.getElementById('pw2Validate').innerHTML = '비밀번호와 다르게 입력되었습니다'
+		} else {
+			document.getElementById('pw2Validate').innerHTML = ''
+		}
+	}
+	function nameValidate() {
+		const name = document.getElementById('name').value
+		if (!name.match(namePattern)) {
+			document.getElementById('nameValidate').innerHTML = '이름은 한글이나 영어로 입력해주세요'
+		} else if (name.length <1 || name.length > 45) {			
+			document.getElementById('nameValidate').innerHTML = '이름은 1~45자 이내로 입력해주세요'
+		}
+		else {
+			document.getElementById('nameValidate').innerHTML = ''
+		}
+	}
+	function phoneValidate() {
+		const phone2 = document.getElementById('phone2').value
+		const phone3 = document.getElementById('phone3').value
+		if (!phone2.match(phonePattern) || !phone3.match(phonePattern)) {
+			document.getElementById('phoneValidate').innerHTML = '전화번호는 숫자로만 입력해주세요'
+		} else {
+
+			document.getElementById('phoneValidate').innerHTML = ''
+		}
+	}
 </script>
 <body>
 	<div class="signUp__wrap">
 		<div class="signUp__content">
 			<h1 class="signUp__title">회원가입</h1>
 			<div class="signIn__divider"></div>
-			<form action="signUp.do" name="signUpForm" method="post">
+			<form action="/Funding/signUp.do" name="signUpForm" method="post">
 				<div class="signUp__liner">
 					<p class="signUp__subTitle">아이디</p>
-					<input class="signUp__input" id="id" name="customer_id"
+					<input class="signUp__input" id="id" name="id"
 						placeholder="example@mail.com" onkeyup="validate()"
 						onfocus="idFocus()" onblur="idValidate()">
 					<p id="idValidate" class="signUp__warning"></p>
 				</div>
 				<div class="signIn__liner">
 					<p class="signUp__warning"></p>
-					<p class="signUp__subTitle">패스워드</p>
-					<input class="signUp__input" id="pw" type="password"
-						name="customer_pw" onkeyup="validate()" onfocus="pwFocus()"
-						onblur="pwValidate()">
+					<p class="signUp__subTitle">비밀번호</p>
+					<input class="signUp__input" id="pw" type="password" name="pw"
+						onkeyup="validate()" onfocus="pwFocus()" onblur="pwValidate()">
 					<p id="pwValidate" class="signUp__warning"></p>
 				</div>
 				<div class="signIn__liner">
 					<p class="signUp__warning"></p>
+					<p class="signUp__subTitle">비밀번호 확인</p>
+					<input class="signUp__input" id="pw2" type="password" name="pw2"
+						onkeyup="validate()" onfocus="pw2Focus()" onblur="pw2Validate()">
+					<p id="pw2Validate" class="signUp__warning"></p>
+				</div>
+				<div class="signIn__liner">
+					<p class="signUp__warning"></p>
 					<p class="signUp__subTitle">이름</p>
-					<input class="signUp__input" id="name" type="text"
-						name="customer_name" onkeyup="validate()" onfocus="nameFocus()"
-						onblur="nameValidate()">
+					<input class="signUp__input" id="name" type="text" name="name"
+						onkeyup="validate()" onfocus="nameFocus()" onblur="nameValidate()">
 					<p id="nameValidate" class="signUp__warning"></p>
 				</div>
 
@@ -408,20 +323,24 @@ function nameValidate(){
 					<p class="signUp__warning"></p>
 					<p class="signUp__subTitle">전화번호</p>
 
-					<select name="customer_phone1">
+					<select name="phone1">
 						<option selected="selected">010</option>
 						<option>011</option>
 						<option>016</option>
 						<option>017</option>
 						<option>019</option>
-					</select> - <input type="text" id="phone2" name="text" size="5"> - <input
-						type="text" id="phone3" name="text" size="5">
+					</select> - <input id="phone2" type="text" name="phone2" size="5"
+						onkeyup="validate()" onfocus="phoneFocus()"
+						onblur="phoneValidate()"> - <input id="phone3" type="text"
+						name="phone3" size="5" onkeyup="validate()" onfocus="phoneFocus()"
+						onblur="phoneValidate()">
+					<p id="phoneValidate" class="signUp__warning"></p>
 				</div>
 
 				<div class="signIn__liner">
 					<p class="signUp__warning"></p>
 					<p class="signUp__subTitle">비밀번호 찾기 질문:</p>
-					<select name="customer_pw_q">
+					<select name="pw_q">
 						<option selected="selected">가장 좋아하는 캐릭터는?</option>
 						<option>가장 좋아하는 음식은?</option>
 						<option>가장 좋아하는 영화는?</option>
@@ -433,8 +352,7 @@ function nameValidate(){
 				<div class="signIn__liner">
 					<p class="signUp__warning"></p>
 					<p class="signUp__subTitle">비밀번호 찾기 답변</p>
-					<input class="signUp__input" id="pw_a" type="text"
-						name="customer_pw_a">
+					<input class="signUp__input" id="pw_a" type="text" name="pw_a">
 				</div>
 				<input class="signUp__submit" id="submit" type="submit" value="회원가입"
 					disabled>

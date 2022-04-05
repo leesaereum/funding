@@ -22,16 +22,16 @@ public class FDaoC {
 
 	public String login(String id, String pw) {
 		Connection connection = null;
-		PreparedStatement prepardestatement = null;
+		PreparedStatement preparedstatement = null;
 		ResultSet resultset = null;
 		String customer_id = null;
 		try {
 			connection = dataSource.getConnection();
 			String query = "SELECT customer_id FROM customer WHERE customer_id = ? AND customer_pw = ?";
-			prepardestatement = connection.prepareStatement(query);
-			prepardestatement.setString(1, id);
-			prepardestatement.setString(2, pw);
-			resultset = prepardestatement.executeQuery();
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
+			preparedstatement.setString(2, pw);
+			resultset = preparedstatement.executeQuery();
 			
 			if(resultset.next()) {
 				customer_id = resultset.getString(1);
@@ -41,7 +41,7 @@ public class FDaoC {
 		} finally {
 			try {
 				if (connection != null) connection.close();
-				if (prepardestatement != null) prepardestatement.close();
+				if (preparedstatement != null) preparedstatement.close();
 				if (resultset != null) resultset.close();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -49,5 +49,34 @@ public class FDaoC {
 		}
 		return customer_id;
 
+	}//login
+
+	public void signUp(String customer_id, String customer_pw, String customer_name, 
+			String customer_phone, String customer_pw_q, String customer_pw_a) {
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "INSERT INTO customer(customer_id,customer_pw, customer_name, customer_phone, customer_pw_q, customer_pw_a) "
+					+ "values(?, ?, ?, ?, ?, ?)";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, customer_id);
+			preparedstatement.setString(2, customer_pw);
+			preparedstatement.setString(3, customer_name);
+			preparedstatement.setString(4, customer_phone);
+			preparedstatement.setString(5, customer_pw_q);
+			preparedstatement.setString(6, customer_pw_a);
+			preparedstatement.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
