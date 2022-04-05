@@ -40,7 +40,7 @@ function share(fid) {
     Navigator.share({
       title: "해피펀딩",
       text: "세상을 널리 이롭게 하다!",
-      url: "http://localhost:8080/funding/pages/detail.jsp?fid=" + fid,
+      url: "http://localhost:8080/Funding/pages/detail.jsp?fid=" + fid,
     });
   } else {
     $("body").append('<input id="copyURL" type="text" value="" />');
@@ -139,7 +139,7 @@ function add__option(optionID) {
     txt +=
       '<p class="detail__funding__selected__subtitle">치즈떡2팩+쌀떡2팩+어묵2팩+소스분말4팩(짜장맛2/보통맛2)</p>';
     txt +=
-      '<img class="detail__funding__selected__close" src="/funding/assets/close.svg" data-optionID="' +
+      '<img class="detail__funding__selected__close" src="/Funding/assets/close.svg" data-optionID="' +
       optionID +
       '"></div>';
     txt +=

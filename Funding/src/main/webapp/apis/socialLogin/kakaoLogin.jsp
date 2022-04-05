@@ -39,7 +39,7 @@
 <a id="custom-login-btn" href="javascript:loginWithKakao()">
 <div class="kakaoLoginBtnBox">
 	<img
-    src="/funding/apis/socialLogin/kakaoBtn.png"
+    src="/Funding/apis/socialLogin/kakaoBtn.png"
     width="222"
     alt="카카오 로그인 버튼"
   />
@@ -65,7 +65,7 @@
 		          form.appendChild(objs);
 		          form.setAttribute('id', 'tempForm');
 		          form.setAttribute('method', 'post'); //get,post 가능
-		          form.setAttribute('action', "/funding/tempLoginFinishDo.jsp"); //보내는 url > 나중에 login.do로 보내야 함;
+		          form.setAttribute('action', "/Funding/tempLoginFinishDo.jsp"); //보내는 url > 나중에 login.do로 보내야 함;
 		          document.body.appendChild(form);
 		          form.submit();
 		        },

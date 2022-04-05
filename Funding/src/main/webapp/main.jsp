@@ -66,11 +66,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	function loadMore(){
 		let txt = '';
 		for(let i = 0; i < page*12+12; i++){
-			txt += '<a href="/funding/pages/detail.jsp?fid='+i+'"><div class="fundingCard">'
+			txt += '<a href="/Funding/pages/detail.jsp?fid='+i+'"><div class="fundingCard">'
 			txt += '<div class="fundingCardHover"><p>펀딩 진행중</p>'
 			txt += '<p>'+(i+1)+'일 남았어요</p></div>'
 			txt	+= '<div class="fundingThumbBox">';
-			txt += '<img src="/funding/assets/thumbs/optimize ('+i+').jpeg"></div>';
+			txt += '<img src="/Funding/assets/thumbs/optimize ('+i+').jpeg"></div>';
 			txt += '<div class="fundingContentBox"><div class="fundingContentLeft">'
 			txt += '<p class="fundingTitle">'+words[i]+'</p>'
 			txt += '<p class="fundingSeller">판매자'+i+'</p></div>'

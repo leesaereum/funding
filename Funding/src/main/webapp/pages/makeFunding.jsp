@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>신규 펀딩 만들기</title>
-<link rel="stylesheet" href="/funding/styles/init.css">
-<link rel="stylesheet" href="/funding/styles/base.css">
+<link rel="stylesheet" href="/Funding/styles/init.css">
+<link rel="stylesheet" href="/Funding/styles/base.css">
 <link rel="stylesheet" href="./makeFunding.css">
 </head>
 <body>
@@ -70,7 +70,7 @@
 				<h3 class="MF__subtitle">STEP2 - 리워드 정보 입력</h3>
 				<div class="MF__rewards" id="MF_rewards">
 					<div class="MF__reward">
-						<img src="/funding/assets/close.svg" class="MF__reward__close">
+						<img src="/Funding/assets/close.svg" class="MF__reward__close">
 						<div class="MF__reward__liner">
 							<p>리워드 내용</p>
 							<input class="MF__reward__content" placeholder="예)사과 1개 + 배 2개">
@@ -101,7 +101,7 @@
 				<h3 class="MF__subtitle">STEP3 - 펀딩 콘텐츠 입력</h3>
 				<div class="MF__content" id="MF__content">
 					<div class="MF__item">
-						<img src="/funding/assets/close.svg" class="MF__close"> <input
+						<img src="/Funding/assets/close.svg" class="MF__close"> <input
 							class="MF__input__subTitle" placeholder="소제목을 입력하세요">
 					</div>
 				</div>
@@ -123,7 +123,7 @@
 
 		</div>
 	</div>
-	<script type="text/javascript" src="/funding/libraries/jQuery.js"></script>
+	<script type="text/javascript" src="/Funding/libraries/jQuery.js"></script>
 	<script type="text/javascript" src="./makeFunding.js"></script>
 </body>
 </html>

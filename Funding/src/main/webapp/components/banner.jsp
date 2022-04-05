@@ -20,8 +20,8 @@
 	height: auto;
 }
 </style>
-<script src="/funding/libraries/splide.min.js"></script>
-<link rel="stylesheet" href="/funding/libraries/splide.min.css">
+<script src="/Funding/libraries/splide.min.js"></script>
+<link rel="stylesheet" href="/Funding/libraries/splide.min.css">
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		var splide = new Splide('.splide', {
@@ -37,17 +37,17 @@
 			<ul class="splide__list">
 				<li class="splide__slide">
 					<div style="background-color: #41C982">
-						<img class="bannerImg" src="/funding/assets/banners/banner01.png">
+						<img class="bannerImg" src="/Funding/assets/banners/banner01.png">
 					</div>
 				</li>
 				<li class="splide__slide">
 					<div style="background-color: #41C982">
-						<img class="bannerImg" src="/funding/assets/banners/banner02.png">
+						<img class="bannerImg" src="/Funding/assets/banners/banner02.png">
 					</div>
 				</li>
 				<li class="splide__slide">
 					<div style="background-color: #699CEE">
-						<img class="bannerImg" src="/funding/assets/banners/banner03.png">
+						<img class="bannerImg" src="/Funding/assets/banners/banner03.png">
 					</div>
 				</li>
 			</ul>

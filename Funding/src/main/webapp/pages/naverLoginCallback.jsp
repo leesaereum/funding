@@ -1,6 +1,6 @@
 
+<%@page import="funding.command.NaverLoginFinishCommand"%>
 <%@page import="java.net.http.HttpRequest"%>
-<%@page import="com.javaproject.functions.NaverLoginFinish"%>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.net.URL" %>
 <%@ page import="java.net.HttpURLConnection" %>
@@ -17,7 +17,7 @@
     String clientSecret = "Y9VmLBJhpX";//애플리케이션 클라이언트 시크릿값";
     String code = request.getParameter("code");
     String state = request.getParameter("state");
-    String redirectURI = URLEncoder.encode("http://localhost:8080/funding/main.jsp", "UTF-8");
+    String redirectURI = URLEncoder.encode("http://localhost:8080/Funding/main.jsp", "UTF-8");
     String apiURL;
     apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
     apiURL += "client_id=" + clientId;
@@ -48,7 +48,7 @@
     	String[] res2 = res.toString().split(":");
     	String res3 = res2[1];
     	access_token = res3.split("\"")[1];
-    	NaverLoginFinish.main(access_token, request, response);
+    	NaverLoginFinishCommand.main(access_token, request, response);
       }
     } catch (Exception e) {
       out.println(e);
