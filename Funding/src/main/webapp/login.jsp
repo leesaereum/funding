@@ -226,18 +226,18 @@ background-position
 			<jsp:include page="/apis/socialLogin/kakaoLogin.jsp" />
 			<jsp:include page="/apis/socialLogin/naverLogin.jsp" />
 			<div class="signIn__divider"></div>
-			<form action="login.do" name="signInForm" method="post"
+			<form action="login.do" name="signInForm" method="get"
 				onsubmit="checkCheck()">
 				<div class="signIn__liner">
 					<p class="signIn__subTitle">아이디</p>
-					<input class="signIn__input" id="id" name="uId"
+					<input class="signIn__input" id="id" name="customer_id"
 						placeholder="example@mail.com" onkeyup="validate()"
 						onfocus="idFocus()" onblur="idValidate()">
 					<p id="idValidate" class="signIn__warning"></p>
 				</div>
 				<div class="signIn__liner">
 					<p class="signIn__subTitle">패스워드</p>
-					<input class="signIn__input" id="pw" type="password" name="uPw"
+					<input class="signIn__input" id="pw" type="password" name="customer_pw"
 						onkeyup="validate()" onfocus="pwFocus()" onblur="pwValidate()">
 					<p id="pwValidate" class="signIn__warning"></p>
 				</div>
