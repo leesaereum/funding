@@ -57,7 +57,7 @@ public class FDaoS {
 	}//ssignUp end
 	
 	//ssignIn --> sign In for seller 
-	public String ssignIn(String id, String pw) {
+	public String slogin(String id, String pw) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;

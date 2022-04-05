@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import funding.command.FCommand;
-import funding.command.LoginCommand;
-import funding.command.LogoutCommand;
-import funding.command.SignupCommand;
+import funding.command.SLoginCommand;
+import funding.command.SLogoutCommand;
+import funding.command.SSignUpCommand;
 
 @WebServlet("*.do")
 public class Fcontroller extends HttpServlet {
@@ -178,17 +178,17 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 		break;
 		case("/ssignUp.do"):
-			command = new SignupCommand();
+			command = new SSignUpCommand();
 			command.execute(request, response);
 			viewpage="ssignIn.jsp";
 			break;
 		case("/slogin.do"):
-			command = new LoginCommand();
+			command = new SLoginCommand();
 			command.execute(request, response);
 			viewpage= "main.jsp";
 			break;
 		case("/slogOut.do"):
-			command = new LogoutCommand();
+			command = new SLogoutCommand();
 			command.execute(request, response);
 			viewpage="ssignIn.jsp";
 			break;
