@@ -32,11 +32,13 @@ public class Fcontroller extends HttpServlet {
 	}
 
 	private void actiondo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
+		String viewpage = null;
 		FCommand command = null;
 		String uri = request.getRequestURI();
 		String copath = request.getContextPath();
 		String path = uri.substring(copath.length());
-		String viewpage = null;
 		
 		//customer용 switch
 		switch(path){
