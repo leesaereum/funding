@@ -110,6 +110,7 @@ function checkLogin() {
 		
 		<p class="signIn__subTitle">업체프로필</p>
 		<input class="signIn__input" type="text" name="seller_profile">
+		<input type="button" value="등록하기" onclick="Load_profile()">
 		
 		<p class="signIn__subTitle">업체명</p>
 		<input class="signIn__input" type="text" name="seller_name">
