@@ -40,6 +40,8 @@ public class Fcontroller extends HttpServlet {
 		String copath = request.getContextPath();
 		String path = uri.substring(copath.length());
 		String viewpage = null;
+		System.out.println(uri);
+		System.out.println(copath);
 		System.out.println(path);
 
 		//customer용 switch
