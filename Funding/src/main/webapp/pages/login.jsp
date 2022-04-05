@@ -250,7 +250,7 @@ background-position
 			</form>
 			<div class="signIn__infoBox">
 				<p class="signIn__info">
-					아직 가입하지 않으셨나요? <a href="signUp.jsp">가입하러 가기</a>
+					아직 가입하지 않으셨나요? <a href="SignUp.jsp">가입하러 가기</a>
 				</p>
 
 			</div>

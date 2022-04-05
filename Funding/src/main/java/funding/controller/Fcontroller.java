@@ -48,6 +48,11 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
+		case("/sociallogin.do"):
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
+			break;
 		case("/logOut.do"):
 			command = new LogoutCommand();
 			command.execute(request, response);
@@ -59,7 +64,7 @@ public class Fcontroller extends HttpServlet {
 			viewpage="main.jsp";
 			break;
 		case("/signUp_view.do"):
-			viewpage="singUp_view.jsp";
+			viewpage="singUp.jsp";
 			break;
 		case("/signUp.do"):
 			command = new SignupCommand();
