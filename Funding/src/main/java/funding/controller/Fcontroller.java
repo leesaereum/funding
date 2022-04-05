@@ -170,6 +170,18 @@ public class Fcontroller extends HttpServlet {
 		
 		//seller용 switch
 		switch(path){
+		case("/signUpS.do"):
+			viewpage="";
+			break;
+		case("/signUp_viewS.do"):
+			viewpage="";
+			break;
+		case("/loginS.do"):
+			viewpage="";
+			break;
+		case("/logOutS.do"):
+			viewpage="";
+			break;
 		case("/sFODetail.do"):
 			viewpage="";
 			break;
@@ -207,6 +219,7 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 			break;
 		}//seller
+		
 		
 		//admin용 switch
 		switch(path){
