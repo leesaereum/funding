@@ -8,13 +8,15 @@
 <link rel="stylesheet" href="/Funding/styles/init.css">
 <link rel="stylesheet" href="/Funding/styles/base.css">
 <link rel="stylesheet" href="./makeFunding.css">
+  	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+      <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 <body>
 	<jsp:include page="/components/header.jsp" />
 	<div class="MF__background">
 		<div class="MF__wrap">
 			<div class="MF__tabs">
-				<div class="MF__tab selected" id="MF__tab__1">
+				<div class="MF__tab" id="MF__tab__1">
 					<p class="MF__tab__step">STEP 1</p>
 					<p class="MF__tab__description">펀딩 기본 정보 입력</p>
 				</div>
@@ -22,12 +24,12 @@
 					<p class="MF__tab__step">STEP 2</p>
 					<p class="MF__tab__description">리워드 정보 입력</p>
 				</div>
-				<div class="MF__tab" id="MF__tab__3">
+				<div class="MF__tab selected" id="MF__tab__3">
 					<p class="MF__tab__step">STEP 3</p>
 					<p class="MF__tab__description">펀딩 콘텐츠 입력</p>
 				</div>
 			</div>
-			<div class="MF__tabContent selected" id="tabContent__1">
+			<div class="MF__tabContent" id="tabContent__1">
 				<h3 class="MF__subtitle">STEP1 - 펀딩 기본 정보 입력</h3>
 				<p class="MF__basic__title">펀딩 제목</p>
 				<p class="MF__basic__description">24자 이내의 매력적인 제목을 입력해주세요</p>
@@ -59,7 +61,16 @@
 				<p class="MF__basic__warning">종료일은 오픈일보다 최소 5일 이후여야 합니다.</p>
 				<p class="MF__basic__title">배송비</p>
 				<p class="MF__basic__description">펀딩 건 당 배송비를 알려주세요</p>
-				<input class="MF__basic__input small" type="number" value="2500">
+				<input class="MF__basic__input small" id="MF__basic__fee" type="number" value="2500">
+				<p class="MF__basic__title">배송비</p>
+				<p class="MF__basic__description">펀딩 건 당 배송비를 알려주세요</p>
+				<select id="MF__basic__category" class="MF__basic__category">
+					<option selected="selected">일자리 창출</option>
+					<option>친환경</option>
+					<option>기부</option>
+					<option>작은가게</option>
+					<option>미디어</option>
+				</select>
 				<div class="MF__moveTab">
 					<p class="MF__moveTab__btn dimmed">이전</p>
 					<p class="MF__moveTab__btn" onclick="moveTab(1, 2)">다음</p>
@@ -97,23 +108,9 @@
 					<p class="MF__moveTab__btn" onclick="moveTab(2, 3)">다음</p>
 				</div>
 			</div>
-			<div class="MF__tabContent" id="tabContent__3">
+			<div class="MF__tabContent selected" id="tabContent__3">
 				<h3 class="MF__subtitle">STEP3 - 펀딩 콘텐츠 입력</h3>
-				<div class="MF__content" id="MF__content">
-					<div class="MF__item">
-						<img src="/Funding/assets/close.svg" class="MF__close"> <input
-							class="MF__input__subTitle" placeholder="소제목을 입력하세요">
-					</div>
-				</div>
-				<div class="MF__addItem">
-					<div class="MF__addItem__box">
-						<p class="MF__addTitle">소제목 추가</p>
-						<p class="MF__addParagraph">본문 추가</p>
-						<label class="inputLabel"><input type="file"
-							class="MF__addImage" accept="image/png, image/jpeg"> 이미지
-							추가</label>
-					</div>
-				</div>
+				<div id="editor"></div>
 				<div class="MF__moveTab">
 					<p class="MF__moveTab__btn" onclick="moveTab(3, 2)">이전</p>
 					<p class="MF__moveTab__btn finish">완료</p>

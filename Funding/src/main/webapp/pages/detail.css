@@ -30,7 +30,7 @@
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
 	width: 100%;
-	padding-right: 300px;
+	padding-right: 240px;
 	display: flex;
 	justify-content: space-between;
 	height: 60px;
@@ -487,6 +487,43 @@
 	margin-top: 13px;
 	font-size: 14px;
 	color: #828282;
+}
+
+.detail__qna__box{
+	margin-top: 24px;
+}
+.detail__qna__question{
+	font-weight: bold;
+}
+.detail__qna__answer{
+	margin-top:4px;
+}
+.detail__qna__date{
+	text-align: right;
+	color:#666;
+}
+.detail__qna__new__box{
+	margin-bottom: 24px;
+	padding-bottom: 32px;
+	border-bottom: 1px solid #666;
+}
+.detail__qna__new__input{
+	width: 100%;
+	height: 28px;
+}
+.detail__qna__new__submit__box{
+	overflow: hidden;
+	width: 100%;
+}
+.detail__qna__new__submit{
+	float: right;
+	width: 108px;
+	height: 32px;
+	margin-top: 8px;
+	background-color: #1f9eff;
+	border: none;
+	color: white;
+	cursor: pointer;
 }
 
 
