@@ -27,7 +27,7 @@ public class FDaoC {
 		String customer_id = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT customer_id FROM funding_system WHERE customer_id = ? AND customer_pw = ?";
+			String query = "SELECT customer_id FROM customer WHERE customer_id = ? AND customer_pw = ?";
 			prepardestatement = connection.prepareStatement(query);
 			prepardestatement.setString(1, id);
 			prepardestatement.setString(2, pw);
