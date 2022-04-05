@@ -65,7 +65,7 @@
 		          form.appendChild(objs);
 		          form.setAttribute('id', 'tempForm');
 		          form.setAttribute('method', 'post'); //get,post 가능
-		          form.setAttribute('action', "/Funding/tempLoginFinishDo.jsp"); //보내는 url > 나중에 login.do로 보내야 함;
+		          form.setAttribute('action', "/Funding/socialLogin.do"); //보내는 url > 나중에 login.do로 보내야 함;
 		          document.body.appendChild(form);
 		          form.submit();
 		        },

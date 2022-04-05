@@ -123,7 +123,7 @@ function goHome(){
 $(document).on("click", ".loginButton", function(e){
 	e.stopPropagation();
 	localStorage.setItem("pastURL", location.href);
-	location.href = "/Funding/login.jsp";
+	location.href = "/Funding/pages/login.jsp";
 })
 $(document).on("click", ".logoutButton", function(e){
 	e.stopPropagation();
