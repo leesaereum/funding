@@ -30,7 +30,7 @@
   <body>
   <%
     String clientId = "iIw2A5asbDFs4SJShyZr";//애플리케이션 클라이언트 아이디값";
-    String redirectURI = URLEncoder.encode("http://localhost:8080/funding/pages/naverLoginCallback.jsp", "UTF-8");
+    String redirectURI = URLEncoder.encode("http://localhost:8080/Funding/pages/naverLoginCallback.jsp", "UTF-8");
     SecureRandom random = new SecureRandom();
     String state = new BigInteger(130, random).toString();
     String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -39,6 +39,6 @@
     apiURL += "&state=" + state;
     session.setAttribute("state", state);
  %>
-  <a href="<%=apiURL%>"><div class="naverLoginBtnBox"><img height="50" src="/funding/apis/socialLogin/naverBtn.png"/><p>네이버 로그인</p></div></a>
+  <a href="<%=apiURL%>"><div class="naverLoginBtnBox"><img height="50" src="/Funding/apis/socialLogin/naverBtn.png"/><p>네이버 로그인</p></div></a>
   </body>
 </html>

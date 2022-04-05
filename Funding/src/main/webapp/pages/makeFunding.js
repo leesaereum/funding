@@ -1,7 +1,7 @@
 let idx = 0;
 $(document).on("click", ".MF__addTitle", function() {
 	let txt =
-		'<div class="MF__item"><img src="/funding/assets/close.svg" class="MF__close"><input class="MF__input__subTitle" placeholder="소제목을 입력하세요">'
+		'<div class="MF__item"><img src="/Funding/assets/close.svg" class="MF__close"><input class="MF__input__subTitle" placeholder="소제목을 입력하세요">'
 	txt += '</div>';
 
 	$("#MF__content").append(txt);
@@ -9,7 +9,7 @@ $(document).on("click", ".MF__addTitle", function() {
 
 $(document).on("click", ".MF__addParagraph", function() {
 	let txt =
-		'<div class="MF__item"><img src="/funding/assets/close.svg" class="MF__close"><textarea class="MF__input__paragraph" placeholder="내용을 입력하세요"></textarea>'
+		'<div class="MF__item"><img src="/Funding/assets/close.svg" class="MF__close"><textarea class="MF__input__paragraph" placeholder="내용을 입력하세요"></textarea>'
 
 	txt += '</div>';
 
@@ -19,7 +19,7 @@ $(document).on("click", ".MF__addParagraph", function() {
 $(document).on("change", ".MF__addImage", function(e) {
 	idx++;
 	const addTarget = $(this).parent().parent().parent().parent();
-	let txt = '<div class="MF__item"><img src="/funding/assets/close.svg" class="MF__close">'
+	let txt = '<div class="MF__item"><img src="/Funding/assets/close.svg" class="MF__close">'
 	txt += '<img id="MF__image__' + idx + '" class="MF__item__image" src="">'
 	txt += '</div>';
 	$("#MF__content").append(txt);
@@ -97,7 +97,7 @@ $(document).on("click", ".MF__reward__close", function() {
 
 $("#MF__addReward").click(function() {
 	if ($(".MF__reward").length < 5) {
-		let txt = '<div class="MF__reward"><img src="/funding/assets/close.svg" class="MF__reward__close">';
+		let txt = '<div class="MF__reward"><img src="/Funding/assets/close.svg" class="MF__reward__close">';
 		txt += '<div class="MF__reward__liner"><p>리워드 내용</p><input class="MF__reward__content" placeholder="예)사과 1개 + 배 2개">'
 		txt += '</div><div class="MF__reward__liner"><p>후원 금액(원)</p><input class="MF__reward__price" type="number" value="10000">'
 		txt += '</div><div class="MF__reward__liner"><p>최대 수량</p><input class="MF__reward__amount" type="number" value="99"></div>'

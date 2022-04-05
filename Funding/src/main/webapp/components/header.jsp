@@ -85,7 +85,7 @@ header {
 	</div>
 
 </header>
-<script src="/funding/libraries/jQuery.js"></script>
+<script src="/Funding/libraries/jQuery.js"></script>
 <script>
 let header = document.querySelector(".header");
 let headerHeight = 72;
@@ -118,20 +118,20 @@ window.onscroll = function () {
 };
 function goHome(){
 	//todo: 작성하던 내용이 사라집니다.
-	location.href = "/funding/main.jsp"
+	location.href = "/Funding/main.jsp"
 }
 $(document).on("click", ".loginButton", function(e){
 	e.stopPropagation();
 	localStorage.setItem("pastURL", location.href);
-	location.href = "/funding/pages/login.jsp";
+	location.href = "/Funding/pages/login.jsp";
 })
 $(document).on("click", ".logoutButton", function(e){
 	e.stopPropagation();
 	localStorage.setItem("pastURL", location.href);
-	location.href = "/funding/tempLogoutDo.jsp";
+	location.href = "/Funding/tempLogoutDo.jsp";
 })
 $(document).on("click", ".makeFunding", function(e){
 	e.stopPropagation();
-	location.href = "/funding/pages/makeFunding.jsp";
+	location.href = "/Funding/pages/makeFunding.jsp";
 })
 </script>

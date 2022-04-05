@@ -3,5 +3,5 @@
 <%
 session.setAttribute("email", null);
 session.setAttribute("isSeller", null);
-response.sendRedirect("/funding/main.jsp");
+response.sendRedirect("/Funding/main.jsp");
 %>

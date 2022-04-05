@@ -20,8 +20,8 @@
 	height: auto;
 }
 </style>
-<script src="/funding/libraries/splide.min.js"></script>
-<link rel="stylesheet" href="/funding/libraries/splide.min.css">
+<script src="/Funding/libraries/splide.min.js"></script>
+<link rel="stylesheet" href="/Funding/libraries/splide.min.css">
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		var splide = new Splide('.splide', {
