@@ -2,6 +2,7 @@ package funding.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -53,5 +54,34 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
-	}
+	}//ssignUp end
+	
+	//ssignIn --> sign In for seller 
+	public String ssignIn(String id, String pw) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		String seller_id = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select seller_id from seller where seller_id = ? AND seller_pw = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			preparedStatement.setString(2, pw);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null ) preparedStatement.close();
+				if(connection != null ) connection.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return seller_id;
+	}//ssignIn end
+	
+	
 }

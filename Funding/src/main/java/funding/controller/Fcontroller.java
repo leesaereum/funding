@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import funding.command.FCommand;
+import funding.command.LoginCommand;
+import funding.command.LogoutCommand;
+import funding.command.SignupCommand;
 
 @WebServlet("/Fcontroller")
 public class Fcontroller extends HttpServlet {
@@ -170,18 +173,25 @@ public class Fcontroller extends HttpServlet {
 		
 		//seller용 switch
 		switch(path){
-		case("/signUpS.do"):
+		case("/ssignUp_view.do"):
 			viewpage="";
+		break;
+		case("/ssignUp.do"):
+			command = new SignupCommand();
+			command.execute(request, response);
+			viewpage="ssignIn.jsp";
 			break;
-		case("/signUp_viewS.do"):
-			viewpage="";
+		case("/slogin.do"):
+			command = new LoginCommand();
+			command.execute(request, response);
+			viewpage= "main.jsp";
 			break;
-		case("/loginS.do"):
-			viewpage="";
+		case("/slogOut.do"):
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewpage="ssignIn.jsp";
 			break;
-		case("/logOutS.do"):
-			viewpage="";
-			break;
+			
 		case("/sFODetail.do"):
 			viewpage="";
 			break;
