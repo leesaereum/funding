@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import funding.command.FCommand;
+import funding.command.FindidCommand;
+import funding.command.FindpwCommand;
+import funding.command.LoginCommand;
+import funding.command.LogoutCommand;
+import funding.command.MainCommand;
+import funding.command.SignupCommand;
 
 @WebServlet("/Fcontroller")
 public class Fcontroller extends HttpServlet {
@@ -38,31 +44,43 @@ public class Fcontroller extends HttpServlet {
 		//customer용 switch
 		switch(path){
 		case("/logIn.do"):
-			viewpage="";
+			command = new LoginCommand();
+			command.execute(request, response);
+			viewpage="main.do";
 			break;
 		case("/logOut.do"):
-			viewpage="";
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewpage="signIn.jsp";
 			break;
 		case("/main.do"):
-			viewpage="";
+			command = new MainCommand();
+			command.execute(request, response);
+			viewpage="main.jsp";
 			break;
 		case("/signUp_view.do"):
-			viewpage="";
+			viewpage="singUp_view.jsp";
 			break;
 		case("/signUp.do"):
-			viewpage="";
+			command = new SignupCommand();
+			command.execute(request, response);
+			viewpage="signIn.jsp";
 			break;
 		case("/findId_view.do"):
-			viewpage="";
+			viewpage="findId_view.jsp";
 			break;
 		case("/findId.do"):
-			viewpage="";
+			command = new FindidCommand();
+			command.execute(request, response);
+			viewpage="signIn.jsp";
 			break;
 		case("/findPw_view.do"):
-			viewpage="";
+			viewpage="findPw_view.jsp";
 			break;
 		case("/findPw.do"):
-			viewpage="";
+			command = new FindpwCommand();
+			command.execute(request, response);
+			viewpage="signIn.jsp";
 			break;
 		case("/finding_list.do"):
 			viewpage="";
