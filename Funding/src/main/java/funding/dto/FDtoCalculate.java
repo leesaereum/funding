@@ -2,7 +2,7 @@ package funding.dto;
 
 import java.sql.Timestamp;
 
-public class FDtoCalc {
+public class FDtoCalculate {
 
 	int calculate_num;
 	int calculate_funding;

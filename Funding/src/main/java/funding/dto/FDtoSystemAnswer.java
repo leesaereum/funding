@@ -2,7 +2,7 @@ package funding.dto;
 
 import java.sql.Timestamp;
 
-public class FDtoSA {
+public class FDtoSystemAnswer {
 
 	int answer_num;
 	int answer_quetion;

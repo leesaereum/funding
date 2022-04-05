@@ -191,7 +191,7 @@ CREATE TABLE `funding` (
   `funding_closeAt` datetime DEFAULT NULL,
   `funding_purpose` int DEFAULT NULL,
   `funding_hits` int DEFAULT NULL,
-  `funding_categori` varchar(45) DEFAULT NULL,
+  `funding_category` varchar(45) DEFAULT NULL,
   `funding_state` varchar(10) DEFAULT NULL,
   `funding_fee` int DEFAULT NULL,
   PRIMARY KEY (`funding_num`),
@@ -250,7 +250,6 @@ DROP TABLE IF EXISTS `funding_content`;
 CREATE TABLE `funding_content` (
   `content_num` int unsigned NOT NULL AUTO_INCREMENT,
   `content_funding` int unsigned DEFAULT NULL,
-  `content_numbering` int DEFAULT NULL,
   `content_content` text,
   PRIMARY KEY (`content_num`),
   UNIQUE KEY `content_num_UNIQUE` (`content_num`),
@@ -536,7 +535,7 @@ DROP TABLE IF EXISTS `seller`;
 CREATE TABLE `seller` (
   `seller_id` varchar(45) NOT NULL,
   `seller_pw` varchar(45) DEFAULT NULL,
-  `seller_licenese` text,
+  `seller_licence` text,
   `seller_number` varchar(15) DEFAULT NULL,
   `seller_profile` text,
   `seller_name` varchar(50) DEFAULT NULL,
@@ -632,4 +631,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-04 18:25:15
+-- Dump completed on 2022-04-05 15:19:46

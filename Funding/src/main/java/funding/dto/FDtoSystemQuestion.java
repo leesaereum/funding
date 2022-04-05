@@ -2,11 +2,11 @@ package funding.dto;
 
 import java.sql.Timestamp;
 
-public class FDtoFQ {
+public class FDtoSystemQuestion {
 
 	int question_num;
 	String question_customer;
-	int question_funding;
+	String question_admin;
 	String question_title;
 	String question_content;
 	Timestamp question_at;

@@ -1,6 +1,6 @@
 package funding.dto;
 
-public class FDtoFO {
+public class FDtoFundingOption {
 
 	int option_num;
 	int option_funding;
