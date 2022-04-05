@@ -14,7 +14,7 @@ import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.SignupCommand;
 
-@WebServlet("/Fcontroller")
+@WebServlet("*.do")
 public class Fcontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
