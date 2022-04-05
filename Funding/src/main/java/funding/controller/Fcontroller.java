@@ -70,6 +70,9 @@ public class Fcontroller extends HttpServlet {
 		case("/fundingContent_view.do"):
 			viewpage="";
 			break;
+		case("/fundingLike.do"):
+			viewpage="";
+			break;
 		case("/fundingOrder_view.do"):
 			viewpage="";
 			break;
@@ -133,14 +136,74 @@ public class Fcontroller extends HttpServlet {
 		case("/mypage.do"):
 			viewpage="";
 			break;
-		case("/myfunding.do"):
+		case("/myfunding_list.do"):
+			viewpage="";
+			break;
+		case("/myfunding_detail.do"):
+			viewpage="";
+			break;
+		case("/myquestion_list.do"):
+			viewpage="";
+			break;
+		case("/myquestion_detail.do"):
+			viewpage="";
+			break;
+		case("/myinformation_view.do"):
+			viewpage="";
+			break;
+		case("/myinfomation_modify.do"):
+			viewpage="";
+			break;
+		case("/mysocial_view.do"):
+			viewpage="";
+			break;
+		case("/mysocial_modify.do"):
+			viewpage="";
+			break;
+		case("/mylike_list.do"):
+			viewpage="";
+			break;
+		case("/mylike_movw.do"):
 			viewpage="";
 			break;
 		}//customer
 		
 		//seller용 switch
 		switch(path){
-		case("/.do"):
+		case("/sFODetail.do"):
+			viewpage="";
+			break;
+		case("/sFOApply.do"):
+			viewpage="";
+			break;
+		case("/sQApply_detail.do"):
+			viewpage="";
+			break;
+		case("/SFOApply.do"):
+			viewpage="";
+			break;
+		case("/sMypage.do"):
+			viewpage="";
+			break;
+		case("/sMFDetail.do"):
+			viewpage="";
+		break;
+		case("/sMFManage.do"):
+			viewpage="";
+			break;
+		case("/sMFCApply.do"):
+			viewpage="";
+			break;
+		case("/sFADetail.do"):
+			viewpage="";
+			break;
+		case("/sFAnswer.do"):
+			viewpage="";
+			break;
+		case("/sRAnswer.do"):
+			viewpage="";
+			break;
+		case("/sDManage.do"):
 			viewpage="";
 			break;
 		}//seller
@@ -153,7 +216,49 @@ public class Fcontroller extends HttpServlet {
 		case("/aLogout.do"):
 			viewpage="";
 			break;
+		case("/aCList.do"):
+			viewpage="";
+			break;
+		case("/aCAWList.do"):
+			viewpage="";
+			break;	
+		case("/aCADetail.do"):
+			viewpage="";
+			break;
+		case("/aCApprove.do"):
+			viewpage="";
+			break;
+		case("/aCReject.do"):
+			viewpage="";
+			break;
+		case("/aSQWList.do"):
+			viewpage="";
+			break;
+		case("/aSQDetail.do"):
+			viewpage="";
+			break;
+		case("/aSQualify.do"):
+			viewpage="";
+			break;
+		case("/aSreject.do"):
+			viewpage="";
+		break;
+		case("/aFAWList.do"):
+			viewpage="";
+		break;
+		case("/aFADetail.do"):
+			viewpage="";
+		break;
+		case("/aFApprove.do"):
+			viewpage="";
+			break;
+		case("/aFreject.do"):
+			viewpage="";
+			break;
 		case("/aSAList.do"):
+			viewpage="";
+			break;
+		case("/aSAListDetail.do"):
 			viewpage="";
 			break;
 		case("/aSACreate.do"):
@@ -181,18 +286,6 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 			break;
 		case("/nremove.do"):
-			viewpage="";
-			break;
-		case("/aSreject.do"):
-			viewpage="";
-			break;
-		case("/aFAWList.do"):
-			viewpage="";
-			break;
-		case("/aFADetail.do"):
-			viewpage="";
-			break;
-		case("/.do"):
 			viewpage="";
 			break;
 		}//admin
