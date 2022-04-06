@@ -18,6 +18,7 @@ import funding.command.FindpwCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
+import funding.command.NoticeListCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
 import funding.command.SSignUpCommand;
@@ -46,6 +47,8 @@ public class Fcontroller extends HttpServlet {
 		String copath = request.getContextPath();
 		String path = uri.substring(copath.length());
 		String viewpage = null;
+		
+		System.out.println(path);
 
 		//customer용 switch
 		switch(path){
@@ -154,7 +157,10 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 			break;
 		case("/notice_list.do"):
-			viewpage="";
+			System.out.println("노티스");
+			//command = new NoticeListCommand();
+			//command.execute(request, response);
+			viewpage="/pages/notice.jsp";
 			break;
 		case("/notice_detail.do"):
 			viewpage="";
@@ -321,7 +327,7 @@ public class Fcontroller extends HttpServlet {
 		case("/aFstateChange.do"):
 			viewpage="";
 			break;
-		case("/notice_list.do"):
+		case("/anotice_list.do"):
 			viewpage="";
 			break;
 		case("/ncreate_view.do"):

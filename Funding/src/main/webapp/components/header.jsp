@@ -75,7 +75,7 @@ header {
 		<nav>
 			<ul>
 				<li>펀딩</li>
-				<li>캠페인</li>
+				<li><a href = "notice_list.do">공지사항</a></li>
 				<li>Q&A</li>
 			</ul>
 		</nav>
