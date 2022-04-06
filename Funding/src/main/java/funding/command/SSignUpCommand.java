@@ -17,14 +17,15 @@ public class SSignUpCommand implements FCommand {
 		String seller_pw = request.getParameter("seller_pw");
 		String seller_licence =request.getParameter("seller_licence");
 		String seller_number =request.getParameter("seller_number");
+		String seller_profile = request.getParameter("seller_profile");
+		String seller_name = request.getParameter("seller_name");
 		String seller_phone = request.getParameter("seller_phone");
 		String seller_person_name = request.getParameter("seller_person_name");
 		String seller_person_phone = request.getParameter("seller_person_phone");
-		String seller_state = request.getParameter("seller_state");
 		
 		FDaoS daoS = new FDaoS();
-		daoS.ssignUp(seller_id,seller_pw,seller_licence,seller_number,seller_phone,seller_person_name,seller_person_phone,seller_state);
-
+		daoS.ssignUp(seller_id, seller_pw, seller_licence, seller_number, seller_profile, seller_name, seller_phone, 
+				seller_person_name, seller_person_phone);
 	}
 
 }

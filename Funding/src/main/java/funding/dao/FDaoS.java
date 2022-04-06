@@ -22,8 +22,8 @@ public class FDaoS {
 
 	
 	//ssignUp --> sign up for seller
-	public void ssignUp(String seller_id, String seller_pw, String seller_licence, String seller_number,
-			String seller_name, String seller_phone, String seller_person_name, String seller_person_phone, String seller_state) {
+	public void ssignUp(String seller_id, String seller_pw, String seller_licence, String seller_number, String seller_profile,
+			String seller_name, String seller_phone, String seller_person_name, String seller_person_phone) {
 		// TODO Auto-generated method stub
 		
 		Connection connection = null;
@@ -31,18 +31,19 @@ public class FDaoS {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = " insert into seller (seller_id, seller_pw, seller_licence, seller_number, seller_phone "
-					       + ", seller_name, seller_person_name, seller_person_phone, seller_state) values(?, ?, ?, ?, ?, ?, ?, ?)";
+			String query = "insert into seller (seller_id, seller_pw, seller_licence, seller_number, seller_profile, seller_phone "
+					       + ", seller_name, seller_person_name, seller_person_phone, seller_state) values (?, ?, ?, ?, ?, ?, ?, ?, ?, "+
+					"'승인대기'"+")";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, seller_id);
 			preparedStatement.setString(2, seller_pw);
 			preparedStatement.setString(3, seller_licence);
 			preparedStatement.setString(4, seller_number);
-			preparedStatement.setString(5, seller_name);
-			preparedStatement.setString(6, seller_phone);
-			preparedStatement.setString(7, seller_person_name);
-			preparedStatement.setString(8, seller_person_phone);
-			preparedStatement.setString(9, seller_state);
+			preparedStatement.setString(5, seller_profile);
+			preparedStatement.setString(6, seller_name);
+			preparedStatement.setString(7, seller_phone);
+			preparedStatement.setString(8, seller_person_name);
+			preparedStatement.setString(9, seller_person_phone);
 
 			preparedStatement.executeUpdate();
 		}catch(Exception e) {

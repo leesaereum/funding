@@ -245,10 +245,6 @@ function checksignUp() {
 		-<input class="ssignUp__input" type="text" maxlength="4" size = "5" name="seller_person_phone3">
 		</div>
 		
-		<div class="ssignUp__liner">
-		<p class="ssignUp__subTitle">판매자상태</p>
-		<input class="ssignUp__input" type="text" name="seller_state">
-		</div>
 		<br>
 		<input class="ssignUp__submit" type="button" value="가입하기" onclick="checksignUp()">
 			</form>

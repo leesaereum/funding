@@ -26,9 +26,9 @@ public class SLoginCommand implements FCommand {
 		}
 		
 		if(seller_id == null) {
-			request.setAttribute("viewPage", "");
+			request.setAttribute("viewpage", "slogin.jsp?error=error");
 		}else {
-			request.setAttribute("viewPage", "");
+			request.setAttribute("viewpage", "main.jsp");
 		}
 	}	
 
