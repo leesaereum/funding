@@ -18,6 +18,7 @@ import funding.command.FindpwCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
+import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
@@ -157,13 +158,14 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 			break;
 		case("/notice_list.do"):
-			System.out.println("노티스");
-			//command = new NoticeListCommand();
-			//command.execute(request, response);
+			command = new NoticeListCommand();
+			command.execute(request, response);
 			viewpage="/pages/notice.jsp";
 			break;
 		case("/notice_detail.do"):
-			viewpage="";
+			command = new NoticeDetailCommand();
+			command.execute(request, response);
+			viewpage="/pages/notice_detail.jsp";
 			break;
 		case("/mypage.do"):
 			viewpage="/pages/mypage.jsp";

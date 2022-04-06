@@ -3,10 +3,14 @@ package funding.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import funding.dto.FDtoNotice;
 
 public class FDaoC {
 	DataSource dataSource;
@@ -78,7 +82,7 @@ public class FDaoC {
 				e.printStackTrace();
 			}
 		}
-	}
+	}//signup
 	public void addAddress(String customer_id, String address1, String address2, String address3) {
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
@@ -103,5 +107,72 @@ public class FDaoC {
 				e.printStackTrace();
 			}
 		}
+	}//addAddress
+	public ArrayList<FDtoNotice> notice_list() {
+		ArrayList<FDtoNotice> list = new ArrayList<FDtoNotice>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT notice_num, notice_title, notice_At FROM notice";
+			preparedstatement = connection.prepareStatement(query);
+			resultset = preparedstatement.executeQuery();
+			
+			while(resultset.next()) {
+				int notice_num = resultset.getInt(1);
+				String notice_title = resultset.getString(2);
+				Timestamp notice_At = resultset.getTimestamp(3);
+				
+				FDtoNotice dto = new FDtoNotice(notice_num, notice_title, notice_At);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}//notice_list
+	
+	public FDtoNotice notice_detail(String num) {
+		FDtoNotice dto = null;
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT * FROM notice WHERE notice_num = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, num);
+			resultset = preparedstatement.executeQuery();
+			
+			while(resultset.next()) {
+				int notice_num = resultset.getInt(1);
+				String notice_admin = resultset.getString(2);
+				String notice_title = resultset.getString(3);
+				String notice_content = resultset.getString(4);
+				Timestamp notice_At = resultset.getTimestamp(5);
+				
+				dto = new FDtoNotice(notice_num, notice_admin, notice_title, notice_content, notice_At);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
 	}
 }

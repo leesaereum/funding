@@ -46,9 +46,7 @@
 	<jsp:include page="/components/header.jsp"/>
 	<div>공지번호 제목 공지일</div>
 	<c:forEach items="${notice}" var="notice">
-	<div>${notice.notice_num }</div>
-	<div><a href = "notice_detail.jsp?notice_num=${notice.notice_num }">${notice.notice_title }</a></div>
-	<div>${notice.notice_At }</div>
+	<div>${notice.notice_num } / <a href = "notice_detail.do?notice_num=${notice.notice_num}">${notice.notice_title }</a> / ${notice.notice_At }</div>
 	</c:forEach>
 </body>
 </html>
