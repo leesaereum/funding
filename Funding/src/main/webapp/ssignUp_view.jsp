@@ -82,12 +82,12 @@ function Load_profile() {
 //check for singUp
 function checksignUp() {
 	var regExpEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
-	var regExpName = /^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/;
-	var regExpPhone = /^\d{2,3}-\d{3,4}-\d{4}$/
-	var regExpsNum = /^\d{3}-\d{2}-\d{5}$/
-	var regExppNum = /^\d{3}-\d{3,4}-\d{4}$/
+	var regExpName = /^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/;   //company name
+	var regExpPhone = /^\d{2,3}-\d{3,4}-\d{4}$/ //company phone
+	var regExpsNum = /^\d{3}-\d{2}-\d{5}$/   //licence no.
+	var regExppNum = /^\d{3}-\d{3,4}-\d{4}$/ //phone of person in charge
 	
-	var form = document.loginForm
+	var form = document.ssignUpForm
 	
 	var id = form.seller_id.value
 	if(form.seller_id.value == ""){
@@ -100,10 +100,10 @@ function checksignUp() {
 		form.seller_id.select()
 		return false
 		
-		
+	}	
 	var pw1 = form.seller_pw1.value
 	var pw2 = form.seller_pw2.value
-	}else if(form.seller_pw1.value == ""){
+	if(form.seller_pw1.value == ""){
 		alert("비밀번호를 입력해 주세요.")
 		form.seller_pw1.focus()
 		return false
@@ -124,20 +124,21 @@ function checksignUp() {
 		form.seller_pw1.select()
 		return false
 		
-		
+	}	
 	var sNum = form.seller_number1.value + "-" + form.seller_number2.value + "-" + form.seller_number3.value
-	}else if (!regExpsNum.test(sNum){
+	if (!regExpsNum.test(sNum)){
 		alert("사업자등록번호는 3자리-2자리-5자리 형식으로 입력 가능합니다.")
 		return false
-		
+	}
+	
 	var phoneNum = form.seller_phone1.value + "-" + form.seller_phone2.value + "-" + form.seller_phone3.value
-	}else if (!regExpsNum.test(phoneNum){
+	if (!regExpPhone.test(phoneNum)){
 		alert("업체번호를 확인해 주세요.")
 		return false
-		
+	}	
 		
 	var person_name = form.seller_person_name.value
-	}else if(form.seller_person_name.value ==""){
+	if(form.seller_person_name.value == ""){
 		alert("이름을 입력해 주세요.")
 		form.seller_person_name.focus()
 		return false
@@ -149,9 +150,10 @@ function checksignUp() {
 		alert("이름은 문자만 입력해주세요.")
 		form.seller_person_name.focus()
 		return false
-		
-	var pnum = form.seller_person_phone1.value + "-" +form.seller_person_phone1.value + "-" + form.seller_person_phone1.value
-	}else if(!regExppNum.test()){
+	}
+	
+	var pNum = form.seller_person_phone1.value + "-" +form.seller_person_phone2.value + "-" + form.seller_person_phone3.value
+	if(!regExppNum.test(pNum)){
 		alert("담당자 번호를 확인해주세요.")
 		return false
 	}
@@ -168,7 +170,7 @@ function checksignUp() {
 	<div class="ssignUp__wrap">
 	<div class="ssignUp__content">
 	<h1 class="ssignUp__title">판매자 회원가입</h1>
-	<form name="ssignUpForm"  action=ssignUp.do" method="post">
+	<form name="ssignUpForm"  action="ssignUp.do" method="post">
 		<div class="ssignUp__liner">
 		<p class="ssignUp__subTitle">아이디</p>
 		<input class="ssignUp__input" type="text" name="seller_id"  placeholder="example@mail.com">
@@ -245,10 +247,10 @@ function checksignUp() {
 		
 		<div class="ssignUp__liner">
 		<p class="ssignUp__subTitle">판매자상태</p>
-		<input class="ssignUp__input" type="text" name="seller_state" value="임시판매자">
+		<input class="ssignUp__input" type="text" name="seller_state">
 		</div>
 		<br>
-		<input class="ssignUp__submit"  type="button" value="가입하기" onclick="checksignUp()">
+		<input class="ssignUp__submit" type="button" value="가입하기" onclick="checksignUp()">
 			</form>
 			<div class="ssignUp__infoBox">
 				<a href="slogin.jsp">← 이전 페이지</a>

@@ -191,25 +191,24 @@ public class Fcontroller extends HttpServlet {
 		
 		//seller용 switch
 		switch(path){
+		case("/slogin.do"):
+			command = new LoginCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
+		break;
+		case("/slogOut.do"):
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewpage="ssignIn.jsp";
+		break;
 		case("/ssignUp_view.do"):
-			viewpage="";
+			viewpage="ssignUp_view.jsp";
 		break;
 		case("/ssignUp.do"):
 			command = new SignupCommand();
 			command.execute(request, response);
 			viewpage="ssignIn.jsp";
 			break;
-		case("/slogin.do"):
-			command = new LoginCommand();
-			command.execute(request, response);
-			viewpage = (String) request.getAttribute("viewpage");
-			break;
-		case("/slogOut.do"):
-			command = new LogoutCommand();
-			command.execute(request, response);
-			viewpage="ssignIn.jsp";
-			break;
-			
 		case("/sFODetail.do"):
 			viewpage="";
 			break;
