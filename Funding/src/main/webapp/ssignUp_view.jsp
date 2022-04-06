@@ -16,8 +16,9 @@ body{
 	height: 100%;
 }
 .ssignUp__wrap{
-	width: 100%;
-	height: 100%;
+	/* width: 100%;
+	height: 100%; */
+	background-size : cover;
 	display:flex;
 	justify-content: center;
 	align-items: center;
@@ -67,6 +68,16 @@ body{
 .ssignUp__info{
 	margin: 0;
 	font-size: 14px;
+}
+#ssignUp__img__preview{
+	width: 320px;
+	height: 320px;
+	overflow: hidden;
+	border: 1px solid #333333;
+}
+#ssignUp__img{
+	width: 100%;
+	height: auto;
 }
 </style>
 
@@ -195,9 +206,12 @@ function checksignUp() {
 		
 		<div class="ssignUp__liner">
 		<p class="ssignUp__subTitle">업체프로필</p>
-		<input class="ssignUp__input" type="text" name="seller_profile">
-		<input type="button" value="등록하기" onclick="Load_profile()">
+		<input class="ssignUp__input" type="hidden" id="ssignUp__img__src" name="seller_profile">
+		<input type="file" id="ssignUp__img__upload__btn">
 		</div>
+		
+		<p>프로필 미리보기</p>
+		<div id="ssignUp__img__preview"></div>
 		
 		<div class="ssignUp__liner">
 		<p class="ssignUp__subTitle">업체명</p>
@@ -253,5 +267,28 @@ function checksignUp() {
 			</div>
 		</div>
 		</div>
+		<script
+  		src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+  		integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+  		crossorigin="anonymous"></script>
+		<script>
+		$("#ssignUp__img__upload__btn").change(function() {
+			let txt = '<img id="ssignUp__img" src="">'
+			$("#ssignUp__img__preview").html(txt);
+			readURL(this, '#ssignUp__img');
+		})
+
+		function readURL(input, previewId) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$(previewId).attr('src', e.target.result);
+					$("#ssignUp__img__src").val(e.target.result)
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		
+		</script>
 	</body>
 </html>

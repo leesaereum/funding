@@ -71,6 +71,13 @@ public class FDaoS {
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
 			preparedStatement.setString(2, pw);
+		
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				seller_id = resultSet.getString("seller_id");
+			}
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
