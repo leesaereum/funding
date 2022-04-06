@@ -18,6 +18,9 @@ import funding.command.FindpwCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
+import funding.command.SLoginCommand;
+import funding.command.SLogoutCommand;
+import funding.command.SSignUpCommand;
 import funding.command.SignupCommand;
 
 @WebServlet("*.do")
@@ -193,25 +196,21 @@ public class Fcontroller extends HttpServlet {
 		
 		//seller용 switch
 		switch(path){
-		case("/ssignUp_view.do"):
-			viewpage="";
+		case("/slogin.do"):
+			command = new SLoginCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
+		break;
+		case("/slogOut.do"):
+			command = new SLogoutCommand();
+			command.execute(request, response);
+			viewpage="slogin.jsp";
 		break;
 		case("/ssignUp.do"):
-			command = new SignupCommand();
+			command = new SSignUpCommand();
 			command.execute(request, response);
-			viewpage="ssignIn.jsp";
+			viewpage="main.jsp";
 			break;
-		case("/slogin.do"):
-			command = new LoginCommand();
-			command.execute(request, response);
-			viewpage= "main.jsp";
-			break;
-		case("/slogOut.do"):
-			command = new LogoutCommand();
-			command.execute(request, response);
-			viewpage="ssignIn.jsp";
-			break;
-			
 		case("/sFODetail.do"):
 			viewpage="";
 			break;
