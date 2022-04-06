@@ -89,7 +89,11 @@ header {
 <script>
 let header = document.querySelector(".header");
 let headerHeight = 72;
+<<<<<<< HEAD
 let email = "<%=session.getAttribute("customer_id")%>";
+=======
+let email = "<%=session.getAttribute("email")%>";
+>>>>>>> origin/yimoonyeol
 if(email == "null"){
 	document.getElementById("loginZone").innerHTML = '<div class="loginButton">로그인</div>';
 }else{

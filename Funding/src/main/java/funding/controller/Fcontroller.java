@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import funding.command.ACListCommand;
+import funding.command.ALoginCommand;
+import funding.command.ALogoutCommand;
 import funding.command.FCommand;
 import funding.command.FindidCommand;
 import funding.command.FindpwCommand;
@@ -251,13 +254,19 @@ public class Fcontroller extends HttpServlet {
 		//admin용 switch
 		switch(path){
 		case("/aLogin.do"):
-			viewpage="";
-		break;
+			command = new ALoginCommand();
+			command.execute(request, response);
+			viewpage= (String) request.getAttribute("viewPage");
+			break;
 		case("/aLogout.do"):
-			viewpage="";
+			command = new ALogoutCommand();
+			command.execute(request, response);
+			viewpage="aLogin.jsp";
 			break;
 		case("/aCList.do"):
-			viewpage="";
+			command = new ACListCommand();
+			command.execute(request, response);
+			viewpage="aCList.jsp";
 			break;
 		case("/aCAWList.do"):
 			viewpage="";
