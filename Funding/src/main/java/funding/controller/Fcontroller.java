@@ -56,10 +56,10 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
-		case("/logOut.do"):
+		case("/logout.do"):
 			command = new LogoutCommand();
 			command.execute(request, response);
-			viewpage="signIn.jsp";
+			viewpage="main.jsp";
 			break;
 		case("/main.do"):
 			command = new MainCommand();

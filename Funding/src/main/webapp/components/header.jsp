@@ -89,15 +89,11 @@ header {
 <script>
 let header = document.querySelector(".header");
 let headerHeight = 72;
-<<<<<<< HEAD
-let email = "<%=session.getAttribute("customer_id")%>";
-=======
-let email = "<%=session.getAttribute("email")%>";
->>>>>>> origin/yimoonyeol
-if(email == "null"){
+let customer_id = "<%=session.getAttribute("customer_id")%>";
+if(customer_id == "null"){
 	document.getElementById("loginZone").innerHTML = '<div class="loginButton">로그인</div>';
 }else{
-	document.getElementById("loginZone").innerHTML = '<p class="signedIn_email">'+email.split("@")[0]+' 님</p><div class="logoutButton">로그아웃</div>';
+	document.getElementById("loginZone").innerHTML = '<p class="signedIn_email">'+customer_id.split("@")[0]+' 님</p><div class="logoutButton">로그아웃</div>';
 }
 let isSeller = "<%=session.getAttribute("isSeller")%>";
 if(isSeller != "null"){
@@ -132,7 +128,7 @@ $(document).on("click", ".loginButton", function(e){
 $(document).on("click", ".logoutButton", function(e){
 	e.stopPropagation();
 	localStorage.setItem("pastURL", location.href);
-	location.href = "/Funding/tempLogoutDo.jsp";
+	location.href = "/Funding/logout.do";
 })
 $(document).on("click", ".makeFunding", function(e){
 	e.stopPropagation();
