@@ -148,6 +148,7 @@ background-position
 </head>
 <script type="text/javascript">
 	let emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+	
 	window.onload = function(){
 		let errorCode = "<%=request.getParameter("error")%>"
 		console.log(errorCode)
