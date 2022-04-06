@@ -90,7 +90,6 @@ header {
 let header = document.querySelector(".header");
 let headerHeight = 72;
 let email = "<%=session.getAttribute("seller_id")%>";
-let email = "<%=session.getAttribute("email")%>";
 if(email == "null"){
 	document.getElementById("loginZone").innerHTML = '<div class="loginButton">로그인</div>';
 }else{
