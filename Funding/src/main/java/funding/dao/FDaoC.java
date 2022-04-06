@@ -57,7 +57,7 @@ public class FDaoC {
 		PreparedStatement preparedstatement = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "INSERT INTO customer(customer_id,customer_pw, customer_name, customer_phone, customer_pw_q, customer_pw_a) "
+			String query = "INSERT INTO customer(customer_id, customer_pw, customer_name, customer_phone, customer_pw_q, customer_pw_a) "
 					+ "values(?, ?, ?, ?, ?, ?)";
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, customer_id);
@@ -66,6 +66,31 @@ public class FDaoC {
 			preparedstatement.setString(4, customer_phone);
 			preparedstatement.setString(5, customer_pw_q);
 			preparedstatement.setString(6, customer_pw_a);
+			preparedstatement.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	public void addAddress(String customer_id, String address1, String address2, String address3) {
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "INSERT INTO address (address_customer, address_state, address_city, address_line) "
+					+ "values(?, ?, ?, ?)";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, customer_id);
+			preparedstatement.setString(2, address1);
+			preparedstatement.setString(3, address2);
+			preparedstatement.setString(4, address3);
 			preparedstatement.executeUpdate();
 			
 		} catch (Exception e) {

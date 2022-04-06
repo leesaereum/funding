@@ -10,7 +10,7 @@
 
 function goPopup(){
 	// 호출된 페이지(jusoPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-    var pop = window.open("./addressPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+    var pop = window.open("/Funding/apis/addressSearch/addressPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
     
 	// 모바일 웹인 경우, 호출된 페이지(jusoPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
     //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
@@ -23,6 +23,11 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	document.form.roadAddrPart2.value = roadAddrPart2;
 	document.form.addrDetail.value = addrDetail;
 	document.form.zipNo.value = zipNo;
+	
+ 	//SignUp.address1 = roadAddPart1;
+ 	//SignUp.address2 = roadAddPart2;
+ 	//SignUp.address3 = addrDetail;
+	//document.form.zipNo.value = zipNo;
 }
 </script>
 <title>주소 입력 샘플</title>

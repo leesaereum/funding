@@ -42,9 +42,25 @@ keyframes gradientBG { 0% {
 
 
 
+
+
+
+
+
+
+
+
 %
 {
 background-position
+
+
+
+
+
+
+
+
 
 
 
@@ -58,13 +74,37 @@ background-position
 
 
 
+
+
+
+
+
+
+
+
 100
+
+
+
+
+
+
+
+
 
 
 
 
 %
 50
+
+
+
+
+
+
+
+
 
 
 
@@ -78,6 +118,14 @@ background-position
 
 
 
+
+
+
+
+
+
+
+
 %
 {
 background-position
@@ -87,7 +135,23 @@ background-position
 
 
 
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -99,8 +163,24 @@ background-position
 
 
 
+
+
+
+
+
+
+
+
 %
 50
+
+
+
+
+
+
+
+
 
 
 
@@ -109,7 +189,7 @@ background-position
 }
 }
 .signUp__content {
-	width: 340px;
+	width: 400px;
 	padding: 30px;
 	background-color: white;
 	border-radius: 16px;
@@ -288,7 +368,7 @@ background-position
 		<div class="signUp__content">
 			<h1 class="signUp__title">회원가입</h1>
 			<div class="signIn__divider"></div>
-			<form action="/Funding/signUp.do" name="signUpForm" method="post">
+			<form action="/Funding/signUp.do" name="signUpForm" method="get">
 				<div class="signUp__liner">
 					<p class="signUp__subTitle">아이디</p>
 					<input class="signUp__input" id="id" name="id"
@@ -317,8 +397,19 @@ background-position
 						onkeyup="validate()" onfocus="nameFocus()" onblur="nameValidate()">
 					<p id="nameValidate" class="signUp__warning"></p>
 				</div>
-
-
+				<div>
+					<div class="signIn__liner">
+						<p class="signUp__subTitle">주소</p>
+						<input class="signUp__input" id="address1" type="text" name="address1">
+					</div>
+					<div class="signIn__liner">
+						<p class="signUp__subTitle">상세 주소</p>
+						<input class="signUp__input" id="address2" type="text" name="address2">
+					</div>
+					<div class="signIn__liner">
+						<input class="signUp__input" id="address3" type="text" name="address3">
+					</div>
+				</div>
 				<div class="signIn__liner">
 					<p class="signUp__warning"></p>
 					<p class="signUp__subTitle">전화번호</p>
