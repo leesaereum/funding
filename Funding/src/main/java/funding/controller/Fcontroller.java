@@ -13,17 +13,21 @@ import funding.command.ACListCommand;
 import funding.command.ALoginCommand;
 import funding.command.ALogoutCommand;
 import funding.command.FCommand;
+import funding.command.FindidCommand;
+import funding.command.FindpwCommand;
+import funding.command.LoginCommand;
+import funding.command.LogoutCommand;
+import funding.command.MainCommand;
+import funding.command.SignupCommand;
 
-@WebServlet("/Fcontroller")
+@WebServlet("*.do")
 public class Fcontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     public Fcontroller() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		actiondo(request, response);
 	}
 
@@ -32,40 +36,56 @@ public class Fcontroller extends HttpServlet {
 	}
 
 	private void actiondo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
 		FCommand command = null;
 		String uri = request.getRequestURI();
 		String copath = request.getContextPath();
 		String path = uri.substring(copath.length());
 		String viewpage = null;
-		
+
 		//customer용 switch
 		switch(path){
-		case("/logIn.do"):
-			viewpage="";
+		case("/login.do"):
+			command = new LoginCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
+			break;
+		case("/sociallogin.do"):
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
 			break;
 		case("/logOut.do"):
-			viewpage="";
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewpage="signIn.jsp";
 			break;
 		case("/main.do"):
-			viewpage="";
-			break;
-		case("/signUp_view.do"):
-			viewpage="";
+			command = new MainCommand();
+			command.execute(request, response);
+			viewpage="main.jsp";
 			break;
 		case("/signUp.do"):
-			viewpage="";
+			command = new SignupCommand();
+			command.execute(request, response);
+			viewpage="/pages/login.jsp";
 			break;
 		case("/findId_view.do"):
-			viewpage="";
+			viewpage="findId_view.jsp";
 			break;
 		case("/findId.do"):
-			viewpage="";
+			command = new FindidCommand();
+			command.execute(request, response);
+			viewpage="signIn.jsp";
 			break;
 		case("/findPw_view.do"):
-			viewpage="";
+			viewpage="findPw_view.jsp";
 			break;
 		case("/findPw.do"):
-			viewpage="";
+			command = new FindpwCommand();
+			command.execute(request, response);
+			viewpage="signIn.jsp";
 			break;
 		case("/finding_list.do"):
 			viewpage="";
@@ -173,6 +193,25 @@ public class Fcontroller extends HttpServlet {
 		
 		//seller용 switch
 		switch(path){
+		case("/ssignUp_view.do"):
+			viewpage="";
+		break;
+		case("/ssignUp.do"):
+			command = new SignupCommand();
+			command.execute(request, response);
+			viewpage="ssignIn.jsp";
+			break;
+		case("/slogin.do"):
+			command = new LoginCommand();
+			command.execute(request, response);
+			viewpage= "main.jsp";
+			break;
+		case("/slogOut.do"):
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewpage="ssignIn.jsp";
+			break;
+			
 		case("/sFODetail.do"):
 			viewpage="";
 			break;
@@ -210,6 +249,7 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 			break;
 		}//seller
+		
 		
 		//admin용 switch
 		switch(path){
