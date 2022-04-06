@@ -212,10 +212,10 @@ public class Fcontroller extends HttpServlet {
 			viewpage="slogin.jsp";
 			break;
 		case("/sFODetail.do"):
-			viewpage="";
+			viewpage="/pages/makeFunding.jsp";
 			break;
 		case("/sFOApply.do"):
-			viewpage="";
+			viewpage="main.do";
 			break;
 		case("/sQApply_detail.do"):
 			viewpage="";
