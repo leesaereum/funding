@@ -95,8 +95,7 @@ header {
 		margin: 10px;
 	}
 	.main .content .article{
-		height:740px;
-		border: 1px solid;
+		height:100px;
 	}
 	
 </style>
@@ -171,7 +170,7 @@ $(document).on("click", ".makeFunding", function(e){
 </head>
 <body>
 <div class="ex-layout">
-		<div class="menu"><h2>판매자 신청페이지</h2><hr></div>
+		<div class="menu"><h2 align="right">판매자 신청페이지&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</h2><hr></div>
 		<div class="main">
 			<div class="left-menu">
 			
@@ -179,11 +178,30 @@ $(document).on("click", ".makeFunding", function(e){
 			<div class="content">
 				<form action="main.do">
 				<div class="article">
-				업체명 <input type = "text" name="seller_name" value="${ssignUp_view.seller_name }"><br> 
-				사업자등록번호 <input type="text" name="seller_number" size= "30" value= "${ssignUp_view.seller_number }"><br>
-				주소 <br>
-				신청자명 <input type="text" name="seller_person_name" value="${ssignUp_view.seller_person_name }"><br> 
-				신청자 전화번호 <input type="text" name="seller_person_number" value="${ssignUp_view.seller_person_number }"><br>
+				업체명 <input type = "text" name="seller_name" value="${ssignUp_view.seller_name }">
+				</div> 
+				
+				<div class="article">
+				상세설명 <textarea name="contents" rows="3" cols="50"></textarea>
+				</div>
+				
+				<div class="article">
+				사업자등록번호 <input type="text" name="seller_number" size= "30" value= "${ssignUp_view.seller_number }">
+				</div>
+				
+				<div class="article">
+				주소
+				</div>
+				
+				<div class="article">
+				신청자명 <input type="text" name="seller_person_name" value="${ssignUp_view.seller_person_name }">
+				</div>
+				
+				<div class="article">
+				신청자 전화번호 <input type="text" name="seller_person_number" value="${ssignUp_view.seller_person_number }">
+				</div>
+				<div class="article" align="right">
+				<input type="submit" value="신청하기">
 				</div>
 				</form>
 			</div>
