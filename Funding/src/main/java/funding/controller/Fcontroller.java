@@ -160,7 +160,7 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 			break;
 		case("/mypage.do"):
-			viewpage="";
+			viewpage="/pages/mypage.jsp";
 			break;
 		case("/myfunding_list.do"):
 			viewpage="";
@@ -209,7 +209,7 @@ public class Fcontroller extends HttpServlet {
 		case("/ssignUp.do"):
 			command = new SSignUpCommand();
 			command.execute(request, response);
-			viewpage="main.jsp";
+			viewpage="slogin.jsp";
 			break;
 		case("/sFODetail.do"):
 			viewpage="";

@@ -28,17 +28,10 @@ public class FDaoC {
 		try {
 			connection = dataSource.getConnection();
 			String query = "SELECT customer_id FROM customer WHERE customer_id = ? AND customer_pw = ?";
-<<<<<<< HEAD
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
 			preparedstatement.setString(2, pw);
 			resultset = preparedstatement.executeQuery();
-=======
-			prepardestatement = connection.prepareStatement(query);
-			prepardestatement.setString(1, id);
-			prepardestatement.setString(2, pw);
-			resultset = prepardestatement.executeQuery();
->>>>>>> yejin
 			
 			if(resultset.next()) {
 				customer_id = resultset.getString(1);

@@ -93,7 +93,7 @@ let customer_id = "<%=session.getAttribute("customer_id")%>";
 if(customer_id == "null"){
 	document.getElementById("loginZone").innerHTML = '<div class="loginButton">로그인</div>';
 }else{
-	document.getElementById("loginZone").innerHTML = '<p class="signedIn_email">'+customer_id.split("@")[0]+' 님</p><div class="logoutButton">로그아웃</div>';
+	document.getElementById("loginZone").innerHTML = '<p class="signedIn_email">'+customer_id.split("@")[0]+' 님</p><div class="mypageButton">마이페이지</div> <div class="logoutButton">로그아웃</div>';
 }
 let isSeller = "<%=session.getAttribute("isSeller")%>";
 if(isSeller != "null"){
@@ -129,6 +129,11 @@ $(document).on("click", ".logoutButton", function(e){
 	e.stopPropagation();
 	localStorage.setItem("pastURL", location.href);
 	location.href = "/Funding/logout.do";
+})
+$(document).on("click", ".mypageButton", function(e){
+	e.stopPropagation();
+	localStorage.setItem("pastURL", location.href);
+	location.href = "/Funding/mypage.do";
 })
 $(document).on("click", ".makeFunding", function(e){
 	e.stopPropagation();
