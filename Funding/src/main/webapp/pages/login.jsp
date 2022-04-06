@@ -148,6 +148,10 @@ background-position
 </head>
 <script type="text/javascript">
 	let emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+<<<<<<< HEAD
+	
+=======
+>>>>>>> origin/yimoonyeol
 	window.onload = function(){
 		let errorCode = "<%=request.getParameter("error")%>"
 		console.log(errorCode)
@@ -226,18 +230,18 @@ background-position
 			<jsp:include page="/apis/socialLogin/kakaoLogin.jsp" />
 			<jsp:include page="/apis/socialLogin/naverLogin.jsp" />
 			<div class="signIn__divider"></div>
-			<form action="login.do" name="signInForm" method="post"
+			<form action="/Funding/login.do" name="signInForm" method="post"
 				onsubmit="checkCheck()">
 				<div class="signIn__liner">
 					<p class="signIn__subTitle">아이디</p>
-					<input class="signIn__input" id="id" name="uId"
+					<input class="signIn__input" id="id" name="customer_id"
 						placeholder="example@mail.com" onkeyup="validate()"
 						onfocus="idFocus()" onblur="idValidate()">
 					<p id="idValidate" class="signIn__warning"></p>
 				</div>
 				<div class="signIn__liner">
 					<p class="signIn__subTitle">패스워드</p>
-					<input class="signIn__input" id="pw" type="password" name="uPw"
+					<input class="signIn__input" id="pw" type="password" name="customer_pw"
 						onkeyup="validate()" onfocus="pwFocus()" onblur="pwValidate()">
 					<p id="pwValidate" class="signIn__warning"></p>
 				</div>
@@ -250,7 +254,7 @@ background-position
 			</form>
 			<div class="signIn__infoBox">
 				<p class="signIn__info">
-					아직 가입하지 않으셨나요? <a href="signUp.jsp">가입하러 가기</a>
+					아직 가입하지 않으셨나요? <a href="SignUp.jsp">가입하러 가기</a>
 				</p>
 
 			</div>

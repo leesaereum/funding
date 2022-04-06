@@ -5,24 +5,17 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
-import javax.servlet.http.HttpSession;
-=======
->>>>>>> origin/yimoonyeol
 
-public class MainCommand implements FCommand {
+import funding.dao.FDaoC;
+
+public class SocialLoginCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
-
-		HttpSession session = request.getSession();
-		session.getAttribute("customer_id");
+		String input_id = request.getParameter("email");
 		
-=======
-		// TODO Auto-generated method stub
-
->>>>>>> origin/yimoonyeol
+		FDaoC dao = new FDaoC();
+		
 	}
 
 }
