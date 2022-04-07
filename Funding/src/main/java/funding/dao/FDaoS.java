@@ -36,8 +36,7 @@ public class FDaoS {
 			connection = dataSource.getConnection();
 			String query = "insert into seller (seller_id, seller_pw, seller_number, seller_profile, seller_name "
 					       + ", seller_phone, seller_person_name, seller_person_phone, seller_state) values (?, ?, ?, ?, ?, ?, ?, ?, "+
-					"'ìŠ¹ì¸ëŒ€ê¸°'"+")";
-			query +="insert into address (address_seller, address_state, address_city, address_line) values (?, ?, ?, ?)";
+					"'½ÂÀÎ´ë±â"+")";
 			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, seller_id);
@@ -49,11 +48,6 @@ public class FDaoS {
 			preparedStatement.setString(7, seller_person_name);
 			preparedStatement.setString(8, seller_person_phone);
 			
-			preparedStatement.setString(1, address_seller);
-			preparedStatement.setString(2, address_state);
-			preparedStatement.setString(3, address_city);
-			preparedStatement.setString(4, address_line);
-
 			preparedStatement.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
