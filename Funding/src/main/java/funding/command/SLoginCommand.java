@@ -23,12 +23,14 @@ public class SLoginCommand implements FCommand {
 		if(seller_id != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("seller_id", seller_id);
+			session.setAttribute("email", id);
+			session.setAttribute("isSeller", "true");
 		}
 		
 		if(seller_id == null) {
 			request.setAttribute("viewpage", "slogin.jsp?error=error");
 		}else {
-			request.setAttribute("viewpage", "main.jsp");
+			request.setAttribute("viewpage", "main.do");
 		}
 	}	
 

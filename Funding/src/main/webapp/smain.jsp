@@ -54,8 +54,7 @@ let words = ["핸드메이드 카네이션 굿즈로 마음을 전해요","NON-G
 let page = 0;
 document.addEventListener('DOMContentLoaded', function() {
 	loadMore();
-	let email = "<%=session.getAttribute("customer_id")%>";
-
+	let email = "<%=session.getAttribute("seller_id")%>";
 	let firstLogin = "<%= session.getAttribute("loginFirst")%>";
 	
 	if(firstLogin !== "null" && email !== "null"){
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	        (clearTimeout(removeToast), removeToast = setTimeout(function () {
 	            document.getElementById("toast").classList.remove("reveal")
 	        }, 3000)) :
-	        removeToast = setTimeout(function () { 
+	        removeToast = setTimeout(function () {
 	            document.getElementById("toast").classList.remove("reveal")
 	        }, 3000)
 	    toast.classList.add("reveal"),
@@ -111,6 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	<div id="loadMoreBox">
 		<div class="loadMore" onclick="loadMore()">더보기</div>
 	</div>
+
+
+	<form action="input.jsp" method="post">
+		<input name="startDate" type="date"> <input type="submit"
+			value="확">
+	</form>
 	<div id="toast"></div>
 </body>
 </html>

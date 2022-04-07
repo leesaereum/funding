@@ -55,6 +55,7 @@ public class Fcontroller extends HttpServlet {
 		String copath = request.getContextPath();
 		String path = uri.substring(copath.length());
 		String viewpage = null;
+	System.out.println(path);
 
 		// customer용 switch
 		switch (path) {
@@ -63,6 +64,7 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
+
 		case ("/sociallogin.do"):
 			command = new LogoutCommand();
 			command.execute(request, response);
@@ -103,10 +105,14 @@ public class Fcontroller extends HttpServlet {
 			command = new FundingListViewCommand();
 			command.execute(request, response);
 			viewpage = "/pages/funding_list_view.jsp";
-			// viewpage = "funding_list.do";
 			break;
-		// case ("/funding_list.do"):
-		// break;
+//		case ("/fundingSearch_view.do"):
+//			viewpage = "";
+//		break;
+		case ("/fundingSearch.do"):
+			System.out.println("펀딩써치햇지롱");
+			viewpage = "/pages/funding_list_view.jsp";
+		break;
 		case ("/fundingContent_view.do"):
 			viewpage = "";
 			break;
@@ -156,12 +162,6 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "";
 			break;
 		case ("/systemQuestion_detail.do"):
-			viewpage = "";
-			break;
-		case ("/fundingSearch_view.do"):
-			viewpage = "";
-			break;
-		case ("/fundingSearch.do"):
 			viewpage = "";
 			break;
 		case ("/orderList.do"):
@@ -229,11 +229,11 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "slogin.jsp";
 			break;
-		case ("/sFODetail.do"):
-			viewpage = "";
+		case("/sFODetail.do"):
+			viewpage="/pages/makeFunding.jsp";
 			break;
-		case ("/sFOApply.do"):
-			viewpage = "";
+		case("/sFOApply.do"):
+			viewpage="main.do";
 			break;
 		case ("/sQApply_detail.do"):
 			viewpage = "";

@@ -55,6 +55,7 @@ let page = 0;
 document.addEventListener('DOMContentLoaded', function() {
 	loadMore();
 	let email = "<%=session.getAttribute("customer_id")%>";
+
 	let firstLogin = "<%= session.getAttribute("loginFirst")%>";
 	
 	if(firstLogin !== "null" && email !== "null"){

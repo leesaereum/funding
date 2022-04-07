@@ -122,6 +122,25 @@ background-position
 	border-bottom: 1px solid #ddd;
 	margin-bottom: 20px;
 }
+.signIn__findInfo{
+	width: 280px;
+	background-color: royalblue;
+	color: white;
+	height: 44px;
+	margin: 10px 0;
+	border-radius: 32px;
+	cursor: pointer;
+}
+.signIn__findInfo:hover{
+	filter: brightness(105%);
+}
+.signIn__findInfo:disabled {
+	background-color: #aaa;
+}
+
+.signIn__findInfo:active {
+	filter: brightness(95%);
+}
 
 #toast {
 	position: fixed;
@@ -218,6 +237,10 @@ background-position
 	    toast.classList.add("reveal"),
 	        toast.innerText = string
 	}
+	
+	function signIn_findInfo() {
+		alert("관리자에게 요청하세요.")
+	}
 </script>
 <body>
 	<div class="signIn__wrap">
@@ -247,6 +270,8 @@ background-position
 				</div>
 				<input class="signIn__submit" id="submit" type="submit" value="로그인"
 					disabled>
+				<input class="signIn__findInfo" id="button" type="button" value="ID / PW 찾기"
+					onclick="signIn_findInfo()">
 			</form>
 			<div class="signIn__infoBox">
 				<p class="signIn__info">

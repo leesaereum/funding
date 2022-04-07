@@ -10,8 +10,9 @@ public class SearchCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
+		String search = request.getParameter("funding_search");
+		System.out.println(search);
 	}
 
 }

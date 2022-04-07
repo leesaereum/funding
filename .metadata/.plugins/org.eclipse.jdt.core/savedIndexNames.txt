@@ -10,7 +10,6 @@ INDEX VERSION 1.131+/Users/reum/Documents/GitHub/funding/.metadata/.plugins/org.
 1402885406.index
 1492291780.index
 1719190445.index
-3299383463.index
 434756664.index
 830321584.index
 1415987397.index
