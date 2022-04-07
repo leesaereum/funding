@@ -36,20 +36,56 @@ keyframes gradientBG { 0% {
 }
 
 50
+
+
+
+
 %
 {
 background-position
+
+
+
+
 :
-100%
-50%;
+
+
+
+
+100
+
+
+%
+50
+
+
+%;
 }
 100
+
+
+
+
 %
 {
 background-position
+
+
+
+
 :
-0%
-50%;
+
+
+
+
+0
+
+
+%
+50
+
+
+%;
 }
 }
 .signIn__content {
@@ -237,8 +273,9 @@ background-position
 				</div>
 				<div class="signIn__liner">
 					<p class="signIn__subTitle">패스워드</p>
-					<input class="signIn__input" id="pw" type="password" name="customer_pw"
-						onkeyup="validate()" onfocus="pwFocus()" onblur="pwValidate()">
+					<input class="signIn__input" id="pw" type="password"
+						name="customer_pw" onkeyup="validate()" onfocus="pwFocus()"
+						onblur="pwValidate()">
 					<p id="pwValidate" class="signIn__warning"></p>
 				</div>
 				<div class="signIn__rememberLiner">
@@ -248,6 +285,14 @@ background-position
 				<input class="signIn__submit" id="submit" type="submit" value="로그인"
 					disabled>
 			</form>
+			<div>
+				<a href="" target="popup"
+					onclick="window.open('/Funding/findId_view.do','popup','width=300,height=200'); return false;">아이디찾기</a>
+			</div>
+			<div>
+				<a href="" target="popup"
+					onclick="window.open('/Funding/findPw_view.do','popup','width=300,height=200'); return false;">비밀번호 찾기</a>
+			</div>
 			<div class="signIn__infoBox">
 				<p class="signIn__info">
 					아직 가입하지 않으셨나요? <a href="SignUp.jsp">가입하러 가기</a>
@@ -257,6 +302,12 @@ background-position
 		</div>
 	</div>
 	<div id="toast"></div>
+	<script type="text/javascript">
 
+$(document).on("click", ".findIdwButton", function(e){
+	e.stopPropagation();
+	localStorage.setItem("pastURL", location.href);
+	location.href = "/Funding/findId_view.do";
+})</script>
 </body>
 </html>

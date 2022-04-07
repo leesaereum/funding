@@ -14,8 +14,8 @@ public class LoginCommand implements FCommand {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String input_id = request.getParameter("customer_id");
-		String input_pw = request.getParameter("customer_pw");
+		String input_id = request.getParameter("customer_id").trim();
+		String input_pw = request.getParameter("customer_pw").trim();
 		
 		FDaoC dao = new FDaoC();
 		String customer_id = dao.login(input_id, input_pw);

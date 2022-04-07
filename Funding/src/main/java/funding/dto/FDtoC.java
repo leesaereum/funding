@@ -31,6 +31,12 @@ public class FDtoC {
 		this.customer_phone = customer_phone;
 	}
 
+	public FDtoC(String customer_id, String customer_name) {
+		super();
+		this.customer_id = customer_id;
+		this.customer_name = customer_name;
+	}
+
 	public String getCustomer_id() {
 		return customer_id;
 	}

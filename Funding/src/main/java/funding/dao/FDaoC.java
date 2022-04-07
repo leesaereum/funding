@@ -175,4 +175,33 @@ public class FDaoC {
 		}
 		return dto;
 	}
+	public String findId(String name, String phone) {
+		String Id = null;
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT customer_id FROM customer WHERE customer_name = ? AND customer_phone = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, name);
+			preparedstatement.setString(2, phone);
+			resultset = preparedstatement.executeQuery();
+			
+			if(resultset.next()) {
+				Id = resultset.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return Id;
+	}
 }

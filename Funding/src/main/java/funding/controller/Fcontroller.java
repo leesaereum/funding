@@ -77,20 +77,20 @@ public class Fcontroller extends HttpServlet {
 			viewpage="/pages/login.jsp";
 			break;
 		case("/findId_view.do"):
-			viewpage="findId_view.jsp";
+			viewpage="/pages/findId_view.jsp";
 			break;
 		case("/findId.do"):
 			command = new FindidCommand();
 			command.execute(request, response);
-			viewpage="signIn.jsp";
+			viewpage = (String) request.getAttribute("viewpage");
 			break;
 		case("/findPw_view.do"):
-			viewpage="findPw_view.jsp";
+			viewpage="findpww_view.jsp";
 			break;
 		case("/findPw.do"):
 			command = new FindpwCommand();
 			command.execute(request, response);
-			viewpage="signIn.jsp";
+			viewpage="findpw.jsp";
 			break;
 		case("/finding_list.do"):
 			viewpage="";
