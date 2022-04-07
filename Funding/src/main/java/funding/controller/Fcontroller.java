@@ -239,6 +239,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/ssignUp.do"):
 			command = new SSignUpCommand();
 			command.execute(request, response);
+<<<<<<< HEAD
 			viewpage = "slogin.jsp";
 			break;
 		case ("/sFODetail.do"):
@@ -246,6 +247,15 @@ public class Fcontroller extends HttpServlet {
 			break;
 		case ("/sFOApply.do"):
 			viewpage = "";
+=======
+			viewpage="slogin.jsp";
+			break;
+		case("/sFODetail.do"):
+			viewpage="/pages/makeFunding.jsp";
+			break;
+		case("/sFOApply.do"):
+			viewpage="main.do";
+>>>>>>> yejin
 			break;
 		case ("/sQApply_detail.do"):
 			viewpage = "";
