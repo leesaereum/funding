@@ -256,8 +256,8 @@ public class FDaoC {
 				Timestamp funding_openAt = resultset.getTimestamp(4);
 				Timestamp funding_closeAt = resultset.getTimestamp(5);
 				
-				FDtoFunding dto = new FDtoFunding(funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt);
-				list.add(dto);
+				//FDtoFunding dto = new FDtoFunding(funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt);
+				//list.add(dto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
