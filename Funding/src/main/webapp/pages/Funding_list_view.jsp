@@ -78,5 +78,11 @@
 			<% } %>
 		</ul>
 	</div>
+	<script src="/Funding/libraries/jQuery.js"></script>
+	<script type="text/javascript">
+	$(document).on("click", ".list__search__icon", function(){
+		location.href = "/Funding/main.jsp";
+	})
+	</script>
 </body>
 </html>
