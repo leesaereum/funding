@@ -7,42 +7,31 @@
 <meta charset="UTF-8">
 <title>아이디 중복확인 결과</title>
 </head>
-<script type="text/javascript">
-	function setid() {
-		opener.f1.id.value = document.f1.id.value;
-		opener.f1.idDupChk.value = 't';
-		self.close();
-	}
-</script>
-<body>
-	<div style="text-align: center;">
-		<h3>*아이디 중복확인 결과*</h3>
-	<%
-	request.getParameter("utf-8");
-	String id = request.getParameter("seller_id");
+<div style="text-align: center"></div> 
+<h3>* 아이디 중복 확인 결과 *</h3> 
+<% 
+	String id=request.getParameter("seller_id"); 
 	FDaoS daoS = new FDaoS();
-	boolean result = false;
-	if(id == null || id.equals("")){
-		id = "" + "";
-	}else{
-		result = daoS.duplecateID(id);
-	}
-	%>
-	<form name = "f1" action="sidCheckProc.jsp">
-		<input type="text" name="id" value="<%=id%>" readonly="readonly"/>
-	</form>
-	<%
-		if(id.equals("")){ %>
-	<% }else if(result == false){%>
-	 <a href = "#" onclick="setid()">사용가능</a>
-	<%}else {
-		out.print("사용 불가능");
-	 } %>
-	<hr>
-	<a href="javascript:history.back()">[다시검색]</a>
-	&nbsp;&nbsp;
-	<a href="javascript:window.close()">[창닫기]</a>
-	</div>
-	
+	boolean id_check=daoS.checkDuplicateId(id);
+	int cnt =0;
+	out.println("입력 ID : <strong>" + id + "</stong>"); 
+	if(id_check==true){ out.println("<p>사용 가능한 아이디입니다.</p>"); 
+	out.println("<a href='javascript:apply(\"" + id + "\")'>[적용]</a>"); %> 
+	<script> 
+	function apply(id){
+		alert("apply");
+		opener.document.ssignUpForm.seller_id.value=id; 
+		window.close(); 
+		}
+	</script>
+	 <% }else{ 
+		 out.println("<p style='color: red'>해당 아이디는 사용하실 수 없습니다.</p>"); 
+		 }//if end 
+		 %> 
+		 <hr>
+		  <a href="javascript:history.back()">[다시시도]</a> 
+		  &nbsp; &nbsp; 
+		  <a href="javascript:window.close()">[창닫기]</a>
+
 </body>
 </html>

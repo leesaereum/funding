@@ -39,7 +39,8 @@ public class SSignUpCommand implements FCommand {
 				seller_person_name, seller_person_phone, address_seller, address_state, address_city, address_line);
 		daoS.address(address_seller, address_state, address_city, address_line);
 		
-		daoS.duplecateID(seller_id);
+		daoS.duplecateID(seller_id,seller_pw);
+		daoS.checkDuplicateId(seller_id);
 		
 	}
 

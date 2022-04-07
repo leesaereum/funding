@@ -61,6 +61,55 @@ public class FDaoS {
 		}
 	}
 	
+	public boolean duplecateID(String id,String pw) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+			
+		int result = 0;
+		
+		String query = "select seller_pw from seller where seller_id = ?";
+		try {
+			connection = dataSource.getConnection();
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+		
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				String pW =resultSet.getString("pw");
+				if(pW.equals(pw)==true) {
+					return true;
+				}
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+			return false;
+		}
+	public boolean checkDuplicateId(String id) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet =null;
+		String query = "select * from seller where seller_id=?";	
+		
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				String iD =resultSet.getString("seller_id");
+				System.out.printf("%s : 아이디 존재!\n",id);
+				return false;
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
 	public void address(String address_seller,String address_state,String address_city,String address_line) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -88,40 +137,7 @@ public class FDaoS {
 			}
 		}
 		
-	}
-	public boolean duplecateID(String id) {
-		boolean result = false;
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-				
-		try {
-			connection = dataSource.getConnection();
-			String query = "select seller_id from seller where seller_id = ?";
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, id);
-		
-			resultSet = preparedStatement.executeQuery();
-			
-			if(resultSet.next()) {
-				result = true;
-			}else {
-				result = false;
-			}
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(preparedStatement != null ) preparedStatement.close();
-				if(connection != null ) connection.close();
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return result;
-	}
-	//ssignUp end
+	}//ssignUp end
 	
 	
 	
