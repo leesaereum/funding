@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <title>아이디 중복확인 결과</title>
 </head>
+<script type="text/javascript">
+	function setid() {
+		opener.f1.id.value = document.f1.id.value;
+		opener.f1.idDupChk.value = 't';
+		self.close();
+	}
+</script>
 <body>
 	<div style="text-align: center;">
 		<h3>*아이디 중복확인 결과*</h3>
@@ -14,15 +21,23 @@
 	request.getParameter("utf-8");
 	String id = request.getParameter("seller_id");
 	FDaoS daoS = new FDaoS();
-	int result = daoS.duplecateID(id);
-	if(result == 0){
-		out.print("사용가능한 아이디입니다.");
-	}else if(result == 1){
-		out.print("중복된 아이디입니다.");
+	boolean result = false;
+	if(id == null || id.equals("")){
+		id = "" + "";
 	}else{
-		out.print("에러 발생!!!!");
+		result = daoS.duplecateID(id);
 	}
 	%>
+	<form name = "f1" action="sidCheckProc.jsp">
+		<input type="text" name="id" value="<%=id%>" readonly="readonly"/>
+	</form>
+	<%
+		if(id.equals("")){ %>
+	<% }else if(result == false){%>
+	 <a href = "#" onclick="setid()">사용가능</a>
+	<%}else {
+		out.print("사용 불가능");
+	 } %>
 	<hr>
 	<a href="javascript:history.back()">[다시검색]</a>
 	&nbsp;&nbsp;

@@ -95,8 +95,8 @@ public class FDaoS {
 		}
 		
 	}
-	public int duplecateID(String id) {
-		int result =0;
+	public boolean duplecateID(String id) {
+		boolean result = false;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -110,9 +110,9 @@ public class FDaoS {
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
-				result = 1;
+				result = true;
 			}else {
-				result = 0;
+				result = false;
 			}
 			
 		}catch (Exception e) {
@@ -164,4 +164,44 @@ public class FDaoS {
 		}
 		return seller_id;
 	}//ssignIn end
+	
+	//seller apply
+	public void sFOapply(String seller_name,String seller_number,String seller_person_name,String seller_person_phone
+			,String address_state,String address_city,String address_line) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="select seller_name, seller_number, seller_person_name, seller_person_phone "
+					+ ",(select address_state from address a where a.address_seller = s.seller_id) "
+					+ "(select address_city from address a where a.address_seller = s.seller_id) "
+					+ "(select address_line from address a where a.address_seller = s.seller_id) "
+					+ "from seller s "
+					+ "where seller_id in ( "
+					+ "select address_seller from address a)";
+			
+			preparedStatement = connection.prepareStatement(query);
+		
+			preparedStatement.setString(1, seller_name);
+			preparedStatement.setString(2, seller_number);
+			preparedStatement.setString(3, seller_person_name);
+			preparedStatement.setString(4, seller_person_phone);
+			preparedStatement.setString(2, address_state);
+			preparedStatement.setString(3, address_city);
+			preparedStatement.setString(4, address_line);
+
+			preparedStatement.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null ) preparedStatement.close();
+				if(connection != null ) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 }

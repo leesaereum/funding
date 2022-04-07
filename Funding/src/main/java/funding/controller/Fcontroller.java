@@ -9,15 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import funding.command.ACListCommand;
 import funding.command.ALoginCommand;
 import funding.command.ALogoutCommand;
 import funding.command.FCommand;
 import funding.command.FindidCommand;
 import funding.command.FindpwCommand;
+
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
+import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
 import funding.command.SSignUpCommand;
@@ -211,14 +214,18 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage="slogin.jsp";
 			break;
-		case("/sFODetail.do"):
-			viewpage="/pages/makeFunding.jsp";
-			break;
+//		case("/sFODetail.do"):
+//			viewpage="/pages/makeFunding.jsp";
+//			break;
 		case("/sFOApply.do"):
 			viewpage="main.do";
 			break;
-		case("/sQApply_detail.do"):
-			viewpage="";
+		case("/sQApply_view.do"):
+			command=new SFOApplyCommand();
+			command.execute(request, response);
+			break;
+		case("/sQApply.do"):
+			viewpage="main.do";
 			break;
 		case("/SFOApply.do"):
 			viewpage="";

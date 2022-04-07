@@ -114,7 +114,12 @@ function checksignUp() {
 	if(form.seller_id.value == ""){
 		alert("아이디를 입력해 주세요.")
 		form.seller_id.focus()
-		return false	
+		return false
+		 if(id == 't'){
+			form.submit();
+			}else{
+				alert("아이디 중복체크를 해주세요");
+			}
 	}else if(!regExpEmail.test(id)){
 		alert("입력하신 아이디가 이메일 형식이 아닙니다.")
 		form.seller_id.select()
@@ -180,7 +185,7 @@ function checksignUp() {
 	alert("회원가입이 완료되었습니다.")
 	form.submit()
 }
-	function idCheck() {
+	function idCheck(seller_id) {
 		window.open("./sidCheckForm.jsp","popup","width=600,height=600")
 	}
 </script>
@@ -195,7 +200,7 @@ function checksignUp() {
 		<div class="ssignUp__liner">
 		<p class="ssignUp__subTitle">아이디</p>
 		<input class="ssignUp__input" type="text" id="seller_id" name="seller_id" placeholder="example@mail.com">
-		<input type="button" value="ID중복확인" onclick="idCheck()">
+		<input type="button" value="ID중복확인" onclick="idCheck(seller_id)">
 		</div>
 		
 		<div class="ssignUp__liner">
