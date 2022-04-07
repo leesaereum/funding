@@ -220,7 +220,7 @@ $(".MF__moveTab__btn.finish").click(function() {
 	let funding_banner = document.createElement('input');
 	funding_banner.setAttribute('type', 'text');
 	funding_banner.setAttribute('name', 'funding_banner');
-	funding_title.setAttribute('value', $("#MF__basic__thumb").attr('src'))
+	funding_banner.setAttribute('value', $("#MF__basic__thumb").attr('src'))
 	form.appendChild(funding_banner);
 	
 	let funding_title = document.createElement('input');
@@ -282,7 +282,7 @@ $(".MF__moveTab__btn.finish").click(function() {
 		let option_price = document.createElement('input');
 		option_price.setAttribute('type', 'number');
 		option_price.setAttribute('name', 'option_price_'+i);
-		option_name.setAttribute('value', $(".MF__reward__price").eq(i).val())
+		option_price.setAttribute('value', $(".MF__reward__price").eq(i).val())
 		form.appendChild(option_price);
 		
 		let option_amount = document.createElement('input');
@@ -291,9 +291,10 @@ $(".MF__moveTab__btn.finish").click(function() {
 		option_amount.setAttribute('value', $(".MF__reward__amount").eq(i).val())
 		form.appendChild(option_amount);
 	}
+	console.log(form)
 	
 	form.setAttribute('method', 'post'); //get,post 가능
-	form.setAttribute('action', "/sFOApply.do"); //보내는 url > 나중에 login.do로 보내야 함;
+	form.setAttribute('action', "/Funding/sFOApply.do"); //보내는 url > 나중에 login.do로 보내야 함;
 	document.body.appendChild(form);
 	form.submit();
 })

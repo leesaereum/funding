@@ -26,8 +26,7 @@ public class FundingdetailCommand implements FCommand {
 //		HttpSession session = request.getSession();
 //		Object uID = session.getAttribute("uId"); 
 
-		String funding_num  =request.getParameter("funding_num");
-		String customer_id  =request.getParameter("customer_id");
+		String funding_num  =request.getParameter("fid");
 		
 		FDaoC dao = new FDaoC();
 		
@@ -37,7 +36,7 @@ public class FundingdetailCommand implements FCommand {
 		ArrayList<FDtoOrder> orderDtos = dao.orderList(funding_num);
 		
 		
-		request.setAttribute("list", dtos);
+		request.setAttribute("funding", dtos);
 		request.setAttribute("optionList", optionDtos);
 		request.setAttribute("questionList",questionDtos);
 		request.setAttribute("orderList",orderDtos);

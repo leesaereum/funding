@@ -29,7 +29,7 @@
 					<p class="MF__tab__description">펀딩 콘텐츠 입력</p>
 				</div>
 			</div>
-			<div class="MF__tabContent" id="tabContent__1">
+			<div class="MF__tabContent selected" id="tabContent__1">
 				<h3 class="MF__subtitle">STEP1 - 펀딩 기본 정보 입력</h3>
 				<p class="MF__basic__title">펀딩 제목</p>
 				<p class="MF__basic__description">24자 이내의 매력적인 제목을 입력해주세요</p>
@@ -77,7 +77,7 @@
 				</div>
 			</div>
 			
-			<div class="MF__tabContent selected" id="tabContent__2">
+			<div class="MF__tabContent" id="tabContent__2">
 				<h3 class="MF__subtitle">STEP2 - 리워드 정보 입력</h3>
 				<div class="MF__rewards" id="MF_rewards">
 					<div class="MF__reward">

@@ -27,14 +27,14 @@ String customer_id  =request.getParameter("customer_id");%>
 		
 	</form>
 	
-<c:forEach items="${list }" var="dtolike">
+<c:forEach items="${funding }" var="dtolike">
 ${dtolike.funding_title} like : 
 
 </c:forEach>
 
 
 
-	<c:forEach items="${list }" var="dto01">
+	<c:forEach items="${funding }" var="dto01">
 <h1>funding data</h1>
 	funding_title: ${dto01.funding_title} 
 	<br>
@@ -64,16 +64,16 @@ ${dtolike.funding_title} like :
 	</form>
 <%int optionNum = 1; %>
 
-<c:forEach items="${optionList }" var="dtoOption">
+<c:forEach items="${optionList }" var="option" varStatus="status">
 	
-	Option<%=optionNum%>_name: ${dtoOption.option_name} <br>
+	Option<%=optionNum%>_name: ${option.option_name} <br>
 	
 	<br>
 	<br>
-	option_price: ${dtoOption.option_price} <br>
+	option_price: ${option.option_price} <br>
 	<br>
 	<br>
-	remain option_amount: ${dtoOption.option_amount} <br>
+	remain option_amount: ${option.option_amount} <br>
 	<br>
 	<br>
 	<% optionNum += 1; %>
