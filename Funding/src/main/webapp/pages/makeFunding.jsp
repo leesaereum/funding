@@ -16,7 +16,7 @@
 	<div class="MF__background">
 		<div class="MF__wrap">
 			<div class="MF__tabs">
-				<div class="MF__tab" id="MF__tab__1">
+				<div class="MF__tab selected" id="MF__tab__1">
 					<p class="MF__tab__step">STEP 1</p>
 					<p class="MF__tab__description">펀딩 기본 정보 입력</p>
 				</div>
@@ -24,7 +24,7 @@
 					<p class="MF__tab__step">STEP 2</p>
 					<p class="MF__tab__description">리워드 정보 입력</p>
 				</div>
-				<div class="MF__tab selected" id="MF__tab__3">
+				<div class="MF__tab" id="MF__tab__3">
 					<p class="MF__tab__step">STEP 3</p>
 					<p class="MF__tab__description">펀딩 콘텐츠 입력</p>
 				</div>
@@ -77,7 +77,7 @@
 				</div>
 			</div>
 			
-			<div class="MF__tabContent" id="tabContent__2">
+			<div class="MF__tabContent selected" id="tabContent__2">
 				<h3 class="MF__subtitle">STEP2 - 리워드 정보 입력</h3>
 				<div class="MF__rewards" id="MF_rewards">
 					<div class="MF__reward">
@@ -108,7 +108,7 @@
 					<p class="MF__moveTab__btn" onclick="moveTab(2, 3)">다음</p>
 				</div>
 			</div>
-			<div class="MF__tabContent selected" id="tabContent__3">
+			<div class="MF__tabContent" id="tabContent__3">
 				<h3 class="MF__subtitle">STEP3 - 펀딩 콘텐츠 입력</h3>
 				<div id="editor"></div>
 				<div class="MF__moveTab">

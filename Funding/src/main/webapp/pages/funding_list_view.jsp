@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>진행중인 펀딩 목록</title>
 </head>
 <link rel="stylesheet" href="/Funding/styles/init.css">
 <link rel="stylesheet" href="/Funding/styles/base.css">
@@ -81,7 +81,7 @@
 	<jsp:include page="/components/header.jsp" />
 	<div class="list__wrap">
 		<div class="list__header">
-			<h1 class="list__pageTitle">펀딩 목록</h1>
+			<h1 class="list__pageTitle">진행중인 펀딩 목록</h1>
 			<div class="list__search__box">
 				<input class="list__search" placeholder="검색어를 입력하세요"
 					id="list__search" name="funding_search"> <img
