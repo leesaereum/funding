@@ -5,8 +5,10 @@
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="funding.command.NoticeDetailCommand"/>
-    <fullyQualifiedTypeName name="funding.dao.FDaoC"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoNotice"/>
+    <fullyQualifiedTypeName name="funding.command.FundingListViewCommand"/>
+    <fullyQualifiedTypeName name="funding.dao.FDaoC"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoFunding"/>
 </qualifiedTypeNameHistroy>

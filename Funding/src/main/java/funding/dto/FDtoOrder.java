@@ -13,4 +13,65 @@ public class FDtoOrder {
 	Timestamp order_At;
 	String order_request;
 	int order_address;
+	public int getOrder_num() {
+		return order_num;
+	}
+	public void setOrder_num(int order_num) {
+		this.order_num = order_num;
+	}
+	public String getOrder_customer() {
+		return order_customer;
+	}
+	public void setOrder_customer(String order_customer) {
+		this.order_customer = order_customer;
+	}
+	public int getOrder_funding() {
+		return order_funding;
+	}
+	public void setOrder_funding(int order_funding) {
+		this.order_funding = order_funding;
+	}
+	public int getOrder_option() {
+		return order_option;
+	}
+	public void setOrder_option(int order_option) {
+		this.order_option = order_option;
+	}
+	public int getOrder_price() {
+		return order_price;
+	}
+	public void setOrder_price(int order_price) {
+		this.order_price = order_price;
+	}
+	public int getOrder_count() {
+		return order_count;
+	}
+	public void setOrder_count(int order_count) {
+		this.order_count = order_count;
+	}
+	public Timestamp getOrder_At() {
+		return order_At;
+	}
+	public void setOrder_At(Timestamp order_At) {
+		this.order_At = order_At;
+	}
+	public String getOrder_request() {
+		return order_request;
+	}
+	public void setOrder_request(String order_request) {
+		this.order_request = order_request;
+	}
+	public int getOrder_address() {
+		return order_address;
+	}
+	public void setOrder_address(int order_address) {
+		this.order_address = order_address;
+	}
+	
+	
+	public FDtoOrder(String order_customer) {
+		super();
+		this.order_customer = order_customer;
+	}
+	
 }
