@@ -9,18 +9,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import funding.command.ACListCommand;
+import funding.command.ALoginCommand;
+import funding.command.ALogoutCommand;
 import funding.command.FCommand;
+import funding.command.FindidCommand;
+import funding.command.FindpwCommand;
+import funding.command.LoginCommand;
+import funding.command.LogoutCommand;
+import funding.command.MainCommand;
+import funding.command.NoticeDetailCommand;
+import funding.command.NoticeListCommand;
+import funding.command.SLoginCommand;
+import funding.command.SLogoutCommand;
+import funding.command.SSignUpCommand;
+import funding.command.SignupCommand;
 
-@WebServlet("/Fcontroller")
+@WebServlet("*.do")
 public class Fcontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     public Fcontroller() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		actiondo(request, response);
 	}
 
@@ -29,6 +41,8 @@ public class Fcontroller extends HttpServlet {
 	}
 
 	private void actiondo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
 		FCommand command = null;
 		String uri = request.getRequestURI();
 		String copath = request.getContextPath();
@@ -37,32 +51,46 @@ public class Fcontroller extends HttpServlet {
 		
 		//customer용 switch
 		switch(path){
-		case("/logIn.do"):
-			viewpage="";
+		case("/login.do"):
+			command = new LoginCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
 			break;
-		case("/logOut.do"):
-			viewpage="";
+		case("/sociallogin.do"):
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
+			break;
+		case("/logout.do"):
+			command = new LogoutCommand();
+			command.execute(request, response);
+			viewpage="main.jsp";
 			break;
 		case("/main.do"):
-			viewpage="";
-			break;
-		case("/signUp_view.do"):
-			viewpage="";
+			command = new MainCommand();
+			command.execute(request, response);
+			viewpage="main.jsp";
 			break;
 		case("/signUp.do"):
-			viewpage="";
+			command = new SignupCommand();
+			command.execute(request, response);
+			viewpage="/pages/login.jsp";
 			break;
 		case("/findId_view.do"):
-			viewpage="";
+			viewpage="/pages/findId_view.jsp";
 			break;
 		case("/findId.do"):
-			viewpage="";
+			command = new FindidCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
 			break;
 		case("/findPw_view.do"):
-			viewpage="";
+			viewpage="findpww_view.jsp";
 			break;
 		case("/findPw.do"):
-			viewpage="";
+			command = new FindpwCommand();
+			command.execute(request, response);
+			viewpage="findpw.jsp";
 			break;
 		case("/finding_list.do"):
 			viewpage="";
@@ -128,13 +156,17 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 			break;
 		case("/notice_list.do"):
-			viewpage="";
+			command = new NoticeListCommand();
+			command.execute(request, response);
+			viewpage="/pages/notice.jsp";
 			break;
 		case("/notice_detail.do"):
-			viewpage="";
+			command = new NoticeDetailCommand();
+			command.execute(request, response);
+			viewpage="/pages/notice_detail.jsp";
 			break;
 		case("/mypage.do"):
-			viewpage="";
+			viewpage="/pages/mypage.jsp";
 			break;
 		case("/myfunding_list.do"):
 			viewpage="";
@@ -170,6 +202,21 @@ public class Fcontroller extends HttpServlet {
 		
 		//seller용 switch
 		switch(path){
+		case("/slogin.do"):
+			command = new SLoginCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
+		break;
+		case("/slogOut.do"):
+			command = new SLogoutCommand();
+			command.execute(request, response);
+			viewpage="slogin.jsp";
+		break;
+		case("/ssignUp.do"):
+			command = new SSignUpCommand();
+			command.execute(request, response);
+			viewpage="slogin.jsp";
+			break;
 		case("/sFODetail.do"):
 			viewpage="";
 			break;
@@ -208,16 +255,23 @@ public class Fcontroller extends HttpServlet {
 			break;
 		}//seller
 		
+		
 		//admin용 switch
 		switch(path){
 		case("/aLogin.do"):
-			viewpage="";
-		break;
+			command = new ALoginCommand();
+			command.execute(request, response);
+			viewpage= (String) request.getAttribute("viewPage");
+			break;
 		case("/aLogout.do"):
-			viewpage="";
+			command = new ALogoutCommand();
+			command.execute(request, response);
+			viewpage="aLogin.jsp";
 			break;
 		case("/aCList.do"):
-			viewpage="";
+			command = new ACListCommand();
+			command.execute(request, response);
+			viewpage="aCList.jsp";
 			break;
 		case("/aCAWList.do"):
 			viewpage="";
@@ -273,7 +327,7 @@ public class Fcontroller extends HttpServlet {
 		case("/aFstateChange.do"):
 			viewpage="";
 			break;
-		case("/notice_list.do"):
+		case("/anotice_list.do"):
 			viewpage="";
 			break;
 		case("/ncreate_view.do"):
