@@ -1,0 +1,88 @@
+@charset "UTF-8";
+.my__wrap__wrap{
+	background-color: #fafafa;
+	min-height: calc(100% - 72px);
+}
+.my__wrap{
+	padding-top: 32px;
+	width: 1080px;
+	margin: 0 auto;
+	background-color: white;
+}
+.my__tab{
+	width: 480px;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+}
+.my__tab > p{
+	width: 25%;
+	text-align: center;
+	line-height: 50px;
+	cursor: pointer;
+}
+
+.my__tab > p.selected{
+	font-weight:bold;
+}
+
+.my__title{
+	padding: 24px;
+	padding-bottom: 12px;
+	font-size: 18px;
+	border-bottom: 2px solid #ddd;
+}
+.tab__content{
+	display:none;
+}
+.tab__content.selected{
+	display:block;
+}
+.my__formzone{
+	padding: 32px 248px;
+}
+.my__liner{
+	width: 100%;
+	overflow: hidden;
+	height: 60px;
+	margin-bottom: 4px;
+}
+.my__form__subtitle{
+	width: 120px;
+	float:left;
+	line-height: 60px;
+}
+
+.my__form__input{
+	float: left;
+	margin-top: 12px;
+	height: 36px;
+	width: 240px;
+	padding: 0 8px;
+}
+.my__form__button{
+	float: left;
+	height: 36px;
+	margin-top: 12px;
+	width: 80px;
+	background-color: white;
+	margin-right: 12px;
+}
+.my__form__input.long{
+	width: 360px;
+}
+.my__form__input.small{
+	width: 160px;
+	margin-right: 12px;
+}
+.my__form__submit{
+	width: 100%;
+	margin-top: 20px;
+	background-color: #00AB33;
+	color: white;
+	font-size: 17px;
+	text-align: center;
+	line-height: 48px;
+	height: 48px;
+	cursor: pointer;
+}

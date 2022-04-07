@@ -73,7 +73,6 @@ $(document).on("click", ".detail__funding__selected__close", function(e) {
 });
 
 $(document).click(function() {
-	console.log("document");
 	$(".detail__funding__select").removeClass("opened");
 });
 $(document).on("click", ".detail__funding__btnBox", function(e) {
@@ -170,26 +169,73 @@ function add__option(optionID) {
 
 function joinFunding() {
 	let len = $(".detail__funding__selected").length;
+	let total = $(".detail__funding__total__totalPrice > strong").html();
+	total = total.replaceAll(",", "") * 1;
 
 	if (len > 0) {
-		let txt = '<form action="/fundingPayment.do" id="finalForm" method="post"><div class="detail__popup__countOption">';
-		txt += '<input name="optionCount" readonly="readonly" value="' + len + '">'
+		let txt = '<div class="detail__popup"><form class="detail__popup__form" action="/fundingPayment.do" id="finalForm" method="post">';
+		txt += '<div class="detail__popup__countOption"><input name="optionCount" readonly="readonly" value="' + len + '">'
 		txt += '<p>개의 리워드 옵션을 선택하셨습니다.</p></div>'
 		for (let i = 0; i < len; i++) {
 			let count = $(".detail__funding__selected__number").eq(i).val()*1;
 			let optionName = $(".detail__funding__selected__subtitle").eq(i).html();
 			let optionPrice = $(".detail__funding__selected__price").eq(i).html();
-			
-			txt += '<div class="detail__popup__liner"><p>' + optionName + '</p>';
-			txt += '<input name=""><p>개</p><p>'+optionPrice+'</p></div>'
+			txt += '<div class="detail__popup__option">'
+			txt += '<p class="detail__popup__subtitle">옵션'+(i+1)+'</p>'
+			txt += '<p class="detail__popup__optionName">' + optionName + '</p>';
+			txt += '<div class="detail__popup__right">'
+			txt += '<p class="detail__popup__optionPrice">'+optionPrice+'</p>'
+			txt += '<p class="detail__popup__countTxt">개</p>'
+			txt += '<input class="detail__popup__count" name=""" readonly="readonly" value="'+count+'"></div>'
+			txt += '</div>'
 		}
-
-		txt += '</form>'
+		txt += '<div class="detail__popup__total">'
+		txt += '<p class="detail__popup__totalTxt">합계 <span>'+ total.toLocaleString() +'</span>원</p>'
+		txt += '<input type="hidden" readonly="readonly" value="'+total+'"></form></div>'
+		txt += '<div class="detail__popup__bottom"><p>목표금액이 달성되지 않으면 결제한 금액은 전액 환불됩니다.</p>'
+		txt += '<p class="detail__popup__payMethodTxt">결제방법 선택</p>'
+		txt += '<div class="detail__popup__payMethod"><p class="detail__popup__payMethod__ini">일반결제</p><p class="detail__popup__payMethod__kakao">카카오페이</p></div></div>'
 		$(".detail__popup__wrap").html(txt).addClass('block');
 	} else {
 		alert("하나 이상의 옵션을 선택해주세요")
 	}
-
-
 }
+$(document).on("click", ".detail__popup__wrap", function(e) {
+	e.stopPropagation();
+	$(".detail__popup__wrap").html("").removeClass('block');
+});
+$(document).ready(function(){
+    IMP.init('imp28775004'); 
+})
+$(document).on("click", ".detail__popup__payMethod__kakao", function(e) {
+	e.stopPropagation();
+	
+	let pg = "kakaopay"
+	payOn(pg);
+});
 
+function payOn(pg){
+	IMP.request_pay({
+    	pg : pg, 
+        pay_method : 'card',
+        merchant_uid : 'merchant_' + new Date().getTime(),
+        name : '결제',
+        amount : 1,
+        buyer_email : '',
+        buyer_name : '구매자 이름',
+        buyer_tel : '구매자 번호',
+        buyer_addr : '구매자 주소',
+        buyer_postcode : '구매자 주소',
+        m_redirect_url : 'happybean.naver.com'
+    }, function(rsp) {
+        if ( rsp.success ) {
+            var msg = '펀딩에 참여해주셔서 감사합니다.';
+            console.log(rsp)
+        } 
+    });
+}
+$(document).on("click", ".detail__popup__payMethod__ini", function(e) {
+	e.stopPropagation();
+	let pg = "html5_inicis"
+	payOn(pg);
+});

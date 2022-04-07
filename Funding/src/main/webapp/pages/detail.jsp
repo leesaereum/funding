@@ -16,6 +16,7 @@ if (fid == null) {
 }
 %>
 <script type="text/javascript" src="/Funding/libraries/jQuery.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="./detail.js"></script>
 <body>
 	<jsp:include page="/components/header.jsp" />
@@ -313,6 +314,7 @@ if (fid == null) {
 				</div>
 			</div>
 		</div>
+		
 		<div id="toast"></div>
 	</div>
 

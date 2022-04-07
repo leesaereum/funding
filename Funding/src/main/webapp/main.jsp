@@ -111,11 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		<div class="loadMore" onclick="loadMore()">더보기</div>
 	</div>
 
-
-	<form action="input.jsp" method="post">
-		<input name="startDate" type="date"> <input type="submit"
-			value="확">
-	</form>
+	<jsp:include page="./components/footer.jsp" />
 	<div id="toast"></div>
 </body>
 </html>
