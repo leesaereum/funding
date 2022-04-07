@@ -26,9 +26,15 @@ public class SSignUpCommand implements FCommand {
 		String seller_person_phone = request.getParameter("seller_person_phone1")+"-"+request.getParameter("seller_person_phone2")
 								+"-"+request.getParameter("seller_person_phone3");
 		
+		String address_seller = request.getParameter("address_seller");
+		String address_state = request.getParameter("address_state");
+		String address_city = request.getParameter("address_city");
+		String address_line = request.getParameter("address_line");
+		
 		FDaoS daoS = new FDaoS();
 		daoS.ssignUp(seller_id, seller_pw, seller_pw2, seller_number, seller_profile, seller_name, seller_phone, 
-				seller_person_name, seller_person_phone);
+				seller_person_name, seller_person_phone, address_seller, address_state, address_city, address_line);
+		
 	}
 
 }

@@ -218,6 +218,23 @@ function checksignUp() {
 		<input class="ssignUp__input" type="text" name="seller_name">
 		</div>
 		
+		<div>
+			<div class="ssignUp__liner">
+			<p class="ssignUp__subTitle">우편번호</p>
+				<input type="hidden" id="confmKey" name="confmKey" value=""  >
+				<input type="text" id="zipNo" name="zipNo" readonly style="width:100px">
+				<input type="button"  value="주소검색" onclick="goPopup();">
+			</div>
+			<div class="ssignUp__liner">
+			<p class="ssignUp__subTitle">도로명 주소</p>
+				<input type="text" name="address1" id="roadAddrPart1" style="width:85%">
+			</div>
+			<div class="ssignUp__liner">
+			<p class="ssignUp__subTitle">상세주소</p>
+				<input type="text" name="address2" id="addrDetail" style="width:40%" value="">
+					<input type="text" name="address3" id="roadAddrPart2"  style="width:40%" value="">
+			</div>
+		</div>
 		<div class="ssignUp__liner">
 		<p class="ssignUp__subTitle">업체번호</p>
 		<select name = "seller_phone1">
@@ -289,6 +306,18 @@ function checksignUp() {
 			}
 		}
 		
+		function goPopup(){
+		    var pop = window.open("./apis/addressSearch/addressPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+		    
+		}
+		/** API 서비스 제공항목 확대 (2017.02) **/
+		function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn
+								, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo){
+			document.signUpForm.roadAddrPart1.value = roadAddrPart1;
+			document.signUpForm.roadAddrPart2.value = roadAddrPart2;
+			document.signUpForm.addrDetail.value = addrDetail;
+			document.signUpForm.zipNo.value = zipNo;
+		}
 		</script>
 	</body>
 </html>

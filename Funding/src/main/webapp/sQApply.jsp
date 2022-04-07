@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>판매자 신청페이지</title>
+<link rel="stylesheet" href="./styles/init.css">
+<link rel="stylesheet" href="./styles/base.css">
 <style>
 header {
 	width: 100%;
@@ -99,23 +101,7 @@ header {
 	}
 	
 </style>
-<header class="header">
-	<div class="header__wrap">
-		<h1 class="font-color-main" onclick="goHome()">해피펀딩</h1>
-		<nav>
-			<ul>
-				<li>펀딩</li>
-				<li>캠페인</li>
-				<li>Q&A</li>
-			</ul>
-		</nav>
-		<div id="loginZone">
-			<div class="loginButton">로그인</div>
-		</div>
-	</div>
-
-</header>
-<script src="/Funding/libraries/jQuery.js"></script>
+</head>
 <script>
 let header = document.querySelector(".header");
 let headerHeight = 72;
@@ -169,7 +155,8 @@ $(document).on("click", ".makeFunding", function(e){
 
 </head>
 <body>
-<div class="ex-layout">
+	<jsp:include page="./components/header.jsp" />
+	<div class="ex-layout">
 		<div class="menu"><h2 align="right">판매자 신청페이지&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</h2><hr></div>
 		<div class="main">
 			<div class="left-menu">

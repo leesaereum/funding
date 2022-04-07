@@ -23,7 +23,8 @@ public class FDaoS {
 	
 	//ssignUp --> sign up for seller
 	public void ssignUp(String seller_id, String seller_pw, String seller_pw2, String seller_number, String seller_profile, String seller_name
-			           , String seller_phone, String seller_person_name, String seller_person_phone) {
+			           , String seller_phone, String seller_person_name, String seller_person_phone, String address_seller, String address_state
+			           , String address_city, String address_line) {
 		// TODO Auto-generated method stub
 		
 		Connection connection = null;
@@ -34,6 +35,8 @@ public class FDaoS {
 			String query = "insert into seller (seller_id, seller_pw, seller_number, seller_profile, seller_name "
 					       + ", seller_phone, seller_person_name, seller_person_phone, seller_state) values (?, ?, ?, ?, ?, ?, ?, ?, "+
 					"'승인대기'"+")";
+			query +="insert into address (address_seller, address_state, address_city, address_line) values (?, ?, ?, ?)";
+			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, seller_id);
 			preparedStatement.setString(2, seller_pw);
@@ -43,6 +46,11 @@ public class FDaoS {
 			preparedStatement.setString(6, seller_phone);
 			preparedStatement.setString(7, seller_person_name);
 			preparedStatement.setString(8, seller_person_phone);
+			
+			preparedStatement.setString(1, address_seller);
+			preparedStatement.setString(2, address_state);
+			preparedStatement.setString(3, address_city);
+			preparedStatement.setString(4, address_line);
 
 			preparedStatement.executeUpdate();
 		}catch(Exception e) {
