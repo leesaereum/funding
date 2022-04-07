@@ -114,14 +114,12 @@ function checksignUp() {
 	if(form.seller_id.value == ""){
 		alert("아이디를 입력해 주세요.")
 		form.seller_id.focus()
-		return false
-		
+		return false	
 	}else if(!regExpEmail.test(id)){
 		alert("입력하신 아이디가 이메일 형식이 아닙니다.")
 		form.seller_id.select()
 		return false
-		
-	}	
+	}
 	var pw1 = form.seller_pw1.value
 	var pw2 = form.seller_pw2.value
 	if(form.seller_pw1.value == ""){
@@ -182,14 +180,9 @@ function checksignUp() {
 	alert("회원가입이 완료되었습니다.")
 	form.submit()
 }
-
-function idCheck() {
-	var id = document.form.seller_id.value;
-	if(id.length<1||id==null){
-		alert("중복체크")
+	function idCheck() {
+		window.open("./sidCheckForm.jsp","popup","width=600,height=600")
 	}
-}
-
 </script>
 
 
@@ -201,8 +194,8 @@ function idCheck() {
 	<form name="ssignUpForm"  action="ssignUp.do" method="post">
 		<div class="ssignUp__liner">
 		<p class="ssignUp__subTitle">아이디</p>
-		<input class="ssignUp__input" type="text" name="seller_id" placeholder="example@mail.com">
-		<input class="ssignUp__idcheck" type="button" value="중복체크" onclick="idCheck()">
+		<input class="ssignUp__input" type="text" id="seller_id" name="seller_id" placeholder="example@mail.com">
+		<input type="button" value="ID중복확인" onclick="idCheck()">
 		</div>
 		
 		<div class="ssignUp__liner">
@@ -303,9 +296,9 @@ function idCheck() {
 		</div>
 		</div>
 		<script
-  		src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
-  		integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
-  		crossorigin="anonymous"></script>
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
 		<script>
 		$("#ssignUp__img__upload__btn").change(function() {
 			let txt = '<img id="ssignUp__img" src="">'
@@ -331,11 +324,12 @@ function idCheck() {
 		/** API 서비스 제공항목 확대 (2017.02) **/
 		function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn
 								, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo){
-			document.signUpForm.roadAddrPart1.value = roadAddrPart1;
-			document.signUpForm.roadAddrPart2.value = roadAddrPart2;
-			document.signUpForm.addrDetail.value = addrDetail;
-			document.signUpForm.zipNo.value = zipNo;
+			document.ssignUpForm.roadAddrPart1.value = roadAddrPart1;
+			document.ssignUpForm.roadAddrPart2.value = roadAddrPart2;
+			document.ssignUpForm.addrDetail.value = addrDetail;
+			document.ssignUpForm.zipNo.value = zipNo;
 		}
 		</script>
+
 	</body>
 </html>

@@ -8,6 +8,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.mysql.cj.x.protobuf.MysqlxConnection.Close;
+
 public class FDaoS {
 	DataSource dataSource;
 
@@ -63,7 +65,71 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
-	}//ssignUp end
+	}
+	
+	public void address(String address_seller,String address_state,String address_city,String address_line) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="insert into address (address_seller, address_state, address_city, address_line) values (?, ?, ?, ?)";
+			
+			preparedStatement = connection.prepareStatement(query);
+		
+			preparedStatement.setString(1, address_seller);
+			preparedStatement.setString(2, address_state);
+			preparedStatement.setString(3, address_city);
+			preparedStatement.setString(4, address_line);
+
+			preparedStatement.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null ) preparedStatement.close();
+				if(connection != null ) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	public int duplecateID(String id) {
+		int result =0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+				
+		try {
+			connection = dataSource.getConnection();
+			String query = "select seller_id from seller where seller_id = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+		
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				result = 1;
+			}else {
+				result = 0;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null ) preparedStatement.close();
+				if(connection != null ) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	//ssignUp end
+	
+	
 	
 	//ssignIn --> sign In for seller 
 	public String slogin(String id, String pw) {
