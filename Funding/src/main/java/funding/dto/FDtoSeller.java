@@ -7,6 +7,8 @@ public class FDtoSeller {
 	String seller_license;
 	String seller_number;
 	String seller_profile;
+	String seller_name;
+	String seller_phone;
 	String seller_person_name;
 	String seller_person_phone;
 	String seller_state;
@@ -16,29 +18,31 @@ public class FDtoSeller {
 	}
 	
 	
-	public FDtoSeller(String seller_id, String seller_pw, String seller_license, String seller_number, String seller_profile, String seller_person_name, String seller_person_phone, String seller_state) {
+	public FDtoSeller(String seller_id, String seller_pw, String seller_license, String seller_number, String seller_profile, String seller_name, String seller_phone, String seller_person_name, String seller_person_phone, String seller_state) {
 		
 		this.seller_id = seller_id;
 		this.seller_pw = seller_pw;
 		this.seller_license = seller_license;
 		this.seller_number = seller_number;
 		this.seller_profile = seller_profile;
+		this.seller_name = seller_name;
+		this.seller_phone = seller_phone;
 		this.seller_person_name = seller_person_name;
 		this.seller_person_phone = seller_person_phone;
 		this.seller_state = seller_state;
-		
 	}
 	
-	public FDtoSeller(String seller_id, String seller_license, String seller_number, String seller_profile, String seller_person_name, String seller_person_phone, String seller_state) {
+	public FDtoSeller(String seller_id, String seller_license, String seller_number, String seller_profile, String seller_name, String seller_phone, String seller_person_name, String seller_person_phone, String seller_state) {
 		
 		this.seller_id = seller_id;
 		this.seller_license = seller_license;
 		this.seller_number = seller_number;
 		this.seller_profile = seller_profile;
+		this.seller_name = seller_name;
+		this.seller_phone = seller_phone;
 		this.seller_person_name = seller_person_name;
 		this.seller_person_phone = seller_person_phone;
 		this.seller_state = seller_state;
-		
 	}
 
 
@@ -92,6 +96,26 @@ public class FDtoSeller {
 	}
 
 
+	public String getSeller_name() {
+		return seller_name;
+	}
+
+
+	public void setSeller_name(String seller_name) {
+		this.seller_name = seller_name;
+	}
+
+
+	public String getSeller_phone() {
+		return seller_phone;
+	}
+
+
+	public void setSeller_phone(String seller_phone) {
+		this.seller_phone = seller_phone;
+	}
+
+
 	public String getSeller_person_name() {
 		return seller_person_name;
 	}
@@ -121,7 +145,9 @@ public class FDtoSeller {
 		this.seller_state = seller_state;
 	}
 	
-	
+
 }
+
+
 
 

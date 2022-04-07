@@ -15,19 +15,13 @@ public class ASQWListCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		
+
 		HttpSession session = request.getSession();
 		Object adminID = session.getAttribute("adminId");
 		String adminId = (String)adminID;
 		
-		String queryName =request.getParameter("query");
-		String queryContent =request.getParameter("lContent");
-
-		
 		FDaoA daoA = new FDaoA();
-		ArrayList<FDtoSeller> dtos = daoA.sellerapplylist(adminId);
+		ArrayList<FDtoSeller> dtos = daoA.sellerapplylist();
 		request.setAttribute("sellerapplylist", dtos);
 		
 

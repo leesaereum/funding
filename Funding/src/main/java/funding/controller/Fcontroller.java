@@ -9,11 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import funding.command.ACAWListCommand;
+import funding.command.ACApproveCommand;
 import funding.command.ACListCommand;
+import funding.command.ACRejectCommand;
 import funding.command.AFAWListCommand;
+import funding.command.AFApproveCommand;
+import funding.command.AFRejectCommand;
 import funding.command.ALoginCommand;
 import funding.command.ALogoutCommand;
 import funding.command.ASQWListCommand;
+import funding.command.ASQualifyCommand;
+import funding.command.ASrejectCommand;
 import funding.command.FCommand;
 import funding.command.FindidCommand;
 import funding.command.FindpwCommand;
@@ -271,16 +278,22 @@ public class Fcontroller extends HttpServlet {
 			viewpage="aCList.jsp";
 			break;
 		case("/aCAWList.do"):
-			viewpage="";
-			break;	
+			command = new ACAWListCommand();
+			command.execute(request, response);
+			viewpage="aCAWList.jsp";
+			break;
 		case("/aCADetail.do"):
 			viewpage="";
 			break;
 		case("/aCApprove.do"):
-			viewpage="";
+			command = new ACApproveCommand();
+			command.execute(request, response);
+			viewpage="aCAWList.do";
 			break;
 		case("/aCReject.do"):
-			viewpage="";
+			command = new ACRejectCommand();
+			command.execute(request, response);
+			viewpage="aCAWList.do";
 			break;
 		case("/aSQWList.do"):
 			command = new ASQWListCommand();
@@ -291,22 +304,32 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 			break;
 		case("/aSQualify.do"):
-			viewpage="";
+			command = new ASQualifyCommand();
+			command.execute(request, response);
+			viewpage="aSQWList.do";
 			break;
 		case("/aSreject.do"):
-			viewpage="";
-		break;
+			command = new ASrejectCommand();
+			command.execute(request, response);
+			viewpage="aSQWList.do";
+			break;
 		case("/aFAWList.do"):
-			viewpage="";	
+			command = new AFAWListCommand();
+			command.execute(request, response);
+			viewpage="aFAWList.jsp";
 			break;
 		case("/aFADetail.do"):
 			viewpage="";
 		break;
 		case("/aFApprove.do"):
-			viewpage="";
+			command = new AFApproveCommand();
+			command.execute(request, response);
+			viewpage="aFAWList.do";
 			break;
 		case("/aFreject.do"):
-			viewpage="";
+			command = new AFRejectCommand();
+			command.execute(request, response);
+			viewpage="aFAWList.do";
 			break;
 		case("/aSAList.do"):
 			viewpage="";
