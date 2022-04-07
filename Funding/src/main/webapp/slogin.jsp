@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>해피펀딩 로그인</title>
+<title>해피펀딩 판매자 로그인</title>
 <link rel="stylesheet" href="../styles/init.css">
 <style type="text/css">
 html {
@@ -36,56 +36,20 @@ keyframes gradientBG { 0% {
 }
 
 50
-
-
-
-
 %
 {
 background-position
-
-
-
-
 :
-
-
-
-
-100
-
-
-%
-50
-
-
-%;
+100%
+50%;
 }
 100
-
-
-
-
 %
 {
 background-position
-
-
-
-
 :
-
-
-
-
-0
-
-
-%
-50
-
-
-%;
+0%
+50%;
 }
 }
 .signIn__content {
@@ -258,24 +222,23 @@ background-position
 <body>
 	<div class="signIn__wrap">
 		<div class="signIn__content">
-			<h1 class="signIn__title">로그인</h1>
+			<h1 class="signIn__title">판매자 로그인</h1>
 			<jsp:include page="/apis/socialLogin/kakaoLogin.jsp" />
 			<jsp:include page="/apis/socialLogin/naverLogin.jsp" />
 			<div class="signIn__divider"></div>
-			<form action="/Funding/login.do" name="signInForm" method="post"
+			<form action="slogin.do" name="signInForm" method="post"
 				onsubmit="checkCheck()">
 				<div class="signIn__liner">
 					<p class="signIn__subTitle">아이디</p>
-					<input class="signIn__input" id="id" name="customer_id"
+					<input class="signIn__input" id="id" name="seller_id"
 						placeholder="example@mail.com" onkeyup="validate()"
 						onfocus="idFocus()" onblur="idValidate()">
 					<p id="idValidate" class="signIn__warning"></p>
 				</div>
 				<div class="signIn__liner">
 					<p class="signIn__subTitle">패스워드</p>
-					<input class="signIn__input" id="pw" type="password"
-						name="customer_pw" onkeyup="validate()" onfocus="pwFocus()"
-						onblur="pwValidate()">
+					<input class="signIn__input" id="pw" type="password" name="seller_pw"
+						onkeyup="validate()" onfocus="pwFocus()" onblur="pwValidate()">
 					<p id="pwValidate" class="signIn__warning"></p>
 				</div>
 				<div class="signIn__rememberLiner">
@@ -285,29 +248,15 @@ background-position
 				<input class="signIn__submit" id="submit" type="submit" value="로그인"
 					disabled>
 			</form>
-			<div>
-				<a href="" target="popup"
-					onclick="window.open('/Funding/findId_view.do','popup','width=300,height=200'); return false;">아이디찾기</a>
-			</div>
-			<div>
-				<a href="" target="popup"
-					onclick="window.open('/Funding/findPw_view.do','popup','width=300,height=200'); return false;">비밀번호 찾기</a>
-			</div>
 			<div class="signIn__infoBox">
 				<p class="signIn__info">
-					아직 가입하지 않으셨나요? <a href="SignUp.jsp">가입하러 가기</a>
+					아직 가입하지 않으셨나요? <a href="ssignUp_view.jsp">가입하러 가기</a>
 				</p>
 
 			</div>
 		</div>
 	</div>
 	<div id="toast"></div>
-	<script type="text/javascript">
 
-$(document).on("click", ".findIdwButton", function(e){
-	e.stopPropagation();
-	localStorage.setItem("pastURL", location.href);
-	location.href = "/Funding/findId_view.do";
-})</script>
 </body>
 </html>
