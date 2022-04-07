@@ -147,7 +147,7 @@ h1 {
 			<li><a href="aCList.do">회원관리</a></li>
 			<li><a href="#" id="current">신청관리</a>
 				<ul>
-					<li><a href="aSQWList.do">판매자승인 대기</a></li>
+					<li><a href="aFAWList.do">판매자승인 대기</a></li>
 					<li><a href="#">펀딩승인 대기</a></li>
 					<li><a href="#">정산승인 대기</a></li>
 				</ul></li>
@@ -160,31 +160,36 @@ h1 {
 			<li><a href="#" id="current">펀딩리스트</a></li>
 			<li><a href="#" id="current">공지사항</a></li>
 
-				
-				
-<!-- 			<li><a href="#">문의관리</a></li>
-			<li><a href="#">펀딩리스트</a></li>
-			<li><a href="#">공지사항</a></li> -->
+
 		</ul>
 	</div>
 
 	<hr class="first">
 	<table border="0">
 		<tr>
-			<th width="20%" align="center">ID</th>
-			<th width="20%" align="center">이름</th>
-			<th width="20%" align="center">전화번호</th>
-			<th width="40%" align="center">주소</th>
+			<th width="10%" align="center">셀러 ID</th>
+			<th width="15%" align="center">사업자등록번호</th>
+			<th width="15%" align="center">셀러 번호</th>
+			<th width="15%" align="center">업체 정보</th>
+			<th width="15%" align="center">셀러 전화번호</th>
+			<th width="10%" align="center">대표자명</th>
+			<th width="10%" align="center">셀러 권한</th>
+			<th width="10%" align="center"></th>
 		</tr>
 	</table>
 	<hr class="second">
 	<div class="listcontent" style="overflow-x: hidden;">
-		<c:forEach items="${clist }" var="dto01">
+		<c:forEach items="${sellerapplylist }" var="dto02">
 			<table border="0">
-				<td width="20%" align="center">${dto01.customer_id}</td>
-				<td width="20%" align="center">${dto01.customer_name}</td>
-				<td width="20%" align="center">${dto01.customer_phone}</td>
-				<td width="40%" align="center">${dto01.address_state}${dto01.address_city}${dto01.address_line}</td>
+				<td width="10%" align="center">${dto02.seller_id}</td>
+				<td width="15%" align="center">${dto02.seller_license}</td>
+				<td width="15%" align="center">${dto02.seller_number}</td>
+				<td width="15%" align="center">${dto02.seller_profile}</td>
+				<td width="15%" align="center">${dto02.seller_person_name}</td>
+				<td width="10%" align="center">${dto02.seller_person_phone}</td>
+				<td width="10%" align="center">${dto02.seller_state}</td>
+				<td ><a href="aSQualify.do">승인</a></td>
+
 
 			</table>
 		</c:forEach>

@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import funding.command.ACListCommand;
+import funding.command.AFAWListCommand;
 import funding.command.ALoginCommand;
 import funding.command.ALogoutCommand;
+import funding.command.ASQWListCommand;
 import funding.command.FCommand;
 import funding.command.FindidCommand;
 import funding.command.FindpwCommand;
@@ -286,7 +288,9 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 			break;
 		case("/aSQWList.do"):
-			viewpage="";
+			command = new ASQWListCommand();
+			command.execute(request, response);
+			viewpage="aSQWList.jsp";
 			break;
 		case("/aSQDetail.do"):
 			viewpage="";
@@ -298,8 +302,8 @@ public class Fcontroller extends HttpServlet {
 			viewpage="";
 		break;
 		case("/aFAWList.do"):
-			viewpage="";
-		break;
+			viewpage="";	
+			break;
 		case("/aFADetail.do"):
 			viewpage="";
 		break;
