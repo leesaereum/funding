@@ -12,8 +12,8 @@
 </head>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-	let email = "<%=session.getAttribute("email")%>
-	";
+	console.log("hihi")
+	let email = "<%=session.getAttribute("customer_id")%>";
 
 		if (email == "null") {
 			location.href = "/Funding/main.jsp"

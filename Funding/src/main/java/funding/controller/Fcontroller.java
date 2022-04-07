@@ -94,7 +94,10 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
-		case("/finding_list.do"):
+		case("/funding_list_view.do"):
+			viewpage="/pages/funding_list_view.jsp";
+			break;
+		case("/funding_list.do"):
 			viewpage="";
 			break;
 		case("/fundingContent_view.do"):
