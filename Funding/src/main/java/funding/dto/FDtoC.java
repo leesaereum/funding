@@ -10,11 +10,18 @@ public class FDtoC {
 	String customer_pw_a;
 	
 	
+	String address_state;
+	String address_city;
+	String address_line;
+	
+	
+	
+	
 	public FDtoC(){
 		
 	}
 	
-	public FDtoC(String customer_id, String customer_pw, String customer_name, String customer_phone, String customer_pw_q, String customer_pw_a) {
+	public FDtoC(String customer_id, String customer_pw, String customer_name, String customer_phone, String customer_pw_q, String customer_pw_a, String address_state, String address_city, String address_line) {
 		super();
 		this.customer_id = customer_id;
 		this.customer_pw = customer_pw;
@@ -22,13 +29,22 @@ public class FDtoC {
 		this.customer_phone = customer_phone;
 		this.customer_pw_q = customer_pw_q;
 		this.customer_pw_a = customer_pw_a;
+		
+		this.address_state = address_state;
+		this.address_city = address_city;
+		this.address_line = address_line;
 	}
 	
-	public FDtoC(String customer_id, String customer_name, String customer_phone) {
+	public FDtoC(String customer_id, String customer_name, String customer_phone, String address_state, String address_city, String address_line) {
 		super();
 		this.customer_id = customer_id;
 		this.customer_name = customer_name;
 		this.customer_phone = customer_phone;
+		
+		this.address_state = address_state;
+		this.address_city = address_city;
+		this.address_line = address_line;
+		
 	}
 
 	public String getCustomer_id() {
@@ -78,5 +94,30 @@ public class FDtoC {
 	public void setCustomer_pw_a(String customer_pw_a) {
 		this.customer_pw_a = customer_pw_a;
 	}
-	
+
+	public String getAddress_state() {
+		return address_state;
+	}
+
+	public void setAddress_state(String address_state) {
+		this.address_state = address_state;
+	}
+
+	public String getAddress_city() {
+		return address_city;
+	}
+
+	public void setAddress_city(String address_city) {
+		this.address_city = address_city;
+	}
+
+	public String getAddress_line() {
+		return address_line;
+	}
+
+	public void setAddress_line(String address_line) {
+		this.address_line = address_line;
+	}
 }
+
+	
