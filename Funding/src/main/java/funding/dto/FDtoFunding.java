@@ -19,7 +19,6 @@ public class FDtoFunding {
 	int funding_fee;
 	
 	public FDtoFunding() {
-<<<<<<< HEAD
 		
 	}
 
@@ -31,7 +30,6 @@ public class FDtoFunding {
 		this.funding_title = funding_title;
 		this.funding_openAt = funding_openAt;
 		this.funding_closeAt = funding_closeAt;
-=======
 		// TODO Auto-generated constructor stub
 	}
 
@@ -52,7 +50,6 @@ public class FDtoFunding {
 		this.funding_categori = funding_categori;
 		this.funding_state = funding_state;
 		this.funding_fee = funding_fee;
->>>>>>> yejin
 	}
 
 	public int getFunding_num() {
@@ -159,8 +156,4 @@ public class FDtoFunding {
 		this.funding_fee = funding_fee;
 	}
 	
-<<<<<<< HEAD
-=======
-	
->>>>>>> yejin
 }

@@ -55,26 +55,16 @@ public class Fcontroller extends HttpServlet {
 		String copath = request.getContextPath();
 		String path = uri.substring(copath.length());
 		String viewpage = null;
-<<<<<<< HEAD
+
 
 		// customer용 switch
 		switch (path) {
 		case ("/login.do"):
-=======
-		System.out.println(path);
-		//customer용 switch
-		switch(path){
-		case("/login.do"):
->>>>>>> newdong
 			command = new LoginCommand();
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
-<<<<<<< HEAD
-		case ("/sociallogin.do"):
-=======
 		case("/socialLogin.do"):
->>>>>>> newdong
 			command = new LogoutCommand();
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
@@ -239,23 +229,13 @@ public class Fcontroller extends HttpServlet {
 		case ("/ssignUp.do"):
 			command = new SSignUpCommand();
 			command.execute(request, response);
-<<<<<<< HEAD
 			viewpage = "slogin.jsp";
-			break;
-		case ("/sFODetail.do"):
-			viewpage = "";
-			break;
-		case ("/sFOApply.do"):
-			viewpage = "";
-=======
-			viewpage="slogin.jsp";
 			break;
 		case("/sFODetail.do"):
 			viewpage="/pages/makeFunding.jsp";
 			break;
 		case("/sFOApply.do"):
 			viewpage="main.do";
->>>>>>> yejin
 			break;
 		case ("/sQApply_detail.do"):
 			viewpage = "";

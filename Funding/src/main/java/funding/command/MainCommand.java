@@ -14,10 +14,7 @@ public class MainCommand implements FCommand {
 
 		HttpSession session = request.getSession();
 		session.getAttribute("customer_id");
-<<<<<<< HEAD
 
-=======
->>>>>>> yejin
 	}
 
 }
