@@ -63,6 +63,18 @@
 	color: #999;
 	border-bottom: 1px solid #eee;
 }
+.notice__num{
+	width: 66px;
+	text-align: center;
+}
+.notice__date{
+width: 200px;
+text-align: center;
+}
+.notice__title{
+	width: calc(100% - 300px);
+	text-align: center;
+}
 </style>
 <body>
 	<jsp:include page="/components/header.jsp" />
@@ -76,11 +88,11 @@
 			</div>
 		</div>
 		<ul class="notice__box">
-			<li class="notice__liner"><p>공지 번호</p>
+			<li class="notice__liner"><p class="notice__num">공지 번호</p>
 				<p class="notice__title">제목</p>
 				<p class="notice__date">공지일</p></li>
 			<c:forEach items="${notice}" var="notice">
-				<li class="notice__liner"><p>${notice.notice_num }</p>
+				<li class="notice__liner"><p class="notice__num">${notice.notice_num }</p>
 					<a href="notice_detail.do?notice_num=${notice.notice_num}"
 					class="notice__title">${notice.notice_title }</a>
 					<p class="notice__date">${notice.notice_At }</p></li>
