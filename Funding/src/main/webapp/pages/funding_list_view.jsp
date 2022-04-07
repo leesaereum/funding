@@ -12,7 +12,7 @@
 </head>
 <style>
 .list__wrap {
-	width: 960px;
+	width: 1080px;
 	margin: 0 auto;
 	padding: 51px 0;
 }
@@ -64,6 +64,18 @@
 	color: #999;
 	border-bottom: 1px solid #eee;
 }
+.list__date{
+	width: 200px;
+	text-align: center;
+}
+.list__seller{
+	width: 220px;
+	text-align:center;
+}
+.list__title{
+	width: calc(100% - 660px);
+	text-align:center;
+}
 </style>
 <body>
 	<jsp:include page="/components/header.jsp" />
@@ -77,12 +89,12 @@
 			</div>
 		</div>
 		<ul class="list__box">
-			<li class="list__liner"><p>펀딩명</p><p>판매자</p><p>오픈일</p><p>마감일</p></li>
+			<li class="list__liner"><p class="list__title">펀딩명</p><p class="list__seller">판매자</p><p class="list__date">오픈일</p><p class="list__date">마감일</p></li>
 			<c:forEach items="${funding}" var="funding">
 				<li class="list__liner"><a
 					href="detail.jsp?fid=${funding.funding_num}"
-					class="list__liner">${funding.funding_title }</a>
-					<p>${funding.funding_seller }</p>
+					class="list__title">${funding.funding_title }</a>
+					<p class="list__seller">${funding.funding_seller }</p>
 					<p class="list__date">${funding.funding_openAt }</p>
 					<p class="list__date">${funding.funding_closeAt }</p></li>
 			</c:forEach>
