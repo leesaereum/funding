@@ -49,8 +49,6 @@ public class Fcontroller extends HttpServlet {
 		String path = uri.substring(copath.length());
 		String viewpage = null;
 		
-		System.out.println(path);
-
 		//customer용 switch
 		switch(path){
 		case("/login.do"):
