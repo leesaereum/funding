@@ -56,6 +56,16 @@ body{
 	padding: 8px 16px;
 	line-height: 24px;
 }
+
+.ssignUp__idcheck{
+	width: 80px;
+	height: 40px;
+	box-sizing: border-box;
+	border-radius: 32px;
+	border: 1px solid #aaa;
+	padding: 8px 16px;
+	line-height: 24px;
+}
 .ssignUp__submit{
 	width: 200px;
 	background-color:royalblue;
@@ -173,6 +183,10 @@ function checksignUp() {
 	form.submit()
 }
 
+function idCheck() {
+	
+}
+
 </script>
 
 
@@ -184,7 +198,8 @@ function checksignUp() {
 	<form name="ssignUpForm"  action="ssignUp.do" method="post">
 		<div class="ssignUp__liner">
 		<p class="ssignUp__subTitle">아이디</p>
-		<input class="ssignUp__input" type="text" name="seller_id"  placeholder="example@mail.com">
+		<input class="ssignUp__input" type="text" name="seller_id" placeholder="example@mail.com">
+		<input class="ssignUp__idcheck" type="button" value="중복체크" onclick="idCheck()">
 		</div>
 		
 		<div class="ssignUp__liner">
