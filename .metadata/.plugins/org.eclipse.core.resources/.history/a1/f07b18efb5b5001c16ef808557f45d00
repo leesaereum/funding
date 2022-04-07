@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공지사항 상세정보</title>
+<link rel="stylesheet" href="/Funding/styles/init.css">
+<link rel="stylesheet" href="/Funding/styles/base.css">
+</head>
+<body>
+	<jsp:include page="/components/header.jsp"/>
+	<div>공지사항 상세정보</div>
+	<div>공지번호 : ${notice.notice_num }</div>
+	<div>담당관리자 ${notice.notice_admin} </div>
+	<div>공지제목 : </div>
+	<div>공지내용 : </div>
+	<div>공지일 : </div>
+	<div><a href = "notice.do">목록으로 돌아가기</a></div>
+</body>
+</html>

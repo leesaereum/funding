@@ -16,6 +16,7 @@ if (fid == null) {
 }
 %>
 <script type="text/javascript" src="/Funding/libraries/jQuery.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="./detail.js"></script>
 <body>
 	<jsp:include page="/components/header.jsp" />
@@ -28,6 +29,7 @@ if (fid == null) {
 			<div class="detail__content__tab">
 				<p class="detail__tab__tab detail__tab__selected" data-id="story">스토리</p>
 				<p class="detail__tab__tab" data-id="participants">참여자</p>
+				<p class="detail__tab__tab" data-id="questions">Q&A</p>
 				<p class="detail__tab__tab" data-id="reviews">후기</p>
 			</div>
 			<div class="detail__content__tabs__box">
@@ -68,45 +70,135 @@ if (fid == null) {
 							<p class="detail__participant__date">2022.04.05 16:40:42</p>
 							<div class="detail__participant__bottom">
 								<p class="detail__participant__id">dpqhs78님</p>
-								<p class="detail__participant__amount"><span>32,000</span>원 참여</p>
+								<p class="detail__participant__amount">
+									<span>32,000</span>원 참여
+								</p>
 							</div>
 						</li>
 						<li>
 							<p class="detail__participant__date">2022.04.05 16:40:42</p>
 							<div class="detail__participant__bottom">
 								<p class="detail__participant__id">dpqhs78님</p>
-								<p class="detail__participant__amount"><span>32,000</span>원 참여</p>
+								<p class="detail__participant__amount">
+									<span>32,000</span>원 참여
+								</p>
 							</div>
 						</li>
 						<li>
 							<p class="detail__participant__date">2022.04.05 16:40:42</p>
 							<div class="detail__participant__bottom">
 								<p class="detail__participant__id">dpqhs78님</p>
-								<p class="detail__participant__amount"><span>32,000</span>원 참여</p>
+								<p class="detail__participant__amount">
+									<span>32,000</span>원 참여
+								</p>
 							</div>
 						</li>
 						<li>
 							<p class="detail__participant__date">2022.04.05 16:40:42</p>
 							<div class="detail__participant__bottom">
 								<p class="detail__participant__id">dpqhs78님</p>
-								<p class="detail__participant__amount"><span>32,000</span>원 참여</p>
+								<p class="detail__participant__amount">
+									<span>32,000</span>원 참여
+								</p>
 							</div>
 						</li>
 						<li>
 							<p class="detail__participant__date">2022.04.05 16:40:42</p>
 							<div class="detail__participant__bottom">
 								<p class="detail__participant__id">dpqhs78님</p>
-								<p class="detail__participant__amount"><span>32,000</span>원 참여</p>
+								<p class="detail__participant__amount">
+									<span>32,000</span>원 참여
+								</p>
 							</div>
 						</li>
 						<li>
 							<p class="detail__participant__date">2022.04.05 16:40:42</p>
 							<div class="detail__participant__bottom">
 								<p class="detail__participant__id">dpqhs78님</p>
-								<p class="detail__participant__amount"><span>32,000</span>원 참여</p>
+								<p class="detail__participant__amount">
+									<span>32,000</span>원 참여
+								</p>
 							</div>
 						</li>
 					</ul>
+				</div>
+				<div class="detail__tab" id="tab-questions">
+					<!-- 구매자면 질문창, 판매자면 답변창 -->
+					<div class="detail__qna__new__box">
+						<form action="/fundingQuestion.do" method="post">
+							<input class="detail__qna__new__input" name="question_content">
+							<div class="detail__qna__new__submit__box">
+								<input class="detail__qna__new__submit" type="submit"
+									value="새 문의 등록">
+							</div>
+						</form>
+					</div>
+					<div class="detail__qna__box">
+						<p class="detail__qna__question">Q. 제품의 유통기한이 언제까지인가요?</p>
+						<p class="detail__qna__answer">A. 안녕하세요 주식회사 동원입니다. 클렌즈랩 제품의
+							유통기한은 최소 20일 이상 남은 상태로 배송됩니다. 감사합니다. 좋은 하루 되십기요 저는 에어팟 프로가 없습니다.</p>
+						<p class="detail__qna__date">2022-04-05</p>
+					</div>
+					<div class="detail__qna__box">
+						<p class="detail__qna__question">Q. 제품의 유통기한이 언제까지인가요?</p>
+						<p class="detail__qna__answer">A. 안녕하세요 주식회사 동원입니다. 클렌즈랩 제품의
+							유통기한은 최소 20일 이상 남은 상태로 배송됩니다. 감사합니다. 좋은 하루 되십기요 저는 에어팟 프로가 없습니다.</p>
+						<p class="detail__qna__date">2022-04-05</p>
+					</div>
+					<div class="detail__qna__box">
+						<p class="detail__qna__question">Q. 제품의 유통기한이 언제까지인가요?</p>
+						<p class="detail__qna__answer">A. 안녕하세요 주식회사 동원입니다. 클렌즈랩 제품의
+							유통기한은 최소 20일 이상 남은 상태로 배송됩니다. 감사합니다. 좋은 하루 되십기요 저는 에어팟 프로가 없습니다.</p>
+						<p class="detail__qna__date">2022-04-05</p>
+					</div>
+					<div class="detail__qna__box">
+						<p class="detail__qna__question">Q. 제품의 유통기한이 언제까지인가요?</p>
+						<p class="detail__qna__answer">A. 안녕하세요 주식회사 동원입니다. 클렌즈랩 제품의
+							유통기한은 최소 20일 이상 남은 상태로 배송됩니다. 감사합니다. 좋은 하루 되십기요 저는 에어팟 프로가 없습니다.</p>
+						<p class="detail__qna__date">2022-04-05</p>
+					</div>
+					<div class="detail__qna__box">
+						<p class="detail__qna__question">Q. 제품의 유통기한이 언제까지인가요?</p>
+						<p class="detail__qna__answer">A. 안녕하세요 주식회사 동원입니다. 클렌즈랩 제품의
+							유통기한은 최소 20일 이상 남은 상태로 배송됩니다. 감사합니다. 좋은 하루 되십기요 저는 에어팟 프로가 없습니다.</p>
+						<p class="detail__qna__date">2022-04-05</p>
+					</div>
+					<div class="detail__qna__box">
+						<p class="detail__qna__question">Q. 제품의 유통기한이 언제까지인가요?</p>
+						<p class="detail__qna__answer">A. 안녕하세요 주식회사 동원입니다. 클렌즈랩 제품의
+							유통기한은 최소 20일 이상 남은 상태로 배송됩니다. 감사합니다. 좋은 하루 되십기요 저는 에어팟 프로가 없습니다.</p>
+						<p class="detail__qna__date">2022-04-05</p>
+					</div>
+					<div class="detail__qna__box">
+						<p class="detail__qna__question">Q. 제품의 유통기한이 언제까지인가요?</p>
+						<p class="detail__qna__answer">A. 안녕하세요 주식회사 동원입니다. 클렌즈랩 제품의
+							유통기한은 최소 20일 이상 남은 상태로 배송됩니다. 감사합니다. 좋은 하루 되십기요 저는 에어팟 프로가 없습니다.</p>
+						<p class="detail__qna__date">2022-04-05</p>
+					</div>
+					<div class="detail__qna__box">
+						<p class="detail__qna__question">Q. 제품의 유통기한이 언제까지인가요?</p>
+						<p class="detail__qna__answer">A. 안녕하세요 주식회사 동원입니다. 클렌즈랩 제품의
+							유통기한은 최소 20일 이상 남은 상태로 배송됩니다. 감사합니다. 좋은 하루 되십기요 저는 에어팟 프로가 없습니다.</p>
+						<p class="detail__qna__date">2022-04-05</p>
+					</div>
+					<div class="detail__qna__box">
+						<p class="detail__qna__question">Q. 제품의 유통기한이 언제까지인가요?</p>
+						<p class="detail__qna__answer">A. 안녕하세요 주식회사 동원입니다. 클렌즈랩 제품의
+							유통기한은 최소 20일 이상 남은 상태로 배송됩니다. 감사합니다. 좋은 하루 되십기요 저는 에어팟 프로가 없습니다.</p>
+						<p class="detail__qna__date">2022-04-05</p>
+					</div>
+					<div class="detail__qna__box">
+						<p class="detail__qna__question">Q. 제품의 유통기한이 언제까지인가요?</p>
+						<p class="detail__qna__answer">A. 안녕하세요 주식회사 동원입니다. 클렌즈랩 제품의
+							유통기한은 최소 20일 이상 남은 상태로 배송됩니다. 감사합니다. 좋은 하루 되십기요 저는 에어팟 프로가 없습니다.</p>
+						<p class="detail__qna__date">2022-04-05</p>
+					</div>
+					<div class="detail__qna__box">
+						<p class="detail__qna__question">Q. 제품의 유통기한이 언제까지인가요?</p>
+						<p class="detail__qna__answer">A. 안녕하세요 주식회사 동원입니다. 클렌즈랩 제품의
+							유통기한은 최소 20일 이상 남은 상태로 배송됩니다. 감사합니다. 좋은 하루 되십기요 저는 에어팟 프로가 없습니다.</p>
+						<p class="detail__qna__date">2022-04-05</p>
+					</div>
 				</div>
 				<div class="detail__tab" id="tab-reviews"></div>
 			</div>
@@ -166,7 +258,7 @@ if (fid == null) {
 				<p>무료</p>
 			</div>
 			<div class="detail__funding__buttonZone">
-				<p class="detail__funding__join">펀딩 참여하기</p>
+				<p class="detail__funding__join" onclick="joinFunding()">펀딩 참여하기</p>
 				<div class="detail__funding__share"
 					onclick="share(<%=request.getParameter("fid")%>)">
 					<img src="/Funding/assets/share.svg">
@@ -222,7 +314,11 @@ if (fid == null) {
 				</div>
 			</div>
 		</div>
+		
 		<div id="toast"></div>
 	</div>
+
+	<div class="detail__popup__wrap"></div>
+
 </body>
 </html>

@@ -54,7 +54,7 @@ let words = ["핸드메이드 카네이션 굿즈로 마음을 전해요","NON-G
 let page = 0;
 document.addEventListener('DOMContentLoaded', function() {
 	loadMore();
-	let email = "<%=session.getAttribute("customer_id")%>";
+	let email = "<%=session.getAttribute("email")%>";
 	let firstLogin = "<%= session.getAttribute("loginFirst")%>";
 	
 	if(firstLogin !== "null" && email !== "null"){
@@ -110,6 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	<div id="loadMoreBox">
 		<div class="loadMore" onclick="loadMore()">더보기</div>
 	</div>
+
+	<jsp:include page="./components/footer.jsp" />
 	<div id="toast"></div>
 </body>
 </html>

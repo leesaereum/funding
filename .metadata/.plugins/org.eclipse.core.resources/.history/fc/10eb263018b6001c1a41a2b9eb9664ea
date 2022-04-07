@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>아이디 찾기</title>
+</head>
+<body>
+	<form name="findId" action="findId.do" method="post">
+		<div>
+			이름 <input id="name" type="text" name="name" onkeyup="validate()"
+				onfocus="nameFocus()" onblur="nameValidate()">
+			<p id="nameValidate" class="signUp__warning"></p>
+		</div>
+		<div>
+			전화번호 <select name="phone1">
+				<option selected="selected">010</option>
+				<option>011</option>
+				<option>016</option>
+				<option>017</option>
+				<option>019</option>
+			</select> - <input id="phone2" type="text" name="phone2" size="5"
+				onkeyup="validate()" onfocus="phoneFocus()" onblur="phoneValidate()">
+			- <input id="phone3" type="text" name="phone3" size="5"
+				onkeyup="validate()" onfocus="phoneFocus()" onblur="phoneValidate()">
+			<p id="phoneValidate" class="signUp__warning"></p>
+		</div>
+
+		<input id="submit" type="submit" value="회원가입" disabled>
+	</form>
+</body>
+</html>

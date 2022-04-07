@@ -74,9 +74,8 @@ header {
 		<h1 class="font-color-main" onclick="goHome()">해피펀딩</h1>
 		<nav>
 			<ul>
-				<li>펀딩</li>
-				<li><a href = "notice_list.do">공지사항</a></li>
-				<li>Q&A</li>
+				<li><a href="/Funding/pages/noticeDo.jsp">공지사항</a></li>
+				<li><a href="/Funding/pages/systemQnADo.jsp">Q&A</a></li>
 			</ul>
 		</nav>
 		<div id="loginZone">
@@ -89,11 +88,11 @@ header {
 <script>
 let header = document.querySelector(".header");
 let headerHeight = 72;
-let customer_id = "<%=session.getAttribute("customer_id")%>";
-if(customer_id == "null"){
+let email = "<%=session.getAttribute("email")%>";
+if(email == "null"){
 	document.getElementById("loginZone").innerHTML = '<div class="loginButton">로그인</div>';
 }else{
-	document.getElementById("loginZone").innerHTML = '<p class="signedIn_email">'+customer_id.split("@")[0]+' 님</p><div class="mypageButton">마이페이지</div> <div class="logoutButton">로그아웃</div>';
+	document.getElementById("loginZone").innerHTML = '<p class="signedIn_email" onclick="goMyPage()">'+email.split("@")[0]+' 님</p><div class="logoutButton">로그아웃</div>';
 }
 let isSeller = "<%=session.getAttribute("isSeller")%>";
 if(isSeller != "null"){
@@ -128,15 +127,14 @@ $(document).on("click", ".loginButton", function(e){
 $(document).on("click", ".logoutButton", function(e){
 	e.stopPropagation();
 	localStorage.setItem("pastURL", location.href);
-	location.href = "/Funding/logout.do";
-})
-$(document).on("click", ".mypageButton", function(e){
-	e.stopPropagation();
-	localStorage.setItem("pastURL", location.href);
-	location.href = "/Funding/mypage.do";
+	location.href = "/Funding/tempLogoutDo.jsp";
 })
 $(document).on("click", ".makeFunding", function(e){
 	e.stopPropagation();
 	location.href = "/Funding/pages/makeFunding.jsp";
 })
+
+function goMyPage(){
+	location.href = "/Funding/pages/mypage.jsp"
+}
 </script>

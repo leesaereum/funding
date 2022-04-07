@@ -34,12 +34,6 @@ $(".MF__basic__addImage").change(function() {
 	readURL(this, '#MF__basic__thumb');
 })
 
-$(document).on("click", ".MF__close", function() {
-	if (confirm("해당 항목을 삭제하시겠습니까?")) {
-		$(this).parent().remove();
-	}
-})
-
 function readURL(input, previewId) {
 	if (input.files && input.files[0]) {
 		var reader = new FileReader();
@@ -49,6 +43,14 @@ function readURL(input, previewId) {
 		reader.readAsDataURL(input.files[0]);
 	}
 }
+
+$(document).on("click", ".MF__close", function() {
+	if (confirm("해당 항목을 삭제하시겠습니까?")) {
+		$(this).parent().remove();
+	}
+})
+
+
 
 $(document).on("blur", ".MF__reward__content", function() {
 	if ($(this).val().length < 5) {
@@ -203,29 +205,95 @@ function checkSecondTab() {
 	}
 }
 
-function checkThirdTab() {
-	const countTitle = $(".MF__input__subTitle").length;
-	const countParagraph = $(".MF__input__paragraph").length;
+const Editor = toastui.Editor;
 
-	if (countTitle < 1 || countParagraph < 1) {
-		alert('최소 1개 이상씩의 소제목과 내용이 필요합니다.')
-		return false;
-	}
+const editor = new Editor({
+	el: document.querySelector('#editor'),
+	height: '500px',
+	initialEditType: 'wysiwyg',
+	previewStyle: 'vertical'
+});
 
-	let countText = 0;
-	for (let i = 0; i < $(".MF__input__paragraph").length; i++) {
-		countText += $(".MF__input__paragraph").eq(i).val().length;
+$(".MF__moveTab__btn.finish").click(function() {
+	let form = document.createElement('form'); // 폼객체 생성
+	
+	let funding_banner = document.createElement('input');
+	funding_banner.setAttribute('type', 'text');
+	funding_banner.setAttribute('name', 'funding_banner');
+	funding_title.setAttribute('value', $("#MF__basic__thumb").attr('src'))
+	form.appendChild(funding_banner);
+	
+	let funding_title = document.createElement('input');
+	funding_title.setAttribute('type', 'text');
+	funding_title.setAttribute('name', 'funding_title');
+	funding_title.setAttribute('value', $("#MF__basic__title").val())
+	form.appendChild(funding_title);
+	
+	let funding_openAt = document.createElement('input');
+	funding_openAt.setAttribute('type', 'date');
+	funding_openAt.setAttribute('name', 'funding_openAt');
+	funding_openAt.setAttribute('value', $("#MF__basic__startDate").val())
+	form.appendChild(funding_openAt);
+	
+	let funding_closeAt = document.createElement('input');
+	funding_closeAt.setAttribute('type', 'date');
+	funding_closeAt.setAttribute('name', 'funding_closeAt');
+	funding_closeAt.setAttribute('value', $("#MF__basic__endDate").val())
+	form.appendChild(funding_closeAt);
+	
+	let funding_purpose = document.createElement('input');
+	funding_purpose.setAttribute('type', 'number');
+	funding_purpose.setAttribute('name', 'funding_purpose');
+	funding_purpose.setAttribute('value', $("#MF__basic__goal").val())
+	form.appendChild(funding_purpose);
+	
+	let funding_category = document.createElement('input');
+	funding_category.setAttribute('type', 'text');
+	funding_category.setAttribute('name', 'funding_category');
+	funding_category.setAttribute('value', $("#MF__basic__category option:selected").val())
+	form.appendChild(funding_category);
+	
+	let funding_fee = document.createElement('input');
+	funding_fee.setAttribute('type', 'text');
+	funding_fee.setAttribute('name', 'funding_fee');
+	funding_fee.setAttribute('value', $("#MF__basic__fee").val())
+	form.appendChild(funding_fee);
+	
+	let funding_content = document.createElement('input');
+	funding_content.setAttribute('type', 'text');
+	funding_content.setAttribute('name', 'funding_content');
+	funding_content.setAttribute('value', editor.getHTML())
+	form.appendChild(funding_content);
+	
+	for(let i = 0; i<$(".MF__reward").length; i++){
+		
+		let option_numbering = document.createElement('input');
+		option_numbering.setAttribute('type', 'number');
+		option_numbering.setAttribute('name', 'option_numbering_'+i);
+		option_numbering.setAttribute('value', i)
+		form.appendChild(option_numbering);
+		
+		let option_name = document.createElement('input');
+		option_name.setAttribute('type', 'text');
+		option_name.setAttribute('name', 'option_name_'+i);
+		option_name.setAttribute('value', $(".MF__reward__content").eq(i).val())
+		form.appendChild(option_name);
+		
+		let option_price = document.createElement('input');
+		option_price.setAttribute('type', 'number');
+		option_price.setAttribute('name', 'option_price_'+i);
+		option_name.setAttribute('value', $(".MF__reward__price").eq(i).val())
+		form.appendChild(option_price);
+		
+		let option_amount = document.createElement('input');
+		option_amount.setAttribute('type', 'number');
+		option_amount.setAttribute('name', 'option_amount_'+i);
+		option_amount.setAttribute('value', $(".MF__reward__amount").eq(i).val())
+		form.appendChild(option_amount);
 	}
-	if (countText < 50) {
-		alert('본문 내용은 50자 이상 입력되어야 합니다.')
-		return false;
-	}else{
-		return true;
-	}
-}
-
-$(".MF__moveTab__btn.finish").click(function(){
-	if(checkThirdTab()){
-		alert("펀딩이 생성되었습니다!")
-	}
+	
+	form.setAttribute('method', 'post'); //get,post 가능
+	form.setAttribute('action', "/sFOApply.do"); //보내는 url > 나중에 login.do로 보내야 함;
+	document.body.appendChild(form);
+	form.submit();
 })

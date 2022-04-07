@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="funding.command.NoticeListCommand"/>
+    <fullyQualifiedTypeName name="funding.dao.FDaoA"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="funding.command.NoticeDetailCommand"/>
+    <fullyQualifiedTypeName name="funding.dao.FDaoC"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoNotice"/>
+</qualifiedTypeNameHistroy>

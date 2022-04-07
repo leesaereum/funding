@@ -1,0 +1,23 @@
+package funding.command;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import funding.dao.FDaoC;
+
+public class FindidCommand implements FCommand {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone1")+"-"+request.getParameter("phone2")+
+				"-"+request.getParameter("phone3");
+		FDaoC dao = new FDaoC();
+		
+	}
+
+}
