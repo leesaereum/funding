@@ -55,18 +55,30 @@ public class Fcontroller extends HttpServlet {
 		String copath = request.getContextPath();
 		String path = uri.substring(copath.length());
 		String viewpage = null;
+<<<<<<< HEAD
 
 		// customer용 switch
 		switch (path) {
 		case ("/login.do"):
+=======
+		System.out.println(path);
+		//customer용 switch
+		switch(path){
+		case("/login.do"):
+>>>>>>> newdong
 			command = new LoginCommand();
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
+<<<<<<< HEAD
 		case ("/sociallogin.do"):
+=======
+		case("/socialLogin.do"):
+>>>>>>> newdong
 			command = new LogoutCommand();
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
+			System.out.println(viewpage);
 			break;
 		case ("/logout.do"):
 			command = new LogoutCommand();
