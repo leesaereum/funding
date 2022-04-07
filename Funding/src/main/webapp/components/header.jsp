@@ -74,8 +74,8 @@ header {
 		<h1 class="font-color-main" onclick="goHome()">해피펀딩</h1>
 		<nav>
 			<ul>
-				<li><a href="funding_list_view.do">펀딩</a></li>
-				<li><a href="notice_list.do">공지사항</a></li>
+				<li><a href="/Funding/funding_list_view.do">펀딩</a></li>
+				<li><a href="/Funding/notice_list.do">공지사항</a></li>
 				<li><a href="/Funding/pages/systemQnADo.jsp">Q&A</a></li>
 			</ul>
 		</nav>
@@ -89,11 +89,7 @@ header {
 <script>
 let header = document.querySelector(".header");
 let headerHeight = 72;
-<<<<<<< HEAD
 let email = "<%=session.getAttribute("customer_id")%>";
-=======
-let email = "<%=session.getAttribute("seller_id")%>";
->>>>>>> yejin
 if(email == "null"){
 	document.getElementById("loginZone").innerHTML = '<div class="loginButton">로그인</div>';
 }else{
@@ -127,7 +123,7 @@ function goHome(){
 $(document).on("click", ".loginButton", function(e){
 	e.stopPropagation();
 	localStorage.setItem("pastURL", location.href);
-	location.href = "/Funding/slogin.jsp";
+	location.href = "/Funding/pages/login.jsp";
 })
 $(document).on("click", ".logoutButton", function(e){
 	e.stopPropagation();
