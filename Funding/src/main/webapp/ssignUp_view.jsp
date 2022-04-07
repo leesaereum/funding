@@ -184,7 +184,10 @@ function checksignUp() {
 }
 
 function idCheck() {
-	
+	var id = document.form.seller_id.value;
+	if(id.length<1||id==null){
+		alert("중복체크")
+	}
 }
 
 </script>
