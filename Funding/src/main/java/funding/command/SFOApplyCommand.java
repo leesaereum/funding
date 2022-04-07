@@ -18,7 +18,7 @@ public class SFOApplyCommand implements FCommand {
 		
 		//예시로 넣은 값 get으로 받아올거
 		
-		String funding_seller = "abc123";
+		String funding_seller = "test@seller.com";
 		String funding_banner = "banner";
 		String funding_title = "title33";
 		

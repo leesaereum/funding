@@ -17,12 +17,16 @@ import funding.command.ASQWListCommand;
 import funding.command.FCommand;
 import funding.command.FindidCommand;
 import funding.command.FindpwCommand;
+import funding.command.FundingLikeCommand;
 import funding.command.FundingListViewCommand;
+import funding.command.FundingPaymentCommand;
+import funding.command.FundingdetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
 import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
+import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
 import funding.command.SSignUpCommand;
@@ -113,17 +117,20 @@ public class Fcontroller extends HttpServlet {
 			System.out.println("펀딩써치햇지롱");
 			viewpage = "/pages/funding_list_view.jsp";
 		break;
-		case ("/fundingContent_view.do"):
-			viewpage = "";
+		case("/fundingContent_view.do"):
+			command = new FundingdetailCommand();
+			command.execute(request, response);
+			viewpage="detail.jsp";
 			break;
-		case ("/fundingLike.do"):
-			viewpage = "";
+		case("/fundingLike.do"):
+			command = new FundingLikeCommand();
+			command.execute(request, response);
+			viewpage= "detailtest.jsp";
 			break;
-		case ("/fundingOrder_view.do"):
-			viewpage = "";
-			break;
-		case ("/fundigOrder.do"):
-			viewpage = "";
+		case("/fundingOrder.do"):
+			command = new FundingPaymentCommand();
+			command.execute(request, response);
+			viewpage="fundingOrder.jsp";
 			break;
 		case ("/fundingPayment_view.do"):
 			viewpage = "";
@@ -233,7 +240,9 @@ public class Fcontroller extends HttpServlet {
 			viewpage="/pages/makeFunding.jsp";
 			break;
 		case("/sFOApply.do"):
-			viewpage="main.do";
+			command = new SFOApplyCommand();
+			command.execute(request, response);
+			viewpage="main.jsp";
 			break;
 		case ("/sQApply_detail.do"):
 			viewpage = "";
