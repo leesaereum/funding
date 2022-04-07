@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,21 +16,25 @@
 	margin: 0 auto;
 	padding: 51px 0;
 }
-.list__header{
-	width:  100%;
+
+.list__header {
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 }
-.list__pageTitle{
+
+.list__pageTitle {
 	font-size: 21px;
 }
-.list__search__box{
+
+.list__search__box {
 	width: 238px;
 	height: 38px;
 	padding: 0 40px 0 0;
 	position: relative;
 }
-.list__search{
+
+.list__search {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -37,18 +42,21 @@
 	height: 38px;
 	padding-left: 10px;
 }
-.list__search__icon{
+
+.list__search__icon {
 	position: absolute;
 	right: 9px;
 	top: 9px;
 	height: 20px;
 }
-.list__box{
-   list-style:none;
-   margin-top: 17px;
-   border: 1px solid #eee;
+
+.list__box {
+	list-style: none;
+	margin-top: 17px;
+	border: 1px solid #eee;
 }
-.list__liner{
+
+.list__liner {
 	padding: 18px 29px;
 	width: 100%;
 	display: flex;
@@ -56,33 +64,35 @@
 	color: #999;
 	border-bottom: 1px solid #eee;
 }
-
 </style>
 <body>
-<jsp:include page="/components/header.jsp" />
+	<jsp:include page="/components/header.jsp" />
 	<div class="list__wrap">
 		<div class="list__header">
 			<h1 class="list__pageTitle">펀딩 목록</h1>
 			<div class="list__search__box">
-				<input class="list__search" placeholder="검색어를 입력하세요" id="list__search" name="funding_search">
-				<img src="/Funding/assets/search.svg" class="list__search__icon">
+				<input class="list__search" placeholder="검색어를 입력하세요"
+					id="list__search" name="funding_search"> <img
+					src="/Funding/assets/search.svg" class="list__search__icon">
 			</div>
 		</div>
 		<ul class="list__box">
-			<% for(int i=0; i<10; i++){ %>
-			<li class="list__liner">
-				<a href="/Funding/pages/detail.jsp?fid=<%= i %>" class="list__title">
-				네이버페이 신한은행 계좌간편 및 포인트충전결제 일시 중단 안내 (3/5(토) 00:00~12:00)</a>
-				<p class="list__date">2022-04-01</p>
-			</li>
-			<% } %>
+			<li class="list__liner"><p>펀딩명</p><p>판매자</p><p>오픈일</p><p>마감일</p></li>
+			<c:forEach items="${funding}" var="funding">
+				<li class="list__liner"><a
+					href="detail.jsp?fid=${funding.funding_num}"
+					class="list__liner">${funding.funding_title }</a>
+					<p>${funding.funding_seller }</p>
+					<p class="list__date">${funding.funding_openAt }</p>
+					<p class="list__date">${funding.funding_closeAt }</p></li>
+			</c:forEach>
 		</ul>
 	</div>
 	<script src="/Funding/libraries/jQuery.js"></script>
 	<script type="text/javascript">
-	$(document).on("click", ".list__search__icon", function(){
-		location.href = "/Funding/main.jsp";
-	})
+		$(document).on("click", ".list__search__icon", function() {
+			location.href = "/Funding/main.jsp";
+		})
 	</script>
 </body>
 </html>

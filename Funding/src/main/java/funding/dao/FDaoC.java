@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import funding.dto.FDtoFunding;
 import funding.dto.FDtoNotice;
 
 public class FDaoC {
@@ -234,4 +235,41 @@ public class FDaoC {
 		}
 		return pw;
 	}
+
+	public ArrayList<FDtoFunding> fundinglistview() {
+		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt , \n"
+					+ "(select seller_name from seller as s where f.funding_seller = s.seller_id)\n"
+					+ "FROM funding as f;";
+			preparedstatement = connection.prepareStatement(query);
+			resultset = preparedstatement.executeQuery();
+			
+			while(resultset.next()) {
+				int funding_num = resultset.getInt(1);
+				String funding_seller = resultset.getString(6);
+				String funding_title = resultset.getString(3);
+				Timestamp funding_openAt = resultset.getTimestamp(4);
+				Timestamp funding_closeAt = resultset.getTimestamp(5);
+				
+				FDtoFunding dto = new FDtoFunding(funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}//fundinglistview
 }
