@@ -84,9 +84,17 @@ public class FDaoS {
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
-		}
+		}finally {
+			try {
+				if(preparedStatement != null ) preparedStatement.close();
+				if(connection != null ) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 			return false;
 		}
+	}
+	
 	public boolean checkDuplicateId(String id) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -106,10 +114,16 @@ public class FDaoS {
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}
+		}finally {
+			try {
+				if(preparedStatement != null ) preparedStatement.close();
+				if(connection != null ) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		return true;
 	}
-	
+}	
 	public void address(String address_seller,String address_state,String address_city,String address_line) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
