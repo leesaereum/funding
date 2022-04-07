@@ -284,14 +284,14 @@ background-position
 <script type="text/javascript">
 	let emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 	let namePattern = /^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/;
-	let phonePatern = /^[0-9]+$/;
+	let phonePatern = /^([0-9]{3,4})$/;
 	function validate() {
 	const id = document.getElementById('id').value
 	const pw = document.getElementById('pw').value
 	const name = document.getElementById('name').value
 	const phone2 = document.getElementById('phone2').value
 	const phone3 = document.getElementById('phone3').value
-		if (id.match(emailPattern) && pw.length >= 4 && name.match(namePattern)) {
+		if (id.match(emailPattern) && pw.length >= 4 && name.match(namePattern) && phone2.match(phonePattern) && phone3.match(phone3Pattern)) {
 			document.getElementById('submit').disabled = false;
 		} else {
 			document.getElementById('submit').disabled = true;
@@ -354,7 +354,9 @@ background-position
 	function phoneValidate() {
 		const phone2 = document.getElementById('phone2').value
 		const phone3 = document.getElementById('phone3').value
-		if (!phone2.match(phonePattern) || !phone3.match(phonePattern)) {
+		if (!phone2.match(phonePattern)) {
+			document.getElementById('phoneValidate').innerHTML = '전화번호는 숫자로만 입력해주세요'
+		} else if (!phone3.match(phonePattern)) {
 			document.getElementById('phoneValidate').innerHTML = '전화번호는 숫자로만 입력해주세요'
 		} else {
 
@@ -423,9 +425,9 @@ background-position
 						<option>016</option>
 						<option>017</option>
 						<option>019</option>
-					</select> - <input id="phone2" type="text" name="phone2" size="5"
+					</select> - <input id="phone2" type="text" name="phone2" size="5" maxlength="4"
 						onkeyup="validate()" onfocus="phoneFocus()"
-						onblur="phoneValidate()"> - <input id="phone3" type="text"
+						onblur="phoneValidate()"> - <input id="phone3" type="text" maxlength="4"
 						name="phone3" size="5" onkeyup="validate()" onfocus="phoneFocus()"
 						onblur="phoneValidate()">
 					<p id="phoneValidate" class="signUp__warning"></p>

@@ -30,6 +30,7 @@ import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
 import funding.command.SSignUpCommand;
+import funding.command.SearchCommand;
 import funding.command.SignupCommand;
 
 @WebServlet("*.do")
@@ -59,7 +60,6 @@ public class Fcontroller extends HttpServlet {
 		String copath = request.getContextPath();
 		String path = uri.substring(copath.length());
 		String viewpage = null;
-	System.out.println(path);
 
 		// customer용 switch
 		switch (path) {
@@ -110,11 +110,9 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "/pages/funding_list_view.jsp";
 			break;
-//		case ("/fundingSearch_view.do"):
-//			viewpage = "";
-//		break;
 		case ("/fundingSearch.do"):
-			System.out.println("펀딩써치햇지롱");
+			command = new SearchCommand();
+			command.execute(request, response);
 			viewpage = "/pages/funding_list_view.jsp";
 		break;
 		case("/fundingContent_view.do"):

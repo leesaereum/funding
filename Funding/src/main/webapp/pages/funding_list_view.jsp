@@ -88,6 +88,7 @@
 					src="/Funding/assets/search.svg" class="list__search__icon">
 			</div>
 		</div>
+		
 		<ul class="list__box">
 			<li class="list__liner"><p class="list__title">펀딩명</p><p class="list__seller">판매자</p><p class="list__date">오픈일</p><p class="list__date">마감일</p></li>
 			<c:forEach items="${funding}" var="funding">

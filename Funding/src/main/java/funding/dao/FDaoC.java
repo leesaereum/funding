@@ -128,7 +128,6 @@ public class FDaoC {
 				int notice_num = resultset.getInt(1);
 				String notice_title = resultset.getString(2);
 				Timestamp notice_At = resultset.getTimestamp(3);
-				
 				FDtoNotice dto = new FDtoNotice(notice_num, notice_title, notice_At);
 				list.add(dto);
 			}
@@ -260,8 +259,8 @@ public class FDaoC {
 				Timestamp funding_openAt = resultset.getTimestamp(4);
 				Timestamp funding_closeAt = resultset.getTimestamp(5);
 				
-				//FDtoFunding dto = new FDtoFunding(funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt);
-				//list.add(dto);
+				FDtoFunding dto = new FDtoFunding(funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt);
+				list.add(dto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -275,7 +274,48 @@ public class FDaoC {
 			}
 		}
 		return list;
-	}//fundinglistview
+	}//funding list view
+	public ArrayList<FDtoFunding> fundingsearch(String search) {
+		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt, "
+					+ "(select seller_name from seller as s where f.funding_seller = s.seller_id)"
+					+ "FROM funding as f WHERE funding_title Like '%";
+			query += search+"%' OR (select seller_name from seller as s where f.funding_seller = s.seller_id) Like '%";
+			query += search+"%'";
+			System.out.println(query);
+			
+			preparedstatement = connection.prepareStatement(query);
+			resultset = preparedstatement.executeQuery();
+			
+			while(resultset.next()) {
+				int funding_num = resultset.getInt(1);
+				String funding_seller = resultset.getString(6);
+				String funding_title = resultset.getString(3);
+				Timestamp funding_openAt = resultset.getTimestamp(4);
+				Timestamp funding_closeAt = resultset.getTimestamp(5);
+				
+				FDtoFunding dto = new FDtoFunding(funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}//funding search
+	
 	public ArrayList<FDtoFunding> list(String funding_num) {
 		//list
 		
@@ -525,4 +565,6 @@ public class FDaoC {
 		}
 		return FDtoOrder;
 	} //optionlist end
+
+
 }

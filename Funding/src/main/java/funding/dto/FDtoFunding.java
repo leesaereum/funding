@@ -153,6 +153,17 @@ public class FDtoFunding {
 	}
 
 
+	public FDtoFunding(int funding_num, String funding_seller, String funding_title, Timestamp funding_openAt,
+			Timestamp funding_closeAt) {
+		super();
+		this.funding_num = funding_num;
+		this.funding_seller = funding_seller;
+		this.funding_title = funding_title;
+		this.funding_openAt = funding_openAt;
+		this.funding_closeAt = funding_closeAt;
+	}
+
+
 
 
 	

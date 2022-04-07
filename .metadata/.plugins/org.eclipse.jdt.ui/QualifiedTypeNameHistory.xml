@@ -11,4 +11,12 @@
     <fullyQualifiedTypeName name="funding.dao.FDaoC"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoFunding"/>
+    <fullyQualifiedTypeName name="funding.command.FundingLikeCommand"/>
+    <fullyQualifiedTypeName name="funding.command.FundingdetailCommand"/>
+    <fullyQualifiedTypeName name="funding.command.FundingPaymentCommand"/>
+    <fullyQualifiedTypeName name="funding.command.SFOApplyCommand"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoOrder"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoFundingOption"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoFundingQuestion"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
 </qualifiedTypeNameHistroy>
