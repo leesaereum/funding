@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	        (clearTimeout(removeToast), removeToast = setTimeout(function () {
 	            document.getElementById("toast").classList.remove("reveal")
 	        }, 3000)) :
-	        removeToast = setTimeout(function () {
+	        removeToast = setTimeout(function () { 
 	            document.getElementById("toast").classList.remove("reveal")
 	        }, 3000)
 	    toast.classList.add("reveal"),

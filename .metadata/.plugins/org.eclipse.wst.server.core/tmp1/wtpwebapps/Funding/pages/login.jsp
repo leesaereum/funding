@@ -291,7 +291,7 @@ background-position
 			</div>
 			<div>
 				<a href="" target="popup"
-					onclick="window.open('/Funding/findPw_view.do','popup','width=300,height=200'); return false;">비밀번호 찾기</a>
+					onclick="window.open('/Funding/findPw_view.do','popup','width=300,height=400'); return false;">비밀번호 찾기</a>
 			</div>
 			<div class="signIn__infoBox">
 				<p class="signIn__info">

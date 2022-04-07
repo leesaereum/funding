@@ -6,19 +6,18 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import funding.dao.FDaoA;
-import funding.dto.FDtoSeller;
+import funding.dao.FDaoC;
+import funding.dto.FDtoFunding;
 
-public class AFAWListCommand implements FCommand {
+public class FundingListViewCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		FDaoC dao = new FDaoC();
+		ArrayList<FDtoFunding> list = dao.fundinglistview();
 		
-		
-	
+		request.setAttribute("funding", list);
 	}
 
 }

@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="notice_list"/>
+		<item key="selection" value="footer"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="footer"/>
+			<item value="foot"/>
+			<item value="foo"/>
 			<item value="notice_list"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="500"/>
-		<item key="DIALOG_Y_ORIGIN" value="126"/>
+		<item key="DIALOG_X_ORIGIN" value="764"/>
+		<item key="DIALOG_Y_ORIGIN" value="129"/>
 		<item key="DIALOG_WIDTH" value="336"/>
 		<item key="DIALOG_HEIGHT" value="402"/>
 		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>

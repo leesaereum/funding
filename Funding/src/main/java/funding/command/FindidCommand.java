@@ -18,9 +18,6 @@ public class FindidCommand implements FCommand {
 				"-"+request.getParameter("phone3").trim();
 		FDaoC dao = new FDaoC();
 		String customer_id = dao.findId(name, phone);
-		System.out.println(name);
-		System.out.println(phone);
-		System.out.println(customer_id);
 		if(customer_id!=null) {
 			request.setAttribute("customer_id", customer_id);
 			request.setAttribute("customer_name", name);

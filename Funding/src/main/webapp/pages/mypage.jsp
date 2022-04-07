@@ -8,12 +8,11 @@
 <link rel="stylesheet" href="/Funding/styles/init.css">
 <link rel="stylesheet" href="/Funding/styles/base.css">
 <link rel="stylesheet" href="/Funding/styles/fundingCards.css">
-<link rel="stylesheet" href="./mypage.css">
+<link rel="stylesheet" href="/Funding/pages/mypage.css">
 </head>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-	let email = "<%=session.getAttribute("email")%>
-	";
+	let email = "<%=session.getAttribute("customer_id")%>";
 
 		if (email == "null") {
 			location.href = "/Funding/main.jsp"
@@ -47,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						</div>
 						<div class="my__liner">
 							<p class="my__form__subtitle">전화번호(-제외)</p>
-							<input class="my__form__input" type="password" id="pw2">
+							<input class="my__form__input" type="password" id="phone">
 						</div>
 						<div class="my__liner">
 							<p class="my__form__subtitle">도로명 주소</p>
@@ -70,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 	<script type="text/javascript" src="/Funding/libraries/jQuery.js"></script>
-	<script type="text/javascript" src="./mypage.js"></script>
+	<script type="text/javascript" src="/Funding/pages/mypage.js"></script>
 	<script>
 		function goPopup() {
 			var pop = window.open("./addressPopup.jsp", "pop",

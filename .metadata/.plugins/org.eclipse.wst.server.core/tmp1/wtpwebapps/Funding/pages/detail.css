@@ -30,7 +30,7 @@
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
 	width: 100%;
-	padding-right: 300px;
+	padding-right: 240px;
 	display: flex;
 	justify-content: space-between;
 	height: 60px;
@@ -489,6 +489,43 @@
 	color: #828282;
 }
 
+.detail__qna__box{
+	margin-top: 24px;
+}
+.detail__qna__question{
+	font-weight: bold;
+}
+.detail__qna__answer{
+	margin-top:4px;
+}
+.detail__qna__date{
+	text-align: right;
+	color:#666;
+}
+.detail__qna__new__box{
+	margin-bottom: 24px;
+	padding-bottom: 32px;
+	border-bottom: 1px solid #666;
+}
+.detail__qna__new__input{
+	width: 100%;
+	height: 28px;
+}
+.detail__qna__new__submit__box{
+	overflow: hidden;
+	width: 100%;
+}
+.detail__qna__new__submit{
+	float: right;
+	width: 108px;
+	height: 32px;
+	margin-top: 8px;
+	background-color: #1f9eff;
+	border: none;
+	color: white;
+	cursor: pointer;
+}
+
 
 #toast {
     position: fixed;
@@ -511,4 +548,126 @@
     transform: translate(-50%, 0)
 }
 
-
+.detail__popup__wrap{
+	position:fixed;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.8);
+	display:none;
+}
+.detail__popup__wrap.block{
+	display: flex;
+	justify-content:center;
+	align-items: center;
+}
+.detail__popup{
+	padding: 40px 52px;
+	background-color: white;
+}
+.detail__popup__countOption{
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.detail__popup__countOption >input{
+	float: left;
+	width: 16px;
+	height: 28px;
+	border: none;
+	line-height: 28px;
+	font-size: 18px;
+	text-align: right;
+}
+.detail__popup__countOption > p{
+	height: 28px;
+	line-height: 30px;
+	font-size: 17px;
+}
+.detail__popup__option{
+	margin-bottom: 12px;
+}
+.detail__popup__subtitle{
+	font-weight: bold;
+	font-size: 17px;
+}
+.detail__popup__count{
+	float: right;
+	width: 28px;
+	height: 28px;
+	border: none;
+	line-height: 28px;
+	font-size: 16px;
+	text-align: right;
+}
+.detail__popup__right{
+	width: 100%;
+	overflow: hidden;
+}
+.detail__popup__countTxt{
+	height: 28px;
+	line-height: 30px;
+	font-size: 16px;
+	float:right;
+}
+.detail__popup__optionPrice{
+	float:right;
+	line-height: 30px;
+	margin-left: 8px;
+	font-size: 18px;
+}
+.detail__popup__total{
+	width: 100%;
+	overflow: hidden;
+	margin-top: 24px;
+	padding-top:24px;
+	border-top: 1px solid #ddd;
+}
+.detail__popup__totalTxt{
+	height: 28px;
+	line-height: 30px;
+	font-size: 19px;
+	float:right;
+}
+.detail__popup__totalTxt > span{
+	font-size: 21px;
+	color: #0091ff;
+	font-weight: bold;
+}
+.detail__popup__form{
+	border: 2px solid #111; 
+    padding: 24px;
+}
+.detail__popup__bottom{
+	margin-top: 60px;
+	margin-bottom: 12px;
+}
+.detail__popup__bottom > p{
+	text-align: center;
+}
+.detail__popup__payMethodTxt{
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	margin: 24px 0 8px;
+}
+.detail__popup__payMethod{
+	display: flex;
+	width: 100%;
+	height: 60px;
+	justify-content: space-around;
+}
+.detail__popup__payMethod > p{
+	height: 60px;
+	width: 130px;
+	line-height: 60px;
+	text-align: center;
+}
+.detail__popup__payMethod__ini{
+	background-color: #555;
+	color: white;
+}
+.detail__popup__payMethod__kakao{
+	background-color: #FEE500;
+}
