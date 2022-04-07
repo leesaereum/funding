@@ -13,7 +13,6 @@
 }
 </style>
 </head>
-<body>
 <script type="text/javascript">
 	let namePattern = /^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/;
 	let phonePatern = /^[0-9]+$/;
@@ -64,6 +63,7 @@
 	}
 	
 </script>
+<body>
 	<form name="findId" action="/Funding/findId.do" method="post">
 		<div>
 			이름 <input id="name" type="text" name="name" onkeyup="validate()"

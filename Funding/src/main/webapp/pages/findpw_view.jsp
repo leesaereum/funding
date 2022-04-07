@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +13,8 @@
 }
 </style>
 </head>
-<body>
 <script type="text/javascript">
-	let namePattern = /^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/;
-	let phonePatern = /^[0-9]+$/;
+	let emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 	window.onload = function(){
 		let errorCode = "<%=request.getParameter("error")%>"
 		console.log(errorCode)
@@ -26,65 +24,56 @@
 	}
 	
 	function validate() {
-	const name = document.getElementById('name').value
-	const phone2 = document.getElementById('phone2').value
-	const phone3 = document.getElementById('phone3').value
-		if (name.match(namePattern)) {
+	const id = document.getElementById('id').value
+		if (id.match(emailPattern)) {
 			document.getElementById('submit').disabled = false;
 		} else {
 			document.getElementById('submit').disabled = true;
 		}
 	}
-	function nameFocus() {
-		document.getElementById('nameValidate').innerHTML = ''
+	function idFocus() {
+		document.getElementById('idValidate').innerHTML = ''
 	}
-	function phoneFocus() {
-		document.getElementById('phoneValidate').innerHTML = ''
-	}
-	function nameValidate() {
-		const name = document.getElementById('name').value
-		if (!name.match(namePattern)) {
-			document.getElementById('nameValidate').innerHTML = '이름은 한글이나 영어로 입력해주세요'
-		} else if (name.length <1 || name.length > 45) {			
-			document.getElementById('nameValidate').innerHTML = '이름은 1~45자 이내로 입력해주세요'
-		}
-		else {
-			document.getElementById('nameValidate').innerHTML = ''
-		}
-	}
-	function phoneValidate() {
-		const phone2 = document.getElementById('phone2').value
-		const phone3 = document.getElementById('phone3').value
-		if (!phone2.match(phonePattern) || !phone3.match(phonePattern)) {
-			document.getElementById('phoneValidate').innerHTML = '전화번호는 숫자로만 입력해주세요'
+	function idValidate() {
+		const id = document.getElementById('id').value
+		if (!id.match(emailPattern)) {
+			document.getElementById('idValidate').innerHTML = '아이디는 이메일 형식으로 입력해야 합니다'
+		} else if (id.length > 45) {
+			document.getElementById('idValidate').innerHTML = '아이디는 45자 이내로 입력해주세요'
 		} else {
-
-			document.getElementById('phoneValidate').innerHTML = ''
+			document.getElementById('idValidate').innerHTML = ''
 		}
 	}
+
 	
 </script>
-	<form name="findId" action="/Funding/findId.do" method="post">
-		<div>
-			이름 <input id="name" type="text" name="name" onkeyup="validate()"
-				onfocus="nameFocus()" onblur="nameValidate()">
-			<p id="nameValidate" class="signUp__warning"></p>
+<body>
+	<form name="findId" action="/Funding/findPw.do" method="post">
+		<div class="signUp__liner">
+			<p class="signUp__subTitle">아이디</p>
+			<input class="signUp__input" id="id" name="id"
+				placeholder="example@mail.com" onkeyup="validate()"
+				onfocus="idFocus()" onblur="idValidate()">
+			<p id="idValidate" class="signUp__warning"></p>
 		</div>
-		<div>
-			전화번호 <select name="phone1">
-				<option selected="selected">010</option>
-				<option>011</option>
-				<option>016</option>
-				<option>017</option>
-				<option>019</option>
-			</select> - <input id="phone2" type="text" name="phone2" size="5"
-				onkeyup="validate()" onfocus="phoneFocus()" onblur="phoneValidate()">
-			- <input id="phone3" type="text" name="phone3" size="5"
-				onkeyup="validate()" onfocus="phoneFocus()" onblur="phoneValidate()">
-			<p id="phoneValidate" class="signUp__warning"></p>
-		</div>
+				<div class="signIn__liner">
+					<p class="signUp__warning"></p>
+					<p class="signUp__subTitle">비밀번호 찾기 질문:</p>
+					<select name="pw_q">
+						<option selected="selected">가장 좋아하는 캐릭터는?</option>
+						<option>가장 좋아하는 음식은?</option>
+						<option>가장 좋아하는 영화는?</option>
+						<option>기억에 남는 장소는?</option>
+						<option>부모님 성함은?</option>
+
+					</select>
+				</div>
+				<div class="signIn__liner">
+					<p class="signUp__warning"></p>
+					<p class="signUp__subTitle">비밀번호 찾기 답변</p>
+					<input class="signUp__input" id="pw_a" type="text" name="pw_a">
+				</div>
 
 		<input id="submit" type="submit" value="확인" disabled>
 	</form>
-</body>
 </html>

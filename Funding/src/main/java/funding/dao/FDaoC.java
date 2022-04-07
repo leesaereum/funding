@@ -204,4 +204,34 @@ public class FDaoC {
 		}
 		return Id;
 	}
+	public String findpw(String id, String pw_q, String pw_a) {
+		String pw = null;
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT customer_pw FROM customer WHERE customer_id = ? AND customer_pw_q = ? AND customer_pw_a = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
+			preparedstatement.setString(2, pw_q);
+			preparedstatement.setString(3, pw_a);
+			resultset = preparedstatement.executeQuery();
+			
+			if(resultset.next()) {
+				pw = resultset.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return pw;
+	}
 }
