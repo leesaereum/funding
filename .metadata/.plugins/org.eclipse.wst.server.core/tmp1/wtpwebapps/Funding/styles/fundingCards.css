@@ -1,0 +1,102 @@
+@charset "UTF-8";
+.fundingCards {
+	width: 1080px;
+	margin: 0 auto; display : flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	display: flex;
+}
+
+.fundingCard {
+	width: 252px;
+	height: 300px;
+	margin-bottom: 24px;
+	border: 1px solid #e0e0e0;
+	position:relative;
+	z-index:1;
+}
+.fundingCard:hover{
+	border: 1px solid #999;
+	cursor: pointer;
+}
+.fundingCardHover{
+	display: none;
+	position: absolute;
+	top:0;
+	left:0;
+	z-index:2;
+	background-color: rgba(0,0,0,0.7);
+	width: 100%;
+	height: 100%;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+}
+.fundingCardHover > p:first-child{
+	margin: 110px 0 12px;
+}
+.fundingCardHover > p:last-child{
+	font-size: 24px;
+	font-weight: bold;
+}
+.fundingCard:hover > .fundingCardHover{
+	display: block;
+}
+.fundingThumbBox{
+	width: 100%;
+	height: 141px;
+	overflow: hidden;
+}
+.fundingThumbBox > img{
+	width: 100%;
+	height: auto;
+}
+.fundingContentBox{
+	padding: 20px;
+	overflow: hidden;
+	padding-right: 16px;
+	border-bottom: 1px solid #eaeaea;
+}
+.fundingContentBox > div{
+	float: left;
+}
+.fundingContentLeft{
+	width: 155px;
+}
+.fundingTitle{
+	color: #333333;
+	font-size: 16px;
+	font-weight: bold;
+	word-break: keep-all;
+}
+.fundingSeller{
+	verflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 8px;
+    font-size: 15px;
+    color: #828282;
+    letter-spacing: -.5px;
+}
+.fundingRate{
+	margin-left: 8px;
+	width:50px;
+	height:50px;
+	line-height: 50px;
+	text-align:center;
+	border:1px solid #0091FF;
+	color: #0091FF;
+	border-radius: 50px;
+}
+.fundingCardBottom{
+	height: 40px;
+	line-height: 40px;
+	padding: 0 20px;
+	display:flex;
+	justify-content:space-between;
+}
+.fundingLeftDate{
+	font-size: 14px;
+    letter-spacing: -.5px;
+    color: #828282;
+}
