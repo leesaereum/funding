@@ -74,7 +74,12 @@ header {
 		<h1 class="font-color-main" onclick="goHome()">해피펀딩</h1>
 		<nav>
 			<ul>
+<<<<<<< HEAD
 				<li><a href="/Funding/pages/noticeDo.jsp">공지사항</a></li>
+=======
+				<li><a href="funding_listview.do">펀딩</a></li>
+				<li><a href="notice_list.do">공지사항</a></li>
+>>>>>>> newdong
 				<li><a href="/Funding/pages/systemQnADo.jsp">Q&A</a></li>
 			</ul>
 		</nav>
