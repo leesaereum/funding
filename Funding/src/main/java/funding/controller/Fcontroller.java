@@ -40,6 +40,7 @@ import funding.command.SLogoutCommand;
 import funding.command.SSignUpCommand;
 import funding.command.SearchCommand;
 import funding.command.SignupCommand;
+import funding.command.SystemQuestionCommand;
 
 @WebServlet("*.do")
 public class Fcontroller extends HttpServlet {
@@ -166,7 +167,9 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "";
 			break;
 		case ("/systemQuestion_list.do"):
-			viewpage = "";
+			command = new SystemQuestionCommand();
+			command.execute(request, response);	
+			viewpage = "/pages/systemquestion_list.jsp";
 			break;
 		case ("/systemQuestion_view.do"):
 			viewpage = "";

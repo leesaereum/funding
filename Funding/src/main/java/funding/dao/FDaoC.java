@@ -16,6 +16,7 @@ import funding.dto.FDtoFundingOption;
 import funding.dto.FDtoFundingQuestion;
 import funding.dto.FDtoNotice;
 import funding.dto.FDtoOrder;
+import funding.dto.FDtoSystemQuestion;
 
 public class FDaoC {
 	DataSource dataSource;
@@ -314,7 +315,38 @@ public class FDaoC {
 		}
 		return list;
 	}//funding search
-	
+	public ArrayList<FDtoSystemQuestion>systemquestion_view(){
+		ArrayList<FDtoSystemQuestion> list = new ArrayList<FDtoSystemQuestion>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT * FROM system_question";
+			preparedstatement = connection.prepareStatement(query);
+			resultset = preparedstatement.executeQuery();
+			
+			while(resultset.next()) {
+				int question_num = resultset.getInt(1);
+				String question_title = resultset.getString(4);
+				Timestamp question_at = resultset.getTimestamp(6);
+				String question_state = resultset.getString(7);
+				FDtoSystemQuestion dto = new FDtoSystemQuestion(question_num, question_title, question_at, question_state);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 	public ArrayList<FDtoFunding> list(String funding_num) {
 		//list
 		
