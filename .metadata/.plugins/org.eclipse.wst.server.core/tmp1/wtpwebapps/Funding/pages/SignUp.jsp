@@ -214,7 +214,7 @@ background-position
 			document.getElementById('nameValidate').innerHTML = '이름은 한글이나 영어로 입력해주세요'
 		} else if (name.length <1 || name.length > 45) {			
 			document.getElementById('nameValidate').innerHTML = '이름은 1~45자 이내로 입력해주세요'
-		}d
+		}
 		else {
 			document.getElementById('nameValidate').innerHTML = ''
 		}
