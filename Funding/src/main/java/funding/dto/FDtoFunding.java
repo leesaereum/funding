@@ -174,13 +174,14 @@ public class FDtoFunding {
 	
 
 	public FDtoFunding(String funding_title, Timestamp funding_openAt, Timestamp funding_closeAt, int funding_purpose,
-			String content_content) {
+			String content_content, String funding_banner) {
 		super();
 		this.funding_title = funding_title;
 		this.funding_openAt = funding_openAt;
 		this.funding_closeAt = funding_closeAt;
 		this.funding_purpose = funding_purpose;
 		this.content_content = content_content;
+		this.funding_banner = funding_banner;
 	}
 
 
