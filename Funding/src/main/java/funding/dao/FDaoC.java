@@ -338,7 +338,7 @@ public class FDaoC {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select option_name, option_price, option_amount from funding_option where option_funding = ?";
+			String query = "select option_num, option_name, option_price, option_amount from funding_option where option_funding = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, funding_num);
 
@@ -349,10 +349,11 @@ public class FDaoC {
 				String option_name = resultSet.getString("option_name"); 
 				int option_price = resultSet.getInt("option_price"); 
 				int option_amount = resultSet.getInt("option_amount"); 
+				int option_num = resultSet.getInt("option_num");
 		
 			
 
-				FDtoFundingOption dto2 = new FDtoFundingOption(option_name, option_price, option_amount);
+				FDtoFundingOption dto2 = new FDtoFundingOption(option_num, option_name, option_price, option_amount);
 				FDtoFundingOption.add(dto2);
 			}
 			

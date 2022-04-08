@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주문 완료 페이지</title>
 </head>
 <body>
-ORDER INSERT!
+<h1>펀딩 신청이 완료되었습니다!</h1>
+<a href="/Funding/main.jsp">메인 화면으로 돌아가기</a>
 </body>
 </html>

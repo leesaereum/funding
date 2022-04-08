@@ -89,17 +89,19 @@ header {
 <script>
 let header = document.querySelector(".header");
 let headerHeight = 72;
-let email = "<%=session.getAttribute("customer_id")%>";
-if(email == "null"){
-	document.getElementById("loginZone").innerHTML = '<div class="loginButton">로그인</div>';
-}else{
-	document.getElementById("loginZone").innerHTML = '<p class="signedIn_email" onclick="goMyPage()">'+email.split("@")[0]+' 님</p><div class="logoutButton">로그아웃</div>';
-}
+
 let isSeller = "<%=session.getAttribute("isSeller")%>";
 if(isSeller != "null"){
-	let txt = document.getElementById("loginZone").innerHTML;
-	txt += '<div class="makeFunding">펀딩 만들기</div>';
+	let email = "<%=session.getAttribute("seller_id")%>";
+	let txt = '<p class="signedIn_email" onclick="goMyPage()">'+email+'</p><div class="logoutButton">로그아웃</div><div class="makeFunding">펀딩 만들기</div>';
 	document.getElementById("loginZone").innerHTML = txt;
+}else{
+	let email = "<%=session.getAttribute("customer_id")%>";
+	if(email == "null"){
+		document.getElementById("loginZone").innerHTML = '<div class="loginButton">로그인</div>';
+	}else{
+		document.getElementById("loginZone").innerHTML = '<p class="signedIn_email" onclick="goMyPage()">'+email+'</p><div class="logoutButton">로그아웃</div>';
+	}
 }
 window.onscroll = function () {
   if(window.innerHeight > 1200){
