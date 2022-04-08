@@ -9,12 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
 import funding.command.ACAWListCommand;
 import funding.command.ACApproveCommand;
-=======
 
->>>>>>> yejin
 import funding.command.ACListCommand;
 import funding.command.ACRejectCommand;
 import funding.command.AFAWListCommand;
@@ -28,7 +25,6 @@ import funding.command.ASrejectCommand;
 import funding.command.FCommand;
 import funding.command.FindidCommand;
 import funding.command.FindpwCommand;
-<<<<<<< HEAD
 import funding.command.FundingLikeCommand;
 import funding.command.FundingListViewCommand;
 import funding.command.FundingPaymentCommand;
@@ -38,12 +34,6 @@ import funding.command.LogoutCommand;
 import funding.command.MainCommand;
 import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
-=======
-
-import funding.command.LoginCommand;
-import funding.command.LogoutCommand;
-import funding.command.MainCommand;
->>>>>>> yejin
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
@@ -261,10 +251,7 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage="main.jsp";
 			break;
-<<<<<<< HEAD
-		case ("/sQApply_detail.do"):
-			viewpage = "";
-=======
+
 		case("/sQApply_view.do"):
 			command=new SFOApplyCommand();
 			command.execute(request, response);
@@ -272,7 +259,6 @@ public class Fcontroller extends HttpServlet {
 			break;
 		case("/sQApply.do"):
 			viewpage="main.do";
->>>>>>> yejin
 			break;
 		case ("/SFOApply.do"):
 			viewpage = "";

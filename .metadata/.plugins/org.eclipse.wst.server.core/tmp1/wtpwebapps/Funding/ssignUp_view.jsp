@@ -114,7 +114,7 @@ function checksignUp() {
 	if(form.seller_id.value == ""){
 		alert("아이디를 입력해 주세요.")
 		form.seller_id.focus()
-		return false	
+		return false
 	}else if(!regExpEmail.test(id)){
 		alert("입력하신 아이디가 이메일 형식이 아닙니다.")
 		form.seller_id.select()
@@ -183,6 +183,7 @@ function checksignUp() {
 	function idCheck() {
 		window.open("./sidCheckForm.jsp","popup","width=600,height=600")
 	}
+	
 </script>
 
 

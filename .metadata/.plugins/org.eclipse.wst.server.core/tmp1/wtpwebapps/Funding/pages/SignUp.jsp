@@ -291,7 +291,7 @@ background-position
 	const name = document.getElementById('name').value
 	const phone2 = document.getElementById('phone2').value
 	const phone3 = document.getElementById('phone3').value
-		if (id.match(emailPattern) && pw.length >= 4 && name.match(namePattern) && phone2.match(phonePattern) && phone3.match(phone3Pattern)) {
+		if (id.match(emailPattern) && pw.length >= 4 && name.match(namePattern)) {
 			document.getElementById('submit').disabled = false;
 		} else {
 			document.getElementById('submit').disabled = true;
