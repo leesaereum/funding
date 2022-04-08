@@ -222,4 +222,27 @@ public class FDaoS {
 		}
 		
 	}
+	
+	//calculate funding 
+	public void sMFCapply(int calculate_funding, String calculate_seller, String calculate_admin
+						,int calculate_cost, String calculate_createAt, String calculate_approveAt
+						, String calculate_state) {
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
