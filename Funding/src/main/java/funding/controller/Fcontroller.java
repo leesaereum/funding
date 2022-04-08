@@ -276,7 +276,7 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "";
 			break;
 		case ("/sMFCApply.do"):
-			viewpage = "";
+			viewpage = "sMFCApply.jsp";
 			break;
 		case ("/sFADetail.do"):
 			viewpage = "";

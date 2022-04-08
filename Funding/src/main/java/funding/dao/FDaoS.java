@@ -228,45 +228,34 @@ public class FDaoS {
 		
 	}
 	
-	//calculate funding 
-	public ArrayList<FDtoCalculate> list() {
-		ArrayList<FDtoCalculate> dtoCalculates = new ArrayList<FDtoCalculate>();	
+	public void sMFCapply(int calculate_funding, String calculate_seller) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select c.calcuate_funding from calculate c, admin ad, funding ";
-			preparedStatement  = connection.prepareStatement(query);
-			resultSet = preparedStatement.executeQuery();
-			
-			while(resultSet.next()) {
-				int calculate_funding =resultSet.getInt("calculate_funding");
-				String calculate_seller = resultSet.getString("calculate_seller");
-				String calculate_admin = resultSet.getString("calculate_admin");
-				int calculate_cost = resultSet.getInt("calculate_cost");
-				Timestamp calculate_createAt = resultSet.getTimestamp("createAt");
-				Timestamp calculate_approveAt = resultSet.getTimestamp("approveAt");
-				String calculate_state = resultSet.getString("calculate_state");
-				
-				FDtoCalculate dtoCalculate = new FDtoCalculate(calculate_cost, calculate_funding, calculate_seller, calculate_cost, calculate_state);
-				dtoCalculates.add(dtoCalculate);		
-			}
-		}catch (Exception e) {
-			// TODO: handle exception
+			String query ="insert into calculate (calculate_funding, calculate_seller, calculate_admin, calculate_createAt, calculate_state) "
+					+ "values('9','seller@seller.com','admin@admin.com',now(),'정산대기') "
+					+ "update calculate set calculate_cost = "
+					+ "(select sum(order_price * order_count) from order1 o "
+					+ "where o.order_funding = calculate.calculate_funding group by o.order_funding)";
+			preparedStatement = connection.prepareStatement(query);
+		
+			preparedStatement.setInt(1, calculate_funding);
+			preparedStatement.setString(2, calculate_seller);
+
+			preparedStatement.executeUpdate();
+		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
-				if(resultSet != null ) resultSet.close();
-				if(preparedStatement != null )preparedStatement.close();
+				if(preparedStatement != null ) preparedStatement.close();
 				if(connection != null ) connection.close();
-			}catch (Exception e) {
-				// TODO: handle exception
+			}catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
-		return dtoCalculates;
+		
 	}
 	
 	public String calcFunding_title(String funding_title) {
