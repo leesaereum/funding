@@ -107,7 +107,6 @@ header {
 let header = document.querySelector(".header");
 let headerHeight = 72;
 let email = "<%=session.getAttribute("seller_id")%>";
-let email = "<%=session.getAttribute("email")%>";
 if(email == "null"){
 	document.getElementById("loginZone").innerHTML = '<div class="loginButton">로그인</div>';
 }else{
@@ -160,7 +159,6 @@ $(document).on("click", ".makeFunding", function(e){
 	<%
 		String address=request.getParameter("address_state") + " " +request.getParameter("address_city")
 							+ " " +request.getParameter("address_line");
-		out.print(request.getParameter("seller_name"));
 	%>
 	<div class="ex-layout">
 		<div class="menu"><h2 align="right">판매자 신청페이지&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</h2><hr></div>

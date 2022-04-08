@@ -223,6 +223,7 @@ public class Fcontroller extends HttpServlet {
 		case("/sQApply_view.do"):
 			command=new SFOApplyCommand();
 			command.execute(request, response);
+			viewpage="sQApply_view.jsp";
 			break;
 		case("/sQApply.do"):
 			viewpage="main.do";

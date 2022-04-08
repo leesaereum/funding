@@ -8,8 +8,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.mysql.cj.x.protobuf.MysqlxConnection.Close;
-
 public class FDaoS {
 	DataSource dataSource;
 
@@ -34,9 +32,8 @@ public class FDaoS {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into seller (seller_id, seller_pw, seller_number, seller_profile, seller_name "
-					       + ", seller_phone, seller_person_name, seller_person_phone, seller_state) values (?, ?, ?, ?, ?, ?, ?, ?, "+
-					"'Ω¬¿Œ¥Î±‚"+")";
+			String query = "insert into seller (seller_id, seller_pw, seller_number, seller_profile, seller_name, seller_phone "
+					       + ", seller_person_name, seller_person_phone, seller_state) values (?, ?, ?, ?, ?, ?, ?, ?, 'ÏäπÏù∏ÎåÄÍ∏∞')";
 			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, seller_id);
@@ -102,13 +99,14 @@ public class FDaoS {
 		String query = "select * from seller where seller_id=?";	
 		
 		try {
+			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
 				String iD =resultSet.getString("seller_id");
-				System.out.printf("%s : æ∆¿Ãµ ¡∏¿Á!\n",id);
+				System.out.printf("%s : ÔøΩÔøΩÔøΩÃµÔøΩ ÔøΩÔøΩÔøΩÔøΩ!\n",id);
 				return false;
 			}
 		}catch (Exception e) {
@@ -190,20 +188,16 @@ public class FDaoS {
 	}//ssignIn end
 	
 	//seller apply
-	public void sFOapply(String seller_name,String seller_number,String seller_person_name,String seller_person_phone
-			,String address_state,String address_city,String address_line) {
+	public void sFOapply(String seller_id, String seller_name,String seller_number,String seller_person_name,String seller_person_phone
+			,String address_seller, String address_state,String address_city,String address_line) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query ="select seller_name, seller_number, seller_person_name, seller_person_phone "
-					+ ",(select address_state from address a where a.address_seller = s.seller_id) "
-					+ "(select address_city from address a where a.address_seller = s.seller_id) "
-					+ "(select address_line from address a where a.address_seller = s.seller_id) "
-					+ "from seller s "
-					+ "where seller_id in ( "
-					+ "select address_seller from address a)";
+			String query ="select s.seller_name, s.seller_number, s.seller_person_name, s.seller_person_phone, a.address_state, a.address_city, a.address_line "
+							+ "from seller s, address a "
+							+ "where s.seller_id = a.address_seller";
 			
 			preparedStatement = connection.prepareStatement(query);
 		
@@ -211,9 +205,9 @@ public class FDaoS {
 			preparedStatement.setString(2, seller_number);
 			preparedStatement.setString(3, seller_person_name);
 			preparedStatement.setString(4, seller_person_phone);
-			preparedStatement.setString(2, address_state);
-			preparedStatement.setString(3, address_city);
-			preparedStatement.setString(4, address_line);
+			preparedStatement.setString(5, address_state);
+			preparedStatement.setString(6, address_city);
+			preparedStatement.setString(7, address_line);
 
 			preparedStatement.executeUpdate();
 		}catch(Exception e) {
