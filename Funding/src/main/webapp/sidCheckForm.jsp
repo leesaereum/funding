@@ -8,17 +8,13 @@
 <title>아이디 중복확인</title>
 </head>
 <script type="text/javascript">
-	function blankCheck() {
-		var id = p.id.value;
-		id=id.trim();
-		return true;
-	}
+
 
 </script>
 <body>
 <div style = "text-align : center;">
 		<h3>*아이디 중복확인*</h3>
-		<form action="sidCheckProc.jsp" method="get" onsubmit="return blankCheck(this)">
+		<form action="sidCheckProc.jsp" method="get">
 		아이디 : <input type = "text" name = "seller_id" autofocus>
 		<input type="submit" value="중복확인">
 		</form>

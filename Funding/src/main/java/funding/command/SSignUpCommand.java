@@ -14,9 +14,8 @@ public class SSignUpCommand implements FCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		Object ID =session.getAttribute("selelr_id");
-		String seller_id = (String)ID;	
+		
+		String seller_id = request.getParameter("seller_id");	
 		String seller_pw = request.getParameter("seller_pw1");
 		String seller_pw2 =request.getParameter("seller_pw2");
 		String seller_number =request.getParameter("seller_number1") + "-" + request.getParameter("seller_number2")
@@ -39,7 +38,8 @@ public class SSignUpCommand implements FCommand {
 				seller_person_name, seller_person_phone, address_seller, address_state, address_city, address_line);
 		daoS.address(address_seller, address_state, address_city, address_line);
 		
-		daoS.duplecateID(seller_id);
+		daoS.duplecateID(seller_id,seller_pw);
+		daoS.checkDuplicateId(seller_id);
 		
 	}
 

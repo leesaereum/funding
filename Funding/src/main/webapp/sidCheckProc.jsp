@@ -7,27 +7,31 @@
 <meta charset="UTF-8">
 <title>아이디 중복확인 결과</title>
 </head>
-<body>
-	<div style="text-align: center;">
-		<h3>*아이디 중복확인 결과*</h3>
-	<%
-	request.getParameter("utf-8");
-	String id = request.getParameter("seller_id");
+<div style="text-align: center"></div> 
+<h3>* 아이디 중복 확인 결과 *</h3> 
+<% 
+	String id=request.getParameter("seller_id"); 
 	FDaoS daoS = new FDaoS();
-	int result = daoS.duplecateID(id);
-	if(result == 0){
-		out.print("사용가능한 아이디입니다.");
-	}else if(result == 1){
-		out.print("중복된 아이디입니다.");
-	}else{
-		out.print("에러 발생!!!!");
-	}
-	%>
-	<hr>
-	<a href="javascript:history.back()">[다시검색]</a>
-	&nbsp;&nbsp;
-	<a href="javascript:window.close()">[창닫기]</a>
-	</div>
-	
+	boolean id_check=daoS.checkDuplicateId(id);
+	int cnt =0;
+	out.println("입력 ID : <strong>" + id + "</stong>"); 
+	if(id_check==true){ out.println("<p>사용 가능한 아이디입니다.</p>"); 
+	out.println("<a href='javascript:apply(\"" + id + "\")'>[적용]</a>"); %> 
+	<script> 
+	function apply(id){
+		alert("apply");
+		opener.document.ssignUpForm.seller_id.value=id; 
+		window.close(); 
+		}
+	</script>
+	 <% }else{ 
+		 out.println("<p style='color: red'>해당 아이디는 사용하실 수 없습니다.</p>"); 
+		 }//if end 
+		 %> 
+		 <hr>
+		  <a href="javascript:history.back()">[다시시도]</a> 
+		  &nbsp; &nbsp; 
+		  <a href="javascript:window.close()">[창닫기]</a>
+
 </body>
 </html>
