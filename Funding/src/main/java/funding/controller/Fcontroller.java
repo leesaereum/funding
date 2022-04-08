@@ -124,7 +124,6 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "/pages/funding_list_view.jsp";
 		break;
 		case("/fundingContent_view.do"):
-			System.out.println(path);
 			command = new FundingdetailCommand();
 			command.execute(request, response);
 			viewpage="/pages/detail.jsp";

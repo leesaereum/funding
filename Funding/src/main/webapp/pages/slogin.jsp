@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>해피펀딩 판매자 로그인</title>
-<link rel="stylesheet" href="../styles/init.css">
+<link rel="stylesheet" href="/Funding/styles/init.css">
 <style type="text/css">
 html {
 	height: 100%;
@@ -249,7 +249,7 @@ background-position
 			<jsp:include page="/apis/socialLogin/kakaoLogin.jsp" />
 			<jsp:include page="/apis/socialLogin/naverLogin.jsp" />
 			<div class="signIn__divider"></div>
-			<form action="slogin.do" name="signInForm" method="post"
+			<form action="/Funding/slogin.do" name="signInForm" method="post"
 				onsubmit="checkCheck()">
 				<div class="signIn__liner">
 					<p class="signIn__subTitle">아이디</p>
