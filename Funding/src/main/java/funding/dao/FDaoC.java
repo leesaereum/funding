@@ -248,7 +248,7 @@ public class FDaoC {
 			connection = dataSource.getConnection();
 			String query = "SELECT funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt , \n"
 					+ "(select seller_name from seller as s where f.funding_seller = s.seller_id)\n"
-					+ "FROM funding as f;";
+					+ "FROM funding as f where funding_state = '진행';";
 			preparedstatement = connection.prepareStatement(query);
 			resultset = preparedstatement.executeQuery();
 			
