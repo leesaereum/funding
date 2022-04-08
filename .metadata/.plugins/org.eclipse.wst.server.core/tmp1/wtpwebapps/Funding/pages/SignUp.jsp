@@ -35,155 +35,25 @@ keyframes gradientBG { 0% {
 }
 
 50
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 %
 {
 background-position
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 100
-
-
-
-
-
-
-
-
-
-
-
-
 %
 50
-
-
-
-
-
-
-
-
-
-
-
 
 %;
 }
 100
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 %
 {
 background-position
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 0
-
-
-
-
-
-
-
-
-
-
-
-
 %
 50
-
-
-
-
-
-
-
-
-
-
-
-
 %;
 }
 }
@@ -289,8 +159,6 @@ background-position
 	const id = document.getElementById('id').value
 	const pw = document.getElementById('pw').value
 	const name = document.getElementById('name').value
-	const phone2 = document.getElementById('phone2').value
-	const phone3 = document.getElementById('phone3').value
 		if (id.match(emailPattern) && pw.length >= 4 && name.match(namePattern)) {
 			document.getElementById('submit').disabled = false;
 		} else {
@@ -349,18 +217,6 @@ background-position
 		}d
 		else {
 			document.getElementById('nameValidate').innerHTML = ''
-		}
-	}
-	function phoneValidate() {
-		const phone2 = document.getElementById('phone2').value
-		const phone3 = document.getElementById('phone3').value
-		if (!phone2.match(phonePattern)) {
-			document.getElementById('phoneValidate').innerHTML = '전화번호는 숫자로만 입력해주세요'
-		} else if (!phone3.match(phonePattern)) {
-			document.getElementById('phoneValidate').innerHTML = '전화번호는 숫자로만 입력해주세요'
-		} else {
-
-			document.getElementById('phoneValidate').innerHTML = ''
 		}
 	}
 </script>
