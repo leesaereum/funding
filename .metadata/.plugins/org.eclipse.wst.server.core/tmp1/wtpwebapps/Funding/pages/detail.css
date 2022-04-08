@@ -75,6 +75,11 @@
 	margin-top: 48px;
 }
 
+.detail__left p img{
+	max-width: 618px;
+	height:auto;
+}
+
 .detail__participant__title{
 	margin-bottom: 25px;
 	font-size: 22px;

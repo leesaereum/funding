@@ -18,13 +18,11 @@ public class FDtoFunding {
 	String funding_state;
 	int funding_fee;
 	
-<<<<<<< HEAD
 	//funding_content 태이블에 있는건데 같이 받기 위해서 가져왔습니다.
 	String content_content;
 //	String option_name;
 //	int option_price;
 //	int option_amount;
-=======
 	public FDtoFunding() {
 	}
 	
@@ -56,7 +54,6 @@ public class FDtoFunding {
 		this.funding_category = funding_category;
 		this.funding_state = funding_state;
 	}
->>>>>>> yimoonyeol
 
 	public int getFunding_num() {
 		return funding_num;
@@ -138,21 +135,12 @@ public class FDtoFunding {
 		this.funding_hits = funding_hits;
 	}
 
-<<<<<<< HEAD
-	public String getFunding_categori() {
-		return funding_categori;
-	}
-
-	public void setFunding_categori(String funding_categori) {
-		this.funding_categori = funding_categori;
-=======
 	public String getFunding_category() {
 		return funding_category;
 	}
 
 	public void setFunding_category(String funding_category) {
 		this.funding_category = funding_category;
->>>>>>> yimoonyeol
 	}
 
 	public String getFunding_state() {
@@ -170,7 +158,6 @@ public class FDtoFunding {
 	public void setFunding_fee(int funding_fee) {
 		this.funding_fee = funding_fee;
 	}
-<<<<<<< HEAD
 
 	public String getContent_content() {
 		return content_content;
@@ -209,9 +196,6 @@ public class FDtoFunding {
 
 
 
-
-=======
->>>>>>> yimoonyeol
 	
 	
 }

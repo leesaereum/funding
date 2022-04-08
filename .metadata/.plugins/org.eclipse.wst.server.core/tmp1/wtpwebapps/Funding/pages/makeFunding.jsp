@@ -16,7 +16,7 @@
 	<div class="MF__background">
 		<div class="MF__wrap">
 			<div class="MF__tabs">
-				<div class="MF__tab" id="MF__tab__1">
+				<div class="MF__tab selected" id="MF__tab__1">
 					<p class="MF__tab__step">STEP 1</p>
 					<p class="MF__tab__description">펀딩 기본 정보 입력</p>
 				</div>
@@ -24,12 +24,12 @@
 					<p class="MF__tab__step">STEP 2</p>
 					<p class="MF__tab__description">리워드 정보 입력</p>
 				</div>
-				<div class="MF__tab selected" id="MF__tab__3">
+				<div class="MF__tab" id="MF__tab__3">
 					<p class="MF__tab__step">STEP 3</p>
 					<p class="MF__tab__description">펀딩 콘텐츠 입력</p>
 				</div>
 			</div>
-			<div class="MF__tabContent" id="tabContent__1">
+			<div class="MF__tabContent selected" id="tabContent__1">
 				<h3 class="MF__subtitle">STEP1 - 펀딩 기본 정보 입력</h3>
 				<p class="MF__basic__title">펀딩 제목</p>
 				<p class="MF__basic__description">24자 이내의 매력적인 제목을 입력해주세요</p>
@@ -108,7 +108,7 @@
 					<p class="MF__moveTab__btn" onclick="moveTab(2, 3)">다음</p>
 				</div>
 			</div>
-			<div class="MF__tabContent selected" id="tabContent__3">
+			<div class="MF__tabContent" id="tabContent__3">
 				<h3 class="MF__subtitle">STEP3 - 펀딩 콘텐츠 입력</h3>
 				<div id="editor"></div>
 				<div class="MF__moveTab">

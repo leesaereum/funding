@@ -287,7 +287,6 @@ public class FDaoC {
 					+ "FROM funding as f WHERE funding_title Like '%";
 			query += search+"%' OR (select seller_name from seller as s where f.funding_seller = s.seller_id) Like '%";
 			query += search+"%'";
-			System.out.println(query);
 			
 			preparedstatement = connection.prepareStatement(query);
 			resultset = preparedstatement.executeQuery();

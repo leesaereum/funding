@@ -138,7 +138,7 @@ h1 {
 	}
 </script>
 <body>
-	<h1 align="center">Admin Page</h1>
+	<h1 align="center">해피펀딩 관리자 페이지</h1>
 
 	<input type="button" value="logout" align="center" onclick="LogOut()">
 
@@ -148,8 +148,8 @@ h1 {
 			<li><a href="#" id="current">신청관리</a>
 				<ul>
 					<li><a href="aSQWList.do">판매자승인 대기</a></li>
-					<li><a href="#">펀딩승인 대기</a></li>
-					<li><a href="#">정산승인 대기</a></li>
+					<li><a href="aFAWList.do">펀딩승인 대기</a></li>
+					<li><a href="aCAWList.do">정산승인 대기</a></li>
 				</ul></li>
 			<li><a href="#" id="current">문의관리</a>
 				<ul>

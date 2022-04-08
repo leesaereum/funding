@@ -118,11 +118,8 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "/pages/funding_list_view.jsp";
 			break;
 		case ("/fundingSearch.do"):
-<<<<<<< HEAD
 			command = new SearchCommand();
 			command.execute(request, response);
-=======
->>>>>>> newdong
 			viewpage = "/pages/funding_list_view.jsp";
 		break;
 		case("/fundingContent_view.do"):
@@ -302,19 +299,7 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "aCList.jsp";
 			break;
-		case ("/aCAWList.do"):
-			viewpage = "";
-			break;
-<<<<<<< HEAD
-		case ("/aCADetail.do"):
-			viewpage = "";
-			break;
-		case ("/aCApprove.do"):
-			viewpage = "";
-			break;
-		case ("/aCReject.do"):
-			viewpage = "";
-=======
+
 		case("/aCAWList.do"):
 			command = new ACAWListCommand();
 			command.execute(request, response);
@@ -332,7 +317,6 @@ public class Fcontroller extends HttpServlet {
 			command = new ACRejectCommand();
 			command.execute(request, response);
 			viewpage="aCAWList.do";
->>>>>>> yimoonyeol
 			break;
 		case ("/aSQWList.do"):
 			command = new ASQWListCommand();
@@ -342,19 +326,6 @@ public class Fcontroller extends HttpServlet {
 		case ("/aSQDetail.do"):
 			viewpage = "";
 			break;
-<<<<<<< HEAD
-		case ("/aSQualify.do"):
-			viewpage = "";
-			break;
-		case ("/aSreject.do"):
-			viewpage = "";
-			break;
-		case ("/aFAWList.do"):
-			viewpage = "";
-			break;
-		case ("/aFADetail.do"):
-			viewpage = "";
-=======
 		case("/aSQualify.do"):
 			command = new ASQualifyCommand();
 			command.execute(request, response);
@@ -382,13 +353,6 @@ public class Fcontroller extends HttpServlet {
 			command = new AFRejectCommand();
 			command.execute(request, response);
 			viewpage="aFAWList.do";
->>>>>>> yimoonyeol
-			break;
-		case ("/aFApprove.do"):
-			viewpage = "";
-			break;
-		case ("/aFreject.do"):
-			viewpage = "";
 			break;
 		case ("/aSAList.do"):
 			viewpage = "";
