@@ -361,7 +361,7 @@ public class FDaoS {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "INSERT INTO funding (funding_seller, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_purpose, funding_category, funding_fee) values(?, ?, ?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO funding (funding_seller, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_purpose, funding_category, funding_fee, funding_state) values(?, ?, ?, ?, ?, ?, ?, ?,'진행')";
 			preparedStatement = connection.prepareStatement(query);
 
 			preparedStatement.setString(1, funding_seller);
