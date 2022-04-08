@@ -160,31 +160,31 @@ h1 {
 			<li><a href="#" id="current">펀딩리스트</a></li>
 			<li><a href="#" id="current">공지사항</a></li>
 
-				
-				
-<!-- 			<li><a href="#">문의관리</a></li>
-			<li><a href="#">펀딩리스트</a></li>
-			<li><a href="#">공지사항</a></li> -->
+
 		</ul>
 	</div>
 
 	<hr class="first">
 	<table border="0">
 		<tr>
-			<th width="20%" align="center">ID</th>
-			<th width="20%" align="center">이름</th>
-			<th width="20%" align="center">전화번호</th>
-			<th width="40%" align="center">주소</th>
+			<th width="10%" align="center">정산 번호</th>
+			<th width="10%" align="center">펀딩 이름</th>
+			<th width="10%" align="center">셀러 이름</th>
+			<th width="10%" align="center">정산 금액</th>
+			<th width="10%" align="center">정산 상태</th>
+			<th width="10%" align="center"></th>
 		</tr>
 	</table>
 	<hr class="second">
 	<div class="listcontent" style="overflow-x: hidden;">
-		<c:forEach items="${clist }" var="dto01">
+		<c:forEach items="${calapprovewaitlist }" var="dto04">
 			<table border="0">
-				<td width="20%" align="center">${dto01.customer_id}</td>
-				<td width="20%" align="center">${dto01.customer_name}</td>
-				<td width="20%" align="center">${dto01.customer_phone}</td>
-				<td width="40%" align="center">${dto01.address_state}${dto01.address_city}${dto01.address_line}</td>
+				<td width="10%" align="center">${dto04.calculate_num}</td>
+				<td width="10%" align="center">${dto04.calculate_funding}</td>
+				<td width="10%" align="center">${dto04.calculate_seller}</td>
+				<td width="10%" align="center">${dto04.calculate_cost}</td>
+				<td width="10%" align="center">${dto04.calculate_state}</td>
+				<td width="10%" align="center"><a href="aCApprove.do?calNum=${dto04.calculate_num}">승인</a> / <a href="aCReject.do?calNum=${dto04.calculate_num}">반려</a></td>
 
 			</table>
 		</c:forEach>

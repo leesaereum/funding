@@ -21,9 +21,6 @@ public class ACListCommand implements FCommand {
 		Object adminID = session.getAttribute("adminId");
 		String adminId = (String)adminID;
 		
-		String queryName =request.getParameter("query");
-		String queryContent =request.getParameter("lContent");
-		
 		FDaoA daoA = new FDaoA();
 		ArrayList<FDtoC> dtos = daoA.clist(adminId);
 		request.setAttribute("clist", dtos);
