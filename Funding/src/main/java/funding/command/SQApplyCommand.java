@@ -24,17 +24,9 @@ public class SQApplyCommand implements FCommand {
 		String address_state = request.getParameter("address_state");
 		String address_city = request.getParameter("address_city");
 		String address_line = request.getParameter("address_line");
-		System.out.println(seller_id);
-		System.out.println(seller_name);
-		System.out.println(seller_number);
-		System.out.println(seller_person_name);
-		System.out.println(seller_person_phone);
-		System.out.println(address_seller);
-		System.out.println(address_state);
-		System.out.println(address_city);
-		System.out.println(address_line);
+
 		FDaoS daoS = new FDaoS();
-		daoS.sFOapply(seller_id, seller_name, seller_number, seller_person_name, seller_person_phone
+		daoS.sQapply(seller_id, seller_name, seller_number, seller_person_name, seller_person_phone
 				, address_seller, address_state, address_city, address_line);
 	}
 

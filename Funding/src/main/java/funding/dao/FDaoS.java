@@ -193,7 +193,7 @@ public class FDaoS {
 	}//ssignIn end
 	
 	//seller apply
-	public void sFOapply(String seller_id, String seller_name,String seller_number,String seller_person_name,String seller_person_phone
+	public void sQapply(String seller_id, String seller_name,String seller_number,String seller_person_name,String seller_person_phone
 			,String address_seller, String address_state,String address_city,String address_line) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;

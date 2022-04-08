@@ -38,6 +38,7 @@ import funding.command.MainCommand;
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
+import funding.command.SQApplyCommand;
 import funding.command.SSignUpCommand;
 import funding.command.SearchCommand;
 import funding.command.SignupCommand;
@@ -255,16 +256,16 @@ public class Fcontroller extends HttpServlet {
 		case ("/sQApply_detail.do"):
 			viewpage = "";
 		case("/sQApply_view.do"):
-			command=new SFOApplyCommand();
+			command=new SQApplyCommand();
 			command.execute(request, response);
 			viewpage="sQApply_view.jsp";
 			break;
 		case("/sQApply.do"):
 			viewpage="main.do";
 			break;
-		case ("/SFOApply.do"):
-			viewpage = "";
-			break;
+//		case ("/SFOApply.do"):
+//			viewpage = "";
+//			break;
 		case ("/sMypage.do"):
 			viewpage = "";
 			break;
