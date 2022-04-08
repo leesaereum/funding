@@ -118,14 +118,18 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "/pages/funding_list_view.jsp";
 			break;
 		case ("/fundingSearch.do"):
+<<<<<<< HEAD
 			command = new SearchCommand();
 			command.execute(request, response);
+=======
+>>>>>>> newdong
 			viewpage = "/pages/funding_list_view.jsp";
 		break;
 		case("/fundingContent_view.do"):
+			System.out.println(path);
 			command = new FundingdetailCommand();
 			command.execute(request, response);
-			viewpage="detail.jsp";
+			viewpage="/pages/detail.jsp";
 			break;
 		case("/fundingLike.do"):
 			command = new FundingLikeCommand();

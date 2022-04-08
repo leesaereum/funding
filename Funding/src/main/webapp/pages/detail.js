@@ -29,7 +29,7 @@ $(document).on("click", ".detail__tab__tab", function(e) {
 
 function calculate(optionID) {
 	$("#priceSum_" + optionID).html(
-		(sqlOptions[optionID] * options[optionID]).toLocaleString() + "원"
+		($("#optionPrice_"+optionID).val()*1 * options[optionID]).toLocaleString() + "원"
 	);
 	$("#option_" + optionID + " input").val(options[optionID]);
 	calculateTotal();
@@ -57,7 +57,7 @@ function calculateTotal() {
 	for (const id in options) {
 		const count = options[id];
 		totalCount += count;
-		total += count * sqlOptions[id];
+		total += count * ($("#optionPrice_"+id).val()*1);
 	}
 	$(".detail__funding__total__amount").html("총 수량 " + totalCount + "개");
 	$(".detail__funding__total__totalPrice > strong").html(
@@ -239,3 +239,5 @@ $(document).on("click", ".detail__popup__payMethod__ini", function(e) {
 	let pg = "html5_inicis"
 	payOn(pg);
 });
+
+

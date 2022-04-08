@@ -200,6 +200,7 @@ public void fundingDataInsert(String funding_seller, String funding_banner, Stri
 				// TODO: handle exception
 				e.printStackTrace();
 			}
+			System.out.println("finish");
 		}
 		
 		
@@ -223,9 +224,9 @@ public void fundingDataInsert(String funding_seller, String funding_banner, Stri
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
-		
 				int get_funding_num = resultSet.getInt("funding_num"); 
-		
+
+				System.out.println(get_funding_num);
 				
 				funding_num = get_funding_num;
 			}
