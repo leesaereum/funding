@@ -1,12 +1,14 @@
 package funding.command;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import funding.dao.FDaoS;
+import funding.dto.FDtoCalculate;
 
 public class SMFCApplyCommand implements FCommand {
 
@@ -14,18 +16,15 @@ public class SMFCApplyCommand implements FCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		int calculate_funding =Integer.parseInt(request.getParameter("calculate_funding"));
-		String calculate_seller = request.getParameter("calculate_seller");
-		String calculate_admin = request.getParameter("calculate_admin");
-		int calculate_cost = Integer.parseInt(request.getParameter("calculate_cost"));
-		String createAt =request.getParameter("createAt");
-		String approveAt =request.getParameter("approveAt");
-		String calculate_state =request.getParameter("calculate_state");
-		
 		FDaoS daoS = new FDaoS();
-		daoS.sMFCapply(calculate_funding, calculate_seller, calculate_admin, calculate_cost
-						,calculate_seller, calculate_admin, calculate_state);
+		ArrayList<FDtoCalculate> dtoCalculates = daoS.list();
+		request.setAttribute("list", dtoCalculates);
 		
+		String funding_title =request.getParameter("funding_title");
+		String admin_name = request.getParameter("admin_name");
+		
+		daoS.calcFunding_title(funding_title);
+		daoS.calcAdmin_name(admin_name);
 	}
 
 }
