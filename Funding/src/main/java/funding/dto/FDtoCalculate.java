@@ -1,6 +1,5 @@
 package funding.dto;
 
-import java.sql.Timestamp;
 
 public class FDtoCalculate {
 
@@ -9,36 +8,10 @@ public class FDtoCalculate {
 	String calculate_seller;
 	String calculate_admin;
 	int calculate_cost;
-	Timestamp calculate_At;
-	Timestamp calculate_approveAt;
-<<<<<<< HEAD
 	String calculate_state;
 	
 	public FDtoCalculate() {
 		
-	}
-
-	public FDtoCalculate(int calculate_num, int calculate_funding, String calculate_seller, String calculate_admin,
-			int calculate_cost, Timestamp calculate_At, Timestamp calculate_approveAt, String calculate_state) {
-=======
-	
-	public FDtoCalculate() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public FDtoCalculate(int calculate_num, int calculate_funding, String calculate_seller, String calculate_admin,
-			int calculate_cost, Timestamp calculate_At, Timestamp calculate_approveAt) {
->>>>>>> yejin
-		super();
-		this.calculate_num = calculate_num;
-		this.calculate_funding = calculate_funding;
-		this.calculate_seller = calculate_seller;
-		this.calculate_admin = calculate_admin;
-		this.calculate_cost = calculate_cost;
-		this.calculate_At = calculate_At;
-		this.calculate_approveAt = calculate_approveAt;
-<<<<<<< HEAD
-		this.calculate_state = calculate_state;
 	}
 
 	public FDtoCalculate(int calculate_num, int calculate_funding, String calculate_seller, int calculate_cost,
@@ -49,8 +22,6 @@ public class FDtoCalculate {
 		this.calculate_seller = calculate_seller;
 		this.calculate_cost = calculate_cost;
 		this.calculate_state = calculate_state;
-=======
->>>>>>> yejin
 	}
 
 	public int getCalculate_num() {
@@ -93,23 +64,6 @@ public class FDtoCalculate {
 		this.calculate_cost = calculate_cost;
 	}
 
-	public Timestamp getCalculate_At() {
-		return calculate_At;
-	}
-
-	public void setCalculate_At(Timestamp calculate_At) {
-		this.calculate_At = calculate_At;
-	}
-
-	public Timestamp getCalculate_approveAt() {
-		return calculate_approveAt;
-	}
-
-	public void setCalculate_approveAt(Timestamp calculate_approveAt) {
-		this.calculate_approveAt = calculate_approveAt;
-	}
-<<<<<<< HEAD
-
 	public String getCalculate_state() {
 		return calculate_state;
 	}
@@ -117,8 +71,5 @@ public class FDtoCalculate {
 	public void setCalculate_state(String calculate_state) {
 		this.calculate_state = calculate_state;
 	}
-=======
-	
->>>>>>> yejin
 	
 }

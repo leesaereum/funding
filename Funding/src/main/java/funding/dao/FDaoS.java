@@ -250,8 +250,7 @@ public class FDaoS {
 				Timestamp calculate_approveAt = resultSet.getTimestamp("approveAt");
 				String calculate_state = resultSet.getString("calculate_state");
 				
-				FDtoCalculate dtoCalculate = new FDtoCalculate(calculate_cost, calculate_funding
-						, calculate_seller, calculate_admin, calculate_cost, calculate_approveAt, calculate_approveAt);
+				FDtoCalculate dtoCalculate = new FDtoCalculate(calculate_cost, calculate_funding, calculate_seller, calculate_cost, calculate_state);
 				dtoCalculates.add(dtoCalculate);		
 			}
 		}catch (Exception e) {
@@ -332,10 +331,10 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
-<<<<<<< HEAD
-		return seller_id;
-	}//ssignIn end
-public void fundingDataInsert(String funding_seller, String funding_banner, String funding_title, Date funding_openAt, Date funding_closeAt, int funding_purpose, String funding_category, int funding_fee) {
+		return admin_name;
+	}
+	
+	public void fundingDataInsert(String funding_seller, String funding_banner, String funding_title, Date funding_openAt, Date funding_closeAt, int funding_purpose, String funding_category, int funding_fee) {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -417,7 +416,7 @@ public void fundingDataInsert(String funding_seller, String funding_banner, Stri
 	
 	
 	
-public void optionDataInsert(int option_numbering, String option_name, int option_price, int option_amount, int option_funding) {
+	public void optionDataInsert(int option_numbering, String option_name, int option_price, int option_amount, int option_funding) {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -453,7 +452,7 @@ public void optionDataInsert(int option_numbering, String option_name, int optio
 	
 }
 
-public void fundingContentInsert(int funding_num, String funding_content) {
+	public void fundingContentInsert(int funding_num, String funding_content) {
 	
 	Connection connection = null;
 	PreparedStatement preparedStatement = null;
@@ -481,26 +480,8 @@ public void fundingContentInsert(int funding_num, String funding_content) {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			}
 		}
 	}
-
-}
-=======
-		return admin_name;
-	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
->>>>>>> yejin
 }

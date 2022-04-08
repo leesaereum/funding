@@ -28,8 +28,7 @@
 				<td>${dtoCalculate.calculate_funding }</td>
 				<td>${dtoCalculate.calculate_seller }</td>
 				<td>${dtoCalculate.calculate_cost }</td>
-				<td>${dtoCalculate.calculate_createAt }</td>
-				<td>${dtoCalculate.calculate_approveAt }</td>
+				
 				<td>${dtoCalculate.calculate_state }</td>
 				<td>${dtoCalculate.calculate_admin }</td>
 			</tr>
