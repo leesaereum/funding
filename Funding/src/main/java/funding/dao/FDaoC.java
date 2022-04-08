@@ -287,7 +287,7 @@ public class FDaoC {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select funding_title, funding_openAt, funding_closeAt, funding_purpose, content_content from funding, funding_content where funding_num = ? and content_funding = ? ";
+			String query = "select funding_title, funding_openAt, funding_closeAt, funding_purpose, content_content, funding_banner from funding, funding_content where funding_num = ? and content_funding = ? ";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, funding_num);
 			preparedStatement.setString(2, funding_num);
@@ -301,14 +301,14 @@ public class FDaoC {
 				Timestamp funding_closeAt = resultSet.getTimestamp("funding_closeAt"); 
 				int funding_purpose = resultSet.getInt("funding_purpose"); 
 				String content_content = resultSet.getString("content_content");
-				
+				String funding_banner = resultSet.getString("funding_banner");
 //				String option_name = resultSet.getString("option_name");
 //				int option_price = resultSet.getInt("option_price");
 //				int option_amount = resultSet.getInt("option_amount");
 //		
 				
 				
-				FDtoFunding dto1 = new FDtoFunding(funding_title, funding_openAt, funding_closeAt, funding_purpose, content_content);
+				FDtoFunding dto1 = new FDtoFunding(funding_title, funding_openAt, funding_closeAt, funding_purpose, content_content, funding_banner);
 				
 				FDtoFunding.add(dto1);
 			}
