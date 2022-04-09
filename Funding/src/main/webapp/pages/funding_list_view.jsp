@@ -28,7 +28,7 @@
 }
 
 .list__search__box {
-	width: 238px;
+	width: 250px;
 	height: 38px;
 	padding: 0 40px 0 0;
 	position: relative;
@@ -83,8 +83,8 @@
 		<div class="list__header">
 			<h1 class="list__pageTitle">진행중인 펀딩 목록</h1>
 			<div class="list__search__box">
-				<input class="list__search" placeholder="검색어를 입력하세요"
-					id="list__search" name="funding_search"> <img
+				<input class="list__search" placeholder="검색할 펀딩이나 판매자를 입력하세요."
+					id="list__search" name="notice_search"> <img
 					src="/Funding/assets/search.svg" class="list__search__icon">
 			</div>
 		</div>

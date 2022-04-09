@@ -6,7 +6,6 @@
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="funding.command.NoticeDetailCommand"/>
-    <fullyQualifiedTypeName name="funding.dto.FDtoNotice"/>
     <fullyQualifiedTypeName name="funding.command.FundingListViewCommand"/>
     <fullyQualifiedTypeName name="funding.command.FundingLikeCommand"/>
     <fullyQualifiedTypeName name="funding.command.FundingdetailCommand"/>
@@ -20,4 +19,7 @@
     <fullyQualifiedTypeName name="funding.dao.FDaoC"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoFunding"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoSystemAnswer"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoNotice"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoSystemQuestion"/>
 </qualifiedTypeNameHistroy>

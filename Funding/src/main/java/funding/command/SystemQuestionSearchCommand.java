@@ -1,6 +1,7 @@
 package funding.command;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,16 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import funding.dao.FDaoC;
 import funding.dto.FDtoSystemQuestion;
 
-public class SystemQuestionDetailCommand implements FCommand {
+public class SystemQuestionSearchCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String num = request.getParameter("question_num");
+		String search = request.getParameter("question_search");
 		FDaoC dao = new FDaoC();
-		FDtoSystemQuestion detail = dao.systemquestion_detail(num);
+		ArrayList<FDtoSystemQuestion> list = dao.systemquestion_search(search);
 		
-		request.setAttribute("dto", detail);
+		request.setAttribute("question", list);
 	}
 
 }

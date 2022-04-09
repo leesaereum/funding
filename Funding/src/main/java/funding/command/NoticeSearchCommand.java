@@ -1,24 +1,24 @@
 package funding.command;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import funding.dao.FDaoC;
-import funding.dto.FDtoSystemQuestion;
+import funding.dto.FDtoNotice;
 
-public class SystemQuestionDetailCommand implements FCommand {
+public class NoticeSearchCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String num = request.getParameter("question_num");
+		String search = request.getParameter("notice_search");
 		FDaoC dao = new FDaoC();
-		FDtoSystemQuestion detail = dao.systemquestion_detail(num);
+		ArrayList<FDtoNotice> list = dao.notice_search(search);
 		
-		request.setAttribute("dto", detail);
+		request.setAttribute("notice", list);
 	}
 
 }

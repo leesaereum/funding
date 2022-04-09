@@ -27,7 +27,7 @@
 }
 
 .notice__search__box {
-	width: 238px;
+	width: 250px;
 	height: 38px;
 	padding: 0 40px 0 0;
 	position: relative;
@@ -82,7 +82,7 @@ text-align: center;
 		<div class="notice__header">
 			<h1 class="notice__pageTitle">공지사항</h1>
 			<div class="notice__search__box">
-				<input class="notice__search" placeholder="검색어를 입력하세요"
+				<input class="notice__search" placeholder="검색하실 제목이나 내용을 입력하세요."
 					id="notice__search" name="notice__search"> <img
 					src="/Funding/assets/search.svg" class="notice__search__icon">
 			</div>
@@ -99,5 +99,10 @@ text-align: center;
 			</c:forEach>
 		</ul>
 	</div>
+		<script type="text/javascript">
+		$(document).on("click", ".notice__search__icon", function() {
+			location.href = "/Funding/notice_search.do?notice_search="+$("#notice__search").val();
+		})
+	</script>
 </body>
 </html>
