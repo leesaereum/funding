@@ -322,6 +322,7 @@ public class FDaoS {
 		}
 		return admin_name;
 	}
+	//수정하기 위에
 	
 	public void fundingDataInsert(String funding_seller, String funding_banner, String funding_title, Date funding_openAt, Date funding_closeAt, int funding_purpose, String funding_category, int funding_fee) {
 		
