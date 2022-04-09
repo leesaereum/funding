@@ -111,7 +111,7 @@ public class FDaoS {
 			
 			while(resultSet.next()) {
 				String iD =resultSet.getString("seller_id");
-				System.out.printf("%s : ���̵� ����!\n",id);
+				System.out.printf("%s : 占쏙옙占싱듸옙 占쏙옙占쏙옙!\n",id);
 				return false;
 			}
 		}catch (Exception e) {
@@ -235,7 +235,7 @@ public class FDaoS {
 		try {
 			connection = dataSource.getConnection();
 			String query ="insert into calculate (calculate_funding, calculate_seller, calculate_admin, calculate_createAt, calculate_state) "
-					+ "values('9','seller@seller.com','admin@admin.com',now(),'정산대기') "
+					+ "values('?','?','admin@admin.com',now(),'정산대기') "
 					+ "update calculate set calculate_cost = "
 					+ "(select sum(order_price * order_count) from order1 o "
 					+ "where o.order_funding = calculate.calculate_funding group by o.order_funding)";
