@@ -15,7 +15,7 @@ public class MyfundingListCommand implements FCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FDaoC dao = new FDaoC();
-		ArrayList<FDtoFunding> list = dao.fundinglistview();
+		ArrayList<FDtoFunding> list = dao.myfundinglist();
 		
 		request.setAttribute("funding", list);
 	}
