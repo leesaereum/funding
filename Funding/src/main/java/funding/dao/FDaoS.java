@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import funding.dto.FDtoCalculate;
 import funding.dto.FDtoFunding;
+import funding.dto.FDtoFundingQuestion;
 import funding.dto.FDtoNotice;
 
 public class FDaoS {
@@ -427,6 +428,51 @@ public class FDaoS {
 		}
 		return dtoFunding;
 	}//Mfunding_detail end
+	
+	//funding question
+	public ArrayList<FDtoFundingQuestion> list(){
+		ArrayList<FDtoFundingQuestion> dtosFQ = new ArrayList<FDtoFundingQuestion>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select question_num, question_customer, question_title, question_content, question_at, question_answer "
+					+ "from funding_question "
+					+ "where question_funding in (select funding_num from funding)";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				int question_num = resultSet.getInt("question_num"); //1234로 써도 되고, Column 이름으로 써도 됨!
+				String question_customer = resultSet.getString("question_customer");
+				String question_title = resultSet.getString("question_title");
+				String question_content = resultSet.getString("question_content");
+				Timestamp question_at = resultSet.getTimestamp("question_at");
+				String question_answer = resultSet.getString("question_answer");
+				
+				FDtoFundingQuestion dtoFQ = new FDtoFundingQuestion(question_num, question_customer, question_title
+												, question_content, question_at, question_content, question_answer);
+				
+				dtosFQ.add(dtoFQ);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			//이상이 있건 없건 메모리 정리	
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dtosFQ;
+	} //funding question end
+	
 	//수정하기 위에
 	//--------------------------------------------------------------------------------
 	public void fundingDataInsert(String funding_seller, String funding_banner, String funding_title, Date funding_openAt, Date funding_closeAt, int funding_purpose, String funding_category, int funding_fee) {
