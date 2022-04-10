@@ -78,7 +78,7 @@ public class FDtoFundingQuestion {
 	}
 	
 	public FDtoFundingQuestion(int question_num,String question_customer, String question_title, String question_content
-							,Timestamp question_at, String question_state, String question_answer) {
+							,Timestamp question_at, String question_state) {
 		super();
 		this.question_num = question_num;
 		this.question_customer = question_customer;
@@ -86,7 +86,6 @@ public class FDtoFundingQuestion {
 		this.question_content = question_content;
 		this.question_at = question_at;
 		this.question_state = question_state;
-		this.question_answer = question_answer;
 	}
 	
 }

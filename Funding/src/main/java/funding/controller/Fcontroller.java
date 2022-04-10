@@ -156,12 +156,10 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "";
 			break;
 		case ("/fundingQuestionList.do"):
-			command = new FundingQuestionlistCommand();
-			command.execute(request, response);
-			viewpage = (String) request.getAttribute("viewpage");
+			viewpage = "";
 			break;
 		case ("/fundingQuestion_view.do"):
-			viewpage = "fundingQuestion_view.jsp";
+			viewpage = "";
 			break;
 		case ("/fundingQuestion.do"):
 			viewpage = "";
@@ -284,16 +282,19 @@ public class Fcontroller extends HttpServlet {
 			break;
 		case ("/sMFDetail.do"):
 			command = new SMFDetailCommand();
-		command.execute(request, response);
-		viewpage = "sMFDetail.jsp";
-		break;
+			command.execute(request, response);
+			viewpage = "sMFDetail.jsp";
+			break;
 		case ("/sMFCApply.do"):
 			viewpage = "sMFCApply.jsp";
 			break;
 		case ("/sFADetail.do"):
-			viewpage = "";
+			command = new SFADetailCommand();
+			command.execute(request, response);
+			viewpage = "sFADetail.jsp";
 			break;
 		case ("/sFAnswer.do"):
+			
 			viewpage = "";
 			break;
 		case ("/sRAnswer.do"):

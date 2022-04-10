@@ -430,7 +430,7 @@ public class FDaoS {
 	}//Mfunding_detail end
 	
 	//funding question
-	public ArrayList<FDtoFundingQuestion> list(){
+	public ArrayList<FDtoFundingQuestion> FQuestion_list(){
 		ArrayList<FDtoFundingQuestion> dtosFQ = new ArrayList<FDtoFundingQuestion>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -438,7 +438,7 @@ public class FDaoS {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select question_num, question_customer, question_title, question_content, question_at, question_answer "
+			String query = "select question_num, question_customer, question_title, question_content, question_at, question_state "
 					+ "from funding_question "
 					+ "where question_funding in (select funding_num from funding)";
 			preparedStatement = connection.prepareStatement(query);
@@ -450,10 +450,10 @@ public class FDaoS {
 				String question_title = resultSet.getString("question_title");
 				String question_content = resultSet.getString("question_content");
 				Timestamp question_at = resultSet.getTimestamp("question_at");
-				String question_answer = resultSet.getString("question_answer");
+				String question_state = resultSet.getString("question_state");
 				
 				FDtoFundingQuestion dtoFQ = new FDtoFundingQuestion(question_num, question_customer, question_title
-												, question_content, question_at, question_content, question_answer);
+														, question_content, question_at, question_state);
 				
 				dtosFQ.add(dtoFQ);
 			}
@@ -466,8 +466,8 @@ public class FDaoS {
 				if(resultSet != null) resultSet.close();
 				if(preparedStatement != null) preparedStatement.close();
 				if(connection != null) connection.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 		return dtosFQ;
