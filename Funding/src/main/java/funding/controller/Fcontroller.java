@@ -33,6 +33,7 @@ import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
 import funding.command.MyfundingListCommand;
+import funding.command.MylikeListCommand;
 import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
 import funding.command.NoticeSearchCommand;
@@ -210,7 +211,7 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "/pages/notice_detail.jsp";
 			break;
 		case ("/mypage.do"):
-			viewpage = "myfunding_list.do";
+			viewpage = "/pages/mypage.jsp";
 			break;
 		case ("/myfunding_list.do"):
 			command = new MyfundingListCommand();
@@ -220,6 +221,11 @@ public class Fcontroller extends HttpServlet {
 		case ("/myorder_detail.do"):
 			viewpage = "";
 			break;
+		case ("/mylike_list.do"):
+			command = new MylikeListCommand();
+			command.execute(request, response);
+			viewpage = "/pages/mypage_mylike_list.jsp";
+		break;
 		case ("/myquestion_list.do"):
 			viewpage = "";
 			break;
@@ -236,12 +242,6 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "";
 			break;
 		case ("/mysocial_modify.do"):
-			viewpage = "";
-			break;
-		case ("/mylike_list.do"):
-			viewpage = "";
-			break;
-		case ("/mylike_movw.do"):
 			viewpage = "";
 			break;
 		}// customer

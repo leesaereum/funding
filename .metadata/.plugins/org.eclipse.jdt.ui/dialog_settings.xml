@@ -6,6 +6,8 @@
 		<item key="pageIndex" value="3"/>
 	</section>
 	<section name="completion_proposal_size">
+		<item key="contextSelector.size.x" value="315"/>
+		<item key="contextSelector.size.y" value="165"/>
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
@@ -19,7 +21,7 @@
 		<item key="OmitCallToSuper" value="false"/>
 	</section>
 	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
-		<item key="DIALOG_X_ORIGIN" value="825"/>
+		<item key="DIALOG_X_ORIGIN" value="686"/>
 		<item key="DIALOG_Y_ORIGIN" value="70"/>
 		<item key="DIALOG_WIDTH" value="549"/>
 		<item key="DIALOG_HEIGHT" value="617"/>
@@ -59,5 +61,16 @@
 	<section name="NewClassWizardPage">
 		<item key="create_constructor" value="false"/>
 		<item key="create_unimplemented" value="true"/>
+	</section>
+	<section name="RefactoringWizard.preview">
+		<item key="width" value="600"/>
+		<item key="height" value="400"/>
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item key="updateSimilarElements" value="false"/>
+		<item key="updateSimilarElementsMatchStrategy" value="1"/>
+		<item key="updateTextualMatches" value="false"/>
+		<item key="updateQualifiedNames" value="false"/>
+		<item key="patterns" value="*"/>
 	</section>
 </section>

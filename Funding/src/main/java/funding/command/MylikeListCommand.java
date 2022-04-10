@@ -1,17 +1,30 @@
 package funding.command;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import funding.dao.FDaoC;
+import funding.dto.FDtoFunding;
 
 public class MylikeListCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
+		HttpSession sesstion = request.getSession();
+		String id = (String) sesstion.getAttribute("customer_id");
+		
+		System.out.println(id);
+		FDaoC dao = new FDaoC();
+		ArrayList<FDtoFunding> list = dao.mylikelist(id);
+		
+		System.out.println(list);
+		request.setAttribute("funding", list);
 	}
 
 }

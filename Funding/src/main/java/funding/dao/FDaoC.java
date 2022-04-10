@@ -487,9 +487,48 @@ public class FDaoC {
 			connection = dataSource.getConnection();
 			String query = "SELECT funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt , "
 					+ "(select seller_name from seller as s where f.funding_seller = s.seller_id) "
-					+ "(select order_num from order1 as o where "
-					+ "FROM funding as f;";
+					+ "FROM funding as f "
+					+ "where funding_num in (select order_funding from order1 where order_customer = ? );";
 			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
+			resultset = preparedstatement.executeQuery();
+			
+			while(resultset.next()) {
+				int funding_num = resultset.getInt(1);
+				String funding_seller = resultset.getString(6);
+				String funding_title = resultset.getString(3);
+				Timestamp funding_openAt = resultset.getTimestamp(4);
+				Timestamp funding_closeAt = resultset.getTimestamp(5);
+				
+				FDtoFunding dto = new FDtoFunding(funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}//my funding list
+	public ArrayList<FDtoFunding> mylikelist(String id) {
+		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt , "
+					+ "(select seller_name from seller as s where f.funding_seller = s.seller_id) "
+					+ "FROM funding as f "
+					+ "where funding_num in (select like_funding from funding_like l where l.like_customer = ?);";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
 			resultset = preparedstatement.executeQuery();
 			
 			while(resultset.next()) {
