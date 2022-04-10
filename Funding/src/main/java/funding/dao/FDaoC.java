@@ -379,6 +379,39 @@ public class FDaoC {
 		}
 		return list;
 	}
+	public ArrayList<FDtoSystemQuestion>myquestion_list(String id){
+		ArrayList<FDtoSystemQuestion> list = new ArrayList<FDtoSystemQuestion>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT * FROM system_question where question_customer = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
+			resultset = preparedstatement.executeQuery();
+			
+			while(resultset.next()) {
+				int question_num = resultset.getInt(1);
+				String question_title = resultset.getString(4);
+				Timestamp question_at = resultset.getTimestamp(6);
+				String question_state = resultset.getString(9);
+				FDtoSystemQuestion dto = new FDtoSystemQuestion(question_num, question_title, question_at, question_state);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 	public ArrayList<FDtoSystemQuestion>systemquestion_search(String search){
 		ArrayList<FDtoSystemQuestion> list = new ArrayList<FDtoSystemQuestion>();
 		Connection connection = null;

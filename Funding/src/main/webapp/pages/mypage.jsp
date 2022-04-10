@@ -127,10 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				</ul>
 
 			</div>
-			<div>
-				<a href="/Funding/pages/systemquestion_create.jsp"
-					class="question__create">질문 등록하기</a>
-			</div>
 			<script src="/Funding/libraries/jQuery.js"></script>
 			<script type="text/javascript">
 				$(document)

@@ -34,6 +34,7 @@ import funding.command.LogoutCommand;
 import funding.command.MainCommand;
 import funding.command.MyfundingListCommand;
 import funding.command.MylikeListCommand;
+import funding.command.MyquestionListCommand;
 import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
 import funding.command.NoticeSearchCommand;
@@ -227,10 +228,9 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "/pages/mypage_mylike_list.jsp";
 		break;
 		case ("/myquestion_list.do"):
-			viewpage = "";
-			break;
-		case ("/myquestion_detail.do"):
-			viewpage = "";
+			command = new MyquestionListCommand();
+			command.execute(request, response);
+			viewpage = "/pages/mypage_myquestion.jsp";
 			break;
 		case ("/myinformation_view.do"):
 			viewpage = "";

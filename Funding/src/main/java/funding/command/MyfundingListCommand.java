@@ -18,11 +18,9 @@ public class MyfundingListCommand implements FCommand {
 		HttpSession sesstion = request.getSession();
 		String id = (String) sesstion.getAttribute("customer_id");
 		
-		System.out.println(id);
 		FDaoC dao = new FDaoC();
 		ArrayList<FDtoFunding> list = dao.myfundinglist(id);
 		
-		System.out.println(list);
 		request.setAttribute("funding", list);
 	}
 
