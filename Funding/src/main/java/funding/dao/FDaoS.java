@@ -155,9 +155,7 @@ public class FDaoS {
 		}
 		
 	}//ssignUp end
-	
-	
-	
+		
 	//ssignIn --> sign In for seller 
 	public String slogin(String id, String pw) {
 		Connection connection = null;
@@ -321,6 +319,12 @@ public class FDaoS {
 			}
 		}
 		return admin_name;
+	}
+	
+	public void sMypage(String funding_seller, String funding_banner, String funding_title
+						, Timestamp funding_openAt, Timestamp funding_closeAt,int funding_purpose
+						,int funding_hits, String funding_state, int funding_fee) {
+		
 	}
 	//수정하기 위에
 	
