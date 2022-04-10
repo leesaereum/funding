@@ -102,22 +102,27 @@ public class FDaoS {
 	}
 
 	public boolean checkDuplicateId(String id) {
+		boolean result = true;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		String query = "select * from seller where seller_id=?";
+		String query = "select s.seller_id, c.customer_id from seller s, customer c "
+				+ "where c.customer_id = ? or s.seller_id = ?;";
+
 
 		try {
 			connection = dataSource.getConnection();
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
+			preparedStatement.setString(2, id);
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
-				String iD = resultSet.getString("seller_id");
-				System.out.printf("%s : ���̵� ����!\n", id);
-				return false;
+				String seller_id = resultSet.getString(1);
+				String customer_id = resultSet.getString(2);
+				if(seller_id !=null || customer_id !=null) result = false;
 			}
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -130,8 +135,8 @@ public class FDaoS {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return true;
 		}
+		return result;
 	}
 
 	public void address(String address_seller, String address_state, String address_city, String address_line) {

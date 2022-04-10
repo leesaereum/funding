@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ include file="../header.jsp"%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +13,8 @@
 <body>
 <div style = "text-align : center;">
 		<h3>*아이디 중복확인*</h3>
-		<form action="sidCheckProc.jsp" method="get">
-		아이디 : <input type = "text" name = "seller_id" autofocus>
+		<form action="idCheckproc.jsp" method="get">
+		아이디 : <input type = "text" name = "id" autofocus>
 		<input type="submit" value="중복확인">
 		</form>
 		</div>

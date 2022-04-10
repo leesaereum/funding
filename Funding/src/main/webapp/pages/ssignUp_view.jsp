@@ -181,7 +181,7 @@ function checksignUp() {
 	form.submit()
 }
 	function idCheck() {
-		window.open("./sidCheckForm.jsp","popup","width=600,height=600")
+		window.open("sidCheckForm.jsp","popup","width=600,height=600")
 	}
 	
 </script>

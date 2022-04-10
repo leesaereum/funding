@@ -26,9 +26,6 @@ public class SystemQuestionCommand implements FCommand {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		System.out.println(id);
-		System.out.println(title);
-		System.out.println(content);
 		FDaoC dao = new FDaoC();
 		dao.create_systemQuestion(id, title, content);
 	}
