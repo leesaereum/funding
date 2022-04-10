@@ -330,7 +330,7 @@ public class FDaoS {
 		try {
 			connection = dataSource.getConnection();
 			String query = "select count(funding_num) from funding "
-					+ "where funding_seller in (select seller_id from seller)";
+					+"where funding_seller in (select seller_id from seller)";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, funding_num);
 			
@@ -359,8 +359,8 @@ public class FDaoS {
 		try {
 			connection = dataSource.getConnection();
 			String query = "select funding_seller, funding_title, funding_banner, funding_openAt, funding_closeAt, funding_purpose, funding_hits, funding_state, funding_fee "
-							+ "from funding "
-							+ "where funding_seller in (select seller_id from seller";
+							+"from funding "
+							+"where funding_seller in (select seller_id from seller";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -375,9 +375,9 @@ public class FDaoS {
 				String funding_state =resultSet.getString("funding_state");
 				int funding_fee =resultSet.getInt("funding_fee");
 				
-				FDtoFunding fDtoFunding = new FDtoFunding(funding_seller, funding_banner, funding_title
+				FDtoFunding dtoFunding = new FDtoFunding(funding_seller, funding_banner, funding_title
 											, funding_openAt, funding_closeAt, funding_purpose, funding_hits, funding_state, funding_fee);
-				dtoFundings.add(fDtoFunding);
+				dtoFundings.add(dtoFunding);
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -395,7 +395,7 @@ public class FDaoS {
 		return dtoFundings;
 	}
 	//수정하기 위에
-	
+	//--------------------------------------------------------------------------------
 	public void fundingDataInsert(String funding_seller, String funding_banner, String funding_title, Date funding_openAt, Date funding_closeAt, int funding_purpose, String funding_category, int funding_fee) {
 		
 		Connection connection = null;
