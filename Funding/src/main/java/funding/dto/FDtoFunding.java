@@ -170,7 +170,7 @@ public class FDtoFunding {
 	}
 
 	
-
+	
 	
 
 	public FDtoFunding(String funding_title, Timestamp funding_openAt, Timestamp funding_closeAt, int funding_purpose,

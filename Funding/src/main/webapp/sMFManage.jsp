@@ -103,7 +103,7 @@ text-align: center;
 					<a href="sMFDetail.do?funding_num=${Mfunding.funding_num}"
 					class="sFmanage__title">${Mfunding.funding_title }</a>
 					<p class="sFmanage__date">${Mfunding.funding_openAt }</p>
-					<p class="sFmanage__date">${Mfunding.funding_closeAt }</p></li>
+				</li>
 			</c:forEach>
 		</ul>
 	</div>

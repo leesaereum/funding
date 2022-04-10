@@ -101,7 +101,8 @@
 			<p class="sFmanage__hits">${Mfunding.funding_hits }</p>
 			<p class="sFmanage__state">${Mfunding.funding_state }</p>
 			<p class="sFmanage__fee">${Mfunding.funding_fee }</p>
-			<p class="sFmanage__date"></p>
+			<p class="sFmanage__date">${Mfunding.funding_openAt }</p>
+			<p class="sFmanage__date">${Mfunding.funding_closeAt }</p>
 		</div>
 		</div>
 		<a href="sMFManage.do" class="sFmanage__toList">목록</a>

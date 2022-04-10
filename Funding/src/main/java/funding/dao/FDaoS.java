@@ -394,25 +394,24 @@ public class FDaoS {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select funding_seller, funding_title, funding_banner, funding_openAt, funding_closeAt, funding_purpose, funding_hits, funding_state, funding_fee "
-					+"from funding "
-					+"where funding_seller in (select seller_id from seller)";
+			String query = "SELECT * FROM funding WHERE funding_num = ?";
 			preparedstatement = connection.prepareStatement(query);
-			preparedstatement.setString(1, num);
+			preparedstatement.setInt(1, Integer.parseInt(num));
 			resultset = preparedstatement.executeQuery();
 			
 			while(resultset.next()) {
-				String funding_seller = resultset.getString("funding_seller");
-				String funding_title = resultset.getString("funding_title");
-				String funding_banner =resultset.getString("funding_banner");
+				int funding_num = resultset.getInt(1);
+				String funding_seller = resultset.getString(2);
+				String funding_title = resultset.getString(3);
+				String funding_banner =resultset.getString(4);
 				Timestamp funding_openAt =resultset.getTimestamp("funding_openAt");
 				Timestamp funding_closeAt =resultset.getTimestamp("funding_closeAt");
-				int funding_purpose =resultset.getInt("funding_purpose");
-				int funding_hits =resultset.getInt("funding_hits");
-				String funding_state =resultset.getString("funding_state");
-				int funding_fee =resultset.getInt("funding_fee");
+				int funding_purpose =resultset.getInt(7);
+				int funding_hits =resultset.getInt(8);
+				String funding_state =resultset.getString(9);
+				int funding_fee =resultset.getInt(10);
 				
-				dtoFunding = new FDtoFunding(funding_seller, funding_banner, funding_title, funding_openAt
+				dtoFunding = new FDtoFunding(funding_num, funding_seller, funding_banner, funding_title, funding_openAt
 						, funding_closeAt, funding_purpose, funding_hits, funding_state, funding_fee); 
 			}
 		} catch (Exception e) {
