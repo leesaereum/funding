@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import funding.dto.FDtoCalculate;
+import funding.dto.FDtoFunding;
 
 public class FDaoS {
 	DataSource dataSource;
@@ -321,10 +322,77 @@ public class FDaoS {
 		return admin_name;
 	}
 	
-	public void sMypage(String funding_seller, String funding_banner, String funding_title
-						, Timestamp funding_openAt, Timestamp funding_closeAt,int funding_purpose
-						,int funding_hits, String funding_state, int funding_fee) {
+	public void sMypage_count(int funding_num) {
 		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "select count(funding_num) from funding "
+					+ "where funding_seller in (select seller_id from seller)";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, funding_num);
+			
+			preparedStatement.executeUpdate();
+
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null ) connection.close();
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public ArrayList<FDtoFunding> list(){
+		ArrayList<FDtoFunding> dtoFundings = new ArrayList<FDtoFunding>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select funding_seller, funding_title, funding_banner, funding_openAt, funding_closeAt, funding_purpose, funding_hits, funding_state, funding_fee "
+							+ "from funding "
+							+ "where funding_seller in (select seller_id from seller";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				String funding_seller = resultSet.getString("funding_seller");
+				String funding_title = resultSet.getString("funding_title");
+				String funding_banner =resultSet.getString("funding_banner");
+				Timestamp funding_openAt =resultSet.getTimestamp("funding_openAt");
+				Timestamp funding_closeAt =resultSet.getTimestamp("funding_closeAt");
+				int funding_purpose =resultSet.getInt("funding_purpose");
+				int funding_hits =resultSet.getInt("funding_hits");
+				String funding_state =resultSet.getString("funding_state");
+				int funding_fee =resultSet.getInt("funding_fee");
+				
+				FDtoFunding fDtoFunding = new FDtoFunding(funding_seller, funding_banner, funding_title
+											, funding_openAt, funding_closeAt, funding_purpose, funding_hits, funding_state, funding_fee);
+				dtoFundings.add(fDtoFunding);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			try {
+				if(resultSet != null )resultSet.close();
+				if(preparedStatement != null ) preparedStatement.close();
+				if(connection != null) connection.close();				
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		return dtoFundings;
 	}
 	//수정하기 위에
 	

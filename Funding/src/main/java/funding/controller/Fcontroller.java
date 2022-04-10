@@ -38,6 +38,7 @@ import funding.command.MainCommand;
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
+import funding.command.SMypageCommand;
 import funding.command.SQApplyCommand;
 import funding.command.SSignUpCommand;
 import funding.command.SearchCommand;
@@ -71,7 +72,7 @@ public class Fcontroller extends HttpServlet {
 		String path = uri.substring(copath.length());
 		String viewpage = null;
 
-		// customer용 switch
+		// customer�슜 switch
 		switch (path) {
 		case ("/login.do"):
 			command = new LoginCommand();
@@ -228,7 +229,7 @@ public class Fcontroller extends HttpServlet {
 			break;
 		}// customer
 
-		// seller용 switch
+		// seller�슜 switch
 		switch (path) {
 		case ("/slogin.do"):
 			command = new SLoginCommand();
@@ -267,10 +268,11 @@ public class Fcontroller extends HttpServlet {
 //			viewpage = "";
 //			break;
 		case ("/sMypage.do"):
-			viewpage = "";
-			break;
+			command = new SMypageCommand();
+			command.execute(request, response);
+			viewpage = "sMypage.jsp";
 		case ("/sMFDetail.do"):
-			viewpage = "";
+			viewpage = "sMFDetail.jsp";
 			break;
 		case ("/sMFManage.do"):
 			viewpage = "";
@@ -292,7 +294,7 @@ public class Fcontroller extends HttpServlet {
 			break;
 		}// seller
 
-		// admin용 switch
+		// admin�슜 switch
 		switch (path) {
 		case ("/aLogin.do"):
 			command = new ALoginCommand();
