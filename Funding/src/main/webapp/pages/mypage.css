@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .my__wrap__wrap{
-	background-color: #fafafa;
+	background-color: rgb(255, 255, 255);	
 	min-height: calc(100% - 72px);
 }
 .my__wrap{
@@ -30,7 +30,7 @@
 	padding: 24px;
 	padding-bottom: 12px;
 	font-size: 18px;
-	border-bottom: 2px solid #ddd;
+	border-bottom: 2px solid white;
 }
 .tab__content{
 	display:none;
@@ -84,5 +84,148 @@
 	text-align: center;
 	line-height: 48px;
 	height: 48px;
+	cursor: pointer;
+}
+.list__wrap {
+	width: 1080px;
+	margin: 0 auto;
+	padding: 51px 0;
+}
+
+.list__header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.list__pageTitle {
+	font-size: 21px;
+}
+
+.list__search__box {
+	width: 250px;
+	height: 38px;
+	padding: 0 40px 0 0;
+	position: relative;
+}
+
+.list__search {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 38px;
+	padding-left: 10px;
+}
+
+.list__search__icon {
+	position: absolute;
+	right: 9px;
+	top: 9px;
+	height: 20px;
+}
+
+.list__box {
+	list-style: none;
+	margin-top: 17px;
+	border: 1px solid #eee;
+}
+
+.list__liner {
+	padding: 18px 29px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	color: #999;
+	border-bottom: 1px solid #eee;
+}
+.list__date{
+	width: 200px;
+	text-align: center;
+}
+.list__seller{
+	width: 220px;
+	text-align:center;
+}
+.list__title{
+	width: calc(100% - 660px);
+	text-align:center;
+}
+.question__wrap {
+	width: 960px;
+	margin: 0 auto;
+	padding: 51px 0;
+}
+
+.question__header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.question__pageTitle {
+	font-size: 21px;
+}
+
+.question__search__box {
+	width: 250px;
+	height: 38px;
+	padding: 0 40px 0 0;
+	position: relative;
+}
+
+.question__search {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 38px;
+	padding-left: 10px;
+}
+
+.question__search__icon {
+	position: absolute;
+	right: 9px;
+	top: 9px;
+	height: 20px;
+}
+
+.question__box {
+	list-style: none;
+	margin-top: 17px;
+	border: 1px solid #eee;
+}
+
+.question__liner {
+	padding: 18px 29px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	color: #999;
+	border-bottom: 1px solid #eee;
+}
+.question__num{
+	width: 66px;
+	text-align: center;
+}
+.question__date{
+width: 200px;
+text-align: center;
+}
+.question__title{
+	width: calc(100% - 300px);
+	text-align: center;
+}
+.question__create {
+	display: block;
+	width: 160px;
+	margin: 30px auto 0;
+	padding: 13px 0 12px;
+	background-color: #828282;
+	border: 1px solid rgba(0, 0, 0, .1);
+	font-size: 16px;
+	line-height: 1.19;
+	color: #fff;
+	text-align: center;
 	cursor: pointer;
 }
