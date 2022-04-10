@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import funding.dto.FDtoCalculate;
 import funding.dto.FDtoFunding;
+import funding.dto.FDtoNotice;
 
 public class FDaoS {
 	DataSource dataSource;
@@ -350,50 +351,83 @@ public class FDaoS {
 		}
 	}
 	
-	public ArrayList<FDtoFunding> list(){
-		ArrayList<FDtoFunding> dtoFundings = new ArrayList<FDtoFunding>();
+	//Manage funding list
+	public ArrayList<FDtoFunding> Mfunding_list() {
+		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
 		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT funding_num, funding_banner, funding_title, funding_openAt FROM funding";
+			preparedstatement = connection.prepareStatement(query);
+			resultset = preparedstatement.executeQuery();
+			
+			while(resultset.next()) {
+				int funding_num = resultset.getInt(1);
+				String funding_banner = resultset.getString(2);
+				String funding_title = resultset.getString(3);
+				Timestamp funding_openAt = resultset.getTimestamp(4);
+				FDtoFunding dto = new FDtoFunding(funding_num, funding_banner, funding_title, funding_openAt);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}//Mfunding_list end
+	
+	//Mfunding_detail
+	public FDtoFunding sMfunding_detail(String num) {
+		FDtoFunding dtoFunding = null;
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
 		
 		try {
 			connection = dataSource.getConnection();
 			String query = "select funding_seller, funding_title, funding_banner, funding_openAt, funding_closeAt, funding_purpose, funding_hits, funding_state, funding_fee "
-							+"from funding "
-							+"where funding_seller in (select seller_id from seller";
-			preparedStatement = connection.prepareStatement(query);
-			resultSet = preparedStatement.executeQuery();
+					+"from funding "
+					+"where funding_seller in (select seller_id from seller)";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, num);
+			resultset = preparedstatement.executeQuery();
 			
-			while(resultSet.next()) {
-				String funding_seller = resultSet.getString("funding_seller");
-				String funding_title = resultSet.getString("funding_title");
-				String funding_banner =resultSet.getString("funding_banner");
-				Timestamp funding_openAt =resultSet.getTimestamp("funding_openAt");
-				Timestamp funding_closeAt =resultSet.getTimestamp("funding_closeAt");
-				int funding_purpose =resultSet.getInt("funding_purpose");
-				int funding_hits =resultSet.getInt("funding_hits");
-				String funding_state =resultSet.getString("funding_state");
-				int funding_fee =resultSet.getInt("funding_fee");
+			while(resultset.next()) {
+				String funding_seller = resultset.getString("funding_seller");
+				String funding_title = resultset.getString("funding_title");
+				String funding_banner =resultset.getString("funding_banner");
+				Timestamp funding_openAt =resultset.getTimestamp("funding_openAt");
+				Timestamp funding_closeAt =resultset.getTimestamp("funding_closeAt");
+				int funding_purpose =resultset.getInt("funding_purpose");
+				int funding_hits =resultset.getInt("funding_hits");
+				String funding_state =resultset.getString("funding_state");
+				int funding_fee =resultset.getInt("funding_fee");
 				
-				FDtoFunding dtoFunding = new FDtoFunding(funding_seller, funding_banner, funding_title
-											, funding_openAt, funding_closeAt, funding_purpose, funding_hits, funding_state, funding_fee);
-				dtoFundings.add(dtoFunding);
+				dtoFunding = new FDtoFunding(funding_seller, funding_banner, funding_title, funding_openAt
+						, funding_closeAt, funding_purpose, funding_hits, funding_state, funding_fee); 
 			}
-		}catch (Exception e) {
-			// TODO: handle exception
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(resultSet != null )resultSet.close();
-				if(preparedStatement != null ) preparedStatement.close();
-				if(connection != null) connection.close();				
-			}catch (Exception e) {
-				// TODO: handle exception
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		return dtoFundings;
-	}
+		return dtoFunding;
+	}//Mfunding_detail end
 	//수정하기 위에
 	//--------------------------------------------------------------------------------
 	public void fundingDataInsert(String funding_seller, String funding_banner, String funding_title, Date funding_openAt, Date funding_closeAt, int funding_purpose, String funding_category, int funding_fee) {

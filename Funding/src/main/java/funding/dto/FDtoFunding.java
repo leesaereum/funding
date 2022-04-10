@@ -25,25 +25,7 @@ public class FDtoFunding {
 //	int option_amount;
 	public FDtoFunding() {
 	}
-	
-//	public FDtoFunding(int funding_num, String funding_seller, String funding_banner, String funding_title, Timestamp funding_createAt, Timestamp funding_deleteAt, Timestamp funding_openAt, Timestamp funding_closeAt, int funding_purpose, int funding_hits, String funding_category,  String funding_state, int funding_fee) {
-//		
-//		this.funding_num = funding_num;
-//		this.funding_seller = funding_seller;
-//		this.funding_banner = funding_banner;
-//		this.funding_title = funding_title;
-//		this.funding_createAt = funding_createAt;
-//		this.funding_deleteAt = funding_deleteAt;
-//		this.funding_openAt = funding_openAt;
-//		this.funding_closeAt = funding_closeAt;
-//		this.funding_purpose = funding_purpose;
-//		this.funding_hits = funding_hits;
-//		this.funding_category = funding_category;
-//		this.funding_state = funding_state;
-//		this.funding_fee = funding_fee;
-//		
-//	}
-//	
+
 	public FDtoFunding(String funding_seller, String funding_banner, String funding_title,
 			 Timestamp funding_openAt, Timestamp funding_closeAt,
 			int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
@@ -212,10 +194,17 @@ public class FDtoFunding {
 		this.funding_closeAt = funding_closeAt;
 	}
 
-
+	public FDtoFunding(int funding_num, String funding_banner, String funding_title,
+			Timestamp funding_openAt) {
+		super();
+		this.funding_num = funding_num;
+		this.funding_banner = funding_banner;
+		this.funding_title = funding_title;
+		this.funding_openAt = funding_openAt;
+	}
 
 	
-	
+
 }
 
 

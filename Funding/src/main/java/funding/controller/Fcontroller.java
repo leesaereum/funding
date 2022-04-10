@@ -38,6 +38,8 @@ import funding.command.MainCommand;
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
+import funding.command.SMFDetailCommand;
+import funding.command.SMFManageCommand;
 import funding.command.SMypageCommand;
 import funding.command.SQApplyCommand;
 import funding.command.SSignUpCommand;
@@ -271,12 +273,16 @@ public class Fcontroller extends HttpServlet {
 			command = new SMypageCommand();
 			command.execute(request, response);
 			viewpage = "sMypage.jsp";
-		case ("/sMFDetail.do"):
-			viewpage = "sMFDetail.jsp";
-			break;
 		case ("/sMFManage.do"):
-			viewpage = "";
+			command = new SMFManageCommand();
+			command.execute(request, response);
+			viewpage = "sMFManage.jsp";
 			break;
+		case ("/sMFDetail.do"):
+			command = new SMFDetailCommand();
+		command.execute(request, response);
+		viewpage = "sMFDetail.jsp";
+		break;
 		case ("/sMFCApply.do"):
 			viewpage = "sMFCApply.jsp";
 			break;

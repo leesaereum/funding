@@ -15,9 +15,11 @@ public class SMFDetailCommand implements FCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub	
+		String funding_num = request.getParameter("funding_num");
+		
 		FDaoS daoS = new FDaoS();
-		ArrayList<FDtoFunding> dtoFundings = daoS.list();
-		request.setAttribute("list", dtoFundings);
+		FDtoFunding dtoFundings = daoS.sMfunding_detail(funding_num);
+		request.setAttribute("Mfunding", dtoFundings);
 	}
 
 }
