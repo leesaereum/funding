@@ -11,7 +11,7 @@
 </head>
 <style>
 .question__wrap {
-	width: 960px;
+	width: 1160px;
 	margin: 0 auto;
 	padding: 51px 0;
 }
@@ -63,30 +63,43 @@
 	color: #999;
 	border-bottom: 1px solid #eee;
 }
-.question__num{
-	width: 66px;
+
+.question__num {
+	width: 100px;
 	text-align: center;
 }
-.question__date{
-width: 200px;
-text-align: center;
-}
-.question__title{
-	width: calc(100% - 300px);
+
+.question__date {
+	width: 200px;
 	text-align: center;
 }
+
+.question__title {
+	width: calc(100% - 500px);
+	text-align: center;
+	overflow: hidden;
+}
+
 .question__create {
 	display: block;
 	width: 160px;
 	margin: 30px auto 0;
 	padding: 13px 0 12px;
-	background-color: #828282;
+	background-color: #333;
 	border: 1px solid rgba(0, 0, 0, .1);
 	font-size: 16px;
 	line-height: 1.19;
 	color: #fff;
 	text-align: center;
 	cursor: pointer;
+}
+
+.question__state {
+	width: 110px;
+	text-align: center;
+}
+.sys__add__question{
+	padding-bottom: 120px;
 }
 </style>
 <body>
@@ -102,31 +115,37 @@ text-align: center;
 		</div>
 		<ul class="question__box">
 			<li class="question__liner">
-			<p class="question__num">Q&A번호</p>
+				<p class="question__num">Q&A번호</p>
 				<p class="question__title">제목</p>
 				<p class="question__date">질문 생성일</p>
-				<p class="question__title">답변유무</p></li>
+				<p class="question__state">답변유무</p>
+			</li>
 			<c:forEach items="${question }" var="dto">
 				<li class="question__liner">
-				<p class="question__num">${dto.question_num }</p>
-					<a href="systemQuestion_detail.do?question_num=${dto.question_num}"
+					<p class="question__num">${dto.question_num }</p> <a
+					href="systemQuestion_detail.do?question_num=${dto.question_num}"
 					class="question__title">${dto.question_title }</a>
 					<p class="question__date">${dto.question_at }</p>
-					<p class="question_title">${dto.question_state }</p>
-					</li>
+					<p class="question__state">${dto.question_state }</p>
+				</li>
 			</c:forEach>
 		</ul>
-		
-	</div>
-	<div>
-		<a href="/Funding/pages/systemquestion_create.jsp" class="question__create">질문 등록하기</a>
-		</div>
-		<script src="/Funding/libraries/jQuery.js"></script>
-	<script type="text/javascript">
-		$(document).on("click", ".question__search__icon", function() {
-			location.href = "/Funding/systemQuestion_search.do?question_search="+$("#question_search").val();
-		})
 
+	</div>
+	<div class="sys__add__question">
+		<a href="/Funding/pages/systemquestion_create.jsp"
+			class="question__create">질문 등록하기</a>
+	</div>
+	<script src="/Funding/libraries/jQuery.js"></script>
+	<script type="text/javascript">
+		$(document)
+				.on(
+						"click",
+						".question__search__icon",
+						function() {
+							location.href = "/Funding/systemQuestion_search.do?question_search="
+									+ $("#question_search").val();
+						})
 	</script>
 </body>
 </html>

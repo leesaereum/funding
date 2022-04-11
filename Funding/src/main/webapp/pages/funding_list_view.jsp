@@ -92,14 +92,7 @@
 		
 		<ul class="list__box">
 			<li class="list__liner"><p class="list__title">펀딩명</p><p class="list__seller">판매자</p><p class="list__date">오픈일</p><p class="list__date">마감일</p></li>
-			<c:forEach items="${funding}" var="funding">
-				<li class="list__liner"><a
-					href="/Funding/fundingContent_view.do?fid=${funding.funding_num}"
-					class="list__title">${funding.funding_title }</a>
-					<p class="list__seller">${funding.funding_seller }</p>
-					<p class="list__date">${funding.funding_openAt}</p>
-					<p class="list__date">${funding.funding_closeAt }</p></li>
-			</c:forEach>
+			<div id="list__document"></div>
 		</ul>
 	</div>
 	<script src="/Funding/libraries/jQuery.js"></script>
@@ -109,5 +102,19 @@
 			location.href = "/Funding/fundingSearch.do?funding_search="+$("#list__search").val();
 		})
 	</script>
+
+<script type="text/javascript">
+let txt = "";
+let openDate = "";
+let closeDate = "";
+<c:forEach items="${funding}" var="funding">
+ openDate = '${funding.funding_openAt}';
+ closeDate = '${funding.funding_closeAt }'
+ txt += '<li class="list__liner"><a href="/Funding/fundingContent_view.do?fid=${funding.funding_num}" class="list__title">${funding.funding_title }</a>'
+ txt += '<p class="list__seller">${funding.funding_seller }</p>'
+ txt += '<p class="list__date">'+openDate.split(" ")[0]+'</p><p class="list__date">'+closeDate.split(" ")[0]+'</p></li>'
+</c:forEach>
+ $("#list__document").html(txt);
+</script>
 </body>
 </html>

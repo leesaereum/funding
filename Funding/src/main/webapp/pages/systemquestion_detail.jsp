@@ -30,6 +30,7 @@
 	border: 1px solid #eee;
 	min-height: 300px;
 }
+
 .question__header {
 	padding: 18px 30px 19px 29px;
 	border-bottom: 1px solid #eee;
@@ -54,17 +55,22 @@
 	text-align: center;
 	cursor: pointer;
 }
-.question__num{
+
+.question__num {
 	width: 50px;
 	text-align: center;
 }
-.question__name{
+
+.question__name {
 	width: 170px;
 }
-.question__date{
+
+.question__date {
 	width: 120px;
+	text-align: right;
 }
-.question__title{
+
+.question__title {
 	width: calc(100% - 400px);
 	overflow: hidden;
 }
@@ -73,15 +79,16 @@
 <script src="/Funding/libraries/moment.js"></script>
 <script>
 	let hello = moment("${dto.question_at}").format("YYYY-MM-DD")
-	$(document).ready(function(){
+	$(document).ready(function() {
 		$(".question__date").html(hello)
 	})
-	let hi = moment("${dto.question_answer_at}").format("YYYY-MM-DD")
-	if(hi=="null"){ let hi = "답변 대기중"}
-	$(document).ready(function(){
-		$(".answer__date").html(hi)
+	$(document).ready(function() {
+		let hi = moment("${dto.question_answer_at}").format("YYYY-MM-DD")
+		if (hi === "Invalid date") {
+			let hi = "답변 대기중"
+				$(".answer__date").html(hi)
+		}
 	})
-
 </script>
 </head>
 <body>
@@ -99,7 +106,7 @@
 				<p class="question__date"></p>
 			</div>
 			<div class="question__content">${dto.question_content }</div>
-			
+
 		</div>
 		<div class="question__box">
 			<div class="question__header">
@@ -107,7 +114,7 @@
 				<p class="answer__date">${dto.question_answer_at }</p>
 			</div>
 			<div class="question__content">${dto.question_answer }</div>
-			
+
 		</div>
 		<a href="/Funding/systemQuestion_list.do" class="question__toList">목록</a>
 	</div>

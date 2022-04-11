@@ -898,12 +898,11 @@ public class FDaoC {
 			connection = dataSource.getConnection();
 			String query = "SELECT funding_num, funding_seller, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_state, "
 					+ "(select seller_name from seller as s where f.funding_seller = s.seller_id), "
-					+ "(select sum(order_pirce*order_count) from order1 o where o.order_funding = f.funding_num group by order_funding)/funding_purpose*100"
-					+ "FROM funding as f"+querying+";";
+					+ "(select sum(order_price*order_count) from order1 o where o.order_funding = f.funding_num group by order_funding)/funding_purpose*100"
+					+ " FROM funding as f;";
 			
 			preparedstatement = connection.prepareStatement(query);
 			resultset = preparedstatement.executeQuery();
-			
 			while(resultset.next()) {
 				int funding_num = resultset.getInt(1);
 				String funding_seller = resultset.getString(8);
@@ -913,7 +912,6 @@ public class FDaoC {
 				Timestamp funding_closeAt = resultset.getTimestamp(6);
 				String funding_state = resultset.getString(7);
 				int funding_achievement = resultset.getInt(9);
-				
 				FDtoFunding dto = new FDtoFunding(funding_num, funding_seller, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_state, funding_achievement);
 				list.add(dto);
 			}

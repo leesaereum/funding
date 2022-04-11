@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,31 +14,28 @@
 	padding: 51px 0;
 }
 
-.question__header {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-}
-
 .question__pageTitle {
 	font-size: 21px;
+	height: 50px;
+	border: none;
 }
 
-.question__box {
-	list-style: none;
-	margin-top: 17px;
-	border: 1px solid #eee;
-	min-height: 300px;
-}
+
 .question__header {
-	padding: 18px 30px 19px 29px;
-	border-bottom: 1px solid #eee;
-	display: flex;
-	justify-content: space-between;
+	padding: 0 30px;
+	border: 1px solid #aaa;
+	width: 100%;
+	box-sizing: border-box;
+	height: 48px;
+	margin: 24px 0;
 }
 
 .question__content {
-	padding: 30px 29px 34px;
+	min-height: 300px;
+	resize: none;
+	padding: 30px;
+	width: 100%;
+	border: 1px solid #aaa;
 }
 
 .question__submit {
@@ -54,19 +51,24 @@
 	text-align: center;
 	cursor: pointer;
 }
-.question__num{
-	width: 50px;systemQuestion
-	text-align: center;
+
+.question__num {
+	width: 50px;
+	systemQuestion text-align: center;
 }
-.question__name{
-	width: 170px;
+
+.question__name {
+	width: 100%;
+	border: none;
+	padding: 8px 30px;
+	box-sizing: border-box;
 }
-.question__date{
+
+.question__date {
 	width: 120px;
 }
-.question__title{
-	width: calc(100% - 400px);
-	overflow: hidden;
+.question__form{
+	border: none;
 }
 </style>
 <script src="/Funding/libraries/jQuery.js"></script>
@@ -75,21 +77,22 @@
 <jsp:include page="/components/header.jsp" />
 <body>
 	<div class="question__wrap">
-		<div class="question__header">
-			<h1 class="question__pageTitle">Q&A</h1>
-		</div>
+		<h1 class="question__pageTitle">Q&A</h1>
 		<div class="question__box">
-			<div class="question__header">
-				<p class="question__name">작성자 : <%=session.getAttribute("customer_id") %></p>
-			</div>
-				<form action="/Funding/systemQuestion.do">
-			<div class="question__header">
-				<div class="question__title"><input  type="text" name="title"></div>
+			<p class="question__name">
+				작성자 :
+				<%=session.getAttribute("email")%></p>
+			<form class="question__form" action="/Funding/systemQuestion.do">
+				<input class="question__header" type="text" name="title"
+					placeholder="제목을 입력해주세요">
+
+				<textarea class="question__content" placeholder="내용을 입력해주세요"></textarea>
+
+				<div>
+					<input type="submit" class="question__submit">
 				</div>
-			<div class="question__content"><input type="text" name="content"></div>
-			<div><input type="submit" class = "question__submit" ></div>
-				</form>
+			</form>
 		</div>
-		</div>
+	</div>
 </body>
 </html>
