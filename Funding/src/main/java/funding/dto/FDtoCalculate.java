@@ -1,5 +1,6 @@
 package funding.dto;
 
+import java.sql.Timestamp;
 
 public class FDtoCalculate {
 
@@ -8,32 +9,26 @@ public class FDtoCalculate {
 	String calculate_seller;
 	String calculate_admin;
 	int calculate_cost;
-<<<<<<< HEAD
-=======
 	Timestamp calculate_At;
 	Timestamp calculate_approveAt;
->>>>>>> origin/main
 	String calculate_state;
 
-<<<<<<< HEAD
-=======
 	public FDtoCalculate() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public FDtoCalculate(int calculate_num, int calculate_funding, String calculate_seller, String calculate_admin,
-			int calculate_cost, Timestamp calculate_At, Timestamp calculate_approveAt) {
+			int calculate_cost, Timestamp calculate_approveAt2, Timestamp calculate_approveAt3) {
 		super();
 		this.calculate_num = calculate_num;
 		this.calculate_funding = calculate_funding;
 		this.calculate_seller = calculate_seller;
 		this.calculate_admin = calculate_admin;
 		this.calculate_cost = calculate_cost;
-		this.calculate_At = calculate_At;
-		this.calculate_approveAt = calculate_approveAt;
+		this.calculate_At = calculate_approveAt2;
+		this.calculate_approveAt = calculate_approveAt3;
 	}
 
->>>>>>> origin/main
 	public FDtoCalculate(int calculate_num, int calculate_funding, String calculate_seller, int calculate_cost,
 			String calculate_state) {
 		super();
@@ -84,8 +79,6 @@ public class FDtoCalculate {
 		this.calculate_cost = calculate_cost;
 	}
 
-<<<<<<< HEAD
-=======
 	public Timestamp getCalculate_At() {
 		return calculate_At;
 	}
@@ -102,7 +95,6 @@ public class FDtoCalculate {
 		this.calculate_approveAt = calculate_approveAt;
 	}
 
->>>>>>> origin/main
 	public String getCalculate_state() {
 		return calculate_state;
 	}

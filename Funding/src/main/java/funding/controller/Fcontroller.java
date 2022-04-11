@@ -8,15 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
 import funding.command.ACAWListCommand;
 import funding.command.ACApproveCommand;
-=======
-
 import funding.command.ACAWListCommand;
 import funding.command.ACApproveCommand;
-
->>>>>>> origin/main
 import funding.command.ACListCommand;
 import funding.command.ACRejectCommand;
 import funding.command.AFAWListCommand;
@@ -44,14 +39,11 @@ import funding.command.MylikeListCommand;
 import funding.command.MyquestionListCommand;
 import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
-<<<<<<< HEAD
 import funding.command.SFADetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
-=======
 import funding.command.NoticeSearchCommand;
->>>>>>> origin/main
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
@@ -291,29 +283,18 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "main.jsp";
 			break;
-<<<<<<< HEAD
 		case ("/sQApply_detail.do"):
 			viewpage = "";
-		case("/sQApply_view.do"):
-			command=new SQApplyCommand();
-=======
-
 		case ("/sQApply_view.do"):
 			command = new SFOApplyCommand();
->>>>>>> origin/main
 			command.execute(request, response);
 			viewpage = "sQApply_view.jsp";
 			break;
-<<<<<<< HEAD
-		case("/sQApply.do"):
-			viewpage="main.do";
-=======
 		case ("/sQApply.do"):
 			viewpage = "main.do";
 			break;
 		case ("/SFOApply.do"):
 			viewpage = "";
->>>>>>> origin/main
 			break;
 //		case ("/SFOApply.do"):
 //			viewpage = "";

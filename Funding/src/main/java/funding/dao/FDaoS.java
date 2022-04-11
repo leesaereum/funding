@@ -119,19 +119,16 @@ public class FDaoS {
 			preparedStatement.setString(1, id);
 			preparedStatement.setString(2, id);
 			resultSet = preparedStatement.executeQuery();
-<<<<<<< HEAD
 			
-			while(resultSet.next()) {
-				String iD =resultSet.getString("seller_id");
-				System.out.printf("%s : 占쏙옙占싱듸옙 占쏙옙占쏙옙!\n",id);
-				return false;
-=======
+//			while(resultSet.next()) {
+//				String iD =resultSet.getString("seller_id");
+//				System.out.printf("%s : 占쏙옙占싱듸옙 占쏙옙占쏙옙!\n",id);
+//				return false;
 
 			while (resultSet.next()) {
 				String seller_id = resultSet.getString(1);
 				String customer_id = resultSet.getString(2);
 				if(seller_id !=null || customer_id !=null) result = false;
->>>>>>> origin/main
 			}
 			
 		} catch (Exception e) {
@@ -149,7 +146,6 @@ public class FDaoS {
 		}
 		return result;
 	}
-
 	public void address(String address_seller, String address_state, String address_city, String address_line) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -178,17 +174,11 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
-<<<<<<< HEAD
 		
 	}//ssignUp end
 		
-	//ssignIn --> sign In for seller 
-=======
-
-	}// ssignUp end
 
 	// ssignIn --> sign In for seller
->>>>>>> origin/main
 	public String slogin(String id, String pw) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -222,20 +212,12 @@ public class FDaoS {
 			}
 		}
 		return seller_id;
-<<<<<<< HEAD
 	}//ssignIn end
-	
-	//seller apply
-	public void sQapply(String seller_id, String seller_name,String seller_number,String seller_person_name,String seller_person_phone
-			,String address_seller, String address_state,String address_city,String address_line) {
-=======
-	}// ssignIn end
 
 	// seller apply
 	public void sFOapply(String seller_id, String seller_name, String seller_number, String seller_person_name,
 			String seller_person_phone, String address_seller, String address_state, String address_city,
 			String address_line) {
->>>>>>> origin/main
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -269,7 +251,6 @@ public class FDaoS {
 		}
 
 	}
-<<<<<<< HEAD
 	
 	public void sMFCapply(int calculate_funding, String calculate_seller) {
 		Connection connection = null;
@@ -289,7 +270,9 @@ public class FDaoS {
 
 			preparedStatement.executeUpdate();
 		}catch(Exception e) {
-=======
+			
+		}
+	}
 
 	// calculate funding
 	public ArrayList<FDtoCalculate> list() {
@@ -319,24 +302,13 @@ public class FDaoS {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
->>>>>>> origin/main
 			e.printStackTrace();
 		} finally {
 			try {
-<<<<<<< HEAD
 				if(preparedStatement != null ) preparedStatement.close();
 				if(connection != null ) connection.close();
+				if (resultSet != null) resultSet.close();
 			}catch(Exception e) {
-=======
-				if (resultSet != null)
-					resultSet.close();
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (connection != null)
-					connection.close();
-			} catch (Exception e) {
-				// TODO: handle exception
->>>>>>> origin/main
 				e.printStackTrace();
 			}
 		}
@@ -409,7 +381,6 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
-<<<<<<< HEAD
 		return admin_name;
 	}
 	
@@ -564,16 +535,10 @@ public class FDaoS {
 	
 	//수정하기 위에
 	//--------------------------------------------------------------------------------
-	public void fundingDataInsert(String funding_seller, String funding_banner, String funding_title, Date funding_openAt, Date funding_closeAt, int funding_purpose, String funding_category, int funding_fee) {
-		
-=======
-		return ad_name;
-	}// ssignIn end
 
 	public void fundingDataInsert(String funding_seller, String funding_banner, String funding_title,
 			Date funding_openAt, Date funding_closeAt, int funding_purpose, String funding_category, int funding_fee) {
 
->>>>>>> origin/main
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -653,20 +618,11 @@ public class FDaoS {
 			}
 		}
 		return funding_num;
-<<<<<<< HEAD
 	} //funding_num end
-	
-	
-	
-	public void optionDataInsert(int option_numbering, String option_name, int option_price, int option_amount, int option_funding) {
-		
-=======
-	} // funding_num end
 
 	public void optionDataInsert(int option_numbering, String option_name, int option_price, int option_amount,
 			int option_funding) {
 
->>>>>>> origin/main
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -698,41 +654,14 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
-<<<<<<< HEAD
 	
 }
-
-	public void fundingContentInsert(int funding_num, String funding_content) {
-	
-	Connection connection = null;
-	PreparedStatement preparedStatement = null;
-	
-	try {
-		connection = dataSource.getConnection();
-		String query = "INSERT INTO funding_content (content_funding, content_content) values(?, ?)";
-		preparedStatement = connection.prepareStatement(query);
-		
-		preparedStatement.setInt(1, funding_num);
-		preparedStatement.setString(2, funding_content);
-	
-	
-
-		preparedStatement.executeUpdate();
-		
-	} catch (Exception e) {
-		// TODO: handle exception
-		e.printStackTrace();
-	}finally {
-=======
-
-	}
 
 	public void fundingContentInsert(int funding_num, String funding_content) {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
->>>>>>> origin/main
 		try {
 			connection = dataSource.getConnection();
 			String query = "INSERT INTO funding_content (content_funding, content_content) values(?, ?)";
@@ -746,24 +675,14 @@ public class FDaoS {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-<<<<<<< HEAD
-			}
-		}
-	}
-	
-=======
 		} finally {
 			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (connection != null)
-					connection.close();
-
+				if (preparedStatement != null) preparedStatement.close();
+				if (connection != null) connection.close();
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
 		}
 	}
->>>>>>> origin/main
 }
