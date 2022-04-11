@@ -52,6 +52,7 @@ import funding.command.SMFDetailCommand;
 import funding.command.SMFManageCommand;
 import funding.command.SMypageCommand;
 import funding.command.SQApplyCommand;
+import funding.command.SRAnswerCommand;
 import funding.command.SSignUpCommand;
 import funding.command.SearchCommand;
 import funding.command.SignupCommand;
@@ -328,7 +329,9 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "sFAnswer.jsp";
 			break;
 		case ("/sRAnswer.do"):
-			viewpage = "";
+			command = new SRAnswerCommand();
+			command.execute(request, response);
+			viewpage = "sRAnswer.jsp";
 			break;
 		case ("/sDManage.do"):
 			viewpage = "";

@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import funding.dto.FDtoCalculate;
 import funding.dto.FDtoFunding;
 import funding.dto.FDtoFundingQuestion;
+import funding.dto.FDtoFundingReview;
 import funding.dto.FDtoNotice;
 
 public class FDaoS {
@@ -572,10 +573,11 @@ public class FDaoS {
 	public void FAnswer_Update(String num, String answer) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;		
+		System.out.println(answer);
 		try {
 			connection = dataSource.getConnection();
-			String query = "update funding_question set question_state ='답변완료', question_answer = ?, question_answer_at = now() "
-					+ "where question_num = ?";
+			String query = "update funding_question set question_state =?, question_answer = '답벼중' , question_answer_at = now() "
+					+ "where question_num = ?;";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, answer);
 			preparedStatement.setString(2, num);
@@ -592,6 +594,42 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public ArrayList<FDtoFundingReview> FReview_list(){
+		ArrayList<FDtoFundingReview> dtosFR = new ArrayList<FDtoFundingReview>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultset = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select review_num, review_customer, review_title, review_content, "
+					+ "review_at, review_rate "
+					+ "from funding_review r , funding_question q "
+					+ "where q.question_funding = r.review_funding";
+			preparedStatement = connection.prepareStatement(query);
+			resultset = preparedStatement.executeQuery();
+			
+			while(resultset.next()) {
+				int review_num = resultset.getInt("review_num"); //1234로 써도 되고, Column 이름으로 써도 됨!
+				String review_customer = resultset.getString("review_customer");
+				int review_funding = resultset.getInt("review_funding");
+				String review_title = resultset.getString("review_title");
+				String review_content = resultset.getString("review_content");
+				Timestamp review_at = resultset.getTimestamp("review_at");
+				int review_rate = resultset.getInt("review_rate");
+				System.out.println(review_num);
+				
+				FDtoFundingReview dtoFR = new FDtoFundingReview(review_num, review_customer
+											, review_funding, review_title, review_content, review_at, review_rate);
+				
+				dtosFR.add(dtoFR);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return dtosFR;
 	}
 	//수정하기 위에
 	//--------------------------------------------------------------------------------

@@ -17,10 +17,9 @@ public class SFAnswerCommand implements FCommand {
 		
 		String num = request.getParameter("question_num");
 		FDaoS daoS = new FDaoS();
-		FDtoFundingQuestion dtoFA = daoS.FAnswer_detail(num);
-		request.setAttribute("FAnswer", dtoFA);
 		
-		String answer = request.getParameter("question_answer");
+		String answer = request.getParameter("answer_content");
+		System.out.println("answercontent" + answer);
 		daoS.FAnswer_Update(num, answer);
 	}
 
