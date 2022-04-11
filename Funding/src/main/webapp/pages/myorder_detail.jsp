@@ -100,9 +100,9 @@
 			<div class="notice__content">
 				<div class="notice__header">
 					<p class="notice__title">옵션명</p>
-					<p class="notice__name">옵션가격</p>
+					<p class="ordering__price">옵션가격</p>
 					<p class="notice__name">옵션 갯수</p>
-					<p class="notice__name">주문일</p>
+					<p class="ordering__date">주문일</p>
 				</div>
 
 				<div id="notice__content"></div>
@@ -122,7 +122,8 @@
 		dateTxt = "${ordering.order_At}";
 		dateTxt = moment(dateTxt).format("YYYY-MM-DD")
 		priceTxt = "${ordering.order_price}";
-		priceTxt = priceTxt.toLocaleString();
+		console.log(priceTxt)
+		priceTxt = (priceTxt*1).toLocaleString();
 		txt += '<div class="notice__header"><p class="notice__title">${ordering.option_name}</p>'
 		txt += '<p class="ordering__price">' + priceTxt + '원</p>'
 		txt += '<p class="notice__name">${ordering.order_count}개</p>'
