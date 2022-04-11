@@ -170,12 +170,6 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "/pages/detail.jsp?tap=";
 			break;
-		case ("/fundingReview_list.do"):
-			viewpage = "";
-			break;
-		case ("/fundingReview.do"):
-			viewpage = "";
-			break;
 		case ("/systemQuestion_list.do"):
 			command = new SystemQuestionlistCommand();
 			command.execute(request, response);
@@ -256,7 +250,6 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "main.jsp";
 			break;
-
 		case ("/sQApply_view.do"):
 			command = new SFOApplyCommand();
 			command.execute(request, response);
@@ -284,9 +277,6 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "";
 			break;
 		case ("/sFAnswer.do"):
-			viewpage = "";
-			break;
-		case ("/sRAnswer.do"):
 			viewpage = "";
 			break;
 		case ("/sDManage.do"):
