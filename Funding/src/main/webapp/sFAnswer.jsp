@@ -68,6 +68,11 @@
 	width: calc(100% - 400px);
 	overflow: hidden;
 }
+.btn{
+	postion:absolute;
+	bottom:0;
+}
+
 </style>
 <script src="/Funding/libraries/jQuery.js"></script>
 <script src="/Funding/libraries/moment.js"></script>
@@ -98,7 +103,9 @@
 				<p class="question__name">${FAnswer.question_customer }</p>
 				<p class="question__date"></p>
 			</div>
-			<div class="question__content">${FAnswer.question_content }</div>
+			<div class="question__content">${FAnswer.question_content }
+			
+			</div>
 			
 		</div>
 		<div class="question__box">
@@ -111,6 +118,5 @@
 		</div>
 		<a href="/Funding/sFADetail.do" class="question__toList">목록</a>
 	</div>
-
 </body>
 </html>
