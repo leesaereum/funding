@@ -90,7 +90,6 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
-
 		case ("/sociallogin.do"):
 			command = new LogoutCommand();
 			command.execute(request, response);
@@ -197,9 +196,6 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "/pages/systemquestion_detail.jsp";
 			break;
-		case ("/orderList.do"):
-			viewpage = "";
-			break;
 		case ("/notice_list.do"):
 			command = new NoticeListCommand();
 			command.execute(request, response);
@@ -225,20 +221,14 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "/pages/myorder_detail.jsp";
 			break;
-		case ("/myinformation_view.do"):
-			viewpage = "";
-			break;
-		case ("/myinfomation_modify.do"):
-			command = new MyinformationModifyCommand();
-			command.execute(request, response);
-			viewpage = "mypage.do";
-			break;
-		case ("/mysocial_view.do"):
-			viewpage = "";
-			break;
-		case ("/mysocial_modify.do"):
-			viewpage = "";
-			break;
+//		case ("/myinformation_view.do"):
+//			viewpage = "";
+//			break;
+//		case ("/myinfomation_modify.do"):
+//			command = new MyinformationModifyCommand();
+//			command.execute(request, response);
+//			viewpage = "mypage.do";
+//			break;
 		}// customer
 
 		// seller용 switch
