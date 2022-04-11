@@ -14,11 +14,15 @@ import funding.command.ACApproveCommand;
 
 import funding.command.ACListCommand;
 import funding.command.ACRejectCommand;
+import funding.command.AFADetailCommand;
 import funding.command.AFAWListCommand;
 import funding.command.AFApproveCommand;
+import funding.command.AFListCommand;
 import funding.command.AFRejectCommand;
 import funding.command.ALoginCommand;
 import funding.command.ALogoutCommand;
+import funding.command.ANListCommand;
+import funding.command.ASQDetailCommand;
 import funding.command.ASQWListCommand;
 import funding.command.ASQualifyCommand;
 import funding.command.ASrejectCommand;
@@ -300,112 +304,121 @@ public class Fcontroller extends HttpServlet {
 			break;
 		}// seller
 
-		// admin용 switch
-		switch (path) {
-		case ("/aLogin.do"):
+		//admin용 switch
+		switch(path){
+		case("/aLogin.do"):
 			command = new ALoginCommand();
 			command.execute(request, response);
-			viewpage = (String) request.getAttribute("viewPage");
+			viewpage= (String) request.getAttribute("viewPage");
 			break;
-		case ("/aLogout.do"):
+		case("/aLogout.do"):
 			command = new ALogoutCommand();
 			command.execute(request, response);
-			viewpage = "aLogin.jsp";
+			viewpage="aLogin.jsp";
 			break;
-		case ("/aCList.do"):
+		case("/aCList.do"):
 			command = new ACListCommand();
 			command.execute(request, response);
-			viewpage = "aCList.jsp";
+			viewpage="aCList.jsp";
 			break;
-
-		case ("/aCAWList.do"):
+		case("/aCAWList.do"):
 			command = new ACAWListCommand();
 			command.execute(request, response);
-			viewpage = "aCAWList.jsp";
+			viewpage="aCAWList.jsp";
 			break;
-		case ("/aCADetail.do"):
-			viewpage = "";
-			break;
-		case ("/aCApprove.do"):
+//		case("/aCADetail.do"):
+//			viewpage="";
+//			break;
+		case("/aCApprove.do"):
 			command = new ACApproveCommand();
 			command.execute(request, response);
-			viewpage = "aCAWList.do";
+			viewpage="aCAWList.do";
 			break;
-		case ("/aCReject.do"):
+		case("/aCReject.do"):
 			command = new ACRejectCommand();
 			command.execute(request, response);
-			viewpage = "aCAWList.do";
+			viewpage="aCAWList.do";
 			break;
-		case ("/aSQWList.do"):
+		case("/aSQWList.do"):
 			command = new ASQWListCommand();
 			command.execute(request, response);
-			viewpage = "aSQWList.jsp";
+			viewpage="aSQWList.jsp";
 			break;
-		case ("/aSQDetail.do"):
-			viewpage = "";
+		case("/aSQDetail.do"):
+			command = new ASQDetailCommand();
+			command.execute(request, response);
+			viewpage="aSQDetail.jsp";
 			break;
-		case ("/aSQualify.do"):
+		case("/aSQualify.do"):
 			command = new ASQualifyCommand();
 			command.execute(request, response);
-			viewpage = "aSQWList.do";
+			viewpage="aSQWList.do";
 			break;
-		case ("/aSreject.do"):
+		case("/aSreject.do"):
 			command = new ASrejectCommand();
 			command.execute(request, response);
-			viewpage = "aSQWList.do";
+			viewpage="aSQWList.do";
 			break;
-		case ("/aFAWList.do"):
+		case("/aFAWList.do"):
 			command = new AFAWListCommand();
 			command.execute(request, response);
-			viewpage = "aFAWList.jsp";
+			viewpage="aFAWList.jsp";
 			break;
-		case ("/aFADetail.do"):
-			viewpage = "";
+		case("/aFADetail.do"):
+			command = new AFADetailCommand();
+			command.execute(request, response);
+			viewpage="aFADetail.jsp";
 			break;
-		case ("/aFApprove.do"):
+		case("/aFApprove.do"):
 			command = new AFApproveCommand();
 			command.execute(request, response);
-			viewpage = "aFAWList.do";
+			viewpage="aFAWList.do";
 			break;
-		case ("/aFreject.do"):
+		case("/aFreject.do"):
 			command = new AFRejectCommand();
 			command.execute(request, response);
-			viewpage = "aFAWList.do";
+			viewpage="aFAWList.do";
 			break;
-		case ("/aSAList.do"):
-			viewpage = "";
+		case("/aSAList.do"):
+			command = new SystemQuestionlistCommand();
+			command.execute(request, response);
+			viewpage="aSAList.jsp";
 			break;
-		case ("/aSAListDetail.do"):
-			viewpage = "";
+//		case("/aSAListDetail.do"):
+//			viewpage="";
+//			break;
+//		case("/aSACreate.do"):
+//			viewpage="";
+//			break;
+		case("/aFList.do"):
+			command = new AFListCommand();
+			command.execute(request, response);
+			viewpage = "aFList.jsp";
 			break;
-		case ("/aSACreate.do"):
-			viewpage = "";
-			break;
-		case ("/aFList.do"):
-			viewpage = "";
-			break;
-		case ("/aFDetail.do"):
-			viewpage = "";
-			break;
-		case ("/aFstateChange.do"):
-			viewpage = "";
-			break;
+//		case("/aFDetail.do"):
+//			viewpage="";
+//			break;
+//		case("/aFstateChange.do"):
+//			viewpage="";
+//			break;
 		case ("/anotice_list.do"):
-			viewpage = "";
+			command = new ANListCommand();
+			command.execute(request, response);
+			viewpage = "aNoticeList.jsp";
 			break;
-		case ("/ncreate_view.do"):
-			viewpage = "";
+		case("/ncreate_view.do"):
+			viewpage="";
 			break;
-		case ("/ncreate.do"):
-			viewpage = "";
+		case("/ncreate.do"):
+			viewpage="";
 			break;
-		case ("/nmodify.do"):
-			viewpage = "";
+		case("/nmodify.do"):
+			viewpage="";
 			break;
-		case ("/nremove.do"):
-			viewpage = "";
+		case("/nremove.do"):
+			viewpage="";
 			break;
-		}// admin.
+		}//admin.
 
 		RequestDispatcher rd = request.getRequestDispatcher(viewpage);
 		rd.forward(request, response);

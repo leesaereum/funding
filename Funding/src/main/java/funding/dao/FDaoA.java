@@ -297,7 +297,7 @@ public class FDaoA {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT funding_num, funding_seller, funding_title, funding_category, funding_state FROM funding WHERE funding_state NOT IN ('진행')";
+			String query = "SELECT funding_num, funding_seller, funding_title, funding_state FROM funding WHERE funding_state NOT IN ('진행')";
 
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
@@ -306,10 +306,9 @@ public class FDaoA {
 				int funding_num = resultSet.getInt("funding_num");
 				String funding_seller = resultSet.getString("funding_seller");
 				String funding_title = resultSet.getString("funding_title");
-				String funding_category = resultSet.getString("funding_category");
 				String funding_state = resultSet.getString("funding_state");
 
-				FDtoFunding dto03 = new FDtoFunding(funding_num, funding_seller, funding_title, funding_category, funding_state);
+				FDtoFunding dto03 = new FDtoFunding(funding_num, funding_seller, funding_title, funding_state);
 
 				dtos.add(dto03);
 			}
@@ -367,13 +366,12 @@ public class FDaoA {
 				int funding_purpose = resultSet.getInt("funding_purpose");
 				int funding_hits = resultSet.getInt("funding_hits");
 
-				String funding_category = resultSet.getString("funding_category");
 				String funding_state = resultSet.getString("funding_state");
 				int funding_fee = resultSet.getInt("funding_fee");
 				
 				System.out.println(funding_num);
 				
-				FDtoFunding dto33 = new FDtoFunding(funding_num, funding_seller, funding_banner, funding_title, funding_createAt, funding_deleteAt, funding_openAt, funding_closeAt, funding_purpose, funding_hits, funding_category, funding_state, funding_fee);
+				FDtoFunding dto33 = new FDtoFunding(funding_num, funding_seller, funding_banner, funding_title, funding_createAt, funding_deleteAt, funding_openAt, funding_closeAt, funding_purpose, funding_hits, funding_state, funding_fee);
 				
 				dtos.add(dto33);
 			}

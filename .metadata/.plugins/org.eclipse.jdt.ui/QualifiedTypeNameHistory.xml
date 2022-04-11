@@ -37,4 +37,8 @@
     <fullyQualifiedTypeName name="funding.dto.FDtoOrder"/>
     <fullyQualifiedTypeName name="funding.command.MypageCommand"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoFunding"/>
+    <fullyQualifiedTypeName name="funding.command.AFADetailCommand"/>
+    <fullyQualifiedTypeName name="funding.command.AFListCommand"/>
+    <fullyQualifiedTypeName name="funding.command.ASQDetailCommand"/>
+    <fullyQualifiedTypeName name="funding.command.ANListCommand"/>
 </qualifiedTypeNameHistroy>
