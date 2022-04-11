@@ -16,7 +16,6 @@ public class FundingPaymentCommand implements FCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-
 		String order_customer = "abc123";
 		int order_funding = 1;
 		Integer order_option1 = 1;

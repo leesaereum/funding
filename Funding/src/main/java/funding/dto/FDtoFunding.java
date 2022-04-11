@@ -165,6 +165,14 @@ public class FDtoFunding {
 
 	
 
+	public int getFunding_achievement() {
+		return funding_achievement;
+	}
+
+	public void setFunding_achievement(int funding_achievement) {
+		this.funding_achievement = funding_achievement;
+	}
+
 	public FDtoFunding(String funding_title, Timestamp funding_openAt, Timestamp funding_closeAt, int funding_purpose,
 			String content_content, String funding_banner) {
 		super();
