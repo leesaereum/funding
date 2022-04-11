@@ -34,6 +34,7 @@ import funding.command.FundingdetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
+import funding.command.MyOrderDetailCommand;
 import funding.command.MyfundingListCommand;
 import funding.command.MyinformationModifyCommand;
 import funding.command.MylikeListCommand;
@@ -225,7 +226,9 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "/pages/mypage_myfunding_list.jsp";
 			break;
 		case ("/myorder_detail.do"):
-			viewpage = "";
+			command = new MyOrderDetailCommand();
+			command.execute(request, response);
+			viewpage = "/pages/myorder_detail.jsp";
 			break;
 		case ("/mylike_list.do"):
 			command = new MylikeListCommand();

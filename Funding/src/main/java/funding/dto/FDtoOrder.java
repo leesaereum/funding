@@ -13,6 +13,8 @@ public class FDtoOrder {
 	Timestamp order_At;
 	String order_request;
 	int order_address;
+	String option_name;
+	
 	public int getOrder_num() {
 		return order_num;
 	}
@@ -69,9 +71,22 @@ public class FDtoOrder {
 	}
 	
 	
+	public String getOption_name() {
+		return option_name;
+	}
+	public void setOption_name(String option_name) {
+		this.option_name = option_name;
+	}
 	public FDtoOrder(String order_customer) {
 		super();
 		this.order_customer = order_customer;
+	}
+	public FDtoOrder(int order_price, int order_count, Timestamp order_At, String option_name) {
+		super();
+		this.order_price = order_price;
+		this.order_count = order_count;
+		this.order_At = order_At;
+		this.option_name = option_name;
 	}
 	
 }

@@ -898,8 +898,8 @@ public class FDaoC {
 			connection = dataSource.getConnection();
 			String query = "SELECT funding_num, funding_seller, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_state, "
 					+ "(select seller_name from seller as s where f.funding_seller = s.seller_id), "
-					+ "(select sum(order_pirce*order_count) from order1 o where o.order_funding = f.funding_num group by order_funding)/funding_purpose*100"
-					+ "FROM funding as f"+querying+";";
+					+ "(select sum(order_price*order_count) from order1 o where o.order_funding = f.funding_num group by order_funding)/funding_purpose*100"
+					+ " FROM funding as f "+querying+";";
 			
 			preparedstatement = connection.prepareStatement(query);
 			resultset = preparedstatement.executeQuery();
@@ -915,6 +915,76 @@ public class FDaoC {
 				int funding_achievement = resultset.getInt(9);
 				
 				FDtoFunding dto = new FDtoFunding(funding_num, funding_seller, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_state, funding_achievement);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
+	public FDtoFunding myorder_funding(String num) {
+		FDtoFunding dto = null;
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT funding_num, funding_title, funding_state, (select seller_name from seller s where f.funding_seller = s.seller_id) from funding f where funding_num = ? ";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, num);
+			resultset = preparedstatement.executeQuery();
+			
+			if(resultset.next()) {
+				int funding_num = resultset.getInt(1);
+				String funding_seller = resultset.getString(4);
+				String funding_title = resultset.getString(2);
+				String funding_state = resultset.getString(3);
+				
+				dto = new FDtoFunding(funding_num, funding_seller, funding_title, funding_state);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	return dto;
+	}
+	public ArrayList<FDtoOrder> myorder_ordering(String num,String id) {
+		ArrayList<FDtoOrder> list = new ArrayList<FDtoOrder>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT (SELECT option_name from funding_option fo where o.order_option = fo.option_num)"
+					+ ", order_price, order_count,order_at from order1 o where order_funding = ? AND order_customer = ?;";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, num);
+			preparedstatement.setString(2, id);
+			resultset = preparedstatement.executeQuery();
+			
+			while(resultset.next()) {
+				String option_name = resultset.getString(1);
+				int order_price = resultset.getInt(2);
+				int order_count = resultset.getInt(3);
+				Timestamp order_at = resultset.getTimestamp(4);
+				
+				FDtoOrder dto = new FDtoOrder(order_price, order_count, order_at, option_name);
 				list.add(dto);
 			}
 		} catch (Exception e) {
