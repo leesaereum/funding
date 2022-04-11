@@ -32,29 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				<p class="my__tab__btn" id="tab__4">개인정보 관리</p>
 			</div>
 			<div class="tab__content selected" id="tab__1__content">
-				<div class="list__wrap">
-					<div class="list__header">
-						<h1 class="list__pageTitle">참여한 펀딩 목록</h1>
-						<div class="list__search__box">
-							<input class="list__search" placeholder="검색할 펀딩이나 판매자를 입력하세요."
-								id="list__search" name="funding_search"> <img
-								src="/Funding/assets/search.svg" class="list__search__icon">
-						</div>
-					</div>
-
-					<ul class="list__box">
-						<li class="list__liner"><p class="list__title">펀딩명</p>
-							<p class="list__seller">판매자</p>
-							<p class="list__date">오픈일</p>
-							<p class="list__date">마감일</p></li>
-						<c:forEach items="${funding}" var="funding">
-							<li class="list__liner"><a href="" class="list__title">${funding.funding_title }</a>
-								<p class="list__seller">${funding.funding_seller }</p>
-								<p class="list__date">${funding.funding_openAt }</p>
-								<p class="list__date">${funding.funding_closeAt }</p></li>
-						</c:forEach>
-					</ul>
-				</div>
 			</div>
 			<div class="tab__content" id="tab__2__content">
 				<div class="list__wrap">

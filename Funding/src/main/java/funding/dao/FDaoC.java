@@ -839,4 +839,54 @@ public class FDaoC {
 		return FDtoOrder;
 	} //option list end
 
+	public int select_hits(String funding_num) {
+		int hits = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select funding_hits from funding where funding_num = ?;";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, funding_num);
+			resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				hits = resultSet.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();;
+			}
+		}
+		return hits;
+	}
+	public void update_hits(String funding_num, int hits) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "update funding set funding_hits = ? where funding_num = ?;";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, hits);
+			preparedStatement.setString(2, funding_num);
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();;
+			}
+		}
+	}
 }

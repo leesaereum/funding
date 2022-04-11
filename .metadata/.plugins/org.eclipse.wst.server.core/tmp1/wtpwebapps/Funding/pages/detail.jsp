@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/Funding/styles/init.css">
 <link rel="stylesheet" href="/Funding/styles/base.css">
 <link rel="stylesheet" href="/Funding/pages/detail.css">
-<title>Insert title here</title>
+<title>펀딩 상세페이자</title>
 </head>
 <%
 String fid = request.getParameter("fid");

@@ -30,6 +30,12 @@ public class FundingdetailCommand implements FCommand {
 		
 		FDaoC dao = new FDaoC();
 		
+		int hits = dao.select_hits(funding_num);
+		hits++;
+		dao.update_hits(funding_num, hits);
+
+		
+		
 		ArrayList<FDtoFunding> dtos = dao.list(funding_num);
 		ArrayList<FDtoFundingOption> optionDtos = dao.optionList(funding_num);
 		ArrayList<FDtoFundingQuestion> questionDtos = dao.questionList(funding_num);
