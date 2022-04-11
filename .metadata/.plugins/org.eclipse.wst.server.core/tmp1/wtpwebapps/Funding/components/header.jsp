@@ -120,7 +120,7 @@ window.onscroll = function () {
 };
 function goHome(){
 	//todo: 작성하던 내용이 사라집니다.
-	location.href = "/Funding/main.jsp"
+	location.href = "/Funding/main.do"
 }
 $(document).on("click", ".loginButton", function(e){
 	e.stopPropagation();
