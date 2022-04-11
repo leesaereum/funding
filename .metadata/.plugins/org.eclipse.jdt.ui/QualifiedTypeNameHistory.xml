@@ -33,7 +33,8 @@
     <fullyQualifiedTypeName name="funding.command.MyOrderDetailCommand"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-    <fullyQualifiedTypeName name="funding.dto.FDtoFunding"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoOrder"/>
+    <fullyQualifiedTypeName name="funding.command.MypageCommand"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoFunding"/>
 </qualifiedTypeNameHistroy>

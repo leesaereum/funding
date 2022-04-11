@@ -17,6 +17,8 @@ public class FDtoFunding {
 	String funding_state;
 	int funding_fee;
 	int funding_achievement;
+	int total;
+	int count;
 	
 	
 	//funding_content 태이블에 있는건데 같이 받기 위해서 가져왔습니다.
@@ -165,6 +167,14 @@ public class FDtoFunding {
 
 	
 
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
 	public int getFunding_achievement() {
 		return funding_achievement;
 	}
@@ -216,7 +226,7 @@ public class FDtoFunding {
 	}
 
 	public FDtoFunding(int funding_num, String funding_seller, String funding_banner, String funding_title,
-			Timestamp funding_openAt, Timestamp funding_closeAt, String funding_state, int funding_achievement) {
+			Timestamp funding_openAt, Timestamp funding_closeAt, String funding_state, int funding_achievement, int total) {
 		super();
 		this.funding_num = funding_num;
 		this.funding_seller = funding_seller;
@@ -226,9 +236,31 @@ public class FDtoFunding {
 		this.funding_closeAt = funding_closeAt;
 		this.funding_state = funding_state;
 		this.funding_achievement = funding_achievement;
+		this.total = total;
 	}
 
+	public FDtoFunding(String funding_banner, String funding_seller, String funding_title, Timestamp funding_openAt, Timestamp funding_closeAt,
+			int funding_purpose, int funding_achievement, int total, String content_content, int count) {
+		super();
+		this.funding_banner = funding_banner;
+		this.funding_seller = funding_seller;
+		this.funding_title = funding_title;
+		this.funding_openAt = funding_openAt;
+		this.funding_closeAt = funding_closeAt;
+		this.funding_purpose = funding_purpose;
+		this.funding_achievement = funding_achievement;
+		this.total = total;
+		this.content_content = content_content;
+		this.count = count;
+	}
 
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
 
 	
 	

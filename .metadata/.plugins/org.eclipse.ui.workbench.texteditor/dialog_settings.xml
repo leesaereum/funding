@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="my"/>
+		<item key="selection" value="System."/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="system."/>
+			<item value="list("/>
+			<item value="List"/>
+			<item value="list"/>
+			<item value="mai"/>
+			<item value="fundinglistview"/>
+			<item value="funding_"/>
+			<item value="funding"/>
+			<item value="funding_list"/>
+			<item value="myfunding"/>
+			<item value="main"/>
 			<item value="my"/>
 			<item value="catego"/>
 			<item value="cate"/>
 			<item value="fund"/>
-			<item value="sum"/>
-			<item value="sys"/>
-			<item value="₩"/>
-			<item value="써치"/>
-			<item value="search"/>
-			<item value="footer"/>
-			<item value="foot"/>
-			<item value="foo"/>
-			<item value="notice_list"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="875"/>
+		<item key="DIALOG_X_ORIGIN" value="874"/>
 		<item key="DIALOG_Y_ORIGIN" value="133"/>
 		<item key="DIALOG_WIDTH" value="336"/>
 		<item key="DIALOG_HEIGHT" value="402"/>

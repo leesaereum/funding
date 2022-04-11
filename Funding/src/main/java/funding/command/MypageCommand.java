@@ -10,8 +10,9 @@ import javax.servlet.http.HttpSession;
 
 import funding.dao.FDaoC;
 import funding.dto.FDtoFunding;
+import funding.dto.FDtoSystemQuestion;
 
-public class MyfundingListCommand implements FCommand {
+public class MypageCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,9 +20,13 @@ public class MyfundingListCommand implements FCommand {
 		String id = (String) sesstion.getAttribute("customer_id");
 		
 		FDaoC dao = new FDaoC();
-		ArrayList<FDtoFunding> list = dao.myfundinglist(id);
+		ArrayList<FDtoFunding> myfundinglist = dao.myfundinglist(id);		
+		ArrayList<FDtoFunding> mylikelist = dao.mylikelist(id);
+		ArrayList<FDtoSystemQuestion> myquestionlist = dao.myquestion_list(id);
 		
-		request.setAttribute("funding", list);
+		request.setAttribute("funding", myfundinglist);
+		request.setAttribute("like", mylikelist);
+		request.setAttribute("question", myquestionlist);
 	}
 
 }

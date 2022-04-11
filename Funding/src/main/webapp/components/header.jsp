@@ -138,6 +138,6 @@ $(document).on("click", ".makeFunding", function(e){
 })
 
 function goMyPage(){
-	location.href = "/Funding/pages/mypage.jsp"
+	location.href = "/Funding/mypage.do"
 }
 </script>

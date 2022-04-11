@@ -26,7 +26,6 @@ public class MyOrderDetailCommand implements FCommand {
 		
 		request.setAttribute("funding", dto);
 		request.setAttribute("ordering", list);
-		System.out.println(list);
 	}
 
 }

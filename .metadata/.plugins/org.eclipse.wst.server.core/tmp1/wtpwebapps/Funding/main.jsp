@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		txt += '<p class="fundingSeller"></p></div>'
 		txt += '<div class="fundingRate">${fd.funding_achievement}%</div></div>'
 		txt += '<div class="fundingCardBottom">'
-		txt += '<p class="fundingLeftDate">'+timeTxt+'</p><p class="fundingAmount">2,566,433원</p>'
+		txt += '<p class="fundingLeftDate">'+timeTxt+'</p><p class="fundingAmount">${fd.total}원</p>'
 		txt += '</div></div></a>';
 		
 		</c:forEach>

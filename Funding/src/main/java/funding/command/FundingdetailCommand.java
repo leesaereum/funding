@@ -36,7 +36,7 @@ public class FundingdetailCommand implements FCommand {
 
 		
 		
-		ArrayList<FDtoFunding> dtos = dao.list(funding_num);
+		FDtoFunding dtos = dao.funding_detail(funding_num);
 		ArrayList<FDtoFundingOption> optionDtos = dao.optionList(funding_num);
 		ArrayList<FDtoFundingQuestion> questionDtos = dao.questionList(funding_num);
 		ArrayList<FDtoOrder> orderDtos = dao.orderList(funding_num);

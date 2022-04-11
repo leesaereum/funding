@@ -28,17 +28,14 @@ import funding.command.FindpwCommand;
 import funding.command.FundingLikeCommand;
 import funding.command.FundingListViewCommand;
 import funding.command.FundingPaymentCommand;
-import funding.command.FundingQuestionCommand;
 import funding.command.FundingQuestionlistCommand;
 import funding.command.FundingdetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
 import funding.command.MyOrderDetailCommand;
-import funding.command.MyfundingListCommand;
 import funding.command.MyinformationModifyCommand;
-import funding.command.MylikeListCommand;
-import funding.command.MyquestionListCommand;
+import funding.command.MypageCommand;
 import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
 import funding.command.NoticeSearchCommand;
@@ -218,27 +215,14 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "/pages/notice_detail.jsp";
 			break;
 		case ("/mypage.do"):
-			viewpage = "/pages/mypage.jsp";
-			break;
-		case ("/myfunding_list.do"):
-			command = new MyfundingListCommand();
+			command = new MypageCommand();
 			command.execute(request, response);
-			viewpage = "/pages/mypage_myfunding_list.jsp";
+			viewpage = "/pages/mypage.jsp";
 			break;
 		case ("/myorder_detail.do"):
 			command = new MyOrderDetailCommand();
 			command.execute(request, response);
 			viewpage = "/pages/myorder_detail.jsp";
-			break;
-		case ("/mylike_list.do"):
-			command = new MylikeListCommand();
-			command.execute(request, response);
-			viewpage = "/pages/mypage_mylike_list.jsp";
-		break;
-		case ("/myquestion_list.do"):
-			command = new MyquestionListCommand();
-			command.execute(request, response);
-			viewpage = "/pages/mypage_myquestion.jsp";
 			break;
 		case ("/myinformation_view.do"):
 			viewpage = "";

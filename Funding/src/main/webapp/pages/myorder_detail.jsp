@@ -109,7 +109,7 @@ let hi = ""
 				<c:forEach items="${ordering}" var="ordering">
 					<div class="notice__header">
 						<p class="notice__title">${ordering.option_name}</p>
-						<p class="ordering__price">원</p>
+						<p class="ordering__price">${ordering.order_price}원</p>
 						<p class="notice__name">${ordering.order_count}개</p>
 						<p class="ordering__date"></p>
 					</div>
@@ -117,10 +117,6 @@ let hi = ""
 	hello = moment("${ordering.order_At}").format("YYYY-MM-DD")
 	$(document).ready(function() {
 		$(".ordering__date").html(hello)
-	})
-	hi = ("${ordering.order_price}").toLocaleString()
-	$(document).ready(function() {
-		$(".ordering__price").html(hi)
 	})
 </script>
 				</c:forEach>
