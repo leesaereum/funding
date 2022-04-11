@@ -25,12 +25,13 @@
 		<ul class="list__box">
 			<li class="list__liner"><p class="list__title">펀딩명</p><p class="list__seller">판매자</p><p class="list__date">오픈일</p><p class="list__date">마감일</p></li>
 			<c:forEach items="${funding}" var="funding">
-				<li class="list__liner"><a
-					href=""
-					class="list__title">${funding.funding_title }</a>
+				<li class="list__liner">
+					<p class="list__title">${funding.funding_title }</p>
 					<p class="list__seller">${funding.funding_seller }</p>
 					<p class="list__date">${funding.funding_openAt }</p>
-					<p class="list__date">${funding.funding_closeAt }</p></li>
+					<p class="list__date">${funding.funding_closeAt }</p>
+					<p class="list_seller"><a href="/Funding/myorder_detail.do?funding_num=${funding.funding_num }">상세보기</a></p>
+					</li>
 			</c:forEach>
 		</ul>
 	</div>
