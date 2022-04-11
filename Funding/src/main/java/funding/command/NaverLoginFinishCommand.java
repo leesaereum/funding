@@ -30,10 +30,8 @@ public class NaverLoginFinishCommand {
 
         String email = responseBody.split("\"email\":\"")[1];
         email = email.split("\"")[0];
-        HttpSession session = request.getSession();
-        session.setAttribute("email", email);
 
-        response.sendRedirect("/Funding/main.jsp");
+        response.sendRedirect("/Funding/socialLogin.do?email="+email);
     }
 
 

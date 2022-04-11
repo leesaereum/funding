@@ -30,6 +30,7 @@ import funding.command.FundingListViewCommand;
 import funding.command.FundingPaymentCommand;
 import funding.command.FundingQuestionCommand;
 import funding.command.FundingQuestionlistCommand;
+import funding.command.FundingUnlikeCommand;
 import funding.command.FundingdetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
@@ -48,6 +49,7 @@ import funding.command.SLogoutCommand;
 import funding.command.SSignUpCommand;
 import funding.command.SearchCommand;
 import funding.command.SignupCommand;
+import funding.command.SocialLoginCommand;
 import funding.command.SystemQuestionCommand;
 import funding.command.SystemQuestionDetailCommand;
 import funding.command.SystemQuestionSearchCommand;
@@ -89,15 +91,16 @@ public class Fcontroller extends HttpServlet {
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
 
-		case ("/sociallogin.do"):
-			command = new LogoutCommand();
+		case ("/socialLogin.do"):
+			command = new SocialLoginCommand();
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
+			System.out.println(viewpage);
 			break;
 		case ("/logout.do"):
 			command = new LogoutCommand();
 			command.execute(request, response);
-			viewpage = "main.jsp";
+			viewpage = "main.do";
 			break;
 		case ("/main.do"):
 			command = new MainCommand();
@@ -143,7 +146,13 @@ public class Fcontroller extends HttpServlet {
 		case ("/fundingLike.do"):
 			command = new FundingLikeCommand();
 			command.execute(request, response);
-			viewpage = "detailtest.jsp";
+			viewpage = (String) request.getAttribute("viewpage");
+			System.out.println(viewpage);
+			break;
+		case ("/fundingUnLike.do"):
+			command = new FundingUnlikeCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
 			break;
 		case ("/fundingOrder.do"):
 			command = new FundingPaymentCommand();

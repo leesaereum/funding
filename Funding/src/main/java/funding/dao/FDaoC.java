@@ -549,6 +549,62 @@ public class FDaoC {
 		}
 		return list;
 	}//my funding list
+	
+	public boolean checkEmail(String email)  {
+		boolean res = false;
+		
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		System.out.println(email);
+		try {
+			connection = dataSource.getConnection();
+			String query = "select customer_id from customer where customer_id = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, email);
+			resultset = preparedstatement.executeQuery();
+			
+			if(resultset.next()) {
+				res = true;
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return res;
+		
+	}
+	
+	public boolean checkLike(String cid, String fid) {
+		boolean res = false;
+		
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		System.out.println(cid);
+		System.out.println(fid);
+		try {
+			connection = dataSource.getConnection();
+			String query = "select * from funding_like where like_customer = ? and like_funding = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, cid);
+			preparedstatement.setString(2, fid);
+			System.out.println(query);
+			resultset = preparedstatement.executeQuery();
+			
+			if(resultset.next()) {
+				res = true;
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return res;
+		
+	}
+	
 	public ArrayList<FDtoFunding> mylikelist(String id) {
 		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
 		Connection connection = null;
@@ -744,6 +800,35 @@ public class FDaoC {
 			preparedStatement.setInt(2, like_funding);
 			preparedStatement.setDate(3, like_at);
 	
+	
+			preparedStatement.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	}//likeInsert
+	
+public void unlike(String like_customer, int like_funding) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "delete from funding_like where like_customer = ? and like_funding = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, like_customer);
+			preparedStatement.setInt(2, like_funding);
 	
 			preparedStatement.executeUpdate();
 			
