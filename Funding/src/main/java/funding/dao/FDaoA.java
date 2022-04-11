@@ -231,7 +231,7 @@ public class FDaoA {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT funding_num, funding_seller, funding_title, funding_category, funding_state FROM funding WHERE funding_state NOT IN ('승인')";
+			String query = "SELECT funding_num, funding_seller, funding_title, funding_state FROM funding WHERE funding_state NOT IN ('승인')";
 
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
@@ -240,10 +240,9 @@ public class FDaoA {
 				int funding_num = resultSet.getInt("funding_num");
 				String funding_seller = resultSet.getString("funding_seller");
 				String funding_title = resultSet.getString("funding_title");
-				String funding_category = resultSet.getString("funding_category");
 				String funding_state = resultSet.getString("funding_state");
 
-				FDtoFunding dto03 = new FDtoFunding(funding_num, funding_seller, funding_title, funding_category, funding_state);
+				FDtoFunding dto03 = new FDtoFunding(funding_num, funding_seller, funding_title, funding_state);
 
 				dtos.add(dto03);
 			}

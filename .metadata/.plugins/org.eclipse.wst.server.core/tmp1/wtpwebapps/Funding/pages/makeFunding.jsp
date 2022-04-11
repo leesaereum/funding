@@ -35,10 +35,6 @@
 				<p class="MF__basic__description">24자 이내의 매력적인 제목을 입력해주세요</p>
 				<input class="MF__basic__input large" id="MF__basic__title" placeholder="예) 국산 쌀과 고춧가루로 만든 말랑말랑 쌀떡볶이">
 				<p class="MF__basic__warning">6~24자의 제목을 입력해주세요</p>
-				<p class="MF__basic__title">펀딩 주체 이름</p>
-				<p class="MF__basic__description">펀딩을 개최하시는 분의 이름 혹은 업체명을 12자 이내로 입력해주세요</p>
-				<input class="MF__basic__input medium" id="MF__basic__seller" placeholder="예) 해피펀딩">
-				<p class="MF__basic__warning">2~12자의 이름을 입력해주세요</p>
 				<p class="MF__basic__title">메인(썸네일) 사진</p>
 				<p class="MF__basic__description">JPG, PNG 형식, 250 X 140 픽셀</p>
 				<label class="MF__basic__addImage__label"><input type="file"
@@ -62,15 +58,6 @@
 				<p class="MF__basic__title">배송비</p>
 				<p class="MF__basic__description">펀딩 건 당 배송비를 알려주세요</p>
 				<input class="MF__basic__input small" id="MF__basic__fee" type="number" value="2500">
-				<p class="MF__basic__title">배송비</p>
-				<p class="MF__basic__description">펀딩 건 당 배송비를 알려주세요</p>
-				<select id="MF__basic__category" class="MF__basic__category">
-					<option selected="selected">일자리 창출</option>
-					<option>친환경</option>
-					<option>기부</option>
-					<option>작은가게</option>
-					<option>미디어</option>
-				</select>
 				<div class="MF__moveTab">
 					<p class="MF__moveTab__btn dimmed">이전</p>
 					<p class="MF__moveTab__btn" onclick="moveTab(1, 2)">다음</p>

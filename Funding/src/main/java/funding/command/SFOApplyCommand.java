@@ -28,7 +28,6 @@ public class SFOApplyCommand implements FCommand {
 		Date funding_closeAt = Date.valueOf(String_funding_closeAt);
 
 		Integer funding_purpose = Integer.parseInt(request.getParameter("funding_purpose"));
-		String funding_category = request.getParameter("funding_category");
 		Integer funding_fee = Integer.parseInt(request.getParameter("funding_fee"));
 
 		// funding data insert
@@ -36,7 +35,7 @@ public class SFOApplyCommand implements FCommand {
 		FDaoS dao = new FDaoS();
 
 		dao.fundingDataInsert(funding_seller, funding_banner, funding_title, funding_openAt, funding_closeAt,
-				funding_purpose, funding_category, funding_fee);
+				funding_purpose, funding_fee);
 
 		// funding num 가져오기
 		int funding_num = dao.funding_num(funding_title);

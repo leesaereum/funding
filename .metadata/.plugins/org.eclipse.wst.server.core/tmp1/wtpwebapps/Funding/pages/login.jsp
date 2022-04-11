@@ -309,10 +309,10 @@ justify-content: space-around;
 			</div>
 			<div class="signIn__infoBox">
 				<p class="signIn__info">
-					아직 가입하지 않으셨나요? <a href="SignUp.jsp">가입하러 가기</a>
+					아직 가입하지 않으셨나요? <a href="/Funding/pages/SignUp.jsp">가입하러 가기</a>
 				</p>
 				<p class="signIn__info">
-					판매자이신가요? <a href="slogin.jsp">판매자 로그인</a>
+					판매자이신가요? <a href="/Funding/pages/slogin.jsp">판매자 로그인</a>
 				</p>
 			</div>
 		</div>

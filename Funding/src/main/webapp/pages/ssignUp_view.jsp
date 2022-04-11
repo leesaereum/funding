@@ -192,7 +192,7 @@ function checksignUp() {
 	<div class="ssignUp__wrap">
 	<div class="ssignUp__content">
 	<h1 class="ssignUp__title">판매자 회원가입</h1>
-	<form name="ssignUpForm"  action="ssignUp.do" method="post">
+	<form name="ssignUpForm"  action="/Funding/ssignUp.do" method="post">
 		<div class="ssignUp__liner">
 		<p class="ssignUp__subTitle">아이디</p>
 		<input class="ssignUp__input" type="text" id="seller_id" name="seller_id" placeholder="example@mail.com">

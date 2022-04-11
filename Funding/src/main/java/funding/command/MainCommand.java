@@ -1,20 +1,31 @@
 package funding.command;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import funding.dao.FDaoC;
+import funding.dto.FDtoFunding;
 
 public class MainCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		FDaoC dao = new FDaoC();
+		String query = " where funding_state='진행'";
 
-		HttpSession session = request.getSession();
-		session.getAttribute("customer_id");
-
+		
+		/*String sort = request.getParameter("sort");
+		switch(sort) {
+		case(""):
+			break;
+		}
+		*/
+		ArrayList<FDtoFunding> list = dao.mainlist(query);
+		request.setAttribute("list", list);
 	}
 
 }

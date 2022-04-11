@@ -7952,3 +7952,23 @@ java.nio.file.FileSystemException: /Volumes/Eclipse/Eclipse.app/Contents/Info.pl
 	at org.eclipse.urischeme.internal.registration.RegistrationMacOsX.handleSchemes(RegistrationMacOsX.java:55)
 	at org.eclipse.urischeme.AutoRegisterSchemeHandlersJob.run(AutoRegisterSchemeHandlersJob.java:94)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.debug 4 125 2022-04-11 12:28:04.142
+!MESSAGE Internal error logged from JDI Debug: 
+!STACK 0
+org.eclipse.jdi.TimeoutException: Timeout occurred while waiting for packet 3229.
+	at org.eclipse.jdi.internal.connect.PacketReceiveManager.getReply(PacketReceiveManager.java:196)
+	at org.eclipse.jdi.internal.connect.PacketReceiveManager.getReply(PacketReceiveManager.java:207)
+	at org.eclipse.jdi.internal.MirrorImpl.requestVM(MirrorImpl.java:195)
+	at org.eclipse.jdi.internal.MirrorImpl.requestVM(MirrorImpl.java:230)
+	at org.eclipse.jdi.internal.ObjectReferenceImpl.getValues(ObjectReferenceImpl.java:325)
+	at org.eclipse.jdi.internal.ObjectReferenceImpl.getValue(ObjectReferenceImpl.java:208)
+	at org.eclipse.jdt.internal.debug.core.model.JDIThread.determineIfDaemonThread(JDIThread.java:574)
+	at org.eclipse.jdt.internal.debug.core.model.JDIThread.initialize(JDIThread.java:376)
+	at org.eclipse.jdt.internal.debug.core.model.JDIThread.<init>(JDIThread.java:339)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.newThread(JDIDebugTarget.java:671)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.createThread(JDIDebugTarget.java:647)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget$ThreadStartHandler.handleEvent(JDIDebugTarget.java:2298)
+	at org.eclipse.jdt.internal.debug.core.EventDispatcher.dispatch(EventDispatcher.java:156)
+	at org.eclipse.jdt.internal.debug.core.EventDispatcher.run(EventDispatcher.java:305)
+	at java.base/java.lang.Thread.run(Thread.java:833)

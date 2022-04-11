@@ -26,10 +26,9 @@ public class FDaoS {
 	}// constructor
 
 	// ssignUp --> sign up for seller
-	public void ssignUp(String seller_id, String seller_pw, String seller_pw2, String seller_number,
+	public void ssignUp(String seller_id, String seller_pw, String seller_number,
 			String seller_profile, String seller_name, String seller_phone, String seller_person_name,
-			String seller_person_phone, String address_seller, String address_state, String address_city,
-			String address_line) {
+			String seller_person_phone) {
 		// TODO Auto-generated method stub
 
 		Connection connection = null;
@@ -49,7 +48,6 @@ public class FDaoS {
 			preparedStatement.setString(6, seller_phone);
 			preparedStatement.setString(7, seller_person_name);
 			preparedStatement.setString(8, seller_person_phone);
-
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -359,14 +357,14 @@ public class FDaoS {
 	}// ssignIn end
 
 	public void fundingDataInsert(String funding_seller, String funding_banner, String funding_title,
-			Date funding_openAt, Date funding_closeAt, int funding_purpose, String funding_category, int funding_fee) {
+			Date funding_openAt, Date funding_closeAt, int funding_purpose, int funding_fee) {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "INSERT INTO funding (funding_seller, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_purpose, funding_category, funding_fee, funding_state) values(?, ?, ?, ?, ?, ?, ?, ?,'진행')";
+			String query = "INSERT INTO funding (funding_seller, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_purpose, funding_fee, funding_state) values(?, ?, ?, ?, ?, ?, ?,'대기')";
 			preparedStatement = connection.prepareStatement(query);
 
 			preparedStatement.setString(1, funding_seller);
@@ -375,8 +373,7 @@ public class FDaoS {
 			preparedStatement.setDate(4, funding_openAt);
 			preparedStatement.setDate(5, funding_closeAt);
 			preparedStatement.setInt(6, funding_purpose);
-			preparedStatement.setString(7, funding_category);
-			preparedStatement.setInt(8, funding_fee);
+			preparedStatement.setInt(7, funding_fee);
 
 			preparedStatement.executeUpdate();
 

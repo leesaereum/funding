@@ -866,7 +866,7 @@ public class FDaoC {
 			}
 		}
 		return hits;
-	}
+	}//select_hits
 	public void update_hits(String funding_num, int hits) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -888,5 +888,46 @@ public class FDaoC {
 				e2.printStackTrace();;
 			}
 		}
+	}//update_hits
+	public ArrayList<FDtoFunding> mainlist(String querying) {
+		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT funding_num, funding_seller, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_state, "
+					+ "(select seller_name from seller as s where f.funding_seller = s.seller_id), "
+					+ "(select sum(order_pirce*order_count) from order1 o where o.order_funding = f.funding_num group by order_funding)/funding_purpose*100"
+					+ "FROM funding as f"+querying+";";
+			
+			preparedstatement = connection.prepareStatement(query);
+			resultset = preparedstatement.executeQuery();
+			
+			while(resultset.next()) {
+				int funding_num = resultset.getInt(1);
+				String funding_seller = resultset.getString(8);
+				String funding_banner = resultset.getString(3);
+				String funding_title = resultset.getString(4);
+				Timestamp funding_openAt = resultset.getTimestamp(5);
+				Timestamp funding_closeAt = resultset.getTimestamp(6);
+				String funding_state = resultset.getString(7);
+				int funding_achievement = resultset.getInt(9);
+				
+				FDtoFunding dto = new FDtoFunding(funding_num, funding_seller, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_state, funding_achievement);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
 	}
 }

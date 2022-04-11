@@ -268,7 +268,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/ssignUp.do"):
 			command = new SSignUpCommand();
 			command.execute(request, response);
-			viewpage = "slogin.jsp";
+			viewpage = "/pages/slogin.jsp";
 			break;
 //		case("/sFODetail.do"):
 //			viewpage="/pages/makeFunding.jsp";

@@ -14,9 +14,10 @@ public class FDtoFunding {
 	Timestamp funding_closeAt;
 	int funding_purpose;
 	int funding_hits;
-	String funding_category;
 	String funding_state;
 	int funding_fee;
+	int funding_achievement;
+	
 	
 	//funding_content 태이블에 있는건데 같이 받기 위해서 가져왔습니다.
 	String content_content;
@@ -28,7 +29,7 @@ public class FDtoFunding {
 	public FDtoFunding() {
 	}
 	
-	public FDtoFunding(int funding_num, String funding_seller, String funding_banner, String funding_title, Timestamp funding_createAt, Timestamp funding_deleteAt, Timestamp funding_openAt, Timestamp funding_closeAt, int funding_purpose, int funding_hits, String funding_category,  String funding_state, int funding_fee) {
+	public FDtoFunding(int funding_num, String funding_seller, String funding_banner, String funding_title, Timestamp funding_createAt, Timestamp funding_deleteAt, Timestamp funding_openAt, Timestamp funding_closeAt, int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
 		
 		this.funding_num = funding_num;
 		this.funding_seller = funding_seller;
@@ -40,20 +41,17 @@ public class FDtoFunding {
 		this.funding_closeAt = funding_closeAt;
 		this.funding_purpose = funding_purpose;
 		this.funding_hits = funding_hits;
-		this.funding_category = funding_category;
 		this.funding_state = funding_state;
 		this.funding_fee = funding_fee;
 		
 	}
 	
 
-	public FDtoFunding(int funding_num, String funding_seller, String funding_title, String funding_category,
-			String funding_state) {
+	public FDtoFunding(int funding_num, String funding_seller, String funding_title, String funding_state) {
 		super();
 		this.funding_num = funding_num;
 		this.funding_seller = funding_seller;
 		this.funding_title = funding_title;
-		this.funding_category = funding_category;
 		this.funding_state = funding_state;
 	}
 
@@ -137,14 +135,6 @@ public class FDtoFunding {
 		this.funding_hits = funding_hits;
 	}
 
-	public String getFunding_category() {
-		return funding_category;
-	}
-
-	public void setFunding_category(String funding_category) {
-		this.funding_category = funding_category;
-	}
-
 	public String getFunding_state() {
 		return funding_state;
 	}
@@ -215,6 +205,19 @@ public class FDtoFunding {
 		this.funding_closeAt = funding_closeAt;
 		this.funding_state = funding_state;
 		this.order_num = order_num;
+	}
+
+	public FDtoFunding(int funding_num, String funding_seller, String funding_banner, String funding_title,
+			Timestamp funding_openAt, Timestamp funding_closeAt, String funding_state, int funding_achievement) {
+		super();
+		this.funding_num = funding_num;
+		this.funding_seller = funding_seller;
+		this.funding_banner = funding_banner;
+		this.funding_title = funding_title;
+		this.funding_openAt = funding_openAt;
+		this.funding_closeAt = funding_closeAt;
+		this.funding_state = funding_state;
+		this.funding_achievement = funding_achievement;
 	}
 
 

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import funding.dao.FDaoC;
 import funding.dao.FDaoS;
 
 public class SSignUpCommand implements FCommand {
@@ -17,7 +18,6 @@ public class SSignUpCommand implements FCommand {
 		
 		String seller_id = request.getParameter("seller_id");	
 		String seller_pw = request.getParameter("seller_pw1");
-		String seller_pw2 =request.getParameter("seller_pw2");
 		String seller_number =request.getParameter("seller_number1") + "-" + request.getParameter("seller_number2")
 								+"-" + request.getParameter("seller_number3");
 		String seller_profile = request.getParameter("seller_profile");
@@ -28,18 +28,18 @@ public class SSignUpCommand implements FCommand {
 		String seller_person_phone = request.getParameter("seller_person_phone1")+"-"+request.getParameter("seller_person_phone2")
 								+"-"+request.getParameter("seller_person_phone3");
 		
-		String address_seller = request.getParameter("address_seller");
-		String address_state = request.getParameter("address_state");
-		String address_city = request.getParameter("address_city");
-		String address_line = request.getParameter("address_line");
+		String address_seller = request.getParameter("seller_id");
+		String address_state = request.getParameter("address1");
+		String address_city = request.getParameter("address2");
+		String address_line = request.getParameter("address3");
 		
 		FDaoS daoS = new FDaoS();
-		daoS.ssignUp(seller_id, seller_pw, seller_pw2, seller_number, seller_profile, seller_name, seller_phone, 
-				seller_person_name, seller_person_phone, address_seller, address_state, address_city, address_line);
+		daoS.ssignUp(seller_id, seller_pw, seller_number, seller_profile, seller_name, seller_phone, 
+				seller_person_name, seller_person_phone);
 		daoS.address(address_seller, address_state, address_city, address_line);
 		
-		daoS.duplecateID(seller_id,seller_pw);
-		daoS.checkDuplicateId(seller_id);
+		FDaoC daoC = new FDaoC();
+		daoC.signUp(seller_id, seller_pw, seller_name, seller_phone, null, null);
 		
 	}
 

@@ -260,7 +260,7 @@ background-position
 		<div class="signUp__content">
 			<h1 class="signUp__title">회원가입</h1>
 			<div class="signIn__divider"></div>
-			<form action="/Funding/signUp.do" name="signUpForm" method="get">
+			<form action="/Funding/signUp.do" name="signUpForm" method="post">
 				<div class="signUp__liner">
 					<p class="signUp__subTitle">아이디</p>
 					<input class="signUp__input" id="id" name="id"
