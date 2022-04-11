@@ -574,8 +574,8 @@ public class FDaoS {
 		PreparedStatement preparedStatement = null;		
 		try {
 			connection = dataSource.getConnection();
-			String query = "update funding_question set question_state ='답변완료', question_answer = ?, question_answer_at = now()"
-					+ " where question_num = ?";
+			String query = "update funding_question set question_state ='답변완료', question_answer = ?, question_answer_at = now() "
+					+ "where question_num = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, answer);
 			preparedStatement.setString(2, num);

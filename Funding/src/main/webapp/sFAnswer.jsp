@@ -69,8 +69,9 @@
 	overflow: hidden;
 }
 .btn{
-	postion:absolute;
-	bottom:0;
+	position: absolute; 
+	bottom: 220px; 
+	right: 300px
 }
 
 </style>
@@ -101,10 +102,10 @@
 				<p class="question__num">${FAnswer.question_num }</p>
 				<p class="question__title">${FAnswer.question_title }</p>
 				<p class="question__name">${FAnswer.question_customer }</p>
-				<p class="question__date"></p>
+				<p class="question__date">${FAnswer.question_at }</p>
 			</div>
 			<div class="question__content">${FAnswer.question_content }
-			
+			<p class="btn" align="right"><a href="sFAnswer_detail.jsp?question_num=${FAnswer.question_num}">[답변하기]</a></p>
 			</div>
 			
 		</div>
@@ -113,7 +114,7 @@
 				<p class="question__name">판매자</p>
 				<p class="answer__date">${FAnswer.question_answer_at }</p>
 			</div>
-			<div class="question__content">${FAnswer.question_answer }</div>
+			<div class="question__content" name="FAnswer_update">${FAnswer.question_answer }</div>
 			
 		</div>
 		<a href="/Funding/sFADetail.do" class="question__toList">목록</a>
