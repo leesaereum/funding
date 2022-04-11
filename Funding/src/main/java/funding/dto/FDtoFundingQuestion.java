@@ -7,11 +7,13 @@ public class FDtoFundingQuestion {
 	int question_num;
 	String question_customer;
 	int question_funding;
+	String question_seller;
 	String question_title;
 	String question_content;
 	Timestamp question_at;
 	String question_state;
 	String question_answer;
+	Timestamp question_answer_at;
 	
 	public FDtoFundingQuestion() {
 		// TODO Auto-generated constructor stub
@@ -87,5 +89,21 @@ public class FDtoFundingQuestion {
 		this.question_at = question_at;
 		this.question_state = question_state;
 	}
+
+	public FDtoFundingQuestion(int question_num, String question_customer, String question_seller,
+			String question_title, String question_content, String question_state, String question_answer,
+			Timestamp question_answer_at) {
+		super();
+		this.question_num = question_num;
+		this.question_customer = question_customer;
+		this.question_seller = question_seller;
+		this.question_title = question_title;
+		this.question_content = question_content;
+		this.question_state = question_state;
+		this.question_answer = question_answer;
+		this.question_answer_at = question_answer_at;
+	}
+	
+	
 	
 }

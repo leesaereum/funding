@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import funding.dao.FDaoC;
 import funding.dao.FDaoS;
 
 public class SSignUpCommand implements FCommand {
@@ -40,6 +41,9 @@ public class SSignUpCommand implements FCommand {
 		
 		daoS.duplecateID(seller_id,seller_pw);
 		daoS.checkDuplicateId(seller_id);
+		
+		FDaoC daoC = new FDaoC();
+		daoC.signUp(seller_id, seller_pw, seller_name, seller_phone, null, null);
 		
 	}
 

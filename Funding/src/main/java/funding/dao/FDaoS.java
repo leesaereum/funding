@@ -110,7 +110,7 @@ public class FDaoS {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		String query = "select s.seller_id, c.customer_id from seller s, customer c "
-				+ "where c.customer_id = ? or s.seller_id = ?;";
+				+ "where c.customer_id = ? or s.seller_id = ?";
 
 
 		try {
@@ -119,11 +119,6 @@ public class FDaoS {
 			preparedStatement.setString(1, id);
 			preparedStatement.setString(2, id);
 			resultSet = preparedStatement.executeQuery();
-			
-//			while(resultSet.next()) {
-//				String iD =resultSet.getString("seller_id");
-//				System.out.printf("%s : 占쏙옙占싱듸옙 占쏙옙占쏙옙!\n",id);
-//				return false;
 
 			while (resultSet.next()) {
 				String seller_id = resultSet.getString(1);
@@ -312,7 +307,7 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
-		
+		return dtoCalculates;
 	}
 
 	public String calcFunding_title(String funding_title) {
@@ -533,6 +528,40 @@ public class FDaoS {
 		return dtosFQ;
 	} //funding question end
 	
+	//funding answer
+	public ArrayList<FDtoFundingQuestion> FAnswer_list(){
+		ArrayList<FDtoFundingQuestion> dtosFA = new ArrayList<FDtoFundingQuestion>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "update funding_question set question_state = '완료', question_answer_at= now() "
+					     +"where question_answer is not null";
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				int question_num = resultSet.getInt("question_num"); //1234로 써도 되고, Column 이름으로 써도 됨!
+				String question_customer = resultSet.getString("question_customer");
+				String question_seller = resultSet.getString("question_seller");
+				String question_title = resultSet.getString("question_title");
+				String question_content = resultSet.getString("question_content");
+				Timestamp question_answer_at = resultSet.getTimestamp("question_answer_at");
+				String question_state = resultSet.getString("question_state");
+				String question_answer = resultSet.getString("question_answer");
+				
+				FDtoFundingQuestion dtoFA = new FDtoFundingQuestion(question_num, question_customer, question_seller, question_title
+												, question_content, question_state, question_answer, question_answer_at);
+				
+				dtosFA.add(dtoFA);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return dtosFA;
+	}
 	//수정하기 위에
 	//--------------------------------------------------------------------------------
 

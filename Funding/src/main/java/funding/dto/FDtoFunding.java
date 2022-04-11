@@ -197,7 +197,6 @@ public class FDtoFunding {
 		this.funding_closeAt = funding_closeAt;
 	}
 
-<<<<<<< HEAD
 	public FDtoFunding(int funding_num, String funding_banner, String funding_title,
 			Timestamp funding_openAt) {
 		super();
@@ -206,7 +205,6 @@ public class FDtoFunding {
 		this.funding_title = funding_title;
 		this.funding_openAt = funding_openAt;
 	}
-=======
 	public int getOrder_num() {
 		return order_num;
 	}
@@ -226,11 +224,6 @@ public class FDtoFunding {
 		this.funding_state = funding_state;
 		this.order_num = order_num;
 	}
-
-
->>>>>>> origin/main
-
-	
 
 }
 

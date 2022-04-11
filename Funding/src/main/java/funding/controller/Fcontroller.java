@@ -40,6 +40,7 @@ import funding.command.MyquestionListCommand;
 import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
 import funding.command.SFADetailCommand;
+import funding.command.SFAnswerCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
@@ -268,12 +269,12 @@ public class Fcontroller extends HttpServlet {
 		case ("/slogOut.do"):
 			command = new SLogoutCommand();
 			command.execute(request, response);
-			viewpage = "slogin.jsp";
+			viewpage = "/pages/slogin.jsp";
 			break;
 		case ("/ssignUp.do"):
 			command = new SSignUpCommand();
 			command.execute(request, response);
-			viewpage = "slogin.jsp";
+			viewpage = "/pages/slogin.jsp";
 			break;
 //		case("/sFODetail.do"):
 //			viewpage="/pages/makeFunding.jsp";
@@ -322,8 +323,9 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "sFADetail.jsp";
 			break;
 		case ("/sFAnswer.do"):
-			
-			viewpage = "";
+			command = new SFAnswerCommand();
+			command.execute(request, response);
+			viewpage = "sFAnswer.jsp";
 			break;
 		case ("/sRAnswer.do"):
 			viewpage = "";
