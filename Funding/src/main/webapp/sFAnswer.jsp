@@ -104,12 +104,12 @@
 		<div class="question__box">
 			<div class="question__header">
 				<p class="question__name">판매자</p>
-				
+				<p class="answer__date">${FAnswer.question_answer_at }</p>
 			</div>
 			<div class="question__content">${FAnswer.question_answer }</div>
 			
 		</div>
-		<a href="sFADetail.do" class="question__toList">목록</a>
+		<a href="/Funding/sFADetail.do" class="question__toList">목록</a>
 	</div>
 
 </body>
