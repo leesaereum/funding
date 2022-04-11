@@ -33,6 +33,7 @@ import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
 import funding.command.MyfundingListCommand;
+import funding.command.MyinformationModifyCommand;
 import funding.command.MylikeListCommand;
 import funding.command.MyquestionListCommand;
 import funding.command.NoticeDetailCommand;
@@ -236,7 +237,9 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "";
 			break;
 		case ("/myinfomation_modify.do"):
-			viewpage = "";
+			command = new MyinformationModifyCommand();
+			command.execute(request, response);
+			viewpage = "mypage.do";
 			break;
 		case ("/mysocial_view.do"):
 			viewpage = "";

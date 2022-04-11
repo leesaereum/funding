@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					</div>
 					<div class="my__liner">
 						<p class="my__form__subtitle">전화번호(-제외)</p>
-						<input class="my__form__input" type="password" id="phone">
+						<input class="my__form__input" type="password" id="phone" name="phone">
 					</div>
 					<div class="my__liner">
 						<p class="my__form__subtitle">도로명 주소</p>
@@ -175,8 +175,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		</div>
 	</div>
-	</div>
-
 
 	<script type="text/javascript" src="/Funding/libraries/jQuery.js"></script>
 	<script type="text/javascript" src="/Funding/pages/mypage.js"></script>
