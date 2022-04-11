@@ -13,7 +13,9 @@ import javax.sql.DataSource;
 import funding.dto.FDtoC;
 import funding.dto.FDtoCalculate;
 import funding.dto.FDtoFunding;
+import funding.dto.FDtoNotice;
 import funding.dto.FDtoSeller;
+import funding.dto.FDtoSystemQuestion;
 
 public class FDaoA {
 	DataSource dataSource;
@@ -75,7 +77,7 @@ public class FDaoA {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "select customer_id, customer_name, customer_phone, address_state, address_city, address_line from customer, address where customer.customer_id = address.address_id";
+			String query = "select customer_id, customer_name, customer_phone, address_state, address_city, address_line from customer, address where customer.customer_id = address.address_customer";
 			preparedStatement = connection.prepareStatement(query);
 			// preparedStatement.setString(1, "1");
 			resultSet = preparedStatement.executeQuery();
@@ -107,7 +109,7 @@ public class FDaoA {
 		return dtos;
 	} //list end
 
-	// sellerapplylist
+	// seller applylist
 
 	public ArrayList<FDtoSeller> sellerapplylist() {
 
@@ -121,7 +123,6 @@ public class FDaoA {
 			String query = "SELECT * FROM seller WHERE seller_state NOT IN ('승인')";
 
 			preparedStatement = connection.prepareStatement(query);
-			// preparedStatement.setString(1, "1");
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
@@ -155,9 +156,74 @@ public class FDaoA {
 			}
 		}
 		return dtos;
-	} // sellerapplylist end
+	} 
+	
+	// seller applylist end
+	
+	
+	// seller detail
+	
+	public ArrayList<FDtoSeller> sellerdetail(String sellerId) {
+		
+		System.out.println("OK");
+		System.out.println(sellerId);
+		ArrayList<FDtoSeller> dtos = new ArrayList<FDtoSeller>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT * FROM seller WHERE seller_id = ? ";
+			
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, sellerId);
+			resultSet = preparedStatement.executeQuery();
+			
 
+			
+			while (resultSet.next()) {
+				String seller_id = resultSet.getString("seller_id");
+				String seller_pw = resultSet.getString("seller_pw");
+				String seller_license = resultSet.getString("seller_license");
+				String seller_number = resultSet.getString("seller_number");
+				String seller_profile = resultSet.getString("seller_profile");
+				String seller_name = resultSet.getString("seller_name");
+				String seller_phone = resultSet.getString("seller_phone");
+				String seller_person_name = resultSet.getString("seller_person_name");
+				String seller_person_phone = resultSet.getString("seller_person_phone");
+				String seller_state = resultSet.getString("seller_state");
+				
+				System.out.println(seller_id);
+				
+				FDtoSeller dto22 = new FDtoSeller(seller_id, seller_pw, seller_license, seller_number, seller_profile, seller_name, seller_phone, seller_person_name, seller_person_phone, seller_state);
+				
+				dtos.add(dto22);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dtos;
+	} 
+	
+	// seller detailt end
+
+
+	
 	// seller Qualify
+	
 	public FDtoSeller sellerqualify(String seller_Id) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -231,7 +297,7 @@ public class FDaoA {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT funding_num, funding_seller, funding_title, funding_state FROM funding WHERE funding_state NOT IN ('승인')";
+			String query = "SELECT funding_num, funding_seller, funding_title, funding_category, funding_state FROM funding WHERE funding_state NOT IN ('진행')";
 
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
@@ -240,9 +306,10 @@ public class FDaoA {
 				int funding_num = resultSet.getInt("funding_num");
 				String funding_seller = resultSet.getString("funding_seller");
 				String funding_title = resultSet.getString("funding_title");
+				String funding_category = resultSet.getString("funding_category");
 				String funding_state = resultSet.getString("funding_state");
 
-				FDtoFunding dto03 = new FDtoFunding(funding_num, funding_seller, funding_title, funding_state);
+				FDtoFunding dto03 = new FDtoFunding(funding_num, funding_seller, funding_title, funding_category, funding_state);
 
 				dtos.add(dto03);
 			}
@@ -266,6 +333,71 @@ public class FDaoA {
 	
 	
 	
+	// funding detail
+	
+	public ArrayList<FDtoFunding> fundingdetail(String fundingNum) {
+		
+
+		ArrayList<FDtoFunding> dtos = new ArrayList<FDtoFunding>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT * FROM funding WHERE funding_num = ? ";
+			
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, fundingNum);
+			resultSet = preparedStatement.executeQuery();
+			
+
+			
+			while (resultSet.next()) {
+				int funding_num = resultSet.getInt("funding_num");
+				String funding_seller = resultSet.getString("funding_seller");
+				String funding_banner = resultSet.getString("funding_banner");
+				String funding_title = resultSet.getString("funding_title");
+				
+				Timestamp funding_createAt = resultSet.getTimestamp("funding_createAt");
+				Timestamp funding_deleteAt = resultSet.getTimestamp("funding_deleteAt");
+				Timestamp funding_openAt = resultSet.getTimestamp("funding_openAt");
+				Timestamp funding_closeAt = resultSet.getTimestamp("funding_closeAt");
+				
+				int funding_purpose = resultSet.getInt("funding_purpose");
+				int funding_hits = resultSet.getInt("funding_hits");
+
+				String funding_category = resultSet.getString("funding_category");
+				String funding_state = resultSet.getString("funding_state");
+				int funding_fee = resultSet.getInt("funding_fee");
+				
+				System.out.println(funding_num);
+				
+				FDtoFunding dto33 = new FDtoFunding(funding_num, funding_seller, funding_banner, funding_title, funding_createAt, funding_deleteAt, funding_openAt, funding_closeAt, funding_purpose, funding_hits, funding_category, funding_state, funding_fee);
+				
+				dtos.add(dto33);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dtos;
+	} 
+	
+	// funding detail end
+	
+
 	// fundingapprove
 	public FDtoFunding fundingapprove(String funding_num) {
 		Connection connection = null;
@@ -274,7 +406,7 @@ public class FDaoA {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "UPDATE funding SET funding_state = '승인' Where funding_num = ?";
+			String query = "UPDATE funding SET funding_state = '진행' Where funding_num = ?";
 
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, funding_num);
@@ -439,7 +571,132 @@ public class FDaoA {
 		return dto;
 	}// calculate reject end
 	
+	
+	
+	//calculate approve wait list
+	
+	
+	public ArrayList<FDtoSystemQuestion> systemQuestionlist() {
 
+		ArrayList<FDtoSystemQuestion> dtos = new ArrayList<FDtoSystemQuestion>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT question_num, question_customer, question_title, question_content, question_at, question_state FROM system_question";
+
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				int question_num = resultSet.getInt("question_num");
+				String question_customer = resultSet.getString("question_customer");
+				String question_title = resultSet.getString("question_title");
+				String question_content= resultSet.getString("question_content");
+				Timestamp question_at = resultSet.getTimestamp("question_at");
+				String question_state = resultSet.getString("question_state");
+
+				FDtoSystemQuestion dto04 = new FDtoSystemQuestion(question_num, question_customer, question_title, question_content, question_at, question_state );
+
+				dtos.add(dto04);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dtos;
+	} // calculate approve wait list end
+	
+	public ArrayList<FDtoFunding> fundinglist() {
+
+		ArrayList<FDtoFunding> dtos = new ArrayList<FDtoFunding>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT funding_title, funding_num, funding_state, seller_name FROM funding LEFT OUTER JOIN seller ON funding_seller = seller_id WHERE funding_state IN ('진행')";
+
+			preparedStatement = connection.prepareStatement(query);
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				String funding_title = resultSet.getString("funding_title");
+				int funding_num = resultSet.getInt("funding_num");
+				String funding_state = resultSet.getString("funding_state");
+				String seller_name = resultSet.getString("seller_name");
+
+				FDtoFunding dto66 = new FDtoFunding(funding_num, funding_title, funding_state, seller_name);
+
+				dtos.add(dto66);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dtos;
+	} // fapprovewaitlist end
 	
 
+	public ArrayList<FDtoNotice> anotice_list() {
+		ArrayList<FDtoNotice> dtos = new ArrayList<FDtoNotice>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT notice_num, notice_admin, notice_title, notice_At FROM notice";
+			preparedstatement = connection.prepareStatement(query);
+			resultset = preparedstatement.executeQuery();
+
+			while (resultset.next()) {
+				int notice_num = resultset.getInt(1);
+				String notice_admin = resultset.getString(2);
+				String notice_title = resultset.getString(3);
+				Timestamp notice_At = resultset.getTimestamp(4);
+				FDtoNotice dtoNotice = new FDtoNotice(notice_num, notice_admin, notice_title, notice_At);
+				dtos.add(dtoNotice);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null)
+					connection.close();
+				if (preparedstatement != null)
+					preparedstatement.close();
+				if (resultset != null)
+					resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	}// notice_list end
 }
