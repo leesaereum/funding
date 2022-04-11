@@ -16,7 +16,7 @@ public class FundingQuestionlistCommand implements FCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		FDaoS daoS = new FDaoS();
-		ArrayList<FDtoFundingQuestion> dtosFQ = daoS.list();
+		ArrayList<FDtoFundingQuestion> dtosFQ = daoS.FQuestion_list();
 		request.setAttribute("FQlist", dtosFQ);
 	}
 
