@@ -28,6 +28,7 @@ import funding.command.FindpwCommand;
 import funding.command.FundingLikeCommand;
 import funding.command.FundingListViewCommand;
 import funding.command.FundingPaymentCommand;
+import funding.command.FundingQuestionCommand;
 import funding.command.FundingQuestionlistCommand;
 import funding.command.FundingdetailCommand;
 import funding.command.LoginCommand;
@@ -161,16 +162,12 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "/pages/detail.jsp";
 			break;
-		case ("/fundingQuestion_view.do"):
-			viewpage = "";
-			break;
 		case ("/fundingQuestion.do"):
-			viewpage = "";
+			command = new FundingQuestionCommand();
+			command.execute(request, response);
+			viewpage = "/pages/detail.jsp?tap=";
 			break;
 		case ("/fundingReview_list.do"):
-			viewpage = "";
-			break;
-		case ("/fundingReview_view.do"):
 			viewpage = "";
 			break;
 		case ("/fundingReview.do"):
