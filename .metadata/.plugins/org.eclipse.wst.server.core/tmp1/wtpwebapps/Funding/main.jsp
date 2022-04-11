@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 <link rel="stylesheet" href="./styles/init.css">
 <link rel="stylesheet" href="./styles/base.css">
 <link rel="stylesheet" href="./styles/fundingCards.css">
-
+<script type="text/javascript" src="/Funding/libraries/moment.js"></script>
 <style>
 .loadMore {
 	width: 100%;
@@ -21,25 +22,27 @@
 	overflow-anchor: none;
 	cursor: pointer;
 }
+
 #toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    padding: 15px 20px;
-    transform: translate(-50%, 10px);
-    border-radius: 30px;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s, visibility .5s, transform .5s;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    z-index: 5;
+	position: fixed;
+	bottom: 30px;
+	left: 50%;
+	padding: 15px 20px;
+	transform: translate(-50%, 10px);
+	border-radius: 30px;
+	overflow: hidden;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .5s, visibility .5s, transform .5s;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	z-index: 5;
 }
+
 #toast.reveal {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, 0)
+	opacity: 1;
+	visibility: visible;
+	transform: translate(-50%, 0)
 }
 </style>
 </head>
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	loadMore();
 	let email = "<%=session.getAttribute("customer_id")%>";
 
-	let firstLogin = "<%= session.getAttribute("loginFirst")%>";
+	let firstLogin = "<%=session.getAttribute("loginFirst")%>";
 	
 	if(firstLogin !== "null" && email !== "null"){
 		toast(email + '로 로그인 되었습니다.');
@@ -64,22 +67,58 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	
 });
+
+//funding_num, funding_seller, funding_banner, funding_title, 
+//funding_openAt, funding_closeAt, funding_state, funding_achievement);
 	function loadMore(){
 		let txt = '';
-		for(let i = 0; i < page*12+12; i++){
-			txt += '<a href="/Funding/pages/detail.jsp?fid='+i+'"><div class="fundingCard">'
-			txt += '<div class="fundingCardHover"><p>펀딩 진행중</p>'
-			txt += '<p>'+(i+1)+'일 남았어요</p></div>'
-			txt	+= '<div class="fundingThumbBox">';
-			txt += '<img src="/Funding/assets/thumbs/optimize ('+i+').jpeg"></div>';
-			txt += '<div class="fundingContentBox"><div class="fundingContentLeft">'
-			txt += '<p class="fundingTitle">'+words[i]+'</p>'
-			txt += '<p class="fundingSeller">판매자'+i+'</p></div>'
-			txt += '<div class="fundingRate">100%</div></div>'
-			txt += '<div class="fundingCardBottom">'
-			txt += '<p class="fundingLeftDate">'+(i+1)+'일 남음</p><p class="fundingAmount">2,566,433원</p>'
-			txt += '</div></div></a>';
+		let today = new Date();
+		let closeDay = new Date();
+		let dif = 0;
+		let days = 0;
+		let hours = 0;
+		let timeTxt = "";
+		let mins = 0;
+		
+		<c:forEach items="${list}" var="fd">
+		closeDay = moment("${fd.funding_closeAt}");
+		dif = closeDay.diff(today, 'hours')
+		days = Math.round(dif/24)
+		hours = dif%24
+		if(days>0){
+			timeTxt = days +  '일 '
+		}else{
+			timeTxt = ''
 		}
+		if(hours>0){
+			timeTxt += hours + '시간 '
+		}else{
+			timeTxt += ''
+		}
+		if(dif < 1){
+			if(dif < 0){
+				timeTxt = '마감됨'	
+			}else{
+				timeTxt = closeDay.diff(today, 'minutes') + '분'
+			}
+		}
+		
+		
+		txt += '<a href="/Funding/fundingContent_view.do?fid=${fd.funding_num}"><div class="fundingCard">'
+		txt += '<div class="fundingCardHover"><p>펀딩 진행중</p>'
+		txt += '<p>'+timeTxt+'</p></div>'
+		txt	+= '<div class="fundingThumbBox">';
+		txt += '<img src=${fd.funding_banner}></div>';
+		txt += '<div class="fundingContentBox"><div class="fundingContentLeft">'
+		txt += '<p class="fundingTitle">${fd.funding_title}</p>'
+		txt += '<p class="fundingSeller"></p></div>'
+		txt += '<div class="fundingRate">${fd.funding_achievement}%</div></div>'
+		txt += '<div class="fundingCardBottom">'
+		txt += '<p class="fundingLeftDate">'+timeTxt+'</p><p class="fundingAmount">2,566,433원</p>'
+		txt += '</div></div></a>';
+		
+		</c:forEach>
+		
 		document.getElementById("fundingCards").innerHTML = txt;
 		if(page<5){
 			page ++;
@@ -106,8 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	<jsp:include page="./components/header.jsp" />
 	<jsp:include page="./components/banner.jsp" />
 	<jsp:include page="./components/categories.jsp" />
-	<div class="fundingCards" id="fundingCards">
-	</div>
+	<div class="fundingCards" id="fundingCards"></div>
 	<div id="loadMoreBox">
 		<div class="loadMore" onclick="loadMore()">더보기</div>
 	</div>
