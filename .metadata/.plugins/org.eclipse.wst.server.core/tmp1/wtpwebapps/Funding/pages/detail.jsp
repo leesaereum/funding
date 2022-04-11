@@ -26,8 +26,12 @@ if (fid == null) {
 	<div class="detail__wrap">
 		<div class="detail__left">
 			<div class="detail__top__imgBox">
+								<c:forEach items="${funding }" var="funding">
+			
 				<img class="detail__top__img"
-					src='/Funding/assets/thumbs/optimize (<%=request.getParameter("fid")%>).jpeg'>
+					src="${funding.funding_banner}">
+								</c:forEach>
+			
 			</div>
 			<div class="detail__content__tab">
 				<p class="detail__tab__tab detail__tab__selected" data-id="story">스토리</p>
@@ -129,9 +133,9 @@ if (fid == null) {
 					<div class="detail__funding__options" id="funding__options">
 						<c:forEach items="${optionList }" var="option" varStatus="status">
 
-							<p onclick="add__option(${status.index})">${option.option_name}</p>
+							<p onclick="add__option(${option.option_num}, '${option.option_name}')">${option.option_name}</p>
 							<input type="hidden" readonly="readonly"
-								id="optionPrice_${status.index}" value="${option.option_price}">
+								id="optionPrice_${option.option_num}" value="${option.option_price}">
 						</c:forEach>
 					</div>
 				</div>
@@ -181,7 +185,7 @@ if (fid == null) {
 
 		<div id="toast"></div>
 	</div>
-
+	<input type="hidden" value="<%=request.getParameter("fid")%>" readonly="readonly" id="fidfid">
 	<div class="detail__popup__wrap"></div>
 </body>
 </html>

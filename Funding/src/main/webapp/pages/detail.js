@@ -126,17 +126,16 @@ $(document).on("change", ".detail__funding__selected__number", function(e) {
 	calculate(id);
 });
 
-function add__option(optionID) {
-	console.log(optionID);
+function add__option(optionID, optionName) {
 	if (document.getElementById("option_" + optionID)) {
 		alert("이미 등록된 옵션입니다.");
 	} else {
 		let txt = $("#selected__box").html();
 		txt +=
-			'<div class="detail__funding__selected" id="option_' + optionID + '">';
+			'<div class="detail__funding__selected" data-optionNum="'+optionID+'" id="option_' + optionID + '">';
 		txt += '<div class="detail__funding__selected__top">';
 		txt +=
-			'<p class="detail__funding__selected__subtitle">치즈떡2팩+쌀떡2팩+어묵2팩+소스분말4팩(짜장맛2/보통맛2)</p>';
+			'<p class="detail__funding__selected__subtitle">'+ optionName +'</p>';
 		txt +=
 			'<img class="detail__funding__selected__close" src="/Funding/assets/close.svg" data-optionID="' +
 			optionID +
@@ -215,23 +214,26 @@ $(document).on("click", ".detail__popup__payMethod__kakao", function(e) {
 });
 
 function payOn(pg){
+
 	IMP.request_pay({
     	pg : pg, 
         pay_method : 'card',
         merchant_uid : 'merchant_' + new Date().getTime(),
-        name : '결제',
-        amount : 1,
-        buyer_email : '',
-        buyer_name : '구매자 이름',
-        buyer_tel : '구매자 번호',
-        buyer_addr : '구매자 주소',
-        buyer_postcode : '구매자 주소',
+        name : '해피펀딩',
+        amount : $(".detail__popup__totalTxt > span").html().replaceAll(",","")*1,
+        buyer_email : $(".signedIn_email").html(),
+        buyer_name : $(".signedIn_email").html(),
+        buyer_tel : '',
+        buyer_addr : '',
+        buyer_postcode : '',
         m_redirect_url : 'happybean.naver.com'
     }, function(rsp) {
         if ( rsp.success ) {
             var msg = '펀딩에 참여해주셔서 감사합니다.';
-            console.log(rsp)
-        } 
+            trans();
+        }else{
+        	console.log(rsp)
+        }
     });
 }
 $(document).on("click", ".detail__popup__payMethod__ini", function(e) {
@@ -240,4 +242,51 @@ $(document).on("click", ".detail__popup__payMethod__ini", function(e) {
 	payOn(pg);
 });
 
-
+function trans(){
+	let form = document.createElement('form'); // 폼객체 생성
+	
+	let order_customer = document.createElement('input');
+	order_customer.setAttribute('type', 'text');
+	order_customer.setAttribute('name', 'order_customer');
+	order_customer.setAttribute('value', $(".signedIn_email").html())
+	form.appendChild(order_customer);
+	
+	let order_funding = document.createElement('input');
+	order_funding.setAttribute('type', 'number');
+	order_funding.setAttribute('name', 'order_funding');
+	order_funding.setAttribute('value', $("#fidfid").val());
+	form.appendChild(order_funding);
+	
+	for(let i = 0; i<$(".detail__popup__option").length; i++){
+		let optionNum = $(".detail__funding__selected__close").eq(i).attr("data-optionid")*1
+		
+		let order_option = document.createElement('input');
+		order_option.setAttribute('type', 'number');
+		order_option.setAttribute('name', 'order_option'+i);
+		order_option.setAttribute('value', optionNum)
+		form.appendChild(order_option);
+		
+		let order_price = document.createElement('input');
+		order_price.setAttribute('type', 'text');
+		order_price.setAttribute('name', 'order_price'+i);
+		order_price.setAttribute('value', $("#optionPrice_"+optionNum).val()*1)
+		form.appendChild(order_price);
+		
+		let order_count = document.createElement('input');
+		order_count.setAttribute('type', 'number');
+		order_count.setAttribute('name', 'order_count'+i);
+		order_count.setAttribute('value', $(".detail__popup__count").eq(i).val()*1)
+		form.appendChild(order_count);
+		
+		let order_address = document.createElement('input');
+		order_address.setAttribute('type', 'text');
+		order_address.setAttribute('name', 'order_address'+i);
+		order_address.setAttribute('value', "detail.js에서 주소값을 바꿔주세요")
+		form.appendChild(order_address);
+		
+		form.setAttribute('method', 'post'); //get,post 가능
+	form.setAttribute('action', "/Funding/fundingOrder.do"); //보내는 url > 나중에 login.do로 보내야 함;
+	document.body.appendChild(form);
+	form.submit();
+	}
+}

@@ -181,7 +181,7 @@ function checksignUp() {
 	form.submit()
 }
 	function idCheck() {
-		window.open("./sidCheckForm.jsp","popup","width=600,height=600")
+		window.open("sidCheckForm.jsp","popup","width=600,height=600")
 	}
 	
 </script>
@@ -319,7 +319,7 @@ function checksignUp() {
 		}
 		
 		function goPopup(){
-		    var pop = window.open("./apis/addressSearch/addressPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+		    var pop = window.open("/Funding/apis/addressSearch/addressPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 		    
 		}
 		/** API 서비스 제공항목 확대 (2017.02) **/

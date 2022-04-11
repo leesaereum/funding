@@ -25,7 +25,7 @@
     <!--
     <Manager pathname="" />
     -->
-    <Resource 
+        <Resource
     	name = "jdbc/funding_system"
     	auth = "Container"
     	type = "javax.sql.DataSource"
@@ -35,8 +35,9 @@
     	username = "root"
     	password = "qwer1234"
     	driverClassName = "com.mysql.cj.jdbc.Driver"
-    	url = "jdbc:mysql://localhost:3306/funding_system?serverTimezone=Asia/Seoul&amp;characterEncoding=utf8&amp;useSSL=false"	
+    	url = "jdbc:mysql://localhost:3306/funding_system?serverTimezone=Asia/Seoul&amp;characterEncoding=utf8&amp;useSSL=false"
     />
+<<<<<<< HEAD
         <Resource 
     	name = "jdbc/todo"
     	auth = "Container"
@@ -49,4 +50,6 @@
     	driverClassName = "com.mysql.cj.jdbc.Driver"
     	url = "jdbc:mysql://localhost:3306/todo?serverTimezone=Asia/Seoul&amp;characterEncoding=utf8&amp;useSSL=false"	
     />
+=======
+>>>>>>> origin/main
 </Context>

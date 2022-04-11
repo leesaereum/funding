@@ -23,6 +23,8 @@ public class FDtoFunding {
 //	String option_name;
 //	int option_price;
 //	int option_amount;
+	
+	int order_num;
 	public FDtoFunding() {
 	}
 
@@ -174,13 +176,14 @@ public class FDtoFunding {
 	
 
 	public FDtoFunding(String funding_title, Timestamp funding_openAt, Timestamp funding_closeAt, int funding_purpose,
-			String content_content) {
+			String content_content, String funding_banner) {
 		super();
 		this.funding_title = funding_title;
 		this.funding_openAt = funding_openAt;
 		this.funding_closeAt = funding_closeAt;
 		this.funding_purpose = funding_purpose;
 		this.content_content = content_content;
+		this.funding_banner = funding_banner;
 	}
 
 
@@ -194,6 +197,7 @@ public class FDtoFunding {
 		this.funding_closeAt = funding_closeAt;
 	}
 
+<<<<<<< HEAD
 	public FDtoFunding(int funding_num, String funding_banner, String funding_title,
 			Timestamp funding_openAt) {
 		super();
@@ -202,6 +206,29 @@ public class FDtoFunding {
 		this.funding_title = funding_title;
 		this.funding_openAt = funding_openAt;
 	}
+=======
+	public int getOrder_num() {
+		return order_num;
+	}
+
+	public void setOrder_num(int order_num) {
+		this.order_num = order_num;
+	}
+
+	public FDtoFunding(int funding_num, String funding_seller, String funding_title, Timestamp funding_openAt,
+			Timestamp funding_closeAt, String funding_state, int order_num) {
+		super();
+		this.funding_num = funding_num;
+		this.funding_seller = funding_seller;
+		this.funding_title = funding_title;
+		this.funding_openAt = funding_openAt;
+		this.funding_closeAt = funding_closeAt;
+		this.funding_state = funding_state;
+		this.order_num = order_num;
+	}
+
+
+>>>>>>> origin/main
 
 	
 

@@ -8,8 +8,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 import funding.command.ACAWListCommand;
 import funding.command.ACApproveCommand;
+=======
+
+import funding.command.ACAWListCommand;
+import funding.command.ACApproveCommand;
+
+>>>>>>> origin/main
 import funding.command.ACListCommand;
 import funding.command.ACRejectCommand;
 import funding.command.AFAWListCommand;
@@ -31,12 +38,20 @@ import funding.command.FundingdetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
+import funding.command.MyfundingListCommand;
+import funding.command.MyinformationModifyCommand;
+import funding.command.MylikeListCommand;
+import funding.command.MyquestionListCommand;
 import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
+<<<<<<< HEAD
 import funding.command.SFADetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
+=======
+import funding.command.NoticeSearchCommand;
+>>>>>>> origin/main
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
@@ -47,6 +62,10 @@ import funding.command.SQApplyCommand;
 import funding.command.SSignUpCommand;
 import funding.command.SearchCommand;
 import funding.command.SignupCommand;
+import funding.command.SystemQuestionCommand;
+import funding.command.SystemQuestionDetailCommand;
+import funding.command.SystemQuestionSearchCommand;
+import funding.command.SystemQuestionlistCommand;
 
 @WebServlet("*.do")
 public class Fcontroller extends HttpServlet {
@@ -129,22 +148,21 @@ public class Fcontroller extends HttpServlet {
 			command = new SearchCommand();
 			command.execute(request, response);
 			viewpage = "/pages/funding_list_view.jsp";
-		break;
-		case("/fundingContent_view.do"):
-			System.out.println(path);
+			break;
+		case ("/fundingContent_view.do"):
 			command = new FundingdetailCommand();
 			command.execute(request, response);
-			viewpage="/pages/detail.jsp";
+			viewpage = "/pages/detail.jsp";
 			break;
-		case("/fundingLike.do"):
+		case ("/fundingLike.do"):
 			command = new FundingLikeCommand();
 			command.execute(request, response);
-			viewpage= "detailtest.jsp";
+			viewpage = "detailtest.jsp";
 			break;
-		case("/fundingOrder.do"):
+		case ("/fundingOrder.do"):
 			command = new FundingPaymentCommand();
 			command.execute(request, response);
-			viewpage="fundingOrder.jsp";
+			viewpage = "fundingOrder.jsp";
 			break;
 		case ("/fundingPayment_view.do"):
 			viewpage = "";
@@ -174,22 +192,35 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "";
 			break;
 		case ("/systemQuestion_list.do"):
-			viewpage = "";
+			command = new SystemQuestionlistCommand();
+			command.execute(request, response);
+			viewpage = "/pages/systemquestion_list.jsp";
 			break;
-		case ("/systemQuestion_view.do"):
-			viewpage = "";
+		case ("/systemQuestion_search.do"):
+			command = new SystemQuestionSearchCommand();
+			command.execute(request, response);
+			viewpage = "/pages/systemquestion_list.jsp";
 			break;
 		case ("/systemQuestion.do"):
-			viewpage = "";
+			command = new SystemQuestionCommand();
+			command.execute(request, response);
+			viewpage = "systemQuestion_list.do";
 			break;
 		case ("/systemQuestion_detail.do"):
-			viewpage = "";
+			command = new SystemQuestionDetailCommand();
+			command.execute(request, response);
+			viewpage = "/pages/systemquestion_detail.jsp";
 			break;
 		case ("/orderList.do"):
 			viewpage = "";
 			break;
 		case ("/notice_list.do"):
 			command = new NoticeListCommand();
+			command.execute(request, response);
+			viewpage = "/pages/notice.jsp";
+			break;
+		case ("/notice_search.do"):
+			command = new NoticeSearchCommand();
 			command.execute(request, response);
 			viewpage = "/pages/notice.jsp";
 			break;
@@ -202,33 +233,35 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "/pages/mypage.jsp";
 			break;
 		case ("/myfunding_list.do"):
+			command = new MyfundingListCommand();
+			command.execute(request, response);
+			viewpage = "/pages/mypage_myfunding_list.jsp";
+			break;
+		case ("/myorder_detail.do"):
 			viewpage = "";
 			break;
-		case ("/myfunding_detail.do"):
-			viewpage = "";
-			break;
+		case ("/mylike_list.do"):
+			command = new MylikeListCommand();
+			command.execute(request, response);
+			viewpage = "/pages/mypage_mylike_list.jsp";
+		break;
 		case ("/myquestion_list.do"):
-			viewpage = "";
-			break;
-		case ("/myquestion_detail.do"):
-			viewpage = "";
+			command = new MyquestionListCommand();
+			command.execute(request, response);
+			viewpage = "/pages/mypage_myquestion.jsp";
 			break;
 		case ("/myinformation_view.do"):
 			viewpage = "";
 			break;
 		case ("/myinfomation_modify.do"):
-			viewpage = "";
+			command = new MyinformationModifyCommand();
+			command.execute(request, response);
+			viewpage = "mypage.do";
 			break;
 		case ("/mysocial_view.do"):
 			viewpage = "";
 			break;
 		case ("/mysocial_modify.do"):
-			viewpage = "";
-			break;
-		case ("/mylike_list.do"):
-			viewpage = "";
-			break;
-		case ("/mylike_movw.do"):
 			viewpage = "";
 			break;
 		}// customer
@@ -253,20 +286,34 @@ public class Fcontroller extends HttpServlet {
 //		case("/sFODetail.do"):
 //			viewpage="/pages/makeFunding.jsp";
 //			break;
-		case("/sFOApply.do"):
+		case ("/sFOApply.do"):
 			command = new SFOApplyCommand();
 			command.execute(request, response);
-			viewpage="main.jsp";
+			viewpage = "main.jsp";
 			break;
+<<<<<<< HEAD
 		case ("/sQApply_detail.do"):
 			viewpage = "";
 		case("/sQApply_view.do"):
 			command=new SQApplyCommand();
+=======
+
+		case ("/sQApply_view.do"):
+			command = new SFOApplyCommand();
+>>>>>>> origin/main
 			command.execute(request, response);
-			viewpage="sQApply_view.jsp";
+			viewpage = "sQApply_view.jsp";
 			break;
+<<<<<<< HEAD
 		case("/sQApply.do"):
 			viewpage="main.do";
+=======
+		case ("/sQApply.do"):
+			viewpage = "main.do";
+			break;
+		case ("/SFOApply.do"):
+			viewpage = "";
+>>>>>>> origin/main
 			break;
 //		case ("/SFOApply.do"):
 //			viewpage = "";
@@ -323,23 +370,23 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "aCList.jsp";
 			break;
 
-		case("/aCAWList.do"):
+		case ("/aCAWList.do"):
 			command = new ACAWListCommand();
 			command.execute(request, response);
-			viewpage="aCAWList.jsp";
+			viewpage = "aCAWList.jsp";
 			break;
-		case("/aCADetail.do"):
-			viewpage="";
+		case ("/aCADetail.do"):
+			viewpage = "";
 			break;
-		case("/aCApprove.do"):
+		case ("/aCApprove.do"):
 			command = new ACApproveCommand();
 			command.execute(request, response);
-			viewpage="aCAWList.do";
+			viewpage = "aCAWList.do";
 			break;
-		case("/aCReject.do"):
+		case ("/aCReject.do"):
 			command = new ACRejectCommand();
 			command.execute(request, response);
-			viewpage="aCAWList.do";
+			viewpage = "aCAWList.do";
 			break;
 		case ("/aSQWList.do"):
 			command = new ASQWListCommand();
@@ -349,33 +396,33 @@ public class Fcontroller extends HttpServlet {
 		case ("/aSQDetail.do"):
 			viewpage = "";
 			break;
-		case("/aSQualify.do"):
+		case ("/aSQualify.do"):
 			command = new ASQualifyCommand();
 			command.execute(request, response);
-			viewpage="aSQWList.do";
+			viewpage = "aSQWList.do";
 			break;
-		case("/aSreject.do"):
+		case ("/aSreject.do"):
 			command = new ASrejectCommand();
 			command.execute(request, response);
-			viewpage="aSQWList.do";
+			viewpage = "aSQWList.do";
 			break;
-		case("/aFAWList.do"):
+		case ("/aFAWList.do"):
 			command = new AFAWListCommand();
 			command.execute(request, response);
-			viewpage="aFAWList.jsp";
+			viewpage = "aFAWList.jsp";
 			break;
-		case("/aFADetail.do"):
-			viewpage="";
-		break;
-		case("/aFApprove.do"):
+		case ("/aFADetail.do"):
+			viewpage = "";
+			break;
+		case ("/aFApprove.do"):
 			command = new AFApproveCommand();
 			command.execute(request, response);
-			viewpage="aFAWList.do";
+			viewpage = "aFAWList.do";
 			break;
-		case("/aFreject.do"):
+		case ("/aFreject.do"):
 			command = new AFRejectCommand();
 			command.execute(request, response);
-			viewpage="aFAWList.do";
+			viewpage = "aFAWList.do";
 			break;
 		case ("/aSAList.do"):
 			viewpage = "";

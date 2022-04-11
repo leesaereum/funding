@@ -10,8 +10,12 @@ public class MyinformationModifyCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
+		String pw = request.getParameter("customer_pw");
+		//String phone = request.getParameter("phone");
+		String phone="01012345678";
+		phone = phone.substring(3);
+		System.out.println(phone);
 	}
 
 }

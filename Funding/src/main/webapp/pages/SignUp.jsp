@@ -37,74 +37,19 @@ keyframes gradientBG { 0% {
 50
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 %
 {
 background-position
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 100
 
 
-
-
-
-
-
-
-
-
-
-
 %
 50
-
-
-
-
-
-
-
-
-
 
 
 
@@ -114,74 +59,19 @@ background-position
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 %
 {
 background-position
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 0
 
 
-
-
-
-
-
-
-
-
-
-
 %
 50
-
-
-
-
-
-
-
-
-
-
 
 
 %;
@@ -284,14 +174,14 @@ background-position
 <script type="text/javascript">
 	let emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 	let namePattern = /^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/;
-	let phonePatern = /^([0-9]{3,4})$/;
+	let phonePattern = /[0-9]{3,4}$/;
 	function validate() {
 	const id = document.getElementById('id').value
 	const pw = document.getElementById('pw').value
 	const name = document.getElementById('name').value
 	const phone2 = document.getElementById('phone2').value
 	const phone3 = document.getElementById('phone3').value
-		if (id.match(emailPattern) && pw.length >= 4 && name.match(namePattern) && phone2.match(phonePattern) && phone3.match(phone3Pattern)) {
+		if (id.match(emailPattern) && pw.length >= 4 && name.match(namePattern) && phone2.match(phonePattern) && phone3.match(phonePattern)) {
 			document.getElementById('submit').disabled = false;
 		} else {
 			document.getElementById('submit').disabled = true;
@@ -346,7 +236,7 @@ background-position
 			document.getElementById('nameValidate').innerHTML = '이름은 한글이나 영어로 입력해주세요'
 		} else if (name.length <1 || name.length > 45) {			
 			document.getElementById('nameValidate').innerHTML = '이름은 1~45자 이내로 입력해주세요'
-		}d
+		}
 		else {
 			document.getElementById('nameValidate').innerHTML = ''
 		}
@@ -355,11 +245,12 @@ background-position
 		const phone2 = document.getElementById('phone2').value
 		const phone3 = document.getElementById('phone3').value
 		if (!phone2.match(phonePattern)) {
-			document.getElementById('phoneValidate').innerHTML = '전화번호는 숫자로만 입력해주세요'
-		} else if (!phone3.match(phonePattern)) {
-			document.getElementById('phoneValidate').innerHTML = '전화번호는 숫자로만 입력해주세요'
-		} else {
-
+			document.getElementById('phoneValidate').innerHTML = '전화번호는 숫자로 입력해주세요'
+		}
+		else if(!phone3.match(phonePattern)) {
+			document.getElementById('phoneValidate').innerHTML = '전화번호는 숫자로 입력해주세요'
+		}
+		else {
 			document.getElementById('phoneValidate').innerHTML = ''
 		}
 	}
@@ -376,6 +267,7 @@ background-position
 						placeholder="example@mail.com" onkeyup="validate()"
 						onfocus="idFocus()" onblur="idValidate()">
 					<p id="idValidate" class="signUp__warning"></p>
+					<input type="button" value="ID중복확인" onclick="idCheck()">
 				</div>
 				<div class="signIn__liner">
 					<p class="signUp__warning"></p>
@@ -401,18 +293,21 @@ background-position
 				<div>
 					<div class="signIn__liner">
 						<p class="signUp__subTitle">우편번호</p>
-						<input type="hidden" id="confmKey" name="confmKey" value=""  >
-						<input type="text" id="zipNo" name="zipNo" readonly style="width:100px">
-						<input type="button"  value="주소검색" onclick="goPopup();">
+						<input type="hidden" id="confmKey" name="confmKey" value="">
+						<input type="text" id="zipNo" name="zipNo" readonly
+							style="width: 100px"> <input type="button" value="주소검색"
+							onclick="goPopup();">
 					</div>
 					<div class="signIn__liner">
 						<p class="signUp__subTitle">도로명 주소</p>
-						<input type="text" name="address1" id="roadAddrPart1" style="width:85%">
+						<input type="text" name="address1" id="roadAddrPart1"
+							style="width: 85%">
 					</div>
 					<div class="signIn__liner">
 						<p class="signUp__subTitle">상세주소</p>
-						<input type="text" name="address2" id="addrDetail" style="width:40%" value="">
-						<input type="text" name="address3" id="roadAddrPart2"  style="width:40%" value="">
+						<input type="text" name="address2" id="addrDetail"
+							style="width: 40%" value=""> <input type="text"
+							name="address3" id="roadAddrPart2" style="width: 40%" value="">
 					</div>
 				</div>
 				<div class="signIn__liner">
@@ -425,11 +320,11 @@ background-position
 						<option>016</option>
 						<option>017</option>
 						<option>019</option>
-					</select> - <input id="phone2" type="text" name="phone2" size="5" maxlength="4"
-						onkeyup="validate()" onfocus="phoneFocus()"
-						onblur="phoneValidate()"> - <input id="phone3" type="text" maxlength="4"
-						name="phone3" size="5" onkeyup="validate()" onfocus="phoneFocus()"
-						onblur="phoneValidate()">
+					</select> - <input id="phone2" type="text" name="phone2" size="5"
+						maxlength="4" onkeyup="validate()" onfocus="phoneFocus()"
+						onblur="phoneValidate()"> - <input id="phone3" type="text"
+						maxlength="4" name="phone3" size="5" onkeyup="validate()"
+						onfocus="phoneFocus()" onblur="phoneValidate()">
 					<p id="phoneValidate" class="signUp__warning"></p>
 				</div>
 
@@ -455,10 +350,13 @@ background-position
 			</form>
 		</div>
 	</div>
-		<script>
+	<script>
 	function goPopup(){
 	    var pop = window.open("/Funding/apis/addressSearch/addressPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	    
+	}
+	function idCheck(){
+		window.open("idCheck.jsp","popup","width=600,height=600")
 	}
 	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn
 							, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo){

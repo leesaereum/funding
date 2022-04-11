@@ -10,7 +10,7 @@
 <div style="text-align: center"></div> 
 <h3>* 아이디 중복 확인 결과 *</h3> 
 <% 
-	String id=request.getParameter("seller_id"); 
+	String id=request.getParameter("id"); 
 	FDaoS daoS = new FDaoS();
 	boolean id_check=daoS.checkDuplicateId(id);
 	int cnt =0;
