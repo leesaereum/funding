@@ -568,6 +568,31 @@ public class FDaoS {
 		}
 		return dtoFA;
 	}
+	
+	public void FAnswer_Update(String num, String answer) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;		
+		try {
+			connection = dataSource.getConnection();
+			String query = "update funding_question set question_state ='답변완료', question_answer = ?, question_answer_at = now()"
+					+ " where question_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, answer);
+			preparedStatement.setString(2, num);
+			preparedStatement.executeUpdate();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	}
 	//수정하기 위에
 	//--------------------------------------------------------------------------------
 

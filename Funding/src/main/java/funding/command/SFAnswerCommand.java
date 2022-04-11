@@ -19,6 +19,9 @@ public class SFAnswerCommand implements FCommand {
 		FDaoS daoS = new FDaoS();
 		FDtoFundingQuestion dtoFA = daoS.FAnswer_detail(num);
 		request.setAttribute("FAnswer", dtoFA);
+		
+		String answer = request.getParameter("question_answer");
+		daoS.FAnswer_Update(num, answer);
 	}
 
 }

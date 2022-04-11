@@ -119,6 +119,15 @@ public class FDtoFundingQuestion {
 		this.question_answer = question_answer;
 		this.question_answer_at = question_answer_at;
 	}
+
+	public FDtoFundingQuestion(int question_num, String question_state, String question_answer,
+			Timestamp question_answer_at) {
+		super();
+		this.question_num = question_num;
+		this.question_state = question_state;
+		this.question_answer = question_answer;
+		this.question_answer_at = question_answer_at;
+	}
 	
 	
 	
