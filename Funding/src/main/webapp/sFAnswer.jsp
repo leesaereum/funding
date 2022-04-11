@@ -7,99 +7,110 @@
 <title>Open 문의 답변 작성페이지</title>
 <link rel="stylesheet" href="/Funding/styles/init.css">
 <link rel="stylesheet" href="/Funding/styles/base.css">
-</head>
 <style>
-.notice__wrap {
+.question__wrap {
 	width: 960px;
 	margin: 0 auto;
 	padding: 51px 0;
 }
 
-.notice__header {
+.question__header {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 }
 
-.notice__pageTitle {
+.question__pageTitle {
 	font-size: 21px;
 }
 
-.sFADetail__box {
+.question__box {
 	list-style: none;
 	margin-top: 17px;
 	border: 1px solid #eee;
+	min-height: 300px;
 }
-
-.sFADetail__liner {
-	padding: 18px 29px;
-	width: 100%;
+.question__header {
+	padding: 18px 30px 19px 29px;
+	border-bottom: 1px solid #eee;
 	display: flex;
 	justify-content: space-between;
-	color: #999;
-	border-bottom: 1px solid #eee;
 }
-.sFADetail__num{
-	width: 100px;
+
+.question__content {
+	padding: 30px 29px 34px;
+}
+
+.question__toList {
+	display: block;
+	width: 160px;
+	margin: 30px auto 0;
+	padding: 13px 0 12px;
+	background-color: #828282;
+	border: 1px solid rgba(0, 0, 0, .1);
+	font-size: 16px;
+	line-height: 1.19;
+	color: #fff;
+	text-align: center;
+	cursor: pointer;
+}
+.question__num{
+	width: 50px;
 	text-align: center;
 }
-.sFADetail__date{
-	width: 150px;
-	text-align: center;
+.question__name{
+	width: 170px;
 }
-.sFADetail__customer{
-	width: 200px;
-	text-align: center;
+.question__date{
+	width: 120px;
 }
-.sFADetail__content{
-	width: 200px;
-	text-align: center;
-}
-.sFADetail__state{
-	width: 100px;
-	text-align: center;
-}
-.sFADetail__title{
-	width: calc(100% - 800px);
-	text-align: center;
+.question__title{
+	width: calc(100% - 400px);
+	overflow: hidden;
 }
 </style>
+<script src="/Funding/libraries/jQuery.js"></script>
+<script src="/Funding/libraries/moment.js"></script>
+<script>
+	let hello = moment("${FAnswer.question_at}").format("YYYY-MM-DD")
+	$(document).ready(function(){
+		$(".question__date").html(hello)
+	})
+	let hi = moment("${FAnswer.question_answer_at}").format("YYYY-MM-DD")
+	if(hi=="null"){ let hi = "답변 대기중"}
+	$(document).ready(function(){
+		$(".answer__date").html(hi)
+	})
+
+</script>
+</head>
 <body>
-<jsp:include page="/components/header.jsp" />
-	<div class="notice__wrap">
-		<div class="notice__header">
-			<h1 class="notice__pageTitle">Open펀딩 문의 답변</h1>
+	<jsp:include page="/components/header.jsp" />
+
+	<div class="question__wrap">
+		<div class="question__header">
+			<h1 class="question__pageTitle">Open 펀딩 문의 답변 </h1>
 		</div>
-		<div class="sFADetail__box">
-		<c:forEach items="${FQlist }" var="FQlist">
-				문의번호  <input class="sFADetail__num" type="text" maxlength="3" readonly="readonly" value="${question_num }"><br>
-				고객ID   <input class="sFADetail__customer" type="text" readonly="readonly" value="${FQlist.question_customer }"><br>
-				제목	    <input class="sFADetail__title" type="text" readonly="readonly" value="${FQlist.question_title }"><br>
-				문의내용	<input class="sFADetail__content" type="text" readonly="readonly" value="${FQlist.question_content }"><br>
-				문의일자	<input class="sFADetail__date" type="text" readonly="readonly" value="${FQlist.question_at }"><br>
-		</c:forEach>
+		<div class="question__box">
+			<div class="question__header">
+				<p class="question__num">${FAnswer.question_num }</p>
+				<p class="question__title">${FAnswer.question_title }</p>
+				<p class="question__name">${FAnswer.question_customer }</p>
+				<p class="question__date"></p>
+			</div>
+			<div class="question__content">${FAnswer.question_content }</div>
+			
 		</div>
-		
-		<div class="notice__header">
-			<h1 class="notice__pageTitle">Open펀딩 문의 답변</h1>
+		<div class="question__box">
+			<div class="question__header">
+				<p class="question__name">판매자</p>
+				
+			</div>
+			<div class="question__content">${FAnswer.question_answer }</div>
+			
 		</div>
-		<ul class="sFADetail__box">
-			<li class="sFADetail__liner"><p class="sFADetail__num">문의번호</p>
-				<p class="sFADetail__customer">고객ID</p>
-				<p class="sFADetail__title">제목</p>
-				<p class="sFADetail__content">문의내용</p>
-				<p class="sFADetail__date">문의일자</p></li>
-			<c:forEach items="${FQlist }" var="FQlist">
-				<li class="sFADetail__liner"><p class="sFADetail__num">${FQlist.question_num }</p>
-					<p class="sFADetail__customer">${FQlist.question_customer }</p>
-					<a href="sFAnswer.do?question_num=${FQlist.question_num}"
-					class="sFADetail__title">${FQlist.question_title }</a>
-					<a href="sFAnswer.do?question_num=${FQlist.question_num}"
-					class="sFADetail__content">${FQlist.question_content }</a>
-					<p class="sFADetail__date">${FQlist.question_at }</p>
-				</li>
-			</c:forEach>
-		</ul>
+		<a href="sFADetail.do" class="question__toList">목록</a>
 	</div>
+
 </body>
 </html>

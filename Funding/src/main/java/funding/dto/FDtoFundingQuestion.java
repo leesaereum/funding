@@ -69,6 +69,22 @@ public class FDtoFundingQuestion {
 	}
 	
 	
+	public String getQuestion_seller() {
+		return question_seller;
+	}
+
+	public void setQuestion_seller(String question_seller) {
+		this.question_seller = question_seller;
+	}
+
+	public Timestamp getQuestion_answer_at() {
+		return question_answer_at;
+	}
+
+	public void setQuestion_answer_at(Timestamp question_answer_at) {
+		this.question_answer_at = question_answer_at;
+	}
+
 	public FDtoFundingQuestion(String question_customer, String question_title, String question_content,
 			Timestamp question_at, String question_answer) {
 		super();

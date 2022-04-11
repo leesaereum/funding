@@ -529,38 +529,44 @@ public class FDaoS {
 	} //funding question end
 	
 	//funding answer
-	public ArrayList<FDtoFundingQuestion> FAnswer_list(){
-		ArrayList<FDtoFundingQuestion> dtosFA = new ArrayList<FDtoFundingQuestion>();
+	public FDtoFundingQuestion FAnswer_detail(String num){
+		FDtoFundingQuestion dtoFA = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
+		ResultSet resultset = null;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "update funding_question set question_state = '완료', question_answer_at= now() "
-					     +"where question_answer is not null";
+			String query ="select * from funding_question where question_num = ? ";
+
 			preparedStatement = connection.prepareStatement(query);
-			resultSet = preparedStatement.executeQuery();
+			preparedStatement.setString(1, num);
+			resultset = preparedStatement.executeQuery();
 			
-			while(resultSet.next()) {
-				int question_num = resultSet.getInt("question_num"); //1234로 써도 되고, Column 이름으로 써도 됨!
-				String question_customer = resultSet.getString("question_customer");
-				String question_seller = resultSet.getString("question_seller");
-				String question_title = resultSet.getString("question_title");
-				String question_content = resultSet.getString("question_content");
-				Timestamp question_answer_at = resultSet.getTimestamp("question_answer_at");
-				String question_state = resultSet.getString("question_state");
-				String question_answer = resultSet.getString("question_answer");
-				
-				FDtoFundingQuestion dtoFA = new FDtoFundingQuestion(question_num, question_customer, question_seller, question_title
+			if(resultset.next()) {
+				int question_num = resultset.getInt("question_num"); //1234로 써도 되고, Column 이름으로 써도 됨!
+				String question_customer = resultset.getString("question_customer");
+				String question_seller = resultset.getString("question_seller");
+				String question_title = resultset.getString("question_title");
+				String question_content = resultset.getString("question_content");
+				Timestamp question_answer_at = resultset.getTimestamp("question_answer_at");
+				String question_state = resultset.getString("question_state");
+				String question_answer = resultset.getString("question_answer");
+//				if(question_answer == null) question_state="답변대기";
+				dtoFA = new FDtoFundingQuestion(question_num, question_customer, question_seller, question_title
 												, question_content, question_state, question_answer, question_answer_at);
-				
-				dtosFA.add(dtoFA);
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
+		}try {
+			if (connection != null) connection.close();
+			if (preparedStatement != null) preparedStatement.close();
+			if (resultset != null) resultset.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return dtosFA;
+		return dtoFA;
 	}
 	//수정하기 위에
 	//--------------------------------------------------------------------------------

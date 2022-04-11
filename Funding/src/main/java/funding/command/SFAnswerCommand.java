@@ -1,7 +1,6 @@
 package funding.command;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,10 +15,10 @@ public class SFAnswerCommand implements FCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		String num = request.getParameter("question_num");
 		FDaoS daoS = new FDaoS();
-		ArrayList<FDtoFundingQuestion> dtosFA = daoS.FAnswer_list();
-		request.setAttribute("FAnswer", dtosFA);
-
+		FDtoFundingQuestion dtoFA = daoS.FAnswer_detail(num);
+		request.setAttribute("FAnswer", dtoFA);
 	}
 
 }
