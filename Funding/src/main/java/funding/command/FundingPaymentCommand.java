@@ -16,52 +16,56 @@ public class FundingPaymentCommand implements FCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String order_customer = "abc123";
-		int order_funding = 1;
-		Integer order_option1 = 1;
-		Integer order_price1 = 10000;
-		Integer order_count1 = 5;
-		Integer order_address = 5;
-	
-		Integer order_option2 = 2;
-		Integer order_price2 = 20000;
-		Integer order_count2 = 10;
+
+		String order_customer = request.getParameter("order_customer");
+
 		
-		Integer order_option3 = null;
-		Integer order_price3 = null;
-		Integer order_count3 = null;
+		int order_funding = Integer.parseInt(request.getParameter("order_funding"));
 		
-		Integer order_option4 = null;
-		Integer order_price4 = null;
-		Integer order_count4 = null;
+		Integer order_address = Integer.parseInt(request.getParameter("order_address"));
 		
-		Integer order_option5 = null;
-		Integer order_price5 = null;
-		Integer order_count5 = null;
 		
 		FDaoC dao = new FDaoC();
 		
+		if (request.getParameter("order_option0") != null) {
+			
+			Integer order_option0 = Integer.parseInt(request.getParameter("order_option0"));
+			Integer order_price0 = Integer.parseInt(request.getParameter("order_price0"));
+			Integer order_count0 = Integer.parseInt(request.getParameter("order_count0"));
+			dao.OrderInsert(order_customer, order_funding, order_option0, order_price0, order_count0, order_address);
+}
 		
-		if (order_option1 != null) {
+		if (request.getParameter("order_option1") != null) {
+			Integer order_option1 = Integer.parseInt(request.getParameter("order_option1"));
+			Integer order_price1 = Integer.parseInt(request.getParameter("order_price1"));
+			Integer order_count1 = Integer.parseInt(request.getParameter("order_count1"));
 			dao.OrderInsert(order_customer, order_funding, order_option1, order_price1, order_count1, order_address);
+			
 		}
 		
-		if (order_option2 != null) {
+		if (request.getParameter("order_option2") != null) {
+			Integer order_option2 = Integer.parseInt(request.getParameter("order_option2"));
+			Integer order_price2 = Integer.parseInt(request.getParameter("order_price2"));
+			Integer order_count2 = Integer.parseInt(request.getParameter("order_count2"));
 			dao.OrderInsert(order_customer, order_funding, order_option2, order_price2, order_count2, order_address);
 		}
 		
-		if (order_option3 != null) {
+		if (request.getParameter("order_option3") != null) {
+			Integer order_option3 = Integer.parseInt(request.getParameter("order_option3"));
+			Integer order_price3 = Integer.parseInt(request.getParameter("order_price3"));
+			Integer order_count3 = Integer.parseInt(request.getParameter("order_count3"));
 			dao.OrderInsert(order_customer, order_funding, order_option3, order_price3, order_count3, order_address);
 		}
 		
-		if (order_option4 != null) {
+		
+		if (request.getParameter("order_option4") != null) {
+			Integer order_option4 = Integer.parseInt(request.getParameter("order_option4"));
+			Integer order_price4 = Integer.parseInt(request.getParameter("order_price4"));
+			Integer order_count4 = Integer.parseInt(request.getParameter("order_count4"));
 			dao.OrderInsert(order_customer, order_funding, order_option4, order_price4, order_count4, order_address);
 		
 }
-		if (order_option5 != null) {
-			dao.OrderInsert(order_customer, order_funding, order_option5, order_price5, order_count5, order_address);
-		
-}
+
 		
 }
 }

@@ -17,7 +17,7 @@
 	line-height: 52px;
 	border: 1px solid rgba(0, 0, 0, .07);
 	background-color: #f6f6f6;
-	font-size: 15px;
+	font-size: 15px;c
 	text-align: center;
 	overflow-anchor: none;
 	cursor: pointer;
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		txt += '<p class="fundingSeller"></p></div>'
 		txt += '<div class="fundingRate">${fd.funding_achievement}%</div></div>'
 		txt += '<div class="fundingCardBottom">'
-		txt += '<p class="fundingLeftDate">'+timeTxt+'</p><p class="fundingAmount">2,566,433원</p>'
+		txt += '<p class="fundingLeftDate">'+timeTxt+'</p><p class="fundingAmount">${fd.total}원</p>'
 		txt += '</div></div></a>';
 		
 		</c:forEach>

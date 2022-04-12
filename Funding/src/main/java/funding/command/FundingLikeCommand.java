@@ -20,7 +20,6 @@ public class FundingLikeCommand implements FCommand {
 		String like_customer  = request.getParameter("customer_id");
 		Date like_at = Date.valueOf(LocalDate.now());
 		
-//		String like_At  = request.getParameter("customer_id");
 		int like_funding  = Integer.parseInt(request.getParameter("funding_num")) ;
 		
 		request.setAttribute("viewpage", "/fundingContent_view.do?fid=" + request.getParameter("funding_num"));

@@ -41,6 +41,7 @@ public class SSignUpCommand implements FCommand {
 		FDaoC daoC = new FDaoC();
 		daoC.signUp(seller_id, seller_pw, seller_name, seller_phone, null, null);
 		
+		
 	}
 
 }

@@ -18,15 +18,15 @@ public class FDtoCalculate {
 	}
 
 	public FDtoCalculate(int calculate_num, int calculate_funding, String calculate_seller, String calculate_admin,
-			int calculate_cost, Timestamp calculate_At, Timestamp calculate_approveAt) {
+			int calculate_cost, Timestamp calculate_approveAt2, Timestamp calculate_approveAt3) {
 		super();
 		this.calculate_num = calculate_num;
 		this.calculate_funding = calculate_funding;
 		this.calculate_seller = calculate_seller;
 		this.calculate_admin = calculate_admin;
 		this.calculate_cost = calculate_cost;
-		this.calculate_At = calculate_At;
-		this.calculate_approveAt = calculate_approveAt;
+		this.calculate_At = calculate_approveAt2;
+		this.calculate_approveAt = calculate_approveAt3;
 	}
 
 	public FDtoCalculate(int calculate_num, int calculate_funding, String calculate_seller, int calculate_cost,

@@ -37,4 +37,5 @@
     	driverClassName = "com.mysql.cj.jdbc.Driver"
     	url = "jdbc:mysql://localhost:3306/funding_system?serverTimezone=Asia/Seoul&amp;characterEncoding=utf8&amp;useSSL=false"
     />
+
 </Context>

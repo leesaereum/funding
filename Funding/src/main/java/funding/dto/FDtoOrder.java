@@ -14,6 +14,7 @@ public class FDtoOrder {
 	String order_request;
 	int order_address;
 	String option_name;
+	int order_cost;
 	
 	public int getOrder_num() {
 		return order_num;
@@ -88,5 +89,18 @@ public class FDtoOrder {
 		this.order_At = order_At;
 		this.option_name = option_name;
 	}
+	public int getOrder_cost() {
+		return order_cost;
+	}
+	public void setOrder_cost(int order_cost) {
+		this.order_cost = order_cost;
+	}
+	public FDtoOrder(String order_customer, Timestamp order_At, int order_cost) {
+		super();
+		this.order_customer = order_customer;
+		this.order_At = order_At;
+		this.order_cost = order_cost;
+	}
+
 	
 }

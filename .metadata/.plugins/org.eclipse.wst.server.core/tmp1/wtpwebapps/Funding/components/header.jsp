@@ -74,9 +74,9 @@ header {
 		<h1 class="font-color-main" onclick="goHome()">해피펀딩</h1>
 		<nav>
 			<ul>
-				<li><a href="/Funding/funding_list_view.do">펀딩</a></li>
-				<li><a href="/Funding/notice_list.do">공지사항</a></li>
-				<li><a href="/Funding/systemQuestion_list.do">Q&A</a></li>
+				<li><a href="/Funding/funding_list_view.do?page=1">펀딩</a></li>
+				<li><a href="/Funding/notice_list.do?page=1">공지사항</a></li>
+				<li><a href="/Funding/systemQuestion_list.do?page=1">Q&A</a></li>
 			</ul>
 		</nav>
 		<div id="loginZone">
@@ -92,11 +92,11 @@ let headerHeight = 72;
 
 let isSeller = "<%=session.getAttribute("isSeller")%>";
 if(isSeller != "null"){
-	let email = "<%=session.getAttribute("seller_id")%>";
-	let txt = '<p class="signedIn_email" onclick="goMyPage()">'+email+'</p><div class="logoutButton">로그아웃</div><div class="makeFunding">펀딩 만들기</div>';
+	let email = "<%=session.getAttribute("id")%>";
+	let txt = '<p class="signedIn_email" onclick="goSMyPage()">'+email+'</p><div class="logoutButton">로그아웃</div><div class="makeFunding">펀딩 만들기</div>';
 	document.getElementById("loginZone").innerHTML = txt;
 }else{
-	let email = "<%=session.getAttribute("customer_id")%>";
+	let email = "<%=session.getAttribute("id")%>";
 	if(email == "null"){
 		document.getElementById("loginZone").innerHTML = '<div class="loginButton">로그인</div>';
 	}else{
@@ -138,6 +138,9 @@ $(document).on("click", ".makeFunding", function(e){
 })
 
 function goMyPage(){
-	location.href = "/Funding/pages/mypage.jsp"
+	location.href = "/Funding/mypage.do"
+}
+function goSMyPage(){
+	location.href = "/Funding/sMypage.do"
 }
 </script>

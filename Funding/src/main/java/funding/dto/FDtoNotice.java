@@ -13,7 +13,13 @@ public class FDtoNotice {
 	public FDtoNotice() {
 		
 	}
-
+	public FDtoNotice(int notice_num, String notice_admin, String notice_title, Timestamp notice_At) {
+		super();
+		this.notice_num = notice_num;
+		this.notice_admin = notice_admin;
+		this.notice_title = notice_title;
+		this.notice_At = notice_At;
+	}
 	public FDtoNotice(int notice_num, String notice_admin, String notice_title, String notice_content,
 			Timestamp notice_At) {
 		super();

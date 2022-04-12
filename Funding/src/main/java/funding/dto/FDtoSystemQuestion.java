@@ -36,6 +36,16 @@ public class FDtoSystemQuestion {
 	}
 
 
+	public FDtoSystemQuestion(int question_num, String question_customer, String question_title,
+			String question_content, Timestamp question_at, String question_state) {
+		super();
+		this.question_num = question_num;
+		this.question_customer = question_customer;
+		this.question_title = question_title;
+		this.question_content = question_content;
+		this.question_at = question_at;
+		this.question_state = question_state;
+	}
 
 	public FDtoSystemQuestion(int question_num, String question_customer, String question_admin, String question_title,
 			String question_content, Timestamp question_at, String question_answer, Timestamp question_answer_at,

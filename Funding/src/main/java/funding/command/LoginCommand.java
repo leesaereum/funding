@@ -22,6 +22,7 @@ public class LoginCommand implements FCommand {
 		
 		if(customer_id!=null) {
 			HttpSession session = request.getSession();
+			session.setAttribute("id", customer_id);
 			session.setAttribute("customer_id", customer_id);
 			session.setAttribute("email", customer_id);
 		}
