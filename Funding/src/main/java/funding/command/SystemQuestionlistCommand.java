@@ -16,7 +16,6 @@ public class SystemQuestionlistCommand implements FCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FDaoC dao = new FDaoC();
 		int page = Integer.parseInt(request.getParameter("page"));
-		System.out.println(page);
 		int countQuestion = dao.countQuestion();
 		ArrayList<FDtoSystemQuestion> list = dao.systemquestion_view(page);
 		

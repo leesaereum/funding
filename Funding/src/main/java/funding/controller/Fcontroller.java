@@ -188,7 +188,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/systemQuestion.do"):
 			command = new SystemQuestionCommand();
 			command.execute(request, response);
-			viewpage = "/Funding/systemQuestion_list.do";
+			viewpage = "systemQuestion_list.do";
 			break;
 		case ("/systemQuestion_detail.do"):
 			command = new SystemQuestionDetailCommand();
@@ -253,7 +253,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/sFOApply.do"):
 			command = new SFOApplyCommand();
 			command.execute(request, response);
-			viewpage = "main.jsp";
+			viewpage = "main.do";
 			break;
 		case ("/sQApply_view.do"):
 			command = new SFOApplyCommand();
