@@ -22,14 +22,57 @@ public class SMypageCommand implements FCommand {
 		// TODO Auto-generated method stub
 
 		HttpSession session = request.getSession();
+		
 		String id = (String) session.getAttribute("id");
+		
+		int tab = 1;
+		if(request.getParameter("tab") != null) {
+			tab = Integer.parseInt(request.getParameter("tab"));
+		}
+		int page = 1;
+		if(request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
 		FDaoS daoS = new FDaoS();
 		FDaoC dao = new FDaoC();
+		
+		
+		int myFundingCount = dao.myFundingCount(id);
+		int myLikeCount = dao.myLikeCount(id);
+		int mySystemQuestionCount = dao.mySystemQuestionCount(id);
+		int myFundingQuestionCount = dao.myFundingQuestionCount(id);
+		
+		ArrayList<FDtoFunding> myfundinglist = null;
+		ArrayList<FDtoFunding> mylikelist = null;
+		ArrayList<FDtoSystemQuestion> myquestionlist = null;
+		ArrayList<FDtoFundingQuestion> myfundingquestionlist = null;
+		
 		ArrayList<FDtoFunding> myopenlist = daoS.Mfunding_list(id);
-		ArrayList<FDtoFunding> myfundinglist = dao.myfundinglist(id);		
-		ArrayList<FDtoFunding> mylikelist = dao.mylikelist(id);
-		ArrayList<FDtoSystemQuestion> myquestionlist = dao.mysystemquestion_list(id);
-		ArrayList<FDtoFundingQuestion> myfundingquestionlist = dao.myfundingquestion_list(id);
+		
+		if(tab == 1) {
+			myfundinglist = dao.myfundinglist(id, page);		
+		}else {
+			myfundinglist = dao.myfundinglist(id, 1);		
+		}
+		if(tab == 2) {
+			mylikelist = dao.mylikelist(id, page);	
+		}else {
+			mylikelist = dao.mylikelist(id, 1);		
+		}
+		if(tab == 3) {
+			myquestionlist = dao.mysystemquestion_list(id, page);
+		}else {
+			myquestionlist = dao.mysystemquestion_list(id, 1);
+		}
+		if(tab == 4) {
+			myfundingquestionlist = dao.myfundingquestion_list(id, page);
+		}else {
+			myfundingquestionlist = dao.myfundingquestion_list(id, 1);	
+		}
+		request.setAttribute("myFundingCount", myFundingCount);
+		request.setAttribute("myLikeCount", myLikeCount);
+		request.setAttribute("mySystemQuestionCount", mySystemQuestionCount);
+		request.setAttribute("myFundingQuestionCount", myFundingQuestionCount);
 		
 		request.setAttribute("funding", myfundinglist);
 		request.setAttribute("like", mylikelist);
