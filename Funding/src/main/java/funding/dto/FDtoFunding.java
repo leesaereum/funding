@@ -30,21 +30,30 @@ public class FDtoFunding {
 	int order_num;
 	public FDtoFunding() {
 	}
+
 	
+<<<<<<< HEAD
 	public FDtoFunding(int funding_num, String funding_seller, String funding_banner, String funding_title, Timestamp funding_createAt, Timestamp funding_deleteAt, Timestamp funding_openAt, Timestamp funding_closeAt, int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
 		
 		this.funding_num = funding_num;
+=======
+	
+	
+	public FDtoFunding(String funding_seller, String funding_banner, String funding_title,
+			 Timestamp funding_openAt, Timestamp funding_closeAt,
+			int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
+		super();
+>>>>>>> yejin
 		this.funding_seller = funding_seller;
 		this.funding_banner = funding_banner;
 		this.funding_title = funding_title;
-		this.funding_createAt = funding_createAt;
-		this.funding_deleteAt = funding_deleteAt;
 		this.funding_openAt = funding_openAt;
 		this.funding_closeAt = funding_closeAt;
 		this.funding_purpose = funding_purpose;
 		this.funding_hits = funding_hits;
 		this.funding_state = funding_state;
 		this.funding_fee = funding_fee;
+<<<<<<< HEAD
 		
 	}
 	
@@ -55,6 +64,8 @@ public class FDtoFunding {
 		this.funding_seller = funding_seller;
 		this.funding_title = funding_title;
 		this.funding_state = funding_state;
+=======
+>>>>>>> yejin
 	}
 
 	public int getFunding_num() {
@@ -161,10 +172,23 @@ public class FDtoFunding {
 		this.content_content = content_content;
 	}
 	
-
+	public FDtoFunding(int funding_num, String funding_seller, String funding_title,
+			 Timestamp funding_openAt, Timestamp funding_closeAt,
+			int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
+		super();
+		this.funding_num = funding_num;
+		this.funding_seller = funding_seller;
+		this.funding_title = funding_title;
+		this.funding_openAt = funding_openAt;
+		this.funding_closeAt = funding_closeAt;
+		this.funding_purpose = funding_purpose;
+		this.funding_hits = funding_hits;
+		this.funding_state = funding_state;
+		this.funding_fee = funding_fee;
+	}
 
 	
-
+	
 	
 
 	public int getTotal() {
@@ -205,6 +229,14 @@ public class FDtoFunding {
 		this.funding_closeAt = funding_closeAt;
 	}
 
+	public FDtoFunding(int funding_num, String funding_banner, String funding_title,
+			Timestamp funding_openAt) {
+		super();
+		this.funding_num = funding_num;
+		this.funding_banner = funding_banner;
+		this.funding_title = funding_title;
+		this.funding_openAt = funding_openAt;
+	}
 	public int getOrder_num() {
 		return order_num;
 	}
@@ -225,6 +257,7 @@ public class FDtoFunding {
 		this.order_num = order_num;
 	}
 
+<<<<<<< HEAD
 	public FDtoFunding(int funding_num, String funding_seller, String funding_banner, String funding_title,
 			Timestamp funding_openAt, Timestamp funding_closeAt, String funding_state, int funding_achievement, int total) {
 		super();
@@ -266,6 +299,8 @@ public class FDtoFunding {
 
 	
 	
+=======
+>>>>>>> yejin
 }
 
 

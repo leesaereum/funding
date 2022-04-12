@@ -8,17 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import funding.dao.FDaoS;
-import funding.dto.FDtoFunding;
+import funding.dto.FDtoFundingQuestion;
 
-public class SMFManageCommand implements FCommand {
+public class FundingQuestionlistCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		FDaoS daoS = new FDaoS();
-		ArrayList<FDtoFunding> list = daoS.Mfunding_list();
-		
-		request.setAttribute("Mfunding", list);
+		ArrayList<FDtoFundingQuestion> dtosFQ = daoS.FQuestion_list();
+		request.setAttribute("FQlist", dtosFQ);
 	}
 
 }

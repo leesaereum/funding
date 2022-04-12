@@ -8,10 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import funding.command.ACAWListCommand;
 import funding.command.ACApproveCommand;
-
+import funding.command.ACAWListCommand;
+import funding.command.ACApproveCommand;
 import funding.command.ACListCommand;
 import funding.command.ACRejectCommand;
 import funding.command.AFADetailCommand;
@@ -32,7 +32,11 @@ import funding.command.FindpwCommand;
 import funding.command.FundingLikeCommand;
 import funding.command.FundingListViewCommand;
 import funding.command.FundingPaymentCommand;
+<<<<<<< HEAD
 import funding.command.FundingQuestionCommand;
+=======
+import funding.command.FundingQuestionlistCommand;
+>>>>>>> yejin
 import funding.command.FundingdetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
@@ -42,10 +46,20 @@ import funding.command.MyinformationModifyCommand;
 import funding.command.MypageCommand;
 import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
+import funding.command.SFADetailCommand;
+import funding.command.SFAnswerCommand;
+import funding.command.LoginCommand;
+import funding.command.LogoutCommand;
+import funding.command.MainCommand;
 import funding.command.NoticeSearchCommand;
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
+import funding.command.SMFDetailCommand;
+import funding.command.SMFManageCommand;
+import funding.command.SMypageCommand;
+import funding.command.SQApplyCommand;
+import funding.command.SRAnswerCommand;
 import funding.command.SSignUpCommand;
 import funding.command.SearchCommand;
 import funding.command.SignupCommand;
@@ -82,7 +96,7 @@ public class Fcontroller extends HttpServlet {
 		String path = uri.substring(copath.length());
 		String viewpage = null;
 
-		// customer용 switch
+		// customer�슜 switch
 		switch (path) {
 		case ("/login.do"):
 			command = new LoginCommand();
@@ -219,7 +233,7 @@ public class Fcontroller extends HttpServlet {
 //			break;
 		}// customer
 
-		// seller용 switch
+		// seller�슜 switch
 		switch (path) {
 		case ("/slogin.do"):
 			command = new SLoginCommand();
@@ -229,7 +243,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/slogOut.do"):
 			command = new SLogoutCommand();
 			command.execute(request, response);
-			viewpage = "slogin.jsp";
+			viewpage = "/pages/slogin.jsp";
 			break;
 		case ("/ssignUp.do"):
 			command = new SSignUpCommand();
@@ -244,6 +258,11 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "main.jsp";
 			break;
+<<<<<<< HEAD
+=======
+		case ("/sQApply_detail.do"):
+			viewpage = "";
+>>>>>>> yejin
 		case ("/sQApply_view.do"):
 			command = new SFOApplyCommand();
 			command.execute(request, response);
@@ -255,32 +274,59 @@ public class Fcontroller extends HttpServlet {
 		case ("/SFOApply.do"):
 			viewpage = "";
 			break;
+//		case ("/SFOApply.do"):
+//			viewpage = "";
+//			break;
 		case ("/sMypage.do"):
-			viewpage = "";
+			command = new SMypageCommand();
+			command.execute(request, response);
+			viewpage = "sMypage.jsp";
+		case ("/sMFManage.do"):
+			command = new SMFManageCommand();
+			command.execute(request, response);
+			viewpage = "sMFManage.jsp";
 			break;
 		case ("/sMFDetail.do"):
-			viewpage = "";
-			break;
-		case ("/sMFManage.do"):
-			viewpage = "";
+			command = new SMFDetailCommand();
+			command.execute(request, response);
+			viewpage = "/pages/sMFDetail.jsp";
 			break;
 		case ("/sMFCApply.do"):
-			viewpage = "";
+			viewpage = "sMFCApply.jsp";
 			break;
 		case ("/sFADetail.do"):
-			viewpage = "";
+			command = new SFADetailCommand();
+			command.execute(request, response);
+			viewpage = "sFADetail.jsp";
 			break;
 		case ("/sFAnswer.do"):
+<<<<<<< HEAD
 			viewpage = "";
+=======
+			command = new SFAnswerCommand();
+			command.execute(request, response);
+			viewpage = "sFAnswer.jsp";
+>>>>>>> yejin
 			break;
 		case ("/sDManage.do"):
 			viewpage = "";
 			break;
+//		case ("/sRAnswer.do"):
+//			command = new SRAnswerCommand();
+//			command.execute(request, response);
+//			viewpage = "sRAnswer.jsp";
+//			break;
 		}// seller
 
+<<<<<<< HEAD
 		//admin용 switch
 		switch(path){
 		case("/aLogin.do"):
+=======
+		// admin�슜 switch
+		switch (path) {
+		case ("/aLogin.do"):
+>>>>>>> yejin
 			command = new ALoginCommand();
 			command.execute(request, response);
 			viewpage= (String) request.getAttribute("viewPage");

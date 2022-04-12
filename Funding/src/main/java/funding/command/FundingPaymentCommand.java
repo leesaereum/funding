@@ -16,8 +16,22 @@ public class FundingPaymentCommand implements FCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+<<<<<<< HEAD
 
 		String order_customer = request.getParameter("order_customer");
+=======
+		//
+		String order_customer = "abc123";
+		int order_funding = 1;
+		Integer order_option1 = 1;
+		Integer order_price1 = 10000;
+		Integer order_count1 = 5;
+		Integer order_address = 5;
+	
+		Integer order_option2 = 2;
+		Integer order_price2 = 20000;
+		Integer order_count2 = 10;
+>>>>>>> yejin
 		
 		int order_funding = Integer.parseInt(request.getParameter("order_funding"));
 		

@@ -18,6 +18,7 @@ public class FundingListViewCommand implements FCommand {
 		ArrayList<FDtoFunding> list = dao.fundinglistview();
 		
 		request.setAttribute("funding", list);
+
 	}
 
 }
