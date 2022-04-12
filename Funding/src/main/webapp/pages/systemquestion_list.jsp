@@ -130,6 +130,8 @@
 				</li>
 			</c:forEach>
 		</ul>
+		<div class="pages__box" id="page__box">
+		</div>
 
 	</div>
 	<div class="sys__add__question">
@@ -138,6 +140,15 @@
 	</div>
 	<script src="/Funding/libraries/jQuery.js"></script>
 	<script type="text/javascript">
+	
+	let count = ${countQuestion}
+	let pages = Math.floor((count - 1) / 10) + 1;
+	let txt = "";
+	for (var i = 1; i <= pages; i++) {
+		txt += '<a href="/Funding/systemQuestion_list.do?page='+i+'">'+i+'</a>'
+	}
+	$("#page__box").html(txt);
+
 		$(document)
 				.on(
 						"click",

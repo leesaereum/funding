@@ -347,22 +347,52 @@ public class FDaoC {
 		}
 		return list;
 	}//funding search
-	public ArrayList<FDtoSystemQuestion>systemquestion_view(){
+	
+	public int countQuestion(){
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		int count = 0;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT count(question_num) FROM system_question";
+			preparedstatement = connection.prepareStatement(query);
+			resultset = preparedstatement.executeQuery();
+			
+			if(resultset.next()) {
+				count =  resultset.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	public ArrayList<FDtoSystemQuestion>systemquestion_view(int page){
 		ArrayList<FDtoSystemQuestion> list = new ArrayList<FDtoSystemQuestion>();
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
 		ResultSet resultset = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT * FROM system_question";
+			int offs = (page - 1) * 10;
+			String query = "SELECT question_num, question_title, question_at, question_state FROM system_question order by question_at desc limit 10 offset " + offs;
 			preparedstatement = connection.prepareStatement(query);
 			resultset = preparedstatement.executeQuery();
 			
 			while(resultset.next()) {
 				int question_num = resultset.getInt(1);
-				String question_title = resultset.getString(4);
-				Timestamp question_at = resultset.getTimestamp(6);
-				String question_state = resultset.getString(9);
+				String question_title = resultset.getString(2);
+				Timestamp question_at = resultset.getTimestamp(3);
+				String question_state = resultset.getString(4);
 				FDtoSystemQuestion dto = new FDtoSystemQuestion(question_num, question_title, question_at, question_state);
 				list.add(dto);
 			}

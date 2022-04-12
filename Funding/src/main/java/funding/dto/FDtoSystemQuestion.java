@@ -13,10 +13,20 @@ public class FDtoSystemQuestion {
 	String question_answer;
 	Timestamp question_answer_at;
 	String question_state;
+	int countQuestion;
 
 	public FDtoSystemQuestion() {
 	}
 
+	public FDtoSystemQuestion(int question_num, String question_title, Timestamp question_at, String question_state, int countQuestion) {
+		super();
+		this.question_num = question_num;
+		this.question_title = question_title;
+		this.question_at = question_at;
+		this.question_state = question_state;
+		this.countQuestion = countQuestion;
+	}
+	
 	public FDtoSystemQuestion(int question_num, String question_title, Timestamp question_at, String question_state) {
 		super();
 		this.question_num = question_num;
@@ -40,6 +50,14 @@ public class FDtoSystemQuestion {
 		this.question_answer = question_answer;
 		this.question_answer_at = question_answer_at;
 		this.question_state = question_state;
+	}
+
+	public int getCountQuestion() {
+		return countQuestion;
+	}
+
+	public void setCountQuestion(int countQuestion) {
+		this.countQuestion = countQuestion;
 	}
 
 	public int getQuestion_num() {
