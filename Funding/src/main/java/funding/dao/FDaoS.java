@@ -598,8 +598,8 @@ public class FDaoS {
 							+ "Where option_funding = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, name);
-			preparedStatement.setString(2, price);
-			preparedStatement.setString(3, amount);
+			preparedStatement.setInt(2, Integer.parseInt(price));
+			preparedStatement.setInt(3, Integer.parseInt(amount));
 			preparedStatement.setString(4, num);
 			preparedStatement.executeUpdate();
 
@@ -651,7 +651,7 @@ public class FDaoS {
 			connection = dataSource.getConnection();
 			String query = "DELETE FROM funding WHERE funding_num = ?";
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, num);
+			preparedStatement.setInt(1, Integer.parseInt(num));
 			preparedStatement.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();

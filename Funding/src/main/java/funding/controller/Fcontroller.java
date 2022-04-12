@@ -52,6 +52,8 @@ import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
 import funding.command.SMFDetailCommand;
+import funding.command.SMFDetailDeleteCommand;
+import funding.command.SMFDetailModifyCommand;
 import funding.command.SMFManageCommand;
 import funding.command.SMypageCommand;
 import funding.command.SRAnswerCommand;
@@ -264,9 +266,6 @@ public class Fcontroller extends HttpServlet {
 		case ("/SFOApply.do"):
 			viewpage = "";
 			break;
-//		case ("/SFOApply.do"):
-//			viewpage = "";
-//			break;
 		case ("/sMypage.do"):
 			command = new SMypageCommand();
 			command.execute(request, response);
@@ -281,6 +280,17 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "/pages/sMFDetail.jsp";
 			break;
+		case ("/sMFModify.do"):
+			command = new SMFDetailModifyCommand();
+			command.execute(request, response);
+//			viewpage = "sMFMdoify.jsp";
+			viewpage = "sMFManage.do";
+			break;
+		case ("/sMFDDelete.do"):
+			command = new SMFDetailDeleteCommand();
+			command.execute(request, response);
+			viewpage = "sMFDDelete.jsp";
+			break;
 		case ("/sMFCApply.do"):
 			viewpage = "sMFCApply.jsp";
 			break;
@@ -293,28 +303,6 @@ public class Fcontroller extends HttpServlet {
 			command = new SFAnswerCommand();
 			command.execute(request, response);
 			viewpage = "sFAnswer.jsp";
-			break;
-		case ("/sDManage.do"):
-			viewpage = "";
-			break;
-//		case ("/sRAnswer.do"):
-//			command = new SRAnswerCommand();
-//			command.execute(request, response);
-//			viewpage = "sRAnswer.jsp";
-//			break;
-		}// seller
-
-		//admin용 switch
-		switch(path){
-		case("/aLogin.do"):
-			command = new ALoginCommand();
-			command.execute(request, response);
-			viewpage= (String) request.getAttribute("viewPage");
-			break;
-		case("/aLogout.do"):
-			command = new ALogoutCommand();
-			command.execute(request, response);
-			viewpage="aLogin.jsp";
 			break;
 		case("/aCList.do"):
 			command = new ACListCommand();
