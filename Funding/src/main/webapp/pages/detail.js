@@ -220,7 +220,8 @@ function payOn(pg){
         pay_method : 'card',
         merchant_uid : 'merchant_' + new Date().getTime(),
         name : '해피펀딩',
-        amount : $(".detail__popup__totalTxt > span").html().replaceAll(",","")*1,
+        amount : 100,
+        //amount : $(".detail__popup__totalTxt > span").html().replaceAll(",","")*1,
         buyer_email : $(".signedIn_email").html(),
         buyer_name : $(".signedIn_email").html(),
         buyer_tel : '',
@@ -232,6 +233,7 @@ function payOn(pg){
             var msg = '펀딩에 참여해주셔서 감사합니다.';
             trans();
         }else{
+	console.log("request - pay")
         	console.log(rsp)
         }
     });
