@@ -81,10 +81,11 @@ text-align: center;
 }
 </style>
 <script type="text/javascript">
-	function del() {
-		if(confirm("삭제하시겠습니까?")){
-			location.href = "sMFDDelete.do"
-		}
+	function del(funding_num) {
+		//if(confirm("삭제하시겠습니까?")){
+		//	location.href = "sMFDDelete.do?funding_num=${Mfunding.funding_num }"
+		//}
+		alert("삭제하겠습니까?")
 	}
 </script>
 <body>
@@ -107,7 +108,7 @@ text-align: center;
 					<a href="/Funding/sMFDetail.do?funding_num=${Mfunding.funding_num}"
 					class="sFmanage__title">${Mfunding.funding_title }</a>
 					<p class="sFmanage__date">${Mfunding.funding_openAt }</p>
-					<p onclick="del()">X</p>
+					<a href="sMFDDelete.do?funding_num=${Mfunding.funding_num }" onclick="del(${Mfunding.funding_num })">X</a>
 				</li>
 			</c:forEach>
 		</ul>

@@ -17,6 +17,7 @@ public class SMFDetailDeleteCommand implements FCommand {
 		FDaoS daoS = new FDaoS();
 		
 		daoS.deleteSelectDetail(funding_num);
+		System.out.println(funding_num);
 	}
 
 }
