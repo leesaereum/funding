@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import funding.dao.FDaoS;
 import funding.dto.FDtoFunding;
+import funding.dto.FDtoFundingOption;
 
 public class SMFDetailCommand implements FCommand {
 
@@ -18,9 +19,12 @@ public class SMFDetailCommand implements FCommand {
 		String funding_num =request.getParameter("funding_num");
 		FDaoS daoS = new FDaoS();
 		FDtoFunding dto = daoS.selectDetail(funding_num);
-		//ArrayList<> options = daoS.selectOption(funding_num);
 		request.setAttribute("Mfunding", dto);
 		
+		ArrayList<FDtoFundingOption> options = daoS.selectOption(funding_num);
+		System.out.println(options.get(0).getOption_name());
+		request.setAttribute("Mfunding_options", options);
+
 		//daoS.sMfunding_detail(funding_num, funding_title, funding_openAt, funding_closeAt,
 				//	funding_purpose, funding_fee);
 	
