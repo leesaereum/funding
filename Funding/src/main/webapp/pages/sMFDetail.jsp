@@ -106,7 +106,7 @@
 				<div id="editor"></div>
 				<div class="MF__moveTab">
 					<p class="MF__moveTab__btn" onclick="moveTab(3, 2)">이전</p>
-					<p class="MF__moveTab__btn finish">완료</p>
+					<p class="MF__moveTab__btn finish" onclick="modify(${Mfunding.funding_num })">수정</p>
 				</div>
 			</div>
 
@@ -127,7 +127,10 @@
 		editor.setHTML('${Mfunding1.content_content }');
 
 	})
-		
+	
+	function modify(${Mfunding.funding_num }) {
+		location.href= "sMFModify.do?funding_num=${Mfunding.funding_num}"
+	}
 	</script>
 </body>
 </html>
