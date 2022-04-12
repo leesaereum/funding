@@ -94,7 +94,8 @@
 			</div>
 			<div class="notice__content">${notice.notice_content }</div>
 		</div>
-		<a href="notice_list.do" class="notice__toList">목록</a>
+			<a href="javascript:history.back();" class="notice__toList">목록</a>
+		
 	</div>
 </body>
 </html>

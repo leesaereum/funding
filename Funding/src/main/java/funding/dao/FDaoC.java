@@ -114,14 +114,42 @@ public class FDaoC {
 			}
 		}
 	}//addAddress
-	public ArrayList<FDtoNotice> notice_list() {
-		ArrayList<FDtoNotice> list = new ArrayList<FDtoNotice>();
+	public int countNotice(){
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
 		ResultSet resultset = null;
+		int count = 0;
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT notice_num, notice_title, notice_At FROM notice";
+			String query = "SELECT count(notice_num) FROM notice";
+			preparedstatement = connection.prepareStatement(query);
+			resultset = preparedstatement.executeQuery();
+			
+			if(resultset.next()) {
+				count =  resultset.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	public ArrayList<FDtoNotice> notice_list(int page) {
+		ArrayList<FDtoNotice> list = new ArrayList<FDtoNotice>();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null; 
+		try {
+			connection = dataSource.getConnection();
+			int offs = (page - 1) * 10;
+			String query = "SELECT notice_num, notice_title, notice_At FROM notice order by notice_At desc limit 10 offset " + offs;
 			preparedstatement = connection.prepareStatement(query);
 			resultset = preparedstatement.executeQuery();
 			
