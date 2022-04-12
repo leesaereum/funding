@@ -5,76 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>판매자 신청페이지</title>
-<link rel="stylesheet" href="./styles/init.css">
-<link rel="stylesheet" href="./styles/base.css">
-<style>
-header {
-	width: 100%;
-	height: 72px;
-	border-bottom: 1px solid #f0f0f0;
-	box-sizing: border-box;
-}
-.header.drop {
-  position: fixed;
-  animation: dropHeader 0.3s;
-  background-color: white;
-  z-index: 999;
-}
-
-@keyframes dropHeader {
-  0% {
-    top: -5rem;
-  }
-  100% {
-    top: 0;
-  }
-}
-
-.header__wrap {
-	width: 1080px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
-	line-height: 71px;
-}
-.header__wrap h1{
-	font-size: 28px;
-}
-
-.header__wrap ul{
-	display: flex;
-	justify-content: space-around;
-	width: 480px;
-	font-size: 18px;
-}
-.header__wrap li{
-	cursor: pointer;
-}
-.signedIn_email{
-	padding-right: 12px;
-	margin-top: 20px;
-	margin-right:12px;
-	border-right: 1px solid #eee;
-	height: 30px;
-	line-height: 32px;
-}
-.makeFunding{
-	height: 30px;
-	margin-top: 20px;
-	margin-left: 12px;
-	padding-left: 12px;
-	border-left: 1px solid #eee;
-	line-height: 31px !important;
-	cursor: pointer;
-	color: #0091ff;
-	
-}
-#loginZone{
-	width: 320px;
-	display: flex;
-	justify-content: right;
-}
-</style>
 
 </head>
 <script>
@@ -130,7 +60,6 @@ $(document).on("click", ".makeFunding", function(e){
 
 </head>
 <body>
-	<jsp:include page="./components/header.jsp" />
 	<form action="main.do">
 	<div class="">
 		<h2>판매자 신청 완료 페이지</h2>

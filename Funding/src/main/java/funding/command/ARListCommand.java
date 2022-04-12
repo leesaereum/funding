@@ -29,13 +29,13 @@ public class ARListCommand implements FCommand {
 		
 		FDaoA daoA = new FDaoA();
 		
-		//판매자 승인 대기 리스트
+		//�뙋留ㅼ옄 �듅�씤 ��湲� 由ъ뒪�
 		//ArrayList<FDtoC> dtos = daoA.clist(adminId);
 		
-		//펀딩 승인 대기 리스트
+		//���뵫 �듅�씤 ��湲� 由ъ뒪�듃
 		ArrayList<FDtoC> dtos = daoA.clist(adminId);
 		
-		//정산 승인 대기 리스트
+		//�젙�궛 �듅�씤 ��湲� 由ъ뒪�듃
 		//ArrayList<FDtoC> dtos = daoA.clist(adminId);
 		request.setAttribute("clist", dtos);
 		

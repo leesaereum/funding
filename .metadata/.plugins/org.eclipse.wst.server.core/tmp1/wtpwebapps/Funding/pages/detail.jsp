@@ -21,6 +21,7 @@ if (fid == null) {
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="/Funding/pages/detail.js"></script>
+
 <body>
 	<jsp:include page="/components/header.jsp" />
 	<div class="detail__wrap">
@@ -32,7 +33,6 @@ if (fid == null) {
 				<p class="detail__tab__tab detail__tab__selected" data-id="story">스토리</p>
 				<p class="detail__tab__tab" data-id="participants">참여자</p>
 				<p class="detail__tab__tab" data-id="questions">Q&A</p>
-				<p class="detail__tab__tab" data-id="reviews">후기</p>
 			</div>
 			<div class="detail__content__tabs__box">
 				<div class="detail__tab selected" id="tab-story">
@@ -60,7 +60,8 @@ if (fid == null) {
 				<div class="detail__tab" id="tab-questions">
 					<!-- 구매자면 질문창, 판매자면 답변창 -->
 					<div class="detail__qna__new__box">
-						<form action="/fundingQuestion.do" method="post">
+						<form action="/Funding/fundingQuestion.do" method="post">
+							<input type="hidden" value="${funding.funding_num }" name="question_funding">
 							<input class="detail__qna__new__input" name="question_content">
 							<div class="detail__qna__new__submit__box">
 								<input class="detail__qna__new__submit" type="submit"
@@ -73,9 +74,10 @@ if (fid == null) {
 						<div class="detail__qna__box">
 							<p class="detail__qna__question">Q.
 								${dtoQuestion.question_content}</p>
+							<p class="detail__qna__date">${dtoQuestion.question_at}</p>
 							<p class="detail__qna__answer">A.
 								${dtoQuestion.question_answer}</p>
-							<p class="detail__qna__date">${dtoQuestion.question_at}</p>
+							<p class="detail__qna__date">${dtoQuestion.question_answer_at}</p>
 						</div>
 
 					</c:forEach>
@@ -141,9 +143,8 @@ if (fid == null) {
 			</div>
 			<div class="detail__funding__buttonZone">
 				<p class="detail__funding__join" onclick="joinFunding()">펀딩 참여하기</p>
-				<div class="detail__funding__share"
-					onclick="share(<%=request.getParameter("fid")%>)">
-					<img src="/Funding/assets/share.svg">
+				<div class="detail__funding__share" id="funding__isLiked">
+					
 				</div>
 			</div>
 
@@ -176,4 +177,29 @@ if (fid == null) {
 		readonly="readonly" id="fidfid">
 	<div class="detail__popup__wrap"></div>
 </body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		let isLike = ${isLike}
+		if(isLike){
+			$("#funding__isLiked").addClass("liked").html('<img src="/Funding/assets/heart_filled.png">')
+		}else{
+			$("#funding__isLiked").removeClass("liked").html('<img src="/Funding/assets/heart_blank.png">')
+
+		}
+	})
+	$("#funding__isLiked").click(function(){
+		let cid = "<%=session.getAttribute("email")%>"
+		let fid = <%=request.getParameter("fid")%>
+		if(cid === null){
+			alert("먼저 로그인 해주세요!")
+		}else{
+			if($(this).hasClass("liked")){
+				location.href = "/Funding/fundingUnLike.do?customer_id="+cid+"&funding_num="+fid
+			}else{
+				location.href = "/Funding/fundingLike.do?customer_id="+cid+"&funding_num="+fid
+			}
+		}
+		
+	})
+</script>
 </html>

@@ -66,6 +66,7 @@
 .notice__name {
 	width: 170px;
 }
+
 .ordering__price {
 	width: 170px;
 }
@@ -83,10 +84,7 @@
 <script src="/Funding/libraries/moment.js"></script>
 
 </head>
-<script type="text/javascript">
-let hello = ""
-let hi = ""
-</script>
+
 <body>
 	<jsp:include page="/components/header.jsp" />
 
@@ -96,38 +94,43 @@ let hi = ""
 		</div>
 		<div class="notice__box">
 			<div class="notice__header">
-				<p class="notice__title">${funding.funding_title} </p>
+				<p class="notice__title">${funding.funding_title}</p>
 				<p class="notice__name">${funding.funding_seller }</p>
 			</div>
 			<div class="notice__content">
-					<div class="notice__header">
-						<p class="notice__title">옵션명</p>
-						<p class="notice__name">옵션가격</p>
-						<p class="notice__name">옵션 갯수</p>
-						<p class="notice__name">주문일</p>
-					</div>
-				<c:forEach items="${ordering}" var="ordering">
-					<div class="notice__header">
-						<p class="notice__title">${ordering.option_name}</p>
-						<p class="ordering__price">${ordering.order_price}원</p>
-						<p class="notice__name">${ordering.order_count}개</p>
-						<p class="ordering__date"></p>
-					</div>
-<script>
-	hello = moment("${ordering.order_At}").format("YYYY-MM-DD")
-	$(document).ready(function() {
-		$(".ordering__date").html(hello)
-	})
-</script>
-				</c:forEach>
+				<div class="notice__header">
+					<p class="notice__title">옵션명</p>
+					<p class="ordering__price">옵션가격</p>
+					<p class="notice__name">옵션 갯수</p>
+					<p class="ordering__date">주문일</p>
+				</div>
 
+				<div id="notice__content"></div>
 				<div class="notice__header">
 					<p class="notice__title">
-					<p class="notice__name">총 합계 금액 :</p>
-				</div>
+						<c:set var="total" value="0"/>
+
+					<p class="notice__name">총 합계 금액 : ${total }</div>
 			</div>
 		</div>
 		<a href="/Funding/myfunding_list.do" class="notice__toList">목록</a>
 	</div>
+	<script>
+		let txt = '';
+		let priceTxt = '';
+		let dateTxt = '';
+		<c:forEach items="${ordering}" var="ordering">
+		dateTxt = "${ordering.order_At}";
+		dateTxt = moment(dateTxt).format("YYYY-MM-DD")
+		priceTxt = "${ordering.order_price}";
+		priceTxt = (priceTxt * 1).toLocaleString();
+		txt += '<div class="notice__header"><p class="notice__title">${ordering.option_name}</p>'
+		txt += '<p class="ordering__price">' + priceTxt + '원</p>'
+		txt += '<p class="notice__name">${ordering.order_count}개</p>'
+		txt += '<p class="ordering__date">' + dateTxt + '</p></div>'
+		<c:set var ="total" value = "${total+ordering.order_price}"/>
+		</c:forEach>
+		$("#notice__content").html(txt);
+	</script>
 </body>
 </html>

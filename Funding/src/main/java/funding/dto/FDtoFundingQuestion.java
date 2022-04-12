@@ -7,11 +7,17 @@ public class FDtoFundingQuestion {
 	int question_num;
 	String question_customer;
 	int question_funding;
-	String question_title;
+	String question_seller;
 	String question_content;
+	String question_funding_title;
 	Timestamp question_at;
 	String question_state;
 	String question_answer;
+	Timestamp question_answer_at;
+	
+	public FDtoFundingQuestion() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public int getQuestion_num() {
 		return question_num;
@@ -30,12 +36,6 @@ public class FDtoFundingQuestion {
 	}
 	public void setQuestion_funding(int question_funding) {
 		this.question_funding = question_funding;
-	}
-	public String getQuestion_title() {
-		return question_title;
-	}
-	public void setQuestion_title(String question_title) {
-		this.question_title = question_title;
 	}
 	public String getQuestion_content() {
 		return question_content;
@@ -62,16 +62,89 @@ public class FDtoFundingQuestion {
 		this.question_answer = question_answer;
 	}
 	
-	
-	public FDtoFundingQuestion(String question_customer, String question_title, String question_content,
-			Timestamp question_at, String question_answer) {
+	public String getQuestion_seller() {
+		return question_seller;
+	}
+
+	public void setQuestion_seller(String question_seller) {
+		this.question_seller = question_seller;
+	}
+
+	public Timestamp getQuestion_answer_at() {
+		return question_answer_at;
+	}
+
+	public void setQuestion_answer_at(Timestamp question_answer_at) {
+		this.question_answer_at = question_answer_at;
+	}
+
+	public FDtoFundingQuestion(String question_customer, String question_content,
+			Timestamp question_at, String question_answer, Timestamp question_answer_at) {
 		super();
 		this.question_customer = question_customer;
-		this.question_title = question_title;
 		this.question_content = question_content;
 		this.question_at = question_at;
 		this.question_answer = question_answer;
+		this.question_answer_at = question_answer_at;
 	}
+
+	
+	public FDtoFundingQuestion(int question_num,String question_customer,  String question_content
+							,Timestamp question_at, String question_state) {
+		super();
+		this.question_num = question_num;
+		this.question_customer = question_customer;
+		this.question_content = question_content;
+		this.question_at = question_at;
+		this.question_state = question_state;
+	}
+
+	public FDtoFundingQuestion(int question_num, String question_customer, String question_seller,
+		 String question_content, String question_state, String question_answer,
+			Timestamp question_answer_at) {
+		super();
+		this.question_num = question_num;
+		this.question_customer = question_customer;
+		this.question_seller = question_seller;
+		this.question_content = question_content;
+		this.question_state = question_state;
+		this.question_answer = question_answer;
+		this.question_answer_at = question_answer_at;
+	}
+
+	public FDtoFundingQuestion(int question_num, String question_state, String question_answer,
+			Timestamp question_answer_at) {
+		super();
+		this.question_num = question_num;
+		this.question_state = question_state;
+		this.question_answer = question_answer;
+		this.question_answer_at = question_answer_at;
+	}
+
+	public FDtoFundingQuestion(String question_customer,  String question_content, String question_funding_title,
+			Timestamp question_at, String question_state, String question_answer, Timestamp question_answer_at, int question_funding) {
+		super();
+		this.question_customer = question_customer;
+		this.question_content = question_content;
+		this.question_funding_title = question_funding_title;
+		this.question_at = question_at;
+		this.question_state = question_state;
+		this.question_answer = question_answer;
+		this.question_answer_at = question_answer_at;
+		this.question_funding = question_funding;
+	}
+
+	public String getQuestion_funding_title() {
+		return question_funding_title;
+	}
+
+	public void setQuestion_funding_title(String question_funding_title) {
+		this.question_funding_title = question_funding_title;
+	}
+
+	
+
+
 	
 	
 	

@@ -76,6 +76,25 @@
 	width: calc(100% - 660px);
 	text-align:center;
 }
+.pages__box{
+	display: flex;
+	justify-content: center;
+	margin: 20px 0;
+}
+.pages__box > a{
+	margin-right: 8px;
+	width: 36px;
+	height: 32px;
+	border: 1px solid #999;
+	border-radius: 4px;
+	box-sizing: border-box;
+	line-height: 32px;
+	text-align: center;
+}
+.pages__box > .selected{
+	background-color: #333;
+	color: white;
+}
 </style>
 
 <body>
@@ -94,6 +113,9 @@
 			<li class="list__liner"><p class="list__title">펀딩명</p><p class="list__seller">판매자</p><p class="list__date">오픈일</p><p class="list__date">마감일</p></li>
 			<div id="list__document"></div>
 		</ul>
+		
+		<div class="pages__box" id="page__box">
+		</div>
 	</div>
 	<script src="/Funding/libraries/jQuery.js"></script>
 	<script type="text/javascript">
@@ -115,6 +137,22 @@ let closeDate = "";
  txt += '<p class="list__date">'+openDate.split(" ")[0]+'</p><p class="list__date">'+closeDate.split(" ")[0]+'</p></li>'
 </c:forEach>
  $("#list__document").html(txt);
+ 
+ let currentPage = <%=request.getParameter("page")%>*1;
+	let count = ${countQuestion}
+	console.log(count);
+	let pages = Math.floor((count - 1) / 10) + 1;
+	let pageTxt = "";
+	for (var i = 1; i <= pages; i++) {
+		if(i === currentPage){
+			pageTxt += '<a class="selected" href="/Funding/funding_list_view.do?page='+i+'">'+i+'</a>'
+
+		}else{
+			pageTxt += '<a href="/Funding/funding_list_view.do?page='+i+'">'+i+'</a>'
+
+		}
+	}
+	$("#page__box").html(pageTxt);
 </script>
 </body>
 </html>

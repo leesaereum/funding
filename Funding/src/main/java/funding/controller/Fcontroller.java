@@ -8,10 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import funding.command.ACAWListCommand;
 import funding.command.ACApproveCommand;
-
 import funding.command.ACListCommand;
 import funding.command.ACRejectCommand;
 import funding.command.AFADetailCommand;
@@ -40,7 +38,7 @@ import funding.command.FundingLikeCommand;
 import funding.command.FundingListViewCommand;
 import funding.command.FundingPaymentCommand;
 import funding.command.FundingQuestionCommand;
-import funding.command.FundingQuestionlistCommand;
+import funding.command.FundingUnlikeCommand;
 import funding.command.FundingdetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
@@ -50,13 +48,19 @@ import funding.command.MyinformationModifyCommand;
 import funding.command.MypageCommand;
 import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
+import funding.command.SFADetailCommand;
+import funding.command.SFAnswerCommand;
 import funding.command.NoticeSearchCommand;
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
+import funding.command.SMFDetailCommand;
+import funding.command.SMFManageCommand;
+import funding.command.SMypageCommand;
 import funding.command.SSignUpCommand;
 import funding.command.SearchCommand;
 import funding.command.SignupCommand;
+import funding.command.SocialLoginCommand;
 import funding.command.SystemQuestionCommand;
 import funding.command.SystemQuestionDetailCommand;
 import funding.command.SystemQuestionSearchCommand;
@@ -97,16 +101,15 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
-
-		case ("/sociallogin.do"):
-			command = new LogoutCommand();
+		case ("/socialLogin.do"):
+			command = new SocialLoginCommand();
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
 		case ("/logout.do"):
 			command = new LogoutCommand();
 			command.execute(request, response);
-			viewpage = "main.jsp";
+			viewpage = "main.do?sort=all";
 			break;
 		case ("/main.do"):
 			command = new MainCommand();
@@ -152,37 +155,25 @@ public class Fcontroller extends HttpServlet {
 		case ("/fundingLike.do"):
 			command = new FundingLikeCommand();
 			command.execute(request, response);
-			viewpage = "detailtest.jsp";
+			viewpage = (String) request.getAttribute("viewpage");
+			break;
+		case ("/fundingUnLike.do"):
+			command = new FundingUnlikeCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
 			break;
 		case ("/fundingOrder.do"):
 			command = new FundingPaymentCommand();
 			command.execute(request, response);
 			viewpage = "fundingOrder.jsp";
 			break;
-		case ("/fundingPayment_view.do"):
-			viewpage = "";
-			break;
-		case ("/fundingPayment.do"):
-			viewpage = "";
-			break;
-		case ("/fundingaddress.do"):
-			viewpage = "";
-			break;
-		case ("/fundingQuestionList.do"):
-			command = new FundingQuestionlistCommand();
-			command.execute(request, response);
-			viewpage = "/pages/detail.jsp";
-			break;
+//		case ("/fundingaddress.do"):
+//			viewpage = "";
+//			break;
 		case ("/fundingQuestion.do"):
 			command = new FundingQuestionCommand();
 			command.execute(request, response);
-			viewpage = "/pages/detail.jsp?tap=";
-			break;
-		case ("/fundingReview_list.do"):
-			viewpage = "";
-			break;
-		case ("/fundingReview.do"):
-			viewpage = "";
+			viewpage = (String) request.getAttribute("viewpage");
 			break;
 		case ("/systemQuestion_list.do"):
 			command = new SystemQuestionlistCommand();
@@ -203,9 +194,6 @@ public class Fcontroller extends HttpServlet {
 			command = new SystemQuestionDetailCommand();
 			command.execute(request, response);
 			viewpage = "/pages/systemquestion_detail.jsp";
-			break;
-		case ("/orderList.do"):
-			viewpage = "";
 			break;
 		case ("/notice_list.do"):
 			command = new NoticeListCommand();
@@ -232,20 +220,14 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "/pages/myorder_detail.jsp";
 			break;
-		case ("/myinformation_view.do"):
-			viewpage = "";
-			break;
-		case ("/myinfomation_modify.do"):
-			command = new MyinformationModifyCommand();
-			command.execute(request, response);
-			viewpage = "mypage.do";
-			break;
-		case ("/mysocial_view.do"):
-			viewpage = "";
-			break;
-		case ("/mysocial_modify.do"):
-			viewpage = "";
-			break;
+//		case ("/myinformation_view.do"):
+//			viewpage = "";
+//			break;
+//		case ("/myinfomation_modify.do"):
+//			command = new MyinformationModifyCommand();
+//			command.execute(request, response);
+//			viewpage = "mypage.do";
+//			break;
 		}// customer
 
 		// seller용 switch
@@ -258,7 +240,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/slogOut.do"):
 			command = new SLogoutCommand();
 			command.execute(request, response);
-			viewpage = "slogin.jsp";
+			viewpage = "/pages/slogin.jsp";
 			break;
 		case ("/ssignUp.do"):
 			command = new SSignUpCommand();
@@ -271,40 +253,46 @@ public class Fcontroller extends HttpServlet {
 		case ("/sFOApply.do"):
 			command = new SFOApplyCommand();
 			command.execute(request, response);
-			viewpage = "main.jsp";
+			viewpage = "main.do?sort=all";
 			break;
-
 		case ("/sQApply_view.do"):
 			command = new SFOApplyCommand();
 			command.execute(request, response);
 			viewpage = "sQApply_view.jsp";
 			break;
 		case ("/sQApply.do"):
-			viewpage = "main.do";
+			viewpage = "main.do?sort=all";
 			break;
 		case ("/SFOApply.do"):
 			viewpage = "";
 			break;
 		case ("/sMypage.do"):
-			viewpage = "";
+			command = new SMypageCommand();
+			command.execute(request, response);
+			viewpage = "/pages/Smypage.jsp";
 			break;
+//		case ("/sMFManage.do"):
+//			command = new SMFManageCommand();
+//			command.execute(request, response);
+//			viewpage = "sMFManage.jsp";
+//			break; 삭제하기
 		case ("/sMFDetail.do"):
-			viewpage = "";
-			break;
-		case ("/sMFManage.do"):
-			viewpage = "";
+			command = new SMFDetailCommand();
+			command.execute(request, response);
+			viewpage = "/pages/sMFDetail.jsp";
 			break;
 		case ("/sMFCApply.do"):
-			viewpage = "";
+			viewpage = "sMFCApply.jsp";
 			break;
 		case ("/sFADetail.do"):
-			viewpage = "";
+			command = new SFADetailCommand();
+			command.execute(request, response);
+			viewpage = "sFADetail.jsp";
 			break;
 		case ("/sFAnswer.do"):
-			viewpage = "";
-			break;
-		case ("/sRAnswer.do"):
-			viewpage = "";
+			command = new SFAnswerCommand();
+			command.execute(request, response);
+			viewpage = "sFAnswer.jsp";
 			break;
 		case ("/sDManage.do"):
 			viewpage = "";

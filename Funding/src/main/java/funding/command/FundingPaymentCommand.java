@@ -18,6 +18,7 @@ public class FundingPaymentCommand implements FCommand {
 		
 
 		String order_customer = request.getParameter("order_customer");
+
 		
 		int order_funding = Integer.parseInt(request.getParameter("order_funding"));
 		

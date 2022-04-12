@@ -13,7 +13,7 @@
 </head>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-	let email = "<%=session.getAttribute("customer_id")%>
+	let email = "<%=session.getAttribute("id")%>
 	";
 
 		if (email == "null") {
@@ -35,11 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				<div class="list__wrap">
 					<div class="list__header">
 						<h1 class="list__pageTitle">참여한 펀딩 목록</h1>
-						<div class="list__search__box">
-							<input class="list__search" placeholder="검색할 펀딩이나 판매자를 입력하세요."
-								id="list__search" name="funding_search"> <img
-								src="/Funding/assets/search.svg" class="list__search__icon">
-						</div>
 					</div>
 
 					<ul class="list__box">
@@ -63,21 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				</div>
 				<script src="/Funding/libraries/jQuery.js"></script>
 
-				<script type="text/javascript">
-		$(document).on("click", ".list__search__icon", function() {
-			location.href = "/Funding/fundingSearch.do?funding_search="+$("#list__search").val();
-		})
-	</script>
 			</div>
 			<div class="tab__content" id="tab__2__content">
 				<div class="list__wrap">
 					<div class="list__header">
 						<h1 class="list__pageTitle">찜한 펀딩 목록</h1>
-						<div class="list__search__box">
-							<input class="list__search" placeholder="검색할 펀딩이나 판매자를 입력하세요."
-								id="list__search" name="funding_search"> <img
-								src="/Funding/assets/search.svg" class="list__search__icon">
-						</div>
 					</div>
 
 					<ul class="list__box">
@@ -96,26 +81,12 @@ document.addEventListener('DOMContentLoaded', function() {
 					</ul>
 				</div>
 				<script src="/Funding/libraries/jQuery.js"></script>
-				<script type="text/javascript">
-		$(document).on(
-				"click",
-				".list__search__icon",
-				function() {
-					location.href = "/Funding/fundingSearch.do?funding_search="
-							+ $("#list__search").val();
-				})
-	</script>
 
 			</div>
 			<div class="tab__content" id="tab__3__content">
 				<div class="question__wrap">
 					<div class="question__header">
-						<h1 class="question__pageTitle">Q&A</h1>
-						<div class="question__search__box">
-							<input class="question__search" placeholder="검색하실 제목이나 내용을 입력하세요"
-								id="question_search" name="question_search"> <img
-								src="/Funding/assets/search.svg" class="question__search__icon">
-						</div>
+						<h1 class="question__pageTitle">SYSTEM Q&A</h1>
 					</div>
 					<ul class="question__box">
 						<li class="question__liner">
@@ -136,11 +107,39 @@ document.addEventListener('DOMContentLoaded', function() {
 					</ul>
 
 				</div>
+				<div class="question__wrap">
+									<div class="question__header">
+						<h1 class="question__pageTitle">FUNDING Q&A</h1>
+					</div>
+					<ul class="question__box">
+						<li class="question__liner">
+							<p class="question__title">펀딩명</p>
+							<p class="question__title">질문 내용</p>
+							<p class="question__date">질문 일자</p>
+						</li>
+						<li class="question__liner">
+							<p class="question__title">답변유무</p>
+							<p class="question__title">답변 내용</p>
+							<p class="question__date">답변 일자</p>
+						</li>
+						<c:forEach items="${fundingquestion }" var="dto">
+							<li class="question__liner">
+								<a href="/Funding/fundingContent_view.do?fid=${dto.question_funding}"
+								class="question__title">${dto.question_funding_title }</a>
+								<p class="question_title">${dto.question_content }</p>
+								<p class="question__date">${dto.question_at }</p>
+							</li>
+							<li class="question__liner">
+								<p class="question_title">${dto.question_state }</p>
+								<p class="question_title">${dto.question_answer }</p>
+								<p class="question__date">${dto.question_answer_at }</p>
+							</li>
+						</c:forEach>
+					</ul>
+
+				</div>
 				<script src="/Funding/libraries/jQuery.js"></script>
 				<script type="text/javascript">
-		$(document).on("click", ".question__search__icon", function() {
-			location.href = "/Funding/systemQuestion_search.do?question_search="+$("#question_search").val();
-		})
 
 	</script>
 			</div>
@@ -158,21 +157,9 @@ document.addEventListener('DOMContentLoaded', function() {
 							<input class="my__form__input" type="password" id="pw2">
 						</div>
 						<div class="my__liner">
-							<p class="my__form__subtitle">전화번호(-제외)</p>
-							<input class="my__form__input" type="password" id="phone"
+							<p class="my__form__subtitle">전화번호</p>
+							<input class="my__form__input" type="password" id="phone" placeholder="ex)010-0000-0000"
 								name="phone">
-						</div>
-						<div class="my__liner">
-							<p class="my__form__subtitle">도로명 주소</p>
-							<input class="my__form__button" type="button" value="주소검색"
-								onclick="goPopup();"> <input
-								class="my__form__input long" name="address1" id="roadAddrPart1">
-						</div>
-						<div class="my__liner">
-							<p class="my__form__subtitle">상세주소</p>
-							<input class="my__form__input small" type="text" name="address2"
-								id="addrDetail"> <input class="my__form__input small"
-								type="text" name="address3" id="roadAddrPart2">
 						</div>
 						<div class="my__form__submit" onclick="checkMyForm()">변경하기</div>
 					</div>
@@ -185,21 +172,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		<script type="text/javascript" src="/Funding/libraries/jQuery.js"></script>
 		<script type="text/javascript" src="/Funding/pages/mypage.js"></script>
 		<script>
-		function goPopup() {
-			var pop = window.open("./addressPopup.jsp", "pop",
-					"width=570,height=420, scrollbars=yes, resizable=yes");
-
-		}
-		/** API 서비스 제공항목 확대 (2017.02) **/
-		function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
-				roadAddrPart2, engAddr, jibunAddr, zipNo, admCd, rnMgtSn,
-				bdMgtSn, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm,
-				rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo) {
-			document.form.roadAddrPart1.value = roadAddrPart1;
-			document.form.roadAddrPart2.value = roadAddrPart2;
-			document.form.addrDetail.value = addrDetail;
-		}
-
 		function checkMyForm() {
 			let form = document.form;
 			console.log(form)

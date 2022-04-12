@@ -1,14 +1,12 @@
 package funding.command;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import funding.dao.FDaoS;
-import funding.dto.FDtoCalculate;
 
 public class SMFCApplyCommand implements FCommand {
 
@@ -17,14 +15,11 @@ public class SMFCApplyCommand implements FCommand {
 		// TODO Auto-generated method stub
 
 		FDaoS daoS = new FDaoS();
-		ArrayList<FDtoCalculate> dtoCalculates = daoS.list();
-		request.setAttribute("list", dtoCalculates);
+		int calculate_funding =Integer.parseInt(request.getParameter("calculate_funding"));
+		String calculate_seller =request.getParameter("calculate_funding");
 		
-		String funding_title =request.getParameter("funding_title");
-		String admin_name = request.getParameter("admin_name");
+		daoS.sMFCapply(calculate_funding, calculate_seller);
 		
-		daoS.calcFunding_title(funding_title);
-		daoS.calcAdmin_name(admin_name);
 	}
 
 }

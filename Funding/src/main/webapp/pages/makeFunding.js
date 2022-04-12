@@ -157,10 +157,6 @@ function checkFirstTab() {
 	if (target.val().length > 24 || target.val().length < 6) {
 		target.next().addClass('block');
 	}
-	target = $("#MF__basic__seller");
-	if (target.val().length > 12 || target.val().length < 2) {
-		target.next().addClass('block');
-	}
 	target = $(".MF__basic__imgPreview");
 	if (!target.children('img').length) {
 		target.next().addClass('block');
@@ -246,12 +242,6 @@ $(".MF__moveTab__btn.finish").click(function() {
 	funding_purpose.setAttribute('name', 'funding_purpose');
 	funding_purpose.setAttribute('value', $("#MF__basic__goal").val())
 	form.appendChild(funding_purpose);
-	
-	let funding_category = document.createElement('input');
-	funding_category.setAttribute('type', 'text');
-	funding_category.setAttribute('name', 'funding_category');
-	funding_category.setAttribute('value', $("#MF__basic__category option:selected").val())
-	form.appendChild(funding_category);
 	
 	let funding_fee = document.createElement('input');
 	funding_fee.setAttribute('type', 'text');

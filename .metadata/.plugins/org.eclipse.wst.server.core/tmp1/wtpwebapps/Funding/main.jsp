@@ -17,7 +17,7 @@
 	line-height: 52px;
 	border: 1px solid rgba(0, 0, 0, .07);
 	background-color: #f6f6f6;
-	font-size: 15px;
+	font-size: 15px;c
 	text-align: center;
 	overflow-anchor: none;
 	cursor: pointer;

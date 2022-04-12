@@ -18,7 +18,7 @@ public class MyOrderDetailCommand implements FCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("customer_id");
+		String id = (String) session.getAttribute("id");
 		String funding_num = request.getParameter("funding_num");
 		FDaoC dao = new FDaoC();
 		FDtoFunding dto = dao.myorder_funding(funding_num);
