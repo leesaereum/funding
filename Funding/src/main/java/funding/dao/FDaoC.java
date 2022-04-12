@@ -507,7 +507,7 @@ public class FDaoC {
 		try {
 			connection = dataSource.getConnection();
 			String query = "SELECT question_customer, (select funding_title from funding f where f.funding_num = q.question_funding),"
-					+ " question_content, question_at, question_state, question_answer, question_answer_at "
+					+ " question_content, question_at, question_state, question_answer, question_answer_at, question_funding "
 					+ " FROM funding_question q where question_customer = ?";
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
@@ -520,8 +520,10 @@ public class FDaoC {
 				Timestamp question_at = resultset.getTimestamp(4);
 				String question_state = resultset.getString(5);
 				String question_answer = resultset.getString(6);
+				if(question_answer==null) question_answer="답변이 등록되지 않았습니다.";
 				Timestamp question_answer_at = resultset.getTimestamp(7);
-				FDtoFundingQuestion dto = new FDtoFundingQuestion(question_customer, question_content, question_funding_title, question_at, question_state, question_answer, question_answer_at);
+				int question_funding = resultset.getInt(8);
+				FDtoFundingQuestion dto = new FDtoFundingQuestion(question_customer, question_content, question_funding_title, question_at, question_state, question_answer, question_answer_at,question_funding);
 				list.add(dto);
 			}
 		} catch (Exception e) {
