@@ -18,6 +18,7 @@ if (fid == null) {
 }
 %>
 <script type="text/javascript" src="/Funding/libraries/jQuery.js"></script>
+<script type="text/javascript" src="/Funding/libraries/moment.js"></script>
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="/Funding/pages/detail.js"></script>
@@ -89,7 +90,7 @@ if (fid == null) {
 		</div>
 
 		<div class="detail__right">
-			<p class="detail__dday">D-${funding.funding_closeAt}</p>
+			<p class="detail__dday"></p>
 				<h1 class="detail__title">${funding.funding_title}</h1>
 			<p class="detail__rate__txt">
 				${funding.funding_achievement}<span>%</span>
@@ -186,6 +187,13 @@ if (fid == null) {
 			$("#funding__isLiked").removeClass("liked").html('<img src="/Funding/assets/heart_blank.png">')
 
 		}
+		
+		let closeDay = "${funding.funding_closeAt}";
+		closeDay = closeDay.split(" ")[0];
+		closeDay = moment(closeDay);
+		today = moment();
+		let diff = closeDay.diff(today, 'days');
+		$(".detail__dday").html("D-"+diff)
 	})
 	$("#funding__isLiked").click(function(){
 		let cid = "<%=session.getAttribute("id")%>"

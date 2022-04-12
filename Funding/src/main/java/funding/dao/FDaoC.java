@@ -1119,14 +1119,14 @@ public void unlike(String like_customer, int like_funding) {
 	}//likeInsert
 	
 	public void OrderInsert(String order_customer, int order_funding, int order_option, int order_price, 
-			int order_count, int order_address) {
+			int order_count) {
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "INSERT INTO order1 (order_customer, order_funding, order_option, order_price, order_count, order_At, order_address) values(?, ?, ?, ?, ?, now(), ?)";
+			String query = "INSERT INTO order1 (order_customer, order_funding, order_option, order_price, order_count, order_At) values(?, ?, ?, ?, ?, now())";
 			preparedStatement = connection.prepareStatement(query);
 			
 			preparedStatement.setString(1, order_customer);
@@ -1134,7 +1134,6 @@ public void unlike(String like_customer, int like_funding) {
 			preparedStatement.setInt(3, order_option);
 			preparedStatement.setInt(4, order_price);
 			preparedStatement.setInt(5, order_count);
-			preparedStatement.setInt(6, order_address);
 	
 	
 			preparedStatement.executeUpdate();

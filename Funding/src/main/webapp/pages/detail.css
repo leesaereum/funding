@@ -665,7 +665,8 @@
 }
 .detail__popup__payMethod > p{
 	height: 60px;
-	width: 130px;
+	width: 100%;
+	margin-top: 20px;
 	line-height: 60px;
 	text-align: center;
 }

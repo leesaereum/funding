@@ -50,20 +50,12 @@ document.addEventListener('DOMContentLoaded', function() {
 			<div class="my__tab">
 				<p class="my__tab__btn" id="tab__1">참여한 펀딩</p>
 				<p class="my__tab__btn" id="tab__2">찜한 펀딩</p>
-<<<<<<< HEAD
-				<p class="my__tab__btn" id="tab__3">Q&A</p>
-				<p class="my__tab__btn" id="tab__4">개인정보 관리</p>
-				<p class="my__tab__btn" id="tab__5">주최한 펀딩 관리</p>
-				<p class="my__tab__btn" id="tab__6">펀딩 Q&A관리</p>
-				<p class="my__tab__btn" id="tab__7 ">펀딩 정산</p>
-=======
 				<p class="my__tab__btn" id="tab__3">시스템 문의</p>
 				<p class="my__tab__btn" id="tab__4">펀딩 문의</p>
 				<p class="my__tab__btn" id="tab__5">개인정보 관리</p>
 				<p class="my__tab__btn" id="tab__6">주최한 펀딩 관리</p>
 				<p class="my__tab__btn" id="tab__7">펀딩 Q&A관리</p>
 				<p class="my__tab__btn" id="tab__8">펀딩 정산</p>
->>>>>>> newdong
 			</div>
 			<div class="tab__content" id="tab__1__content">
 				<div class="list__wrap">
