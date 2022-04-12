@@ -414,17 +414,17 @@ public class FDaoS {
 		ResultSet resultset = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT funding_num, funding_banner, funding_title, funding_openAt FROM funding where funding_seller = ?";
+			String query = "SELECT funding_num, funding_title, funding_openAt, funding_closeAt FROM funding where funding_seller = ?";
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
 			resultset = preparedstatement.executeQuery();
 			
 			while(resultset.next()) {
 				int funding_num = resultset.getInt(1);
-				String funding_banner = resultset.getString(2);
-				String funding_title = resultset.getString(3);
-				Timestamp funding_openAt = resultset.getTimestamp(4);
-				FDtoFunding dto = new FDtoFunding(funding_num, funding_banner, funding_title, funding_openAt);
+				String funding_title = resultset.getString(2);
+				Timestamp funding_openAt = resultset.getTimestamp(3);
+				Timestamp funding_closeAt = resultset.getTimestamp(4);
+				FDtoFunding dto = new FDtoFunding(funding_num, funding_title, funding_openAt, funding_closeAt);
 				list.add(dto);
 			}
 		} catch (Exception e) {
@@ -440,7 +440,46 @@ public class FDaoS {
 		}
 		return list;
 	}//Mfunding_list end
-	
+	public FDtoFunding selectDetail(String num) {
+		FDtoFunding dto = null;
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT funding_num, funding_banner, funding_title, "
+					+ "funding_openAt, funding_closeAt, funding_purpose, funding_fee, "
+					+ "(select content_content from funding_content c where c.content_funding = f.funding_num "
+					+ " From funding f where funding_num = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, num);
+			resultset = preparedstatement.executeQuery();
+			
+			while(resultset.next()) {
+				int funding_num = resultset.getInt(1);
+				String funding_banner = resultset.getString(2);
+				String funding_title = resultset.getString(3);
+				Timestamp funding_openAt = resultset.getTimestamp(4);
+				Timestamp funding_closeAt = resultset.getTimestamp(5);
+				int funding_purpose = resultset.getInt(6);
+				int funding_fee = resultset.getInt(7);
+				String funding_content = resultset.getString(8);
+				dto = new FDtoFunding(funding_num, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_purpose, funding_fee, funding_content);
+					
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}
 	//Mfunding_detail(modify and delete)
 	public void sMfunding_detail(String funding_num, String funding_title, String funding_openAt, String funding_closeAt,
 			int funding_purpose, int funding_hits, String funding_state, int funding_fee) {

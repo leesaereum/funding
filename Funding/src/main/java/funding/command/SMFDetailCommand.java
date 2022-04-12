@@ -1,12 +1,14 @@
 package funding.command;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import funding.dao.FDaoS;
+import funding.dto.FDtoFunding;
 
 public class SMFDetailCommand implements FCommand {
 
@@ -15,6 +17,10 @@ public class SMFDetailCommand implements FCommand {
 		// TODO Auto-generated method stub	
 		String funding_num =request.getParameter("funding_num");
 		FDaoS daoS = new FDaoS();
+		FDtoFunding dto = daoS.selectDetail(funding_num);
+		//ArrayList<> options = daoS.selectOption(funding_num);
+		request.setAttribute("Mfunding", dto);
+		
 		//daoS.sMfunding_detail(funding_num, funding_title, funding_openAt, funding_closeAt,
 				//	funding_purpose, funding_fee);
 	
@@ -23,7 +29,6 @@ public class SMFDetailCommand implements FCommand {
 		//String funding_closeAt= request.getParameter("funding_closeAt"); 
 		//int	funding_purpose=Integer.parseInt(request.getParameter("funding_purpose")); 
 		//int funding_fee= Integer.parseInt(request.getParameter("funding_fee"));
-		System.out.println("Hello");
 	}
 
 }

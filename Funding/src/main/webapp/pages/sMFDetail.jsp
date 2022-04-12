@@ -7,7 +7,7 @@
 <title>신규 펀딩 만들기</title>
 <link rel="stylesheet" href="/Funding/styles/init.css">
 <link rel="stylesheet" href="/Funding/styles/base.css">
-<link rel="stylesheet" href="./makeFunding.css">
+<link rel="stylesheet" href="/Funding/pages/makeFunding.css">
   	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
       <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
@@ -35,42 +35,29 @@
 				<p class="MF__basic__description">24자 이내의 매력적인 제목을 입력해주세요</p>
 				<input class="MF__basic__input large" id="MF__basic__title" value="${Mfunding.funding_title }">
 				<p class="MF__basic__warning">6~24자의 제목을 입력해주세요</p>
-				<p class="MF__basic__title">펀딩 주체 이름</p>
-				<p class="MF__basic__description">펀딩을 개최하시는 분의 이름 혹은 업체명을 12자 이내로 입력해주세요</p>
-				<input class="MF__basic__input medium" id="MF__basic__seller" value="${Mfunding.funding_seller }">
-				<p class="MF__basic__warning">2~12자의 이름을 입력해주세요</p>
 				<p class="MF__basic__title">메인(썸네일) 사진</p>
 				<p class="MF__basic__description">JPG, PNG 형식, 250 X 140 픽셀</p>
 				<label class="MF__basic__addImage__label"><input type="file"
-							class="MF__basic__addImage" accept="image/png, image/jpeg"> 이미지
+							class="MF__basic__addImage" accept="image/png, image/jpeg" value="${Mfunding.funding_banner }"> 이미지
 							추가</label>
 				<p class="MF__basic__description">썸네일 미리보기</p>
 				<div class="MF__basic__imgPreview"></div>
 				<p class="MF__basic__warning">썸네일 이미지는 필수입니다.</p>
 				<p class="MF__basic__title">펀딩 목표금액</p>
 				<p class="MF__basic__description">목표금액이 달성되지 않으면 결제, 정산되지 않고, 펀딩은 무효 처리됩니다.</p>
-				<input class="MF__basic__input small" id="MF__basic__goal" type="number">
+				<input class="MF__basic__input small" id="MF__basic__goal" type="number" value="${Mfunding.funding_purpose}">
 				<p class="MF__basic__warning">10만원 ~ 10억원 이내로 입력해주세요</p>
 				<p class="MF__basic__title">펀딩 오픈일</p>
 				<p class="MF__basic__description">펀딩을 시작할 날짜를 선택해주세요</p>
-				<input class="MF__basic__input small" type="date" id="MF__basic__startDate">
+				<input class="MF__basic__input small" type="date" id="MF__basic__startDate" value="${Mfunding.funding_openAt }">
 				<p class="MF__basic__warning">오픈일을 오늘 이후로 설정해주세요</p>
 				<p class="MF__basic__title">펀딩 종료일</p>
 				<p class="MF__basic__description">종료일까지 목표금액이 달성된 경우 종료일에 일괄 결제됩니다.</p>
-				<input class="MF__basic__input small" type="date" id="MF__basic__endDate">
+				<input class="MF__basic__input small" type="date" id="MF__basic__endDate" value="${Mfunding.funding_closeAt }">
 				<p class="MF__basic__warning">종료일은 오픈일보다 최소 5일 이후여야 합니다.</p>
 				<p class="MF__basic__title">배송비</p>
 				<p class="MF__basic__description">펀딩 건 당 배송비를 알려주세요</p>
 				<input class="MF__basic__input small" id="MF__basic__fee" type="number" value="${Mfunding.funding_fee }">
-				<p class="MF__basic__title">배송비</p>
-				<p class="MF__basic__description">펀딩 건 당 배송비를 알려주세요</p>
-				<select id="MF__basic__category" class="MF__basic__category">
-					<option selected="selected">일자리 창출</option>
-					<option>친환경</option>
-					<option>기부</option>
-					<option>작은가게</option>
-					<option>미디어</option>
-				</select>
 				<div class="MF__moveTab">
 					<p class="MF__moveTab__btn dimmed">이전</p>
 					<p class="MF__moveTab__btn" onclick="moveTab(1, 2)">다음</p>
@@ -121,6 +108,6 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="/Funding/libraries/jQuery.js"></script>
-	<script type="text/javascript" src="./makeFunding.js"></script>
+	<script type="text/javascript" src="/Funding/pages/makeFunding.js"></script>
 </body>
 </html>
