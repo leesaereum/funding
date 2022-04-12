@@ -21,7 +21,7 @@ public class SocialLoginCommand implements FCommand {
 		
 		
 		if(res) {
-			request.setAttribute("viewpage", "main.do");
+			request.setAttribute("viewpage", "main.do?sort=all");
 			session.setAttribute("email", input_id);
 			session.setAttribute("customer_id", input_id);
 		}else {

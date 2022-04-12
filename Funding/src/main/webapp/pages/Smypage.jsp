@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				<p class="my__tab__btn" id="tab__4">개인정보 관리</p>
 				<p class="my__tab__btn" id="tab__5">주최한 펀딩 관리</p>
 				<p class="my__tab__btn" id="tab__6">펀딩 Q&A관리</p>
-				<p class="my__tab__btn" id="tab__6">펀딩 정산</p>
+				<p class="my__tab__btn" id="tab__7 ">펀딩 정산</p>
 			</div>
 			<div class="tab__content selected" id="tab__1__content">
 				<div class="list__wrap">

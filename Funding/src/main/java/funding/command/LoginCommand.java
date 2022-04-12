@@ -29,7 +29,7 @@ public class LoginCommand implements FCommand {
 		if(customer_id==null) {
 			request.setAttribute("viewpage", "./pages/login.jsp?error=error");
 		}else {
-			request.setAttribute("viewpage", "main.do");
+			request.setAttribute("viewpage", "main.do?sort=all");
 		}
 	}
 

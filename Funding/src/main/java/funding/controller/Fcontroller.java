@@ -103,7 +103,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/logout.do"):
 			command = new LogoutCommand();
 			command.execute(request, response);
-			viewpage = "main.do";
+			viewpage = "main.do?sort=all";
 			break;
 		case ("/main.do"):
 			command = new MainCommand();
@@ -247,7 +247,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/sFOApply.do"):
 			command = new SFOApplyCommand();
 			command.execute(request, response);
-			viewpage = "main.do";
+			viewpage = "main.do?sort=all";
 			break;
 		case ("/sQApply_view.do"):
 			command = new SFOApplyCommand();
@@ -255,7 +255,7 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "sQApply_view.jsp";
 			break;
 		case ("/sQApply.do"):
-			viewpage = "main.do";
+			viewpage = "main.do?sort=all";
 			break;
 		case ("/SFOApply.do"):
 			viewpage = "";
