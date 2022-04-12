@@ -932,7 +932,8 @@ public class FDaoC {
 					+ "(select seller_name from seller s where f.funding_seller = s.seller_id) as seller_name, "
 					+ "(select sum(order_price*order_count) from order1 o where o.order_funding = f.funding_num group by order_funding) as total, "
 					+ "(select count(distinct order_customer) from order1 o where o.order_funding = f.funding_num) as count,"
-					+ "funding_num  "
+					+ "funding_num,  "
+					+ "(select seller_profile from seller s where f.funding_seller = s.seller_id) as seller_profile"
 					+ "from funding f where funding_num = ? ;";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, fnum);
@@ -951,8 +952,9 @@ public class FDaoC {
 				int total = resultSet.getInt("total");
 				int count = resultSet.getInt("count");
 				int funding_num = resultSet.getInt("funding_num");
+				String seller_profile = resultSet.getString("seller_profile");
 				
-				dto = new FDtoFunding(funding_banner, funding_seller, funding_title, funding_openAt, funding_closeAt, funding_purpose, funding_achievement, total, content_content, count,funding_num);
+				dto = new FDtoFunding(funding_banner, funding_seller, funding_title, funding_openAt, funding_closeAt, funding_purpose, funding_achievement, total, content_content, count,funding_num, seller_profile);
 			}
 			
 		} catch (Exception e) {
