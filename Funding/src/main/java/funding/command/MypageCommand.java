@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import funding.dao.FDaoC;
 import funding.dto.FDtoFunding;
+import funding.dto.FDtoFundingQuestion;
 import funding.dto.FDtoSystemQuestion;
 
 public class MypageCommand implements FCommand {
@@ -22,11 +23,13 @@ public class MypageCommand implements FCommand {
 		FDaoC dao = new FDaoC();
 		ArrayList<FDtoFunding> myfundinglist = dao.myfundinglist(id);		
 		ArrayList<FDtoFunding> mylikelist = dao.mylikelist(id);
-		ArrayList<FDtoSystemQuestion> myquestionlist = dao.myquestion_list(id);
+		ArrayList<FDtoSystemQuestion> myquestionlist = dao.mysystemquestion_list(id);
+		ArrayList<FDtoFundingQuestion> myfundingquestionlist = dao.myfundingquestion_list(id);
 		
 		request.setAttribute("funding", myfundinglist);
 		request.setAttribute("like", mylikelist);
 		request.setAttribute("question", myquestionlist);
+		request.setAttribute("fundingquestion", myfundingquestionlist);
 	}
 
 }

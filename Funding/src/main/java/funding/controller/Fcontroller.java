@@ -161,12 +161,6 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "fundingOrder.jsp";
 			break;
-//		case ("/fundingPayment_view.do"):
-//			viewpage = "";
-//			break;
-//		case ("/fundingPayment.do"):
-//			viewpage = "";
-//			break;
 //		case ("/fundingaddress.do"):
 //			viewpage = "";
 //			break;
@@ -266,9 +260,6 @@ public class Fcontroller extends HttpServlet {
 		case ("/SFOApply.do"):
 			viewpage = "";
 			break;
-//		case ("/SFOApply.do"):
-//			viewpage = "";
-//			break;
 		case ("/sMypage.do"):
 			command = new SMypageCommand();
 			command.execute(request, response);
@@ -300,11 +291,6 @@ public class Fcontroller extends HttpServlet {
 		case ("/sDManage.do"):
 			viewpage = "";
 			break;
-//		case ("/sRAnswer.do"):
-//			command = new SRAnswerCommand();
-//			command.execute(request, response);
-//			viewpage = "sRAnswer.jsp";
-//			break;
 		}// seller
 
 		//admin용 switch

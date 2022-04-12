@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				<p class="my__tab__btn" id="tab__3">Q&A</p>
 				<p class="my__tab__btn" id="tab__4">개인정보 관리</p>
 				<p class="my__tab__btn" id="tab__5">주최한 펀딩 관리</p>
+				<p class="my__tab__btn" id="tab__6">펀딩 Q&A관리</p>
 				<p class="my__tab__btn" id="tab__6">펀딩 정산</p>
 			</div>
 			<div class="tab__content selected" id="tab__1__content">
@@ -157,6 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			</div>
 		</div>
 		<div class="tab__content" id="tab__6__content"></div>
+		<div class="tab__content" id="tab__7__content"></div>
 	</div>
 
 	<script type="text/javascript" src="/Funding/libraries/jQuery.js"></script>

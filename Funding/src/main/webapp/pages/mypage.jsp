@@ -136,6 +136,36 @@ document.addEventListener('DOMContentLoaded', function() {
 					</ul>
 
 				</div>
+					<ul class="question__box">
+						<li class="question__liner">
+							<p class="question__title">펀딩명</p>
+							<p class="question__title">질문 내용</p>
+							<p class="question__date">질문 일자</p>
+							<p class="question__title">답변유무</p>
+						</li>
+						<li class="question__liner">
+							<p class="question__title">답변 내용</p>
+							<p class="question__date">답변 일자</p>
+						</li>
+						<c:forEach items="${fundingquestion }" var="dto">
+							<li class="question__liner">
+								<p class="question__num">${dto.question_funding_title }</p> <a
+								href="systemQuestion_detail.do?question_num=${dto.question_num}"
+								class="question__title">${dto.question_title }</a>
+								<p class="question__date">${dto.question_at }</p>
+								<p class="question_title">${dto.question_state }</p>
+							</li>
+							<li class="question__liner">
+								<p class="question__num">${dto.question_num }</p> <a
+								href="systemQuestion_detail.do?question_num=${dto.question_num}"
+								class="question__title">${dto.question_title }</a>
+								<p class="question__date">${dto.question_at }</p>
+								<p class="question_title">${dto.question_state }</p>
+							</li>
+						</c:forEach>
+					</ul>
+
+				</div>
 				<script src="/Funding/libraries/jQuery.js"></script>
 				<script type="text/javascript">
 		$(document).on("click", ".question__search__icon", function() {
