@@ -3180,3 +3180,13 @@ java.nio.file.FileSystemException: /Volumes/Eclipse/Eclipse.app/Contents/Info.pl
 	at org.eclipse.urischeme.internal.registration.RegistrationMacOsX.handleSchemes(RegistrationMacOsX.java:55)
 	at org.eclipse.urischeme.AutoRegisterSchemeHandlersJob.run(AutoRegisterSchemeHandlersJob.java:94)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 1 0 2022-04-12 15:46:52.817
+!MESSAGE [Info]	ESLint server running in node v16.13.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2022-04-12 15:46:53.153
+!MESSAGE [Info]	[lspserver] Using Typescript version (user-setting) 4.5.5 from path "/Volumes/Eclipse/Eclipse.app/Contents/Eclipse/plugins/org.eclipse.wildwebdeveloper_0.5.20.202202041634/node_modules/typescript/lib/tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 4 0 2022-04-12 15:46:53.447
+!MESSAGE [Error]	[tsserver] env: node: No such file or directory
+
