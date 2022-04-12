@@ -13,7 +13,7 @@
 </head>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-	let email = "<%=session.getAttribute("customer_id")%>
+	let email = "<%=session.getAttribute("id")%>
 	";
 
 		if (email == "null") {

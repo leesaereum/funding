@@ -22,7 +22,7 @@ public class LoginCommand implements FCommand {
 		
 		if(customer_id!=null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("customer_id", customer_id);
+			session.setAttribute("id", customer_id);
 		}
 		if(customer_id==null) {
 			request.setAttribute("viewpage", "./pages/login.jsp?error=error");

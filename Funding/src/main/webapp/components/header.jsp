@@ -92,11 +92,11 @@ let headerHeight = 72;
 
 let isSeller = "<%=session.getAttribute("isSeller")%>";
 if(isSeller != "null"){
-	let email = "<%=session.getAttribute("seller_id")%>";
+	let email = "<%=session.getAttribute("id")%>";
 	let txt = '<p class="signedIn_email" onclick="goMyPage()">'+email+'</p><div class="logoutButton">로그아웃</div><div class="makeFunding">펀딩 만들기</div>';
 	document.getElementById("loginZone").innerHTML = txt;
 }else{
-	let email = "<%=session.getAttribute("customer_id")%>";
+	let email = "<%=session.getAttribute("id")%>";
 	if(email == "null"){
 		document.getElementById("loginZone").innerHTML = '<div class="loginButton">로그인</div>';
 	}else{

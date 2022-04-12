@@ -240,7 +240,7 @@ public class FDtoFunding {
 	}
 
 	public FDtoFunding(String funding_banner, String funding_seller, String funding_title, Timestamp funding_openAt, Timestamp funding_closeAt,
-			int funding_purpose, int funding_achievement, int total, String content_content, int count) {
+			int funding_purpose, int funding_achievement, int total, String content_content, int count, int funding_num) {
 		super();
 		this.funding_banner = funding_banner;
 		this.funding_seller = funding_seller;
@@ -252,7 +252,9 @@ public class FDtoFunding {
 		this.total = total;
 		this.content_content = content_content;
 		this.count = count;
+		this.funding_num = funding_num;
 	}
+
 
 	public int getCount() {
 		return count;

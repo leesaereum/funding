@@ -33,7 +33,6 @@ import funding.command.FundingLikeCommand;
 import funding.command.FundingListViewCommand;
 import funding.command.FundingPaymentCommand;
 import funding.command.FundingQuestionCommand;
-import funding.command.FundingQuestionlistCommand;
 import funding.command.FundingdetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
@@ -151,24 +150,19 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "fundingOrder.jsp";
 			break;
-		case ("/fundingPayment_view.do"):
-			viewpage = "";
-			break;
-		case ("/fundingPayment.do"):
-			viewpage = "";
-			break;
-		case ("/fundingaddress.do"):
-			viewpage = "";
-			break;
-		case ("/fundingQuestionList.do"):
-			command = new FundingQuestionlistCommand();
-			command.execute(request, response);
-			viewpage = "/pages/detail.jsp";
-			break;
+//		case ("/fundingPayment_view.do"):
+//			viewpage = "";
+//			break;
+//		case ("/fundingPayment.do"):
+//			viewpage = "";
+//			break;
+//		case ("/fundingaddress.do"):
+//			viewpage = "";
+//			break;
 		case ("/fundingQuestion.do"):
 			command = new FundingQuestionCommand();
 			command.execute(request, response);
-			viewpage = "/pages/detail.jsp?tap=";
+			viewpage = (String) request.getAttribute("viewpage");
 			break;
 		case ("/systemQuestion_list.do"):
 			command = new SystemQuestionlistCommand();

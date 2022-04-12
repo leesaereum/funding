@@ -7,11 +7,11 @@ public class FDtoFundingQuestion {
 	int question_num;
 	String question_customer;
 	int question_funding;
-	String question_title;
 	String question_content;
 	Timestamp question_at;
 	String question_state;
 	String question_answer;
+	Timestamp question_answer_at;
 	
 	public int getQuestion_num() {
 		return question_num;
@@ -30,12 +30,6 @@ public class FDtoFundingQuestion {
 	}
 	public void setQuestion_funding(int question_funding) {
 		this.question_funding = question_funding;
-	}
-	public String getQuestion_title() {
-		return question_title;
-	}
-	public void setQuestion_title(String question_title) {
-		this.question_title = question_title;
 	}
 	public String getQuestion_content() {
 		return question_content;
@@ -63,15 +57,22 @@ public class FDtoFundingQuestion {
 	}
 	
 	
-	public FDtoFundingQuestion(String question_customer, String question_title, String question_content,
-			Timestamp question_at, String question_answer) {
+	public Timestamp getQuestion_answer_at() {
+		return question_answer_at;
+	}
+	public void setQuestion_answer_at(Timestamp question_answer_at) {
+		this.question_answer_at = question_answer_at;
+	}
+	public FDtoFundingQuestion(String question_customer, String question_content,
+			Timestamp question_at, String question_answer, Timestamp question_answer_at) {
 		super();
 		this.question_customer = question_customer;
-		this.question_title = question_title;
 		this.question_content = question_content;
 		this.question_at = question_at;
 		this.question_answer = question_answer;
+		this.question_answer_at = question_answer_at;
 	}
+
 	
 	
 	

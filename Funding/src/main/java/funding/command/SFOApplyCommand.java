@@ -6,6 +6,7 @@ import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import funding.dao.FDaoS;
 
@@ -17,7 +18,8 @@ public class SFOApplyCommand implements FCommand {
 
 		// 예시로 넣은 값 get으로 받아올거
 
-		String funding_seller = "seller@seller.com";
+		HttpSession session = request.getSession();
+		String funding_seller = (String) session.getAttribute("id");
 		String funding_banner = request.getParameter("funding_banner");
 		String funding_title = request.getParameter("funding_title");
 

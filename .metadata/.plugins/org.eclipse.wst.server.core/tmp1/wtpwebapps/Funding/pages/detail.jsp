@@ -32,7 +32,6 @@ if (fid == null) {
 				<p class="detail__tab__tab detail__tab__selected" data-id="story">스토리</p>
 				<p class="detail__tab__tab" data-id="participants">참여자</p>
 				<p class="detail__tab__tab" data-id="questions">Q&A</p>
-				<p class="detail__tab__tab" data-id="reviews">후기</p>
 			</div>
 			<div class="detail__content__tabs__box">
 				<div class="detail__tab selected" id="tab-story">
@@ -60,7 +59,8 @@ if (fid == null) {
 				<div class="detail__tab" id="tab-questions">
 					<!-- 구매자면 질문창, 판매자면 답변창 -->
 					<div class="detail__qna__new__box">
-						<form action="/fundingQuestion.do" method="post">
+						<form action="/Funding/fundingQuestion.do" method="post">
+							<input type="hidden" value="${funding.funding_num }" name="question_funding">
 							<input class="detail__qna__new__input" name="question_content">
 							<div class="detail__qna__new__submit__box">
 								<input class="detail__qna__new__submit" type="submit"
@@ -73,9 +73,10 @@ if (fid == null) {
 						<div class="detail__qna__box">
 							<p class="detail__qna__question">Q.
 								${dtoQuestion.question_content}</p>
+							<p class="detail__qna__date">${dtoQuestion.question_at}</p>
 							<p class="detail__qna__answer">A.
 								${dtoQuestion.question_answer}</p>
-							<p class="detail__qna__date">${dtoQuestion.question_at}</p>
+							<p class="detail__qna__date">${dtoQuestion.question_answer_at}</p>
 						</div>
 
 					</c:forEach>

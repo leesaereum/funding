@@ -108,7 +108,8 @@
 				<div id="notice__content"></div>
 				<div class="notice__header">
 					<p class="notice__title">
-					<p class="notice__name">총 합계 금액 :</p>
+					<p class="notice__name">총 합계 금액 :${total }
+					</p>
 				</div>
 			</div>
 		</div>
@@ -118,6 +119,7 @@
 	let txt = '';
 	let priceTxt = '';
 	let dateTxt = '';
+	<c:set var = "total" value = "0"/>
 	<c:forEach items="${ordering}" var="ordering">
 		dateTxt = "${ordering.order_At}";
 		dateTxt = moment(dateTxt).format("YYYY-MM-DD")

@@ -22,8 +22,7 @@ public class SLoginCommand implements FCommand {
 		String seller_id = daoS.slogin(id,pw);
 		if(seller_id != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("seller_id", seller_id);
-			session.setAttribute("email", id);
+			session.setAttribute("id", seller_id);
 			session.setAttribute("isSeller", "true");
 		}
 		

@@ -17,7 +17,7 @@ public class MypageCommand implements FCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesstion = request.getSession();
-		String id = (String) sesstion.getAttribute("customer_id");
+		String id = (String) sesstion.getAttribute("id");
 		
 		FDaoC dao = new FDaoC();
 		ArrayList<FDtoFunding> myfundinglist = dao.myfundinglist(id);		
