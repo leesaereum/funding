@@ -123,5 +123,25 @@ public class FDtoSystemQuestion {
 	public void setQuestion_answer_at(Timestamp question_answer_at) {
 		this.question_answer_at = question_answer_at;
 	}
+
+	public FDtoSystemQuestion(int question_num, String question_customer, String question_title,
+			String question_content, String question_answer) {
+		super();
+		this.question_num = question_num;
+		this.question_customer = question_customer;
+		this.question_title = question_title;
+		this.question_content = question_content;
+		this.question_answer = question_answer;
+	}
+
+
+
+	
+
+	
+
+	
+	
+	
 	
 }

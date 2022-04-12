@@ -88,7 +88,6 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="aSAList.do">펀딩 문의</a>
                         <a class="collapse-item" href="aSAList.do">캠패인 문의</a>
                         <a class="collapse-item" href="aSAList.do">시스템 문의</a>
                     </div>
@@ -309,7 +308,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${adminId }</span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -358,9 +357,9 @@
                                     <thead>
                                         <tr>
                                             <th>질문 번호</th>
-                                            <th>질문자 ID</th>
+                                           
                                             <th>제목</th>
-                                            <th>내용</th>
+                                           
                                             <th>질문일자</th>
                                             <th>답변상태</th>
                                         </tr>
@@ -368,19 +367,22 @@
                                     <tfoot>
                                         <tr>
                                             <th>질문 번호</th>
-                                            <th>질문자 ID</th>
+                                           
                                             <th>제목</th>
-                                            <th>내용</th>
+                                         
                                             <th>질문일자</th>
                                             <th>답변상태</th>
                                     </tfoot>
                                     <tbody>
-                                   		<c:forEach items="${systemQuestionlist }" var="dto01">
+                                   		<c:forEach items="${question }" var="dto01">
                                         <tr>
                                             <td>${dto01.question_num}</td>
-                                            <td>${dto01.question_customer}</td>
-                                            <td style="color:blue" onClick="window.open('aCList.do')">${dto01.question_title}</td>
-                                            <td>${dto01.question_content}</td>
+                                           
+                                            <td style="color:blue" 
+                                            onClick = " location.href='asystemqDetail.do?question_num=${dto01.question_num }' "
+
+                                           >${dto01.question_title}</td>
+                                           
                                             <td>${dto01.question_at}</td>
                                             <td>${dto01.question_state}</td>
                                                                                  
