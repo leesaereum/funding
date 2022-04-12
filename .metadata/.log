@@ -3104,3 +3104,6 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY org.eclipse.core.resources 2 10035 2022-04-12 15:10:44.993
+!MESSAGE The workspace will exit with unsaved changes in this session.

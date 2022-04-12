@@ -29,10 +29,8 @@
     <fullyQualifiedTypeName name="funding.command.FundingQuestionlistCommand"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="funding.command.MyOrderDetailCommand"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoOrder"/>
     <fullyQualifiedTypeName name="funding.command.MypageCommand"/>
-    <fullyQualifiedTypeName name="funding.dto.FDtoFunding"/>
     <fullyQualifiedTypeName name="funding.command.AFADetailCommand"/>
     <fullyQualifiedTypeName name="funding.command.AFListCommand"/>
     <fullyQualifiedTypeName name="funding.command.ASQDetailCommand"/>
@@ -41,4 +39,6 @@
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoFundingQuestion"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoFunding"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
