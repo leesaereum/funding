@@ -407,15 +407,16 @@ public class FDaoS {
 	}
 	
 	//Manage funding list
-	public ArrayList<FDtoFunding> Mfunding_list() {
+	public ArrayList<FDtoFunding> Mfunding_list(String id) {
 		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
 		ResultSet resultset = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT funding_num, funding_banner, funding_title, funding_openAt FROM funding";
+			String query = "SELECT funding_num, funding_banner, funding_title, funding_openAt FROM funding where funding_seller = ?";
 			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
 			resultset = preparedstatement.executeQuery();
 			
 			while(resultset.next()) {
@@ -482,7 +483,7 @@ public class FDaoS {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select question_num, question_customer, question_title, question_content, question_at, question_state "
+			String query = "select question_num, question_customer, question_content, question_at, question_state "
 					+ "from funding_question "
 					+ "where question_funding in (select funding_num from funding)";
 			preparedStatement = connection.prepareStatement(query);
@@ -491,13 +492,11 @@ public class FDaoS {
 			while(resultSet.next()) {
 				int question_num = resultSet.getInt("question_num"); //1234로 써도 되고, Column 이름으로 써도 됨!
 				String question_customer = resultSet.getString("question_customer");
-				String question_title = resultSet.getString("question_title");
 				String question_content = resultSet.getString("question_content");
 				Timestamp question_at = resultSet.getTimestamp("question_at");
 				String question_state = resultSet.getString("question_state");
 				
-				FDtoFundingQuestion dtoFQ = new FDtoFundingQuestion(question_num, question_customer, question_title
-														, question_content, question_at, question_state);
+				FDtoFundingQuestion dtoFQ = new FDtoFundingQuestion(question_num, question_customer, question_content, question_at, question_state);
 				
 				dtosFQ.add(dtoFQ);
 			}
@@ -518,45 +517,45 @@ public class FDaoS {
 	} //funding question end
 	
 	//funding answer
-	public FDtoFundingQuestion FAnswer_detail(String num){
-		FDtoFundingQuestion dtoFA = null;
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultset = null;
-		
-		try {
-			connection = dataSource.getConnection();
-			String query ="select * from funding_question where question_num = ? ";
-
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, num);
-			resultset = preparedStatement.executeQuery();
-			
-			if(resultset.next()) {
-				int question_num = resultset.getInt("question_num"); //1234로 써도 되고, Column 이름으로 써도 됨!
-				String question_customer = resultset.getString("question_customer");
-				String question_seller = resultset.getString("question_seller");
-				String question_title = resultset.getString("question_title");
-				String question_content = resultset.getString("question_content");
-				Timestamp question_answer_at = resultset.getTimestamp("question_answer_at");
-				String question_state = resultset.getString("question_state");
-				String question_answer = resultset.getString("question_answer");
-//				if(question_answer == null) question_state="답변대기";
-				dtoFA = new FDtoFundingQuestion(question_num, question_customer, question_seller, question_title
-												, question_content, question_state, question_answer, question_answer_at);
-			}
-		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}try {
-			if (connection != null) connection.close();
-			if (preparedStatement != null) preparedStatement.close();
-			if (resultset != null) resultset.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return dtoFA;
-	}
+//	public FDtoFundingQuestion FAnswer_detail(String num){
+//		FDtoFundingQuestion dtoFA = null;
+//		Connection connection = null;
+//		PreparedStatement preparedStatement = null;
+//		ResultSet resultset = null;
+//		
+//		try {
+//			connection = dataSource.getConnection();
+//			String query ="select * from funding_question where question_num = ? ";
+//
+//			preparedStatement = connection.prepareStatement(query);
+//			preparedStatement.setString(1, num);
+//			resultset = preparedStatement.executeQuery();
+//			
+//			if(resultset.next()) {
+//				int question_num = resultset.getInt("question_num"); //1234로 써도 되고, Column 이름으로 써도 됨!
+//				String question_customer = resultset.getString("question_customer");
+//				String question_seller = resultset.getString("question_seller");
+//				String question_title = resultset.getString("question_title");
+//				String question_content = resultset.getString("question_content");
+//				Timestamp question_answer_at = resultset.getTimestamp("question_answer_at");
+//				String question_state = resultset.getString("question_state");
+//				String question_answer = resultset.getString("question_answer");
+////				if(question_answer == null) question_state="답변대기";
+//				dtoFA = new FDtoFundingQuestion(question_num, question_customer, question_seller, question_title
+//												, question_content, question_state, question_answer, question_answer_at);
+//			}
+//		}catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//		}try {
+//			if (connection != null) connection.close();
+//			if (preparedStatement != null) preparedStatement.close();
+//			if (resultset != null) resultset.close();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return dtoFA;
+//	}
 	
 	public void FAnswer_Update(String num, String answer) {
 		Connection connection = null;

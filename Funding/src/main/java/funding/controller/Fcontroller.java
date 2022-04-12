@@ -32,11 +32,7 @@ import funding.command.FindpwCommand;
 import funding.command.FundingLikeCommand;
 import funding.command.FundingListViewCommand;
 import funding.command.FundingPaymentCommand;
-<<<<<<< HEAD
 import funding.command.FundingQuestionCommand;
-=======
-import funding.command.FundingQuestionlistCommand;
->>>>>>> yejin
 import funding.command.FundingdetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
@@ -58,7 +54,6 @@ import funding.command.SLogoutCommand;
 import funding.command.SMFDetailCommand;
 import funding.command.SMFManageCommand;
 import funding.command.SMypageCommand;
-import funding.command.SQApplyCommand;
 import funding.command.SRAnswerCommand;
 import funding.command.SSignUpCommand;
 import funding.command.SearchCommand;
@@ -258,11 +253,6 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "main.jsp";
 			break;
-<<<<<<< HEAD
-=======
-		case ("/sQApply_detail.do"):
-			viewpage = "";
->>>>>>> yejin
 		case ("/sQApply_view.do"):
 			command = new SFOApplyCommand();
 			command.execute(request, response);
@@ -300,13 +290,9 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "sFADetail.jsp";
 			break;
 		case ("/sFAnswer.do"):
-<<<<<<< HEAD
-			viewpage = "";
-=======
 			command = new SFAnswerCommand();
 			command.execute(request, response);
 			viewpage = "sFAnswer.jsp";
->>>>>>> yejin
 			break;
 		case ("/sDManage.do"):
 			viewpage = "";
@@ -318,15 +304,9 @@ public class Fcontroller extends HttpServlet {
 //			break;
 		}// seller
 
-<<<<<<< HEAD
 		//admin용 switch
 		switch(path){
 		case("/aLogin.do"):
-=======
-		// admin�슜 switch
-		switch (path) {
-		case ("/aLogin.do"):
->>>>>>> yejin
 			command = new ALoginCommand();
 			command.execute(request, response);
 			viewpage= (String) request.getAttribute("viewPage");

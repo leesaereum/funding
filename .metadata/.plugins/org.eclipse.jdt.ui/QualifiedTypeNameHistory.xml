@@ -11,7 +11,6 @@
     <fullyQualifiedTypeName name="funding.command.FundingPaymentCommand"/>
     <fullyQualifiedTypeName name="funding.command.SFOApplyCommand"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoFundingOption"/>
-    <fullyQualifiedTypeName name="funding.dto.FDtoFundingQuestion"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="funding.command.SearchCommand"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoSystemAnswer"/>
@@ -29,10 +28,7 @@
     <fullyQualifiedTypeName name="funding.command.FundingQuestionCommand"/>
     <fullyQualifiedTypeName name="funding.command.FundingQuestionlistCommand"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="funding.dao.FDaoC"/>
     <fullyQualifiedTypeName name="funding.command.MyOrderDetailCommand"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoOrder"/>
     <fullyQualifiedTypeName name="funding.command.MypageCommand"/>
@@ -41,4 +37,8 @@
     <fullyQualifiedTypeName name="funding.command.AFListCommand"/>
     <fullyQualifiedTypeName name="funding.command.ASQDetailCommand"/>
     <fullyQualifiedTypeName name="funding.command.ANListCommand"/>
+    <fullyQualifiedTypeName name="funding.dao.FDaoC"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoFundingQuestion"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 </qualifiedTypeNameHistroy>

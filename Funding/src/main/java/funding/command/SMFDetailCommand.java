@@ -16,7 +16,7 @@ public class SMFDetailCommand implements FCommand {
 		String funding_num =request.getParameter("funding_num");
 		FDaoS daoS = new FDaoS();
 		//daoS.sMfunding_detail(funding_num, funding_title, funding_openAt, funding_closeAt,
-					funding_purpose, funding_fee);
+				//	funding_purpose, funding_fee);
 	
 		//String funding_title= request.getParameter("funding_title"); 
 		//String funding_openAt= request.getParameter("funding_openAt");

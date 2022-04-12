@@ -710,7 +710,6 @@ public class FDaoC {
 				Timestamp question_answer_at = resultSet.getTimestamp("question_answer_at"); 
 		
 				FDtoFundingQuestion dto3 = new FDtoFundingQuestion(question_customer, question_content, question_at, question_answer, question_answer_at);
-				
 				FDtoFundingQuestion.add(dto3);
 			}
 			

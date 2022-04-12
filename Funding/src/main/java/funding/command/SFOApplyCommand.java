@@ -95,10 +95,6 @@ public class SFOApplyCommand implements FCommand {
 
 		}
 
-<<<<<<< HEAD
-=======
-		
->>>>>>> origin/main
 	}
 
 }
