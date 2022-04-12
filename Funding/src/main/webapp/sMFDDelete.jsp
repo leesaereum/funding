@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="sMFDDelete.do">
-	<input type = "submit" value="삭제하기">
+	<h2>삭제를 완료하였습니다.</h2>
+	<form action="sMFManage.do">
+	<input type = "submit" value="되돌아가기">
 	</form>
 </body>
 </html>

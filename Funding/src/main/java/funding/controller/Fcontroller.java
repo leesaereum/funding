@@ -283,13 +283,13 @@ public class Fcontroller extends HttpServlet {
 		case ("/sMFModify.do"):
 			command = new SMFDetailModifyCommand();
 			command.execute(request, response);
-//			viewpage = "sMFMdoify.jsp";
 			viewpage = "sMFManage.do";
 			break;
 		case ("/sMFDDelete.do"):
 			command = new SMFDetailDeleteCommand();
 			command.execute(request, response);
-			viewpage = "sMFDDelete.jsp";
+//			viewpage = "sMFDDelete.jsp";
+			viewpage = "sMFManage.do";
 			break;
 		case ("/sMFCApply.do"):
 			viewpage = "sMFCApply.jsp";
