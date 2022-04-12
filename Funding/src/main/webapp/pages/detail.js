@@ -192,8 +192,7 @@ function joinFunding() {
 		txt += '<p class="detail__popup__totalTxt">합계 <span>'+ total.toLocaleString() +'</span>원</p>'
 		txt += '<input type="hidden" readonly="readonly" value="'+total+'"></form></div>'
 		txt += '<div class="detail__popup__bottom"><p>목표금액이 달성되지 않으면 결제한 금액은 전액 환불됩니다.</p>'
-		txt += '<p class="detail__popup__payMethodTxt">결제방법 선택</p>'
-		txt += '<div class="detail__popup__payMethod"><p class="detail__popup__payMethod__ini">일반결제</p><p class="detail__popup__payMethod__kakao">카카오페이</p></div></div>'
+		txt += '<div class="detail__popup__payMethod"><p class="detail__popup__payMethod__ini">결제하기</p></div></div>'
 		$(".detail__popup__wrap").html(txt).addClass('block');
 	} else {
 		alert("하나 이상의 옵션을 선택해주세요")
@@ -280,11 +279,6 @@ function trans(){
 		order_count.setAttribute('value', $(".detail__popup__count").eq(i).val()*1)
 		form.appendChild(order_count);
 		
-		let order_address = document.createElement('input');
-		order_address.setAttribute('type', 'text');
-		order_address.setAttribute('name', 'order_address'+i);
-		order_address.setAttribute('value', "detail.js에서 주소값을 바꿔주세요")
-		form.appendChild(order_address);
 		
 		form.setAttribute('method', 'post'); //get,post 가능
 	form.setAttribute('action', "/Funding/fundingOrder.do"); //보내는 url > 나중에 login.do로 보내야 함;
