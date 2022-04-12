@@ -76,7 +76,7 @@ header {
 			<ul>
 				<li><a href="/Funding/funding_list_view.do">펀딩</a></li>
 				<li><a href="/Funding/notice_list.do">공지사항</a></li>
-				<li><a href="/Funding/systemQuestion_list.do">Q&A</a></li>
+				<li><a href="/Funding/systemQuestion_list.do?page=1">Q&A</a></li>
 			</ul>
 		</nav>
 		<div id="loginZone">

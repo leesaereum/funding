@@ -124,7 +124,6 @@
 		dateTxt = "${ordering.order_At}";
 		dateTxt = moment(dateTxt).format("YYYY-MM-DD")
 		priceTxt = "${ordering.order_price}";
-		console.log(priceTxt)
 		priceTxt = (priceTxt*1).toLocaleString();
 		txt += '<div class="notice__header"><p class="notice__title">${ordering.option_name}</p>'
 		txt += '<p class="ordering__price">' + priceTxt + '원</p>'
