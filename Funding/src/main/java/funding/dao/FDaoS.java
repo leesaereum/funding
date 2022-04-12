@@ -409,7 +409,7 @@ public class FDaoS {
 		}
 	}//수정 필요 위에
 	
-	//Manage funding list
+	//Manage funding list (SMFManangeCommand)
 	public ArrayList<FDtoFunding> Mfunding_list(String id) {
 		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
 		Connection connection = null;
@@ -444,41 +444,7 @@ public class FDaoS {
 		return list;
 	}//Mfunding_list end
 	
-	public FDtoFundingContent selectDetail1(String num) {
-		FDtoFundingContent dto1 = null;
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultset = null;
-		
-		try {
-			connection= dataSource.getConnection();
-			String query = "select content_content from funding_content fc inner join funding f on fc.content_funding "
-					+ "and f.funding_num=? ";
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, num);
-//			System.out.println(num);
-			resultset = preparedStatement.executeQuery();
-			System.out.println(resultset.next());
-			while(resultset.next()) {
-				String content_content = resultset.getString(1);
-				dto1 = new FDtoFundingContent(content_content);
-				System.out.println(content_content);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (connection != null) connection.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (resultset != null) resultset.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return dto1;
-	}
-	
-	
+	//Detail_List (SMFDetailCommand-1page)
 	public FDtoFunding selectDetail(String num) {
 		FDtoFunding dto = null;
 		Connection connection = null;
@@ -517,79 +483,165 @@ public class FDaoS {
 		}
 		return dto;
 	}
-	//Mfunding_detail(modify and delete)
-	public void sMfunding_detail(String funding_num, String funding_title, String funding_openAt, String funding_closeAt,
-			int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
-		Connection connection = null;
-		PreparedStatement preparedstatement = null;
-		
-		try {
-			connection = dataSource.getConnection();
-			String query = "update funding set funding_title= ?, funding_openAt=?, "
-						+ "funding_closeAt=?, funding_purpose=?, funding_hits=?, funding_state=?, funding_fee=? "
-						+ "WHERE funding_num = ?";
-			preparedstatement = connection.prepareStatement(query);
-			preparedstatement.setString(1,funding_title);
-			preparedstatement.setString(2,funding_openAt);
-			preparedstatement.setString(3,funding_closeAt);
-			preparedstatement.setInt(4,funding_purpose);
-			preparedstatement.setInt(5,funding_hits);
-			preparedstatement.setString(6,funding_state);
-			preparedstatement.setInt(7,funding_fee);
-			preparedstatement.executeUpdate();
+	
+	//selectOption list (SMFDetailCommand-2page)
+		public ArrayList<FDtoFundingOption> selectOption(String num){
+			ArrayList<FDtoFundingOption> options = new ArrayList<FDtoFundingOption>();
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			ResultSet resultset = null;
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
 			try {
+				connection = dataSource.getConnection();
+				String query = "SELECT option_num, option_name, option_price, option_amount FROM funding_option where option_funding = ?";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, num);
+				resultset = preparedStatement.executeQuery();
+				
+				while(resultset.next()) {
+					int option_num = resultset.getInt("option_num");
+					String option_name = resultset.getString("option_name");
+					int option_price = resultset.getInt("option_price");
+					int option_amount = resultset.getInt("option_amount");
+					
+					FDtoFundingOption option =  new  FDtoFundingOption(option_num, option_name, option_price, option_amount);
+					options.add(option);
+				}
+			}catch (Exception e) {
+				// TODO: handle exception
+			}try {
 				if (connection != null) connection.close();
-				if (preparedstatement != null) preparedstatement.close();
+				if (preparedStatement != null) preparedStatement.close();
+				if (resultset != null) resultset.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-	}//Mfunding_detail end
+			return options;
+		}//end
 	
-	//selectOption list
-	public ArrayList<FDtoFundingOption> selectOption(String num){
-		ArrayList<FDtoFundingOption> options = new ArrayList<FDtoFundingOption>();
+	//selectDetail_List(SMFDetailCommand-3page)	
+	public FDtoFundingContent selectDetail1(String num) {
+		FDtoFundingContent dto1 = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultset = null;
 		
 		try {
-			connection = dataSource.getConnection();
-			String query = "SELECT option_num, option_name, option_price, option_amount FROM funding_option where option_funding = ?";
+			connection= dataSource.getConnection();
+			String query = "select content_content from funding_content fc inner join funding f on fc.content_funding "
+					+ "and f.funding_num=? ";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, num);
 			resultset = preparedStatement.executeQuery();
-			
+			System.out.println(resultset.next());
 			while(resultset.next()) {
-				int option_num = resultset.getInt("option_num");
-				String option_name = resultset.getString("option_name");
-				int option_price = resultset.getInt("option_price");
-				int option_amount = resultset.getInt("option_amount");
-				
-				FDtoFundingOption option =  new  FDtoFundingOption(option_num, option_name, option_price, option_amount);
-				options.add(option);
+				String content_content = resultset.getString(1);
+				dto1 = new FDtoFundingContent(content_content);
+				System.out.println(content_content);
 			}
-		}catch (Exception e) {
-			// TODO: handle exception
-		}try {
-			if (connection != null) connection.close();
-			if (preparedStatement != null) preparedStatement.close();
-			if (resultset != null) resultset.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		return options;
-	}//end
+		return dto1;
+	}
 	
+	//Detail_List_Modify and Delete(1page)
+	public void modifySelectDetail(String num, String banner, String title, String openAt, String closeAt, int purpose, int fee) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE funding SET funding_banner = ?, funding_title = ?, funding_openAt =?, funding_closeAt = ? , "
+							+ "funding_purpose = ?, funding_fee = ? Where funding_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, banner);
+			preparedStatement.setString(2, title);
+			preparedStatement.setString(3, openAt);
+			preparedStatement.setString(4, closeAt);
+			preparedStatement.setInt(5, purpose);
+			preparedStatement.setInt(6, fee);
+			preparedStatement.setString(7, num);
+			preparedStatement.executeUpdate();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+
+				if(preparedStatement!=null) preparedStatement.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}	
+
+	//Detail_List_Modify and Delete(2page)
+	public void modifySelectDetail1(String num, String name, int price, int amount) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE funding_option SET option_ name= ?, option_price = ?, option_amount =? "
+							+ "Where funding_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, name);
+			preparedStatement.setInt(2, price);
+			preparedStatement.setInt(3, amount);
+			preparedStatement.setString(4, num);
+			preparedStatement.executeUpdate();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+
+				if(preparedStatement!=null) preparedStatement.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
-	
-	
+	public void modifySelectDetail2(String num, String content) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE funding_content SET content_content= ? "
+							+ "Where funding_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, content);
+			preparedStatement.setString(2, num);
+			preparedStatement.executeUpdate();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+
+				if(preparedStatement!=null) preparedStatement.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	//-----------------------------------------------------------------------------------
+	
 	//funding question
 	public ArrayList<FDtoFundingQuestion> FQuestion_list(){
 		ArrayList<FDtoFundingQuestion> dtosFQ = new ArrayList<FDtoFundingQuestion>();
