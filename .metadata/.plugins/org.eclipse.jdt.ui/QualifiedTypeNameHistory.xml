@@ -37,8 +37,8 @@
     <fullyQualifiedTypeName name="funding.command.ANListCommand"/>
     <fullyQualifiedTypeName name="funding.dao.FDaoC"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-    <fullyQualifiedTypeName name="funding.dto.FDtoFundingQuestion"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoFunding"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoFundingQuestion"/>
 </qualifiedTypeNameHistroy>
