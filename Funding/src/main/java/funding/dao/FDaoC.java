@@ -299,17 +299,46 @@ public class FDaoC {
 		}
 		return pw;
 	}
+	public int countFunding(){
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		int count = 0;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT count(funding_num) FROM funding where funding_state = '진행'";
+			preparedstatement = connection.prepareStatement(query);
+			resultset = preparedstatement.executeQuery();
+			
+			if(resultset.next()) {
+				count =  resultset.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
 
-	public ArrayList<FDtoFunding> fundinglistview() {
+	public ArrayList<FDtoFunding> fundinglistview(int page) {
 		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
 		ResultSet resultset = null;
 		try {
 			connection = dataSource.getConnection();
+			int offs = (page - 1) * 10;
+
 			String query = "SELECT funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt , "
 					+ "(select seller_name from seller as s where f.funding_seller = s.seller_id) "
-					+ "FROM funding as f where funding_state = '진행';";
+					+ "FROM funding as f where funding_state = '진행' order by funding_num desc limit 10 offset " + offs;
 			preparedstatement = connection.prepareStatement(query);
 			resultset = preparedstatement.executeQuery();
 			
