@@ -21,6 +21,7 @@ if (fid == null) {
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="/Funding/pages/detail.js"></script>
+
 <body>
 	<jsp:include page="/components/header.jsp" />
 	<div class="detail__wrap">
@@ -142,9 +143,8 @@ if (fid == null) {
 			</div>
 			<div class="detail__funding__buttonZone">
 				<p class="detail__funding__join" onclick="joinFunding()">펀딩 참여하기</p>
-				<div class="detail__funding__share"
-					onclick="share(<%=request.getParameter("fid")%>)">
-					<img src="/Funding/assets/share.svg">
+				<div class="detail__funding__share" id="funding__isLiked">
+					
 				</div>
 			</div>
 
@@ -177,4 +177,29 @@ if (fid == null) {
 		readonly="readonly" id="fidfid">
 	<div class="detail__popup__wrap"></div>
 </body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		let isLike = ${isLike}
+		if(isLike){
+			$("#funding__isLiked").addClass("liked").html('<img src="/Funding/assets/heart_filled.png">')
+		}else{
+			$("#funding__isLiked").removeClass("liked").html('<img src="/Funding/assets/heart_blank.png">')
+
+		}
+	})
+	$("#funding__isLiked").click(function(){
+		let cid = "<%=session.getAttribute("email")%>"
+		let fid = <%=request.getParameter("fid")%>
+		if(cid === null){
+			alert("먼저 로그인 해주세요!")
+		}else{
+			if($(this).hasClass("liked")){
+				location.href = "/Funding/fundingUnLike.do?customer_id="+cid+"&funding_num="+fid
+			}else{
+				location.href = "/Funding/fundingLike.do?customer_id="+cid+"&funding_num="+fid
+			}
+		}
+		
+	})
+</script>
 </html>

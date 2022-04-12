@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import funding.command.ACAWListCommand;
 import funding.command.ACApproveCommand;
-import funding.command.ACAWListCommand;
-import funding.command.ACApproveCommand;
 import funding.command.ACListCommand;
 import funding.command.ACRejectCommand;
 import funding.command.AFADetailCommand;
@@ -33,11 +31,7 @@ import funding.command.FundingLikeCommand;
 import funding.command.FundingListViewCommand;
 import funding.command.FundingPaymentCommand;
 import funding.command.FundingQuestionCommand;
-<<<<<<< HEAD
-=======
-import funding.command.FundingQuestionlistCommand;
 import funding.command.FundingUnlikeCommand;
->>>>>>> newdong
 import funding.command.FundingdetailCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
@@ -49,9 +43,6 @@ import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
 import funding.command.SFADetailCommand;
 import funding.command.SFAnswerCommand;
-import funding.command.LoginCommand;
-import funding.command.LogoutCommand;
-import funding.command.MainCommand;
 import funding.command.NoticeSearchCommand;
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
@@ -97,24 +88,17 @@ public class Fcontroller extends HttpServlet {
 		String path = uri.substring(copath.length());
 		String viewpage = null;
 
-		// customer�슜 switch
+		// customer용 switch
 		switch (path) {
 		case ("/login.do"):
 			command = new LoginCommand();
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
-<<<<<<< HEAD
-		case ("/sociallogin.do"):
-			command = new LogoutCommand();
-=======
-
 		case ("/socialLogin.do"):
 			command = new SocialLoginCommand();
->>>>>>> newdong
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
-			System.out.println(viewpage);
 			break;
 		case ("/logout.do"):
 			command = new LogoutCommand();
@@ -166,7 +150,6 @@ public class Fcontroller extends HttpServlet {
 			command = new FundingLikeCommand();
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
-			System.out.println(viewpage);
 			break;
 		case ("/fundingUnLike.do"):
 			command = new FundingUnlikeCommand();
@@ -205,7 +188,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/systemQuestion.do"):
 			command = new SystemQuestionCommand();
 			command.execute(request, response);
-			viewpage = "systemQuestion_list.do";
+			viewpage = "/Funding/systemQuestion_list.do";
 			break;
 		case ("/systemQuestion_detail.do"):
 			command = new SystemQuestionDetailCommand();

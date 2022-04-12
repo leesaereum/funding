@@ -17,6 +17,7 @@ public class SystemQuestionCommand implements FCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
+		System.out.println(id);
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
