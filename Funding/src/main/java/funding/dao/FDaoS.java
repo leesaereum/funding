@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import funding.dto.FDtoCalculate;
 import funding.dto.FDtoFunding;
+import funding.dto.FDtoFundingContent;
 import funding.dto.FDtoFundingOption;
 import funding.dto.FDtoFundingQuestion;
 import funding.dto.FDtoFundingReview;
@@ -443,6 +444,40 @@ public class FDaoS {
 		return list;
 	}//Mfunding_list end
 	
+	public FDtoFundingContent selectDetail1(String num) {
+		FDtoFundingContent dto1 = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultset = null;
+		
+		try {
+			connection= dataSource.getConnection();
+			String query = "select content_content from funding_content fc inner join funding f on fc.content_funding "
+					+ "and f.funding_num=? ";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, num);
+//			System.out.println(num);
+			resultset = preparedStatement.executeQuery();
+			System.out.println(resultset.next());
+			while(resultset.next()) {
+				String content_content = resultset.getString(1);
+				dto1 = new FDtoFundingContent(content_content);
+				System.out.println(content_content);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto1;
+	}
+	
 	
 	public FDtoFunding selectDetail(String num) {
 		FDtoFunding dto = null;
@@ -462,12 +497,10 @@ public class FDaoS {
 				int funding_num = resultset.getInt(1);
 				String funding_banner = resultset.getString(2);
 				String funding_title = resultset.getString(3);
-				System.out.println(funding_title);
 				Timestamp funding_openAt = resultset.getTimestamp(4);
 				Timestamp funding_closeAt = resultset.getTimestamp(5);
 				int funding_purpose = resultset.getInt(6);
 				int funding_fee = resultset.getInt(7);
-//				String funding_content = resultset.getString(8);
 				dto = new FDtoFunding(funding_num, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_purpose, funding_fee);
 					
 			}

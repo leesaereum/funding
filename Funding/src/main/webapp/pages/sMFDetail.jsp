@@ -116,7 +116,7 @@
 	<script type="text/javascript" src="/Funding/pages/makeFunding.js"></script>
 	<script type="text/javascript" src="/Funding/libraries/jQuery.js"></script>
 	<script type="text/javascript">
-	console.log("야이자식아")
+
 	$(document).ready(function(){
 		let startDate = "${Mfunding.funding_openAt }"
 		startDate = startDate.split(" ")[0];
@@ -124,7 +124,7 @@
 			endDate = endDate.split(" ")[0];
 		$("#MF__basic__startDate").val(startDate);
 		$("#MF__basic__endDate").val(endDate)
-		console.log(editor)
+		editor.setHTML('${Mfunding1.content_content }');
 
 	})
 		
