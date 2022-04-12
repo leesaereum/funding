@@ -93,7 +93,7 @@ let headerHeight = 72;
 let isSeller = "<%=session.getAttribute("isSeller")%>";
 if(isSeller != "null"){
 	let email = "<%=session.getAttribute("id")%>";
-	let txt = '<p class="signedIn_email" onclick="goMyPage()">'+email+'</p><div class="logoutButton">로그아웃</div><div class="makeFunding">펀딩 만들기</div>';
+	let txt = '<p class="signedIn_email" onclick="goSMyPage()">'+email+'</p><div class="logoutButton">로그아웃</div><div class="makeFunding">펀딩 만들기</div>';
 	document.getElementById("loginZone").innerHTML = txt;
 }else{
 	let email = "<%=session.getAttribute("id")%>";
@@ -139,5 +139,8 @@ $(document).on("click", ".makeFunding", function(e){
 
 function goMyPage(){
 	location.href = "/Funding/mypage.do"
+}
+function goSMyPage(){
+	location.href = "/Funding/sMypage.do"
 }
 </script>

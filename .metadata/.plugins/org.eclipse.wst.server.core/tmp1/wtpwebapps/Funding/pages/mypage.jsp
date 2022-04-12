@@ -158,21 +158,9 @@ document.addEventListener('DOMContentLoaded', function() {
 							<input class="my__form__input" type="password" id="pw2">
 						</div>
 						<div class="my__liner">
-							<p class="my__form__subtitle">전화번호(-제외)</p>
-							<input class="my__form__input" type="password" id="phone"
+							<p class="my__form__subtitle">전화번호</p>
+							<input class="my__form__input" type="password" id="phone" placeholder="ex)010-0000-0000"
 								name="phone">
-						</div>
-						<div class="my__liner">
-							<p class="my__form__subtitle">도로명 주소</p>
-							<input class="my__form__button" type="button" value="주소검색"
-								onclick="goPopup();"> <input
-								class="my__form__input long" name="address1" id="roadAddrPart1">
-						</div>
-						<div class="my__liner">
-							<p class="my__form__subtitle">상세주소</p>
-							<input class="my__form__input small" type="text" name="address2"
-								id="addrDetail"> <input class="my__form__input small"
-								type="text" name="address3" id="roadAddrPart2">
 						</div>
 						<div class="my__form__submit" onclick="checkMyForm()">변경하기</div>
 					</div>

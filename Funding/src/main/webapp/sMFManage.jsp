@@ -49,47 +49,13 @@
 	height: 20px;
 }
 
-.sFmanage__box {
-	list-style: none;
-	margin-top: 17px;
-	border: 1px solid #eee;
-}
 
-.sFmanage__liner {
-	padding: 18px 29px;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	color: #999;
-	border-bottom: 1px solid #eee;
-}
-.sFmanage__num{
-	width: 66px;
-	text-align: center;
-}
-.sFmanage__date{
-width: 200px;
-text-align: center;
-}
-.sFmange__banner{
-width: 300px;
-text-align: center;
-}
-.sFmanage__title{
-	width: calc(100% - 600px);
-	text-align: center;
-}
 </style>
 <body>
 <jsp:include page="/components/header.jsp" />
 	<div class="notice__wrap">
 		<div class="notice__header">
 			<h1 class="notice__pageTitle">Open펀딩 관리</h1>
-			<div class="notice__search__box">
-				<input class="notice__search" placeholder="검색어를 입력하세요"
-					id="notice__search" name="notice__search"> <img
-					src="/Funding/assets/search.svg" class="notice__search__icon">
-			</div>
 		</div>
 		<ul class="sFmanage__box">
 			<li class="sFmanage__liner"><p class="sFmanage__num">펀딩 번호</p>

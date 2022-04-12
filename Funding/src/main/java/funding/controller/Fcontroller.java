@@ -228,7 +228,7 @@ public class Fcontroller extends HttpServlet {
 //			break;
 		}// customer
 
-		// seller�슜 switch
+		// seller용 switch
 		switch (path) {
 		case ("/slogin.do"):
 			command = new SLoginCommand();
@@ -270,12 +270,13 @@ public class Fcontroller extends HttpServlet {
 		case ("/sMypage.do"):
 			command = new SMypageCommand();
 			command.execute(request, response);
-			viewpage = "sMypage.jsp";
-		case ("/sMFManage.do"):
-			command = new SMFManageCommand();
-			command.execute(request, response);
-			viewpage = "sMFManage.jsp";
+			viewpage = "/pages/Smypage.jsp";
 			break;
+//		case ("/sMFManage.do"):
+//			command = new SMFManageCommand();
+//			command.execute(request, response);
+//			viewpage = "sMFManage.jsp";
+//			break; 삭제하기
 		case ("/sMFDetail.do"):
 			command = new SMFDetailCommand();
 			command.execute(request, response);
