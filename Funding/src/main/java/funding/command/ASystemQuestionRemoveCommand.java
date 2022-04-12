@@ -8,21 +8,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import funding.dao.FDaoA;
-import funding.dto.FDtoSeller;
 
-public class ASrejectCommand implements FCommand {
+public class ASystemQuestionRemoveCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		Object adminID = session.getAttribute("adminId");
 		String adminId = (String)adminID;
 		
-		String sellerId = request.getParameter("sellerId");
-		FDaoA dao = new FDaoA();
-		dao.sellerreject(sellerId);
 		
+		String question_num = request.getParameter("question_num");
+		FDaoA daoA = new FDaoA();
+		daoA.SystemQuestionRemove(question_num);
+
 	}
 
 }

@@ -19,11 +19,18 @@ import funding.command.AFListCommand;
 import funding.command.AFRejectCommand;
 import funding.command.ALoginCommand;
 import funding.command.ALogoutCommand;
+import funding.command.ANContentCommand;
+import funding.command.ANCreateCommand;
 import funding.command.ANListCommand;
+import funding.command.ANModifyCommand;
+import funding.command.ANRemoveCommand;
 import funding.command.ASQDetailCommand;
 import funding.command.ASQWListCommand;
 import funding.command.ASQualifyCommand;
 import funding.command.ASrejectCommand;
+import funding.command.ASystemQAnswerInsertCommand;
+import funding.command.ASystemQDetailCommand;
+import funding.command.ASystemQuestionRemoveCommand;
 import funding.command.FCommand;
 import funding.command.FindidCommand;
 import funding.command.FindpwCommand;
@@ -372,9 +379,9 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage="aSAList.jsp";
 			break;
-//		case("/aSAListDetail.do"):
-//			viewpage="";
-//			break;
+		case("/aSAListDetail.do"):
+			viewpage="aSQAnswer.jsp";
+			break;
 //		case("/aSACreate.do"):
 //			viewpage="";
 //			break;
@@ -394,18 +401,45 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "aNoticeList.jsp";
 			break;
-		case("/ncreate_view.do"):
-			viewpage="";
+		case ("/anoticeCreate_view.do"):
+			viewpage = "aNoticeCreate.jsp";
 			break;
-		case("/ncreate.do"):
-			viewpage="";
+		case ("/anoticeCreate.do"):
+			command = new ANCreateCommand();
+			command.execute(request, response);
+			viewpage = "anotice_list.do";
 			break;
-		case("/nmodify.do"):
-			viewpage="";
+		case ("/anoticeContent_view.do"):
+			command = new ANContentCommand();
+			command.execute(request, response);
+			viewpage = "aNContentView.jsp";
 			break;
-		case("/nremove.do"):
-			viewpage="";
+		case ("/anoticeModify.do"):
+			command = new ANModifyCommand();
+			command.execute(request, response);
+			viewpage = "anotice_list.do";
 			break;
+		case ("/anoticeRemove.do"):
+			command = new ANRemoveCommand();
+			command.execute(request, response);
+			viewpage = "anotice_list.do";
+			break;
+		case ("/asystemqDetail.do"):
+			command = new ASystemQDetailCommand();
+		command.execute(request, response);
+		viewpage = "aSQAnswer.jsp";
+		break;
+		
+		case ("/systemQuestionRemove.do"):
+			command = new ASystemQuestionRemoveCommand();
+		command.execute(request, response);
+		viewpage = "asystemqDetail.do";
+		break;
+		case ("/aSystemQAnswerInsert.do"):
+			command = new ASystemQAnswerInsertCommand();
+		command.execute(request, response);
+		viewpage = "asystemqDetail.do";
+		break;
 		}//admin.
 
 		RequestDispatcher rd = request.getRequestDispatcher(viewpage);

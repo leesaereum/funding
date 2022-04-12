@@ -19,6 +19,7 @@ public class FDtoFunding {
 	int funding_achievement;
 	int total;
 	int count;
+	String seller_name;
 	
 	
 	//funding_content 태이블에 있는건데 같이 받기 위해서 가져왔습니다.
@@ -65,6 +66,14 @@ public class FDtoFunding {
 
 	public int getFunding_num() {
 		return funding_num;
+	}
+
+	public String getSeller_name() {
+		return seller_name;
+	}
+
+	public void setSeller_name(String seller_name) {
+		this.seller_name = seller_name;
 	}
 
 	public void setFunding_num(int funding_num) {

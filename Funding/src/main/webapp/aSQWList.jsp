@@ -88,7 +88,6 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="aSAList.do">펀딩 문의</a>
                         <a class="collapse-item" href="aSAList.do">캠패인 문의</a>
                         <a class="collapse-item" href="aSAList.do">시스템 문의</a>
                     </div>
@@ -309,7 +308,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${adminId }</span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -404,7 +403,7 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="aSQualify.do?sellerId=${dto02.seller_id}">승인</a>
-                                            <a class="dropdown-item" href="aSreject.do?sellerId$=${dto02.seller_id}">반려</a>
+                                            <a class="dropdown-item" href="aSreject.do?sellerId=${dto02.seller_id}">반려</a>
                                         </div>
                                     </div></td>                                            
                                         </tr>

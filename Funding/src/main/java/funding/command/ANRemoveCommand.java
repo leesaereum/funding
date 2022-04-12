@@ -8,21 +8,24 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import funding.dao.FDaoA;
-import funding.dto.FDtoSeller;
 
-public class ASrejectCommand implements FCommand {
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ANRemoveCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		HttpSession session = request.getSession();
 		Object adminID = session.getAttribute("adminId");
 		String adminId = (String)adminID;
 		
-		String sellerId = request.getParameter("sellerId");
-		FDaoA dao = new FDaoA();
-		dao.sellerreject(sellerId);
 		
+		String notice_num = request.getParameter("noticeNum");
+		FDaoA daoA = new FDaoA();
+		daoA.anoticedelete(notice_num);
+
 	}
 
 }
