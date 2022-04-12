@@ -121,17 +121,28 @@ public class FDtoFundingQuestion {
 		this.question_answer_at = question_answer_at;
 	}
 
-	public FDtoFundingQuestion(String question_customer, String question_funding_title, String question_content, 
-			Timestamp question_at, String question_state, String question_answer, Timestamp question_answer_at) {
+	public FDtoFundingQuestion(String question_customer,  String question_content, String question_funding_title,
+			Timestamp question_at, String question_state, String question_answer, Timestamp question_answer_at, int question_funding) {
 		super();
 		this.question_customer = question_customer;
-		this.question_funding_title = question_funding_title;
 		this.question_content = question_content;
+		this.question_funding_title = question_funding_title;
 		this.question_at = question_at;
 		this.question_state = question_state;
 		this.question_answer = question_answer;
 		this.question_answer_at = question_answer_at;
+		this.question_funding = question_funding;
 	}
+
+	public String getQuestion_funding_title() {
+		return question_funding_title;
+	}
+
+	public void setQuestion_funding_title(String question_funding_title) {
+		this.question_funding_title = question_funding_title;
+	}
+
+	
 
 
 	
