@@ -450,7 +450,7 @@ public class FDaoS {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "update into funding set funding_title= ?, funding_openAt=?, "
+			String query = "update funding set funding_title= ?, funding_openAt=?, "
 						+ "funding_closeAt=?, funding_purpose=?, funding_hits=?, funding_state=?, funding_fee=? "
 						+ "WHERE funding_num = ?";
 			preparedstatement = connection.prepareStatement(query);
