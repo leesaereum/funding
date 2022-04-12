@@ -20,7 +20,6 @@ public class FundingLikeCommand implements FCommand {
 		String like_At = request.getParameter("like_at");
 		java.sql.Date like_at = java.sql.Date.valueOf(like_At);
 		
-//		String like_At  = request.getParameter("customer_id");
 		int like_funding  = Integer.parseInt(request.getParameter("funding_num")) ;
 		
 		FDaoC dao = new FDaoC();
