@@ -553,8 +553,9 @@ public class FDaoS {
 		return dto1;
 	}
 	
-	//Detail_List_Modify and Delete(1page)
-	public void modifySelectDetail(String num, String banner, String title, String openAt, String closeAt, int purpose, int fee) {
+	//Detail_List_Modify(1page)
+//	public void modifySelectDetail(String num, String banner, String title, String openAt, String closeAt, int purpose, int fee)
+	public void modifySelectDetail(String num, String banner, String title, String openAt, String closeAt, String purpose, String fee) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
@@ -567,8 +568,8 @@ public class FDaoS {
 			preparedStatement.setString(2, title);
 			preparedStatement.setString(3, openAt);
 			preparedStatement.setString(4, closeAt);
-			preparedStatement.setInt(5, purpose);
-			preparedStatement.setInt(6, fee);
+			preparedStatement.setString(5, purpose);
+			preparedStatement.setString(6, fee);
 			preparedStatement.setString(7, num);
 			preparedStatement.executeUpdate();
 
@@ -585,19 +586,20 @@ public class FDaoS {
 		}
 	}	
 
-	//Detail_List_Modify and Delete(2page)
-	public void modifySelectDetail1(String num, String name, int price, int amount) {
+	//Detail_List_Modify(2page)
+//	public void modifySelectDetail1(String num, String name, int price, int amount)
+	public void modifySelectDetail1(String num, String name, String price, String amount) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
 			connection = dataSource.getConnection();
 			String query = "UPDATE funding_option SET option_ name= ?, option_price = ?, option_amount =? "
-							+ "Where funding_num = ?";
+							+ "Where option_funding = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, name);
-			preparedStatement.setInt(2, price);
-			preparedStatement.setInt(3, amount);
+			preparedStatement.setString(2, price);
+			preparedStatement.setString(3, amount);
 			preparedStatement.setString(4, num);
 			preparedStatement.executeUpdate();
 
@@ -621,7 +623,7 @@ public class FDaoS {
 		try {
 			connection = dataSource.getConnection();
 			String query = "UPDATE funding_content SET content_content= ? "
-							+ "Where funding_num = ?";
+							+"Where content_funding = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, content);
 			preparedStatement.setString(2, num);
@@ -639,6 +641,30 @@ public class FDaoS {
 			}
 		}
 	}
+	
+	//Detail_List_Delete
+	public void deleteSelectDetail(String num) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "DELETE FROM funding WHERE funding_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, num);
+			preparedStatement.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement!=null) preparedStatement.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	
 	//-----------------------------------------------------------------------------------
 	

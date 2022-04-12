@@ -35,17 +35,22 @@ public class SMFDetailCommand implements FCommand {
 		String title= request.getParameter("funding_title");
 		String openAt = request.getParameter("funding_openAt");
 		String closeAt = request.getParameter("funding_closeAt");
-		int purpose = Integer.parseInt(request.getParameter("funding_purpose"));
-		int fee = Integer.parseInt(request.getParameter("funding_fee"));
+//		int purpose = Integer.parseInt(request.getParameter("funding_purpose"));
+//		int fee = Integer.parseInt(request.getParameter("funding_fee"));
+		String purpose = request.getParameter("funding_purpose");
+		String fee= request.getParameter("funding_fee");
 		daoS.modifySelectDetail(funding_num, banner, title, openAt, closeAt, purpose, fee);
 		
 		String name = request.getParameter("option_name");
-		int price = Integer.parseInt(request.getParameter("option_price"));
-		int amount = Integer.parseInt(request.getParameter("option_amount"));
+//		int price = Integer.parseInt(request.getParameter("option_price"));
+//		int amount = Integer.parseInt(request.getParameter("option_amount"));
+		String price = request.getParameter("option_price");
+		String amount = request.getParameter("option_amount");
 		daoS.modifySelectDetail1(funding_num,name,price,amount);
 		
 		String content = request.getParameter("content_content");
 		daoS.modifySelectDetail2(funding_num,content);
+		daoS.deleteSelectDetail(funding_num);
 		
 	}
 

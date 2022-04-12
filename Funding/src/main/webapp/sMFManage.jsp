@@ -80,6 +80,11 @@ text-align: center;
 	text-align: center;
 }
 </style>
+<script type="text/javascript">
+	function del(funding_num) {
+		alert("삭제하시겠습니까?")
+	}
+</script>
 <body>
 <jsp:include page="/components/header.jsp" />
 	<div class="notice__wrap">
@@ -100,6 +105,7 @@ text-align: center;
 					<a href="/Funding/sMFDetail.do?funding_num=${Mfunding.funding_num}"
 					class="sFmanage__title">${Mfunding.funding_title }</a>
 					<p class="sFmanage__date">${Mfunding.funding_openAt }</p>
+					<a href="sMFManage.do?funding_num=${Mfunding.funding_num }" onclick="del(${Mfunding.funding_num })">X</a>
 				</li>
 			</c:forEach>
 		</ul>
