@@ -29,6 +29,28 @@ public class FDaoC {
 			e.printStackTrace();
 		}
 	}// constructor
+	
+	public void leave(String id) {
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "DELETE FROM customer WHERE customer_id = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
+			preparedstatement.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public String login(String id, String pw) {
 		Connection connection = null;
@@ -114,6 +136,130 @@ public class FDaoC {
 			}
 		}
 	}//addAddress
+	
+	public int myFundingCount(String id){
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		int count = 0;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT count(funding_num) "
+					+ "FROM funding as f "
+					+ "where funding_num in (select order_funding from order1 where order_customer = ? )";
+			
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
+			resultset = preparedstatement.executeQuery();
+			if(resultset.next()) {
+				count =  resultset.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	public int myLikeCount(String id){
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		int count = 0;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT count(funding_num) "
+					+ "FROM funding as f "
+					+ "where funding_num in (select like_funding from funding_like l where l.like_customer = ?)";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
+			resultset = preparedstatement.executeQuery();
+			
+			if(resultset.next()) {
+				count =  resultset.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	public int mySystemQuestionCount(String id){
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		int count = 0;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT * FROM system_question where question_customer = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
+			resultset = preparedstatement.executeQuery();
+			
+			if(resultset.next()) {
+				count =  resultset.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	public int myFundingQuestionCount(String id){
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		int count = 0;
+		try {
+			connection = dataSource.getConnection();
+			String query = "SELECT count(question_num)"
+					+ " FROM funding_question q where question_customer = ?";
+
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
+			resultset = preparedstatement.executeQuery();
+			
+			if(resultset.next()) {
+				count =  resultset.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	
 	public int countNotice(){
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
@@ -466,14 +612,15 @@ public class FDaoC {
 		}
 		return list;
 	}
-	public ArrayList<FDtoSystemQuestion>mysystemquestion_list(String id){
+	public ArrayList<FDtoSystemQuestion>mysystemquestion_list(String id, int page){
 		ArrayList<FDtoSystemQuestion> list = new ArrayList<FDtoSystemQuestion>();
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
 		ResultSet resultset = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT * FROM system_question where question_customer = ?";
+			int offs = (page - 1) * 10;
+			String query = "SELECT * FROM system_question where question_customer = ? order by question_at desc limit 10 offset " + offs;
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
 			resultset = preparedstatement.executeQuery();
@@ -499,16 +646,17 @@ public class FDaoC {
 		}
 		return list;
 	}
-	public ArrayList<FDtoFundingQuestion>myfundingquestion_list(String id){
+	public ArrayList<FDtoFundingQuestion>myfundingquestion_list(String id, int page){
 		ArrayList<FDtoFundingQuestion> list = new ArrayList<FDtoFundingQuestion>();
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
 		ResultSet resultset = null;
 		try {
 			connection = dataSource.getConnection();
+			int offs = (page - 1) * 10;
 			String query = "SELECT question_customer, (select funding_title from funding f where f.funding_num = q.question_funding),"
 					+ " question_content, question_at, question_state, question_answer, question_answer_at, question_funding "
-					+ " FROM funding_question q where question_customer = ?";
+					+ " FROM funding_question q where question_customer = ? order by question_at desc limit 10 ofset "+offs;
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
 			resultset = preparedstatement.executeQuery();
@@ -638,17 +786,19 @@ public class FDaoC {
 		}
 	}//create_system_question
 	
-	public ArrayList<FDtoFunding> myfundinglist(String id) {
+	public ArrayList<FDtoFunding> myfundinglist(String id, int page) {
 		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
 		ResultSet resultset = null;
 		try {
 			connection = dataSource.getConnection();
+			int offs = (page - 1) * 10;
+			
 			String query = "SELECT funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt , "
 					+ "(select seller_name from seller as s where f.funding_seller = s.seller_id) "
 					+ "FROM funding as f "
-					+ "where funding_num in (select order_funding from order1 where order_customer = ? );";
+					+ "where funding_num in (select order_funding from order1 where order_customer = ? ) order by funding_num desc limit 10 offset " + offs;
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
 			resultset = preparedstatement.executeQuery();
@@ -728,17 +878,18 @@ public class FDaoC {
 		
 	}
 	
-	public ArrayList<FDtoFunding> mylikelist(String id) {
+	public ArrayList<FDtoFunding> mylikelist(String id, int page) {
 		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
 		ResultSet resultset = null;
 		try {
 			connection = dataSource.getConnection();
+			int offs = (page - 1) * 10;
 			String query = "SELECT funding_num, funding_seller, funding_title, funding_openAt, funding_closeAt , "
 					+ "(select seller_name from seller as s where f.funding_seller = s.seller_id) "
 					+ "FROM funding as f "
-					+ "where funding_num in (select like_funding from funding_like l where l.like_customer = ?);";
+					+ "where funding_num in (select like_funding from funding_like l where l.like_customer = ?) order by funding_num desc limit 10 offset " + offs;
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
 			resultset = preparedstatement.executeQuery();

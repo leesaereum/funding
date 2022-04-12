@@ -138,9 +138,9 @@ $(document).on("click", ".makeFunding", function(e){
 })
 
 function goMyPage(){
-	location.href = "/Funding/mypage.do"
+	location.href = "/Funding/mypage.do?tab=1&page=1"
 }
 function goSMyPage(){
-	location.href = "/Funding/sMypage.do"
+	location.href = "/Funding/sMypage.do?tab=1&page=1"
 }
 </script>

@@ -33,6 +33,7 @@ import funding.command.FundingPaymentCommand;
 import funding.command.FundingQuestionCommand;
 import funding.command.FundingUnlikeCommand;
 import funding.command.FundingdetailCommand;
+import funding.command.LeaveCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
@@ -102,6 +103,11 @@ public class Fcontroller extends HttpServlet {
 			break;
 		case ("/logout.do"):
 			command = new LogoutCommand();
+			command.execute(request, response);
+			viewpage = "main.do";
+			break;
+		case ("/leave.do"):
+			command = new LeaveCommand();
 			command.execute(request, response);
 			viewpage = "main.do";
 			break;
