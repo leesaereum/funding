@@ -442,47 +442,37 @@ public class FDaoS {
 		return list;
 	}//Mfunding_list end
 	
-	//Mfunding_detail
-	public FDtoFunding sMfunding_detail(String num) {
-		FDtoFunding dtoFunding = null;
+	//Mfunding_detail(modify and delete)
+	public void sMfunding_detail(String funding_num, String funding_title, String funding_openAt, String funding_closeAt,
+			int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
-		ResultSet resultset = null;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT * FROM funding WHERE funding_num = ?";
+			String query = "update into funding set funding_title= ?, funding_openAt=?, "
+						+ "funding_closeAt=?, funding_purpose=?, funding_hits=?, funding_state=?, funding_fee=? "
+						+ "WHERE funding_num = ?";
 			preparedstatement = connection.prepareStatement(query);
-			preparedstatement.setInt(1, Integer.parseInt(num));
-			resultset = preparedstatement.executeQuery();
+			preparedstatement.setString(1,funding_title);
+			preparedstatement.setString(2,funding_openAt);
+			preparedstatement.setString(3,funding_closeAt);
+			preparedstatement.setInt(4,funding_purpose);
+			preparedstatement.setInt(5,funding_hits);
+			preparedstatement.setString(6,funding_state);
+			preparedstatement.setInt(7,funding_fee);
+			preparedstatement.executeUpdate();
 			
-			while(resultset.next()) {
-				int funding_num = resultset.getInt(1);
-				String funding_seller = resultset.getString(2);
-				String funding_title = resultset.getString(3);
-				String funding_banner =resultset.getString(4);
-				Timestamp funding_openAt =resultset.getTimestamp("funding_openAt");
-				Timestamp funding_closeAt =resultset.getTimestamp("funding_closeAt");
-				int funding_purpose =resultset.getInt(7);
-				int funding_hits =resultset.getInt(8);
-				String funding_state =resultset.getString(9);
-				int funding_fee =resultset.getInt(10);
-				
-				dtoFunding = new FDtoFunding(funding_num, funding_seller, funding_banner, funding_title, funding_openAt
-						, funding_closeAt, funding_purpose, funding_hits, funding_state, funding_fee); 
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				if (connection != null) connection.close();
 				if (preparedstatement != null) preparedstatement.close();
-				if (resultset != null) resultset.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		return dtoFunding;
 	}//Mfunding_detail end
 	
 	//funding question
@@ -576,7 +566,7 @@ public class FDaoS {
 		System.out.println(answer);
 		try {
 			connection = dataSource.getConnection();
-			String query = "update funding_question set question_state =?, question_answer = '답벼중' , question_answer_at = now() "
+			String query = "update funding_question set question_state = '답변대기' , question_answer = ? , question_answer_at = now() "
 					+ "where question_num = ?;";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, answer);

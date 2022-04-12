@@ -28,6 +28,9 @@ public class FDtoFunding {
 	public FDtoFunding() {
 	}
 
+	
+	
+	
 	public FDtoFunding(String funding_seller, String funding_banner, String funding_title,
 			 Timestamp funding_openAt, Timestamp funding_closeAt,
 			int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
@@ -155,13 +158,12 @@ public class FDtoFunding {
 		this.content_content = content_content;
 	}
 	
-	public FDtoFunding(int funding_num, String funding_seller, String funding_banner, String funding_title,
+	public FDtoFunding(int funding_num, String funding_seller, String funding_title,
 			 Timestamp funding_openAt, Timestamp funding_closeAt,
 			int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
 		super();
 		this.funding_num = funding_num;
 		this.funding_seller = funding_seller;
-		this.funding_banner = funding_banner;
 		this.funding_title = funding_title;
 		this.funding_openAt = funding_openAt;
 		this.funding_closeAt = funding_closeAt;

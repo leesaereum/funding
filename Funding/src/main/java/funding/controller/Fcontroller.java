@@ -313,7 +313,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/sMFDetail.do"):
 			command = new SMFDetailCommand();
 			command.execute(request, response);
-			viewpage = "sMFDetail.jsp";
+			viewpage = "/pages/sMFDetail.jsp";
 			break;
 		case ("/sMFCApply.do"):
 			viewpage = "sMFCApply.jsp";
@@ -328,14 +328,14 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "sFAnswer.jsp";
 			break;
-		case ("/sRAnswer.do"):
-			command = new SRAnswerCommand();
-			command.execute(request, response);
-			viewpage = "sRAnswer.jsp";
-			break;
 		case ("/sDManage.do"):
 			viewpage = "";
 			break;
+//		case ("/sRAnswer.do"):
+//			command = new SRAnswerCommand();
+//			command.execute(request, response);
+//			viewpage = "sRAnswer.jsp";
+//			break;
 		}// seller
 
 		// admin�슜 switch

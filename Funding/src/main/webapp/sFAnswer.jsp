@@ -78,11 +78,11 @@
 <script src="/Funding/libraries/jQuery.js"></script>
 <script src="/Funding/libraries/moment.js"></script>
 <script>
-	let hello = moment("${FAnswer.question_at}").format("YYYY-MM-DD")
+	let hello = moment("${FAnswer_detail.question_at}").format("YYYY-MM-DD")
 	$(document).ready(function(){
 		$(".question__date").html(hello)
 	})
-	let hi = moment("${FAnswer.question_answer_at}").format("YYYY-MM-DD")
+	let hi = moment("${FAnswer_detail.question_answer_at}").format("YYYY-MM-DD")
 	if(hi=="null"){ let hi = "답변 대기중"}
 	$(document).ready(function(){
 		$(".answer__date").html(hi)
@@ -100,25 +100,25 @@
 		</div>
 		<div class="question__box">
 			<div class="question__header">
-				<p class="question__num">${FAnswer.question_num }</p>
-				<p class="question__title">${FAnswer.question_title }</p>
-				<p class="question__name">${FAnswer.question_customer }</p>
+				<p class="question__num">${FAnswer_detail.question_num }</p>
+				<p class="question__title">${FAnswer_detail.question_title }</p>
+				<p class="question__name">${FAnswer_detail.question_customer }</p>
 				<p class="question__date"></p>
 			</div>
-			<div class="question__content">${FAnswer.question_content }
-			<p class="btn" align="right"><a href="/Funding/sFAnswer_detail.jsp?question_num=${FAnswer.question_num }">답변하기</a></p>
+			<div class="question__content">${FAnswer_detail.question_content }
+			<a href="/Funding/sFAnswer_detail.jsp?question_num=${FAnswer_detail.question_num }">답변하기</a>
 			</div>
 			
 		</div>
 		<div class="question__box">
 			<div class="question__header">
 				<p class="question__name">판매자</p>
-				<p class="answer__date">${FAnswer.question_answer_at }</p>
+				<p class="answer__date">${FAnswer_detail.question_answer_at }</p>
 			</div>
-			<div class="question__content" name="FAnswer_update">${FAnswer.question_answer }</div>
+			<div class="question__content" name="FAnswer_update">${FAnswer_detail.question_answer }</div>
 			
 		</div>
-		<a href="/Funding/sFADetail.do?question_num=${FQlist.question_num}" class="question__toList">목록</a>
+		<a href="/Funding/sFADetail.do?question_num=${FAnswer_detail.question_num}" class="question__toList">목록</a>
 	</div>
 	</form>
 </body>

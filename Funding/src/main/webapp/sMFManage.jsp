@@ -93,14 +93,11 @@ text-align: center;
 		</div>
 		<ul class="sFmanage__box">
 			<li class="sFmanage__liner"><p class="sFmanage__num">공지번호</p>
-				<p class="sFmanage__banner">펀딩배너</p>
 				<p class="sFmanage__title">제목</p>
 				<p class="sFmanage__date">펀딩오픈일</p></li>
 			<c:forEach items="${Mfunding }" var="Mfunding">
 				<li class="sFmanage__liner"><p class="sFmanage__num">${Mfunding.funding_num }</p>
-					<a href="sMFDetail.do?funding_num=${Mfunding.funding_num}"
-					class="sFmanage__banner">${Mfunding.funding_banner }</a>
-					<a href="sMFDetail.do?funding_num=${Mfunding.funding_num}"
+					<a href="/Funding/pages/sMFDetail.do?funding_num=${Mfunding.funding_num}"
 					class="sFmanage__title">${Mfunding.funding_title }</a>
 					<p class="sFmanage__date">${Mfunding.funding_openAt }</p>
 				</li>
