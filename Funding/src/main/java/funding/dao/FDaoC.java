@@ -1126,7 +1126,7 @@ public void unlike(String like_customer, int like_funding) {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "INSERT INTO order1 (order_customer, order_funding, order_option, order_price, order_count, order_At, order_address) values(?, ?, ?, ?, ?, now())";
+			String query = "INSERT INTO order1 (order_customer, order_funding, order_option, order_price, order_count, order_At) values(?, ?, ?, ?, ?, now())";
 			preparedStatement = connection.prepareStatement(query);
 			
 			preparedStatement.setString(1, order_customer);
