@@ -115,7 +115,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/leave.do"):
 			command = new LeaveCommand();
 			command.execute(request, response);
-			viewpage = "main.do";
+			viewpage = "main.do?sort=all";
 			break;
 		case ("/main.do"):
 			command = new MainCommand();
