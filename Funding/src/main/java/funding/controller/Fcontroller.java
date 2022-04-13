@@ -226,10 +226,10 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "/pages/myorder_detail.jsp";
 			break;
-		case ("/myinfomation_modify.do"):
+		case ("/myinformation_modify.do"):
 			command = new MyinformationModifyCommand();
 			command.execute(request, response);
-			viewpage = "mypage.do";
+			viewpage = "logout.do?change=pw";
 			break;
 		}// customer
 
