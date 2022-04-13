@@ -51,6 +51,7 @@ import funding.command.NoticeSearchCommand;
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
+import funding.command.SMFCApplyCommand;
 import funding.command.SMFDetailCommand;
 import funding.command.SMFDetailDeleteCommand;
 import funding.command.SMFDetailModifyCommand;
@@ -288,10 +289,11 @@ public class Fcontroller extends HttpServlet {
 		case ("/sMFDDelete.do"):
 			command = new SMFDetailDeleteCommand();
 			command.execute(request, response);
-//			viewpage = "sMFDDelete.jsp";
-			viewpage = "sMFManage.do";
+			viewpage = "sMFDDelete.jsp";
 			break;
 		case ("/sMFCApply.do"):
+			command = new SMFCApplyCommand();
+			command.execute(request, response);
 			viewpage = "sMFCApply.jsp";
 			break;
 		case ("/sFADetail.do"):

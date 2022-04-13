@@ -21,6 +21,7 @@ public class SMFManageCommand implements FCommand {
 		ArrayList<FDtoFunding> list = daoS.Mfunding_list(id);
 		
 		request.setAttribute("Mfunding", list);
+		
 	}
 
 }

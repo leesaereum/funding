@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>신규 펀딩 만들기</title>
+<title>펀딩 수정하기</title>
 <link rel="stylesheet" href="/Funding/styles/init.css">
 <link rel="stylesheet" href="/Funding/styles/base.css">
 <link rel="stylesheet" href="/Funding/pages/makeFunding.css">
@@ -106,7 +106,7 @@
 				<div id="editor"></div>
 				<div class="MF__moveTab">
 					<p class="MF__moveTab__btn" onclick="moveTab(3, 2)">이전</p>
-					<p class="MF__moveTab__btn finish" onclick="modify(${Mfunding.funding_num })">수정</p>
+					<p class="MF__moveTab__btn finish" onclick="modify()">수정</p>
 				</div>
 			</div>
 
@@ -128,7 +128,7 @@
 
 	})
 	
-	function modify(${Mfunding.funding_num }) {
+	function modify() {
 		location.href= "sMFModify.do?funding_num=${Mfunding.funding_num}"
 	}
 	</script>

@@ -9,13 +9,30 @@ public class FDtoCalculate {
 	String calculate_seller;
 	String calculate_admin;
 	int calculate_cost;
-	Timestamp calculate_At;
+	Timestamp calculate_createAt;
 	Timestamp calculate_approveAt;
 	String calculate_state;
 
 	public FDtoCalculate() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public FDtoCalculate(int calculate_num, int calculate_funding, String calculate_seller, String calculate_admin,
+			int calculate_cost, Timestamp calculate_createAt, Timestamp calculate_approveAt, String calculate_state) {
+		super();
+		this.calculate_num = calculate_num;
+		this.calculate_funding = calculate_funding;
+		this.calculate_seller = calculate_seller;
+		this.calculate_admin = calculate_admin;
+		this.calculate_cost = calculate_cost;
+		this.calculate_createAt = calculate_createAt;
+		this.calculate_approveAt = calculate_approveAt;
+		this.calculate_state = calculate_state;
+	}
+
+
 
 	public FDtoCalculate(int calculate_num, int calculate_funding, String calculate_seller, String calculate_admin,
 			int calculate_cost, Timestamp calculate_approveAt2, Timestamp calculate_approveAt3) {
@@ -25,7 +42,7 @@ public class FDtoCalculate {
 		this.calculate_seller = calculate_seller;
 		this.calculate_admin = calculate_admin;
 		this.calculate_cost = calculate_cost;
-		this.calculate_At = calculate_approveAt2;
+		this.calculate_createAt = calculate_approveAt2;
 		this.calculate_approveAt = calculate_approveAt3;
 	}
 
@@ -80,11 +97,11 @@ public class FDtoCalculate {
 	}
 
 	public Timestamp getCalculate_At() {
-		return calculate_At;
+		return calculate_createAt;
 	}
 
 	public void setCalculate_At(Timestamp calculate_At) {
-		this.calculate_At = calculate_At;
+		this.calculate_createAt = calculate_At;
 	}
 
 	public Timestamp getCalculate_approveAt() {
@@ -102,5 +119,13 @@ public class FDtoCalculate {
 	public void setCalculate_state(String calculate_state) {
 		this.calculate_state = calculate_state;
 	}
+
+	public FDtoCalculate(int calculate_num, int calculate_funding, String calculate_seller) {
+		super();
+		this.calculate_num = calculate_num;
+		this.calculate_funding = calculate_funding;
+		this.calculate_seller = calculate_seller;
+	}
+	
 	
 }

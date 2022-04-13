@@ -81,12 +81,9 @@ text-align: center;
 }
 </style>
 <script type="text/javascript">
-	function del(funding_num) {
-		//if(confirm("삭제하시겠습니까?")){
-		//	location.href = "sMFDDelete.do?funding_num=${Mfunding.funding_num }"
-		//}
-		alert("삭제하겠습니까?")
-	}
+	//function del() {
+		
+	//}
 </script>
 <body>
 <jsp:include page="/components/header.jsp" />
@@ -108,7 +105,8 @@ text-align: center;
 					<a href="/Funding/sMFDetail.do?funding_num=${Mfunding.funding_num}"
 					class="sFmanage__title">${Mfunding.funding_title }</a>
 					<p class="sFmanage__date">${Mfunding.funding_openAt }</p>
-					<a href="sMFDDelete.do?funding_num=${Mfunding.funding_num }" onclick="del(${Mfunding.funding_num })">X</a>
+					<!--<p><input type="button" value="삭제" onclick="del()"></p>-->
+					<a href = "sMFDDelete.do?funding_num=${Mfunding.funding_num }">X</a>
 				</li>
 			</c:forEach>
 		</ul>
