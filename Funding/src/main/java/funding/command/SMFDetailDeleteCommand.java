@@ -1,27 +1,23 @@
 package funding.command;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import funding.dao.FDaoS;
-import funding.dto.FDtoFunding;
 
-public class SMFManageCommand implements FCommand {
+public class SMFDetailDeleteCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		// TODO Auto-generated method stub
+		String funding_num =request.getParameter("funding_num");
 		FDaoS daoS = new FDaoS();
-		ArrayList<FDtoFunding> list = daoS.Mfunding_list(id);
 		
-		request.setAttribute("Mfunding", list);
-		
+		System.out.println(funding_num);
+		daoS.deleteSelectDetail(funding_num);
 	}
 
 }

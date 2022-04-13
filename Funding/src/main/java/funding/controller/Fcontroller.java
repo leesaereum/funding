@@ -55,7 +55,10 @@ import funding.command.NoticeSearchCommand;
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
+import funding.command.SMFCApplyCommand;
 import funding.command.SMFDetailCommand;
+import funding.command.SMFDetailDeleteCommand;
+import funding.command.SMFDetailModifyCommand;
 import funding.command.SMFManageCommand;
 import funding.command.SMypageCommand;
 import funding.command.SSignUpCommand;
@@ -284,7 +287,19 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "/pages/sMFDetail.jsp";
 			break;
+		case ("/sMFModify.do"):
+			command = new SMFDetailModifyCommand();
+			command.execute(request, response);
+			viewpage = "sMFManage.do";
+			break;
+		case ("/sMFDDelete.do"):
+			command = new SMFDetailDeleteCommand();
+			command.execute(request, response);
+			viewpage = "sMFDDelete.jsp";
+			break;
 		case ("/sMFCApply.do"):
+			command = new SMFCApplyCommand();
+			command.execute(request, response);
 			viewpage = "sMFCApply.jsp";
 			break;
 		case ("/sFADetail.do"):
@@ -297,6 +312,7 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "sFAnswer.jsp";
 			break;
+<<<<<<< HEAD
 		case ("/sDManage.do"):
 			viewpage = "";
 			break;
@@ -320,6 +336,9 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "aLogin.jsp";
 			break;
 		case ("/aCList.do"):
+=======
+		case("/aCList.do"):
+>>>>>>> yejin
 			command = new ACListCommand();
 			command.execute(request, response);
 			viewpage = "aCList.jsp";

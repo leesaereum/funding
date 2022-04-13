@@ -54,6 +54,15 @@ public class FDtoFundingOption {
 		this.option_price = option_price;
 		this.option_amount = option_amount;
 	}
+	public FDtoFundingOption(int option_num, int option_numbering, String option_name, int option_price,
+			int option_amount) {
+		super();
+		this.option_num = option_num;
+		this.option_numbering = option_numbering;
+		this.option_name = option_name;
+		this.option_price = option_price;
+		this.option_amount = option_amount;
+	}
 	
 	
 	
