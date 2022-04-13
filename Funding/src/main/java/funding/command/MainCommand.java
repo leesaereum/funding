@@ -17,7 +17,7 @@ public class MainCommand implements FCommand {
 		FDaoC dao = new FDaoC();
 		String query = null;
 		String sort = request.getParameter("sort");
-		if(request.getParameter("sort")==null) sort = null;
+		if(request.getParameter("sort")==null) sort = "all";
 		switch(sort) {
 		case(""):
 			query = "where funding_state = '진행'";

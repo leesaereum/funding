@@ -12,6 +12,6 @@
 <body>
 	<jsp:include page="./components/header.jsp" />
 <h1>펀딩 신청이 완료되었습니다!</h1>
-<a href="/Funding/main.do">메인 화면으로 돌아가기</a>
+<a href="/Funding/main.do?sort=all">메인 화면으로 돌아가기</a>
 </body>
 </html>

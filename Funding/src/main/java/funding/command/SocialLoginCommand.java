@@ -24,6 +24,8 @@ public class SocialLoginCommand implements FCommand {
 			request.setAttribute("viewpage", "main.do?sort=all");
 			session.setAttribute("email", input_id);
 			session.setAttribute("customer_id", input_id);
+			session.setAttribute("id", input_id);
+
 		}else {
 			request.setAttribute("viewpage", "/pages/SignUp.jsp");
 			request.setAttribute("error", "연동된 ID가 없습니다. 회원가입을 먼저 진행해주세요");
