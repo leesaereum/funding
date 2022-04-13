@@ -188,6 +188,10 @@ if (fid == null) {
 
 		}
 		
+		let goal = $(".detail__amount__goal").html() * 1;
+		goal = goal.toLocaleString();
+		$(".detail__amount__goal").html("목표금액 " + goal + "원");
+		
 		let closeDay = "${funding.funding_closeAt}";
 		closeDay = closeDay.split(" ")[0];
 		closeDay = moment(closeDay);
