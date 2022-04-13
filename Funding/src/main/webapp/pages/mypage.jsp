@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						</li>
 						<c:forEach items="${fundingquestion }" var="dto">
 							<li class="question__liner"><a
-								href="/Funding/fundingContent_view.do?fid=${dto.question_funding}"
+								href="/Funding/fundingContent_view.do?fid=${dto.question_funding}&tab=3"
 								class="question__title">${dto.question_funding_title }</a>
 								<p class="question_title">${dto.question_content }</p>
 								<p class="question__date">${dto.question_at }</p></li>
