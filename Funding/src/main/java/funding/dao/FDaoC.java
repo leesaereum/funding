@@ -1386,4 +1386,27 @@ public void unlike(String like_customer, int like_funding) {
 			}
 		}
 	}
+	public void update_infor(String id, String pw, String phone) {
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "update customer set customer_pw = ?, customer_phone = ? where custeomr_id = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, pw);
+			preparedstatement.setString(2, phone);
+			preparedstatement.setString(3, id);
+			preparedstatement.executeUpdate();
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

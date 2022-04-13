@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import funding.dao.FDaoC;
+import funding.dao.FDaoS;
 
-public class MyinformationModifyCommand implements FCommand {
+public class SMyinformationModifyCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,7 +20,7 @@ public class MyinformationModifyCommand implements FCommand {
 		String pw = request.getParameter("pw1");
 		String phone = request.getParameter("phone");
 		
-		FDaoC dao = new FDaoC();
+		FDaoS dao = new FDaoS();
 		dao.update_infor(id, pw, phone);
 	}
 

@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			</div>
 			<div class="tab__content" id="tab__5__content">
 				<h2 class="my__title">개인정보 관리</h2>
-				<form name="form" action="/myinformation_modify.do">
+				<form name="form" action="/smyinformation_modify.do">
 					<div class="my__formzone">
 						<div class="my__liner">
 							<p class="my__form__subtitle">변경할 비밀번호</p>
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						</div>
 						<div class="my__liner">
 							<p class="my__form__subtitle">전화번호</p>
-							<input class="my__form__input" type="password" id="phone"
+							<input class="my__form__input" type="text" id="phone"
 								placeholder="ex)010-0000-0000" name="phone">
 						</div>
 						<div class="my__form__submit" onclick="checkMyForm()">변경하기</div>
@@ -189,7 +189,28 @@ document.addEventListener('DOMContentLoaded', function() {
 				</form>
 			</div>
 			<div class="tab__content" id="tab__6__content"></div>
-			<div class="tab__content" id="tab__7__content"></div>
+			<div class="tab__content" id="tab__7__content">
+				<div class="list__wrap">
+					<div class="list__header">
+						<h1 class="list__pageTitle">펀딩 Q&A 관리</h1>
+					</div>
+
+					<ul class="list__box">
+						<li class="list__liner"><p class="list__title">펀딩명</p>
+							<p class="list__seller">질문</p>
+							<p class="list__date">질문 생성일</p>
+						<c:forEach items="${myfq}" var="myfq">
+							<li class="list__liner"><a
+								href="/Funding/fundingContent_view.do?fid=${myfq.question_funding}"
+								class="list__title">${myfq.question_funding_title }</a>
+								<p class="list__seller">${myfq.question_content }</p>
+								<p class="list__date">${myfq.question_at }</p>
+						</c:forEach>
+					</ul>
+					<div class="pages__box" id="pages__box__6"></div>
+				</div>
+			</div>
+			</div>
 			<div class="tab__content" id="tab__8__content"></div>
 		</div>
 	</div>

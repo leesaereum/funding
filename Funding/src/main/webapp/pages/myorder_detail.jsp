@@ -106,14 +106,8 @@
 				</div>
 
 				<div id="notice__content"></div>
-				<div class="notice__header">
-					<p class="notice__title">
-						<c:set var="total" value="0"/>
-
-					<p class="notice__name">총 합계 금액 : ${total }</div>
-			</div>
 		</div>
-		<a href="/Funding/myfunding_list.do" class="notice__toList">목록</a>
+		<a href="javascript:history.back();" class="notice__toList">목록</a>
 	</div>
 	<script>
 		let txt = '';
