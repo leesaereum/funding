@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	<script>
 		function checkMyForm() {
 			let form = document.form;
-			console.log(form)
+			form.submit();
 		}
 		
 		function leave(){

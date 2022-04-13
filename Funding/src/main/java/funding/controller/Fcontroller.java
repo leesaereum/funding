@@ -57,6 +57,7 @@ import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
 import funding.command.SMFDetailCommand;
 import funding.command.SMFManageCommand;
+import funding.command.SMyinformationModifyCommand;
 import funding.command.SMypageCommand;
 import funding.command.SSignUpCommand;
 import funding.command.SearchCommand;
@@ -300,8 +301,8 @@ public class Fcontroller extends HttpServlet {
 		case ("/sDManage.do"):
 			viewpage = "";
 			break;
-		case ("/smyinfomation_modify.do"):
-			command = new MyinformationModifyCommand();
+		case ("/Funding/smyinformation_modify.do"):
+			command = new SMyinformationModifyCommand();
 			command.execute(request, response);
 			viewpage = "sMypage.do";
 			break;
