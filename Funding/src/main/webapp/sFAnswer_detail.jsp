@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<form action="sFAnswer.do" method="get">
+	<form action="/Funding/sFAnswer.do" method="post">
 		<h3>Open 펀딩 답변작성</h3>
 		<br>
 		내용<br> 
@@ -16,7 +16,7 @@
 		<br>
 		<input type="submit" value="작성완료"><br>
 		<input type="hidden" name="question_num" value="<%=request.getParameter("question_num")%>">
-		<a href = "sFAnswer.do?question_num=${FQlist.question_num}">이전으로 돌아가기</a>
+		<a href ="javascript:history.back();" >이전으로 돌아가기</a>
 	</form>
 </body>
 </html>

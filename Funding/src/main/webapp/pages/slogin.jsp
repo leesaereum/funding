@@ -246,8 +246,6 @@ background-position
 	<div class="signIn__wrap">
 		<div class="signIn__content">
 			<h1 class="signIn__title">판매자 로그인</h1>
-			<jsp:include page="/apis/socialLogin/kakaoLogin.jsp" />
-			<jsp:include page="/apis/socialLogin/naverLogin.jsp" />
 			<div class="signIn__divider"></div>
 			<form action="/Funding/slogin.do" name="signInForm" method="post"
 				onsubmit="checkCheck()">
