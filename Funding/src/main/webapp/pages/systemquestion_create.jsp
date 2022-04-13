@@ -86,7 +86,7 @@
 				<input class="question__header" type="text" name="title"
 					placeholder="제목을 입력해주세요">
 
-				<textarea class="question__content" placeholder="내용을 입력해주세요"></textarea>
+				<textarea class="question__content" name="content" placeholder="내용을 입력해주세요"></textarea>
 
 				<div>
 					<input type="submit" class="question__submit">

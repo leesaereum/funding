@@ -74,9 +74,9 @@ header {
 		<h1 class="font-color-main" onclick="goHome()">해피펀딩</h1>
 		<nav>
 			<ul>
-				<li><a href="/Funding/funding_list_view.do">펀딩</a></li>
-				<li><a href="/Funding/notice_list.do">공지사항</a></li>
-				<li><a href="/Funding/systemQuestion_list.do">Q&A</a></li>
+				<li><a href="/Funding/funding_list_view.do?page=1">펀딩</a></li>
+				<li><a href="/Funding/notice_list.do?page=1">공지사항</a></li>
+				<li><a href="/Funding/systemQuestion_list.do?page=1">Q&A</a></li>
 			</ul>
 		</nav>
 		<div id="loginZone">
@@ -93,7 +93,7 @@ let headerHeight = 72;
 let isSeller = "<%=session.getAttribute("isSeller")%>";
 if(isSeller != "null"){
 	let email = "<%=session.getAttribute("id")%>";
-	let txt = '<p class="signedIn_email" onclick="goMyPage()">'+email+'</p><div class="logoutButton">로그아웃</div><div class="makeFunding">펀딩 만들기</div>';
+	let txt = '<p class="signedIn_email" onclick="goSMyPage()">'+email+'</p><div class="logoutButton">로그아웃</div><div class="makeFunding">펀딩 만들기</div>';
 	document.getElementById("loginZone").innerHTML = txt;
 }else{
 	let email = "<%=session.getAttribute("id")%>";
@@ -120,7 +120,7 @@ window.onscroll = function () {
 };
 function goHome(){
 	//todo: 작성하던 내용이 사라집니다.
-	location.href = "/Funding/main.do"
+	location.href = "/Funding/main.do?sort=all"
 }
 $(document).on("click", ".loginButton", function(e){
 	e.stopPropagation();
@@ -138,6 +138,9 @@ $(document).on("click", ".makeFunding", function(e){
 })
 
 function goMyPage(){
-	location.href = "/Funding/mypage.do"
+	location.href = "/Funding/mypage.do?tab=1&page=1"
+}
+function goSMyPage(){
+	location.href = "/Funding/sMypage.do?tab=1&page=1"
 }
 </script>

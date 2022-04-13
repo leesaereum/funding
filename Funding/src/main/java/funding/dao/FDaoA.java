@@ -120,7 +120,7 @@ public class FDaoA {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT * FROM seller WHERE seller_state NOT IN ('승인')";
+			String query = "SELECT * FROM seller WHERE seller_state NOT IN ('블랙')";
 
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
@@ -638,7 +638,7 @@ public class FDaoA {
 				String funding_state = resultSet.getString("funding_state");
 				String seller_name = resultSet.getString("seller_name");
 
-				FDtoFunding dto66 = new FDtoFunding(funding_num, funding_title, funding_state, seller_name);
+				FDtoFunding dto66 = new FDtoFunding(funding_num, seller_name, funding_title, funding_state);
 
 				dtos.add(dto66);
 
@@ -662,6 +662,7 @@ public class FDaoA {
 	} // fapprovewaitlist end
 	
 
+	//admin notice list
 	public ArrayList<FDtoNotice> anotice_list() {
 		ArrayList<FDtoNotice> dtos = new ArrayList<FDtoNotice>();
 		Connection connection = null;
@@ -669,7 +670,7 @@ public class FDaoA {
 		ResultSet resultset = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT notice_num, notice_admin, notice_title, notice_At FROM notice";
+			String query = "SELECT notice_num, notice_admin, notice_title, notice_At FROM notice order by notice_At desc";
 			preparedstatement = connection.prepareStatement(query);
 			resultset = preparedstatement.executeQuery();
 
@@ -697,4 +698,241 @@ public class FDaoA {
 		}
 		return dtos;
 	}// notice_list end
+	
+	
+	//notice content
+	public FDtoNotice noticecontent(String noticeNum) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		FDtoNotice dto = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "select notice_admin, notice_title, notice_content, notice_At from notice where notice_num = ?  ";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, noticeNum);
+			resultSet = preparedStatement.executeQuery();
+
+			if (resultSet.next()) {
+				String notice_admin = resultSet.getString(1);
+				String notice_title = resultSet.getString(2);
+				String notice_content = resultSet.getString(3);
+				Timestamp notice_At = resultSet.getTimestamp(4);
+
+//				dto = new FDtoNotice(Integer.parseInt(noticeNum), notice_admin, notice_title, notice_content, notice_At);
+				dto = new FDtoNotice(Integer.parseInt(noticeNum), notice_admin, notice_title, notice_content,
+						notice_At);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}// notice content end
+
+	
+	// admin notice modify
+	public void anoticemodify(String notice_num, String notice_title, String notice_content, Timestamp notice_At) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE notice SET notice_title = ?, notice_content =?, notice_At = ?  Where notice_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, notice_title);
+			preparedStatement.setString(2, notice_content);
+			preparedStatement.setTimestamp(3, notice_At);
+			preparedStatement.setString(4, notice_num);
+			preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}// admin notice modify end
+
+	
+	// admin notice delete
+	public void anoticedelete(String notice_num) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "DELETE FROM notice WHERE notice_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, notice_num);
+			preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}// admin notice delete end
+
+	
+	
+	//anotice create
+	public void anoticecreate(Object notice_admin, String notice_title, String notice_content) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "insert into notice (notice_admin, notice_title, notice_content, notice_At) values (?, ?, ?, now())";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, (String) notice_admin);
+			preparedStatement.setString(2, notice_title);
+			preparedStatement.setString(3, notice_content);
+
+			preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	}// anotice create end
+	
+	public ArrayList<FDtoSystemQuestion> SystemQuestionDetail(String question_num) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		ArrayList<FDtoSystemQuestion> dtos = new ArrayList<FDtoSystemQuestion>();
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "select question_customer, question_title, question_content, question_answer from system_question where question_num = ?  ";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, question_num);
+			resultSet = preparedStatement.executeQuery();
+
+			if (resultSet.next()) {
+				String question_customer = resultSet.getString(1);
+				String question_title = resultSet.getString(2);
+				String question_content = resultSet.getString(3);
+				String question_answer = resultSet.getString(4);
+				
+			
+				
+//				dto = new FDtoNotice(Integer.parseInt(noticeNum), notice_admin, notice_title, notice_content, notice_At);
+				FDtoSystemQuestion FDtoSystemQuestion = new FDtoSystemQuestion(Integer.parseInt(question_num), question_customer, question_title, question_content, question_answer);
+				dtos.add(FDtoSystemQuestion);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dtos;
+	}// notice content end
+	
+	public void SystemQuestionRemove(String question_num) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "Update system_question set question_answer = \"\", question_state = \"답변대기\"  WHERE question_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+		
+			preparedStatement.setString(1, question_num);
+			preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}// admin notice delete end
+	
+	public void SystemQAnswerInsert(String question_answer, String question_num) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String complete = "완료";
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "Update system_question set question_answer = ?, question_state = ? WHERE question_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+		
+			preparedStatement.setString(1, question_answer);
+			preparedStatement.setString(2, complete);
+			preparedStatement.setString(3, question_num);
+			preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}// admin notice delete end
 }

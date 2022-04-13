@@ -24,9 +24,9 @@
 </style>
 
 <div class="categories">
-	<p>전체</p>
-	<p>인기순</p>
-	<p>달성률순</p>
-	<p>마감임박</p>
-	<p>완료된 펀딩</p>
+	<p><a href = "/Funding/main.do?sort=all">전체</a></p>
+	<p><a href = "/Funding/main.do?sort=hits">인기순</a></p>
+	<p><a href = "/Funding/main.do?sort=achievement">달성률순</a></p>
+	<p><a href = "/Funding/main.do?sort=closeAt">마감임박</a></p>
+	<p><a href = "/Funding/main.do?sort=end">마감된 펀딩</a></p>
 </div>

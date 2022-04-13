@@ -21,7 +21,7 @@ public class ASrejectCommand implements FCommand {
 		
 		String sellerId = request.getParameter("sellerId");
 		FDaoA dao = new FDaoA();
-		FDtoSeller dto = dao.sellerreject(sellerId);
+		dao.sellerreject(sellerId);
 		
 	}
 

@@ -106,32 +106,25 @@
 				</div>
 
 				<div id="notice__content"></div>
-				<div class="notice__header">
-					<p class="notice__title">
-					<p class="notice__name">총 합계 금액 :${total }
-					</p>
-				</div>
-			</div>
 		</div>
-		<a href="/Funding/myfunding_list.do" class="notice__toList">목록</a>
+		<a href="javascript:history.back();" class="notice__toList">목록</a>
 	</div>
 	<script>
-	let txt = '';
-	let priceTxt = '';
-	let dateTxt = '';
-	<c:set var = "total" value = "0"/>
-	<c:forEach items="${ordering}" var="ordering">
+		let txt = '';
+		let priceTxt = '';
+		let dateTxt = '';
+		<c:forEach items="${ordering}" var="ordering">
 		dateTxt = "${ordering.order_At}";
 		dateTxt = moment(dateTxt).format("YYYY-MM-DD")
 		priceTxt = "${ordering.order_price}";
-		console.log(priceTxt)
-		priceTxt = (priceTxt*1).toLocaleString();
+		priceTxt = (priceTxt * 1).toLocaleString();
 		txt += '<div class="notice__header"><p class="notice__title">${ordering.option_name}</p>'
 		txt += '<p class="ordering__price">' + priceTxt + '원</p>'
 		txt += '<p class="notice__name">${ordering.order_count}개</p>'
 		txt += '<p class="ordering__date">' + dateTxt + '</p></div>'
-	</c:forEach>
+		<c:set var ="total" value = "${total+ordering.order_price}"/>
+		</c:forEach>
 		$("#notice__content").html(txt);
-</script>
+	</script>
 </body>
 </html>

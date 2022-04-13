@@ -15,15 +15,30 @@ public class MainCommand implements FCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FDaoC dao = new FDaoC();
-		String query = "where funding_state = '진행'";
-
-		
-		/*String sort = request.getParameter("sort");
+		String query = null;
+		String sort = request.getParameter("sort");
+		if(request.getParameter("sort")==null) sort = "all";
 		switch(sort) {
 		case(""):
+			query = "where funding_state = '진행'";
 			break;
+		case("all"):
+			query = "where funding_state = '진행'";
+		break;
+		case("hits"):
+			query = "where funding_state = '진행' order by funding_hits desc";
+			break;
+		case("achievement"):
+			query = "where funding_state = '진행' order by achievement desc";
+		break;
+		case("closeAt"):
+			query = "where funding_state = '진행' order by funding_closeAt";
+		break;
+		case("end"):
+			query = "where funding_state != '진행'";
+		break;
 		}
-		*/
+		
 		ArrayList<FDtoFunding> list = dao.mainlist(query);
 		request.setAttribute("list", list);
 	}

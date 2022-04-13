@@ -356,7 +356,7 @@ background-position
 	    
 	}
 	function idCheck(){
-		window.open("idCheck.jsp","popup","width=600,height=600")
+		window.open("/Funding/pages/idCheck.jsp","popup","width=600,height=600")
 	}
 	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn
 							, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo){
@@ -365,6 +365,12 @@ background-position
 		document.signUpForm.addrDetail.value = addrDetail;
 		document.signUpForm.zipNo.value = zipNo;
 		
+	}
+	let error = "<%=request.getAttribute("error")%>";
+	console.log(error)
+	if(error !== "null"){
+		<%request.setAttribute("error", null);%>
+		alert(error);
 	}
 	</script>
 </body>

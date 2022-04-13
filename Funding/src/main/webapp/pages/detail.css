@@ -149,7 +149,10 @@
 	font-weight: bold;
 	line-height: 42px;
 }
-
+.detail__funding__seller{
+	padding: 12px;
+	color: #777;
+}
 .detail__rate__txt {
 	text-align: right;
 	font-size: 34px;
@@ -173,6 +176,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	max-width: 100%;
 	height: 100%;
 	background-color: #0f92e0;
 }
@@ -665,7 +669,8 @@
 }
 .detail__popup__payMethod > p{
 	height: 60px;
-	width: 130px;
+	width: 100%;
+	margin-top: 20px;
 	line-height: 60px;
 	text-align: center;
 }

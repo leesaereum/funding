@@ -1,4 +1,4 @@
-x<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -57,7 +57,7 @@ let words = ["핸드메이드 카네이션 굿즈로 마음을 전해요","NON-G
 let page = 0;
 document.addEventListener('DOMContentLoaded', function() {
 	loadMore();
-	let email = "<%=session.getAttribute("customer_id")%>";
+	let email = "<%=session.getAttribute("id")%>";
 
 	let firstLogin = "<%=session.getAttribute("loginFirst")%>";
 	
@@ -66,6 +66,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		<%session.removeAttribute("loginFirst");%>;
 	}
 	
+	let message = "<%= request.getAttribute("change") %>"
+	if(message === "pw"){
+		toast("비밀번호가 변경되었습니다. 다시 로그인 해주세요");
+	}
 });
 
 //funding_num, funding_seller, funding_banner, funding_title, 
@@ -146,9 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	<jsp:include page="./components/banner.jsp" />
 	<jsp:include page="./components/categories.jsp" />
 	<div class="fundingCards" id="fundingCards"></div>
-	<div id="loadMoreBox">
-		<div class="loadMore" onclick="loadMore()">더보기</div>
-	</div>
 	<div id="toast"></div>
 </body>
 </html>

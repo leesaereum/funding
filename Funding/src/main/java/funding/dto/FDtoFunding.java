@@ -19,6 +19,8 @@ public class FDtoFunding {
 	int funding_achievement;
 	int total;
 	int count;
+	String seller_name;
+	String seller_profile;
 	
 	
 	//funding_content 태이블에 있는건데 같이 받기 위해서 가져왔습니다.
@@ -32,6 +34,14 @@ public class FDtoFunding {
 	}
 
 	
+	public FDtoFunding(int funding_num, String funding_title, int total) {
+		super();
+		this.funding_num = funding_num;
+		this.funding_title = funding_title;
+		this.total = total;
+	}
+
+
 	public FDtoFunding(int funding_num, String funding_seller, String funding_banner, String funding_title, Timestamp funding_createAt, Timestamp funding_deleteAt, Timestamp funding_openAt, Timestamp funding_closeAt, int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
 		
 		this.funding_num = funding_num;
@@ -67,9 +77,27 @@ public class FDtoFunding {
 		return funding_num;
 	}
 
+	public String getSeller_name() {
+		return seller_name;
+	}
+
+	public void setSeller_name(String seller_name) {
+		this.seller_name = seller_name;
+	}
+
 	public void setFunding_num(int funding_num) {
 		this.funding_num = funding_num;
 	}
+
+	public String getSeller_profile() {
+		return seller_profile;
+	}
+
+
+	public void setSeller_profile(String seller_profile) {
+		this.seller_profile = seller_profile;
+	}
+
 
 	public String getFunding_seller() {
 		return funding_seller;
@@ -225,12 +253,13 @@ public class FDtoFunding {
 	}
 
 	public FDtoFunding(int funding_num, String funding_title,
-			Timestamp funding_openAt,Timestamp funding_closeAt) {
+			Timestamp funding_openAt,Timestamp funding_closeAt, String funding_state) {
 		super();
 		this.funding_num = funding_num;
 		this.funding_title = funding_title;
 		this.funding_openAt = funding_openAt;
 		this.funding_closeAt = funding_closeAt;
+		this.funding_state = funding_state;
 	}
 	public int getOrder_num() {
 		return order_num;
@@ -267,7 +296,7 @@ public class FDtoFunding {
 	}
 
 	public FDtoFunding(String funding_banner, String funding_seller, String funding_title, Timestamp funding_openAt, Timestamp funding_closeAt,
-			int funding_purpose, int funding_achievement, int total, String content_content, int count, int funding_num) {
+			int funding_purpose, int funding_achievement, int total, String content_content, int count, int funding_num, String seller_profile) {
 		super();
 		this.funding_banner = funding_banner;
 		this.funding_seller = funding_seller;
@@ -280,6 +309,7 @@ public class FDtoFunding {
 		this.content_content = content_content;
 		this.count = count;
 		this.funding_num = funding_num;
+		this.seller_profile = seller_profile;
 	}
 
 
@@ -305,8 +335,6 @@ public class FDtoFunding {
 		this.funding_fee = funding_fee;
 //		this.content_content = content_content;
 	}
-
-	
 	
 }
 

@@ -116,7 +116,7 @@
 			<div class="question__content">${dto.question_answer }</div>
 
 		</div>
-		<a href="/Funding/systemQuestion_list.do" class="question__toList">목록</a>
+		<a href="javascript:history.back();" class="question__toList">목록</a>
 	</div>
 
 </body>

@@ -29,7 +29,7 @@ public class SLoginCommand implements FCommand {
 		if(seller_id == null) {
 			request.setAttribute("viewpage", "/pages/slogin.jsp?error=error");
 		}else {
-			request.setAttribute("viewpage", "main.do");
+			request.setAttribute("viewpage", "main.do?sort=all");
 		}
 	}	
 

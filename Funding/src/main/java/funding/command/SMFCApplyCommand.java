@@ -10,26 +10,19 @@ import javax.servlet.http.HttpSession;
 
 import funding.dao.FDaoS;
 import funding.dto.FDtoCalculate;
+import funding.dto.FDtoFunding;
 
 public class SMFCApplyCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		String nNUM= (String) session.getAttribute("calculate_num");
-		System.out.println("nNUM :" + nNUM);
+		String funding_num = request.getParameter("funding_num");
 		
-		int num =Integer.parseInt(request.getParameter("calculate_num"));
-		int funding =Integer.parseInt(request.getParameter("calculate_funding"));
-		String id = request.getParameter("calculate_seller");
-		System.out.println("id : "+ id);
 		FDaoS daoS = new FDaoS();
-		ArrayList<FDtoCalculate> list = daoS.list(nNUM,funding,id);
-		request.setAttribute("list", list);
-//		daoS.sMFCapply(funding, id);
-		
-		
+		FDtoFunding dto = daoS.calfunding(funding_num);
+		String result = daoS.calinf(funding_num);
+		request.setAttribute("funding", dto);
+		request.setAttribute("cal", result);
 		
 		
 		

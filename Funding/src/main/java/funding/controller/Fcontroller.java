@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import funding.command.ACAWListCommand;
 import funding.command.ACApproveCommand;
-import funding.command.ACAWListCommand;
-import funding.command.ACApproveCommand;
 import funding.command.ACListCommand;
 import funding.command.ACRejectCommand;
 import funding.command.AFADetailCommand;
@@ -21,11 +19,18 @@ import funding.command.AFListCommand;
 import funding.command.AFRejectCommand;
 import funding.command.ALoginCommand;
 import funding.command.ALogoutCommand;
+import funding.command.ANContentCommand;
+import funding.command.ANCreateCommand;
 import funding.command.ANListCommand;
+import funding.command.ANModifyCommand;
+import funding.command.ANRemoveCommand;
 import funding.command.ASQDetailCommand;
 import funding.command.ASQWListCommand;
 import funding.command.ASQualifyCommand;
 import funding.command.ASrejectCommand;
+import funding.command.ASystemQAnswerInsertCommand;
+import funding.command.ASystemQDetailCommand;
+import funding.command.ASystemQuestionRemoveCommand;
 import funding.command.FCommand;
 import funding.command.FindidCommand;
 import funding.command.FindpwCommand;
@@ -33,7 +38,9 @@ import funding.command.FundingLikeCommand;
 import funding.command.FundingListViewCommand;
 import funding.command.FundingPaymentCommand;
 import funding.command.FundingQuestionCommand;
+import funding.command.FundingUnlikeCommand;
 import funding.command.FundingdetailCommand;
+import funding.command.LeaveCommand;
 import funding.command.LoginCommand;
 import funding.command.LogoutCommand;
 import funding.command.MainCommand;
@@ -44,9 +51,6 @@ import funding.command.NoticeDetailCommand;
 import funding.command.NoticeListCommand;
 import funding.command.SFADetailCommand;
 import funding.command.SFAnswerCommand;
-import funding.command.LoginCommand;
-import funding.command.LogoutCommand;
-import funding.command.MainCommand;
 import funding.command.NoticeSearchCommand;
 import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
@@ -56,11 +60,12 @@ import funding.command.SMFDetailCommand;
 import funding.command.SMFDetailDeleteCommand;
 import funding.command.SMFDetailModifyCommand;
 import funding.command.SMFManageCommand;
+import funding.command.SMyinformationModifyCommand;
 import funding.command.SMypageCommand;
-import funding.command.SRAnswerCommand;
 import funding.command.SSignUpCommand;
 import funding.command.SearchCommand;
 import funding.command.SignupCommand;
+import funding.command.SocialLoginCommand;
 import funding.command.SystemQuestionCommand;
 import funding.command.SystemQuestionDetailCommand;
 import funding.command.SystemQuestionSearchCommand;
@@ -94,22 +99,27 @@ public class Fcontroller extends HttpServlet {
 		String path = uri.substring(copath.length());
 		String viewpage = null;
 
-		// customer�슜 switch
+		// customer용 switch
 		switch (path) {
 		case ("/login.do"):
 			command = new LoginCommand();
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
-		case ("/sociallogin.do"):
-			command = new LogoutCommand();
+		case ("/socialLogin.do"):
+			command = new SocialLoginCommand();
 			command.execute(request, response);
 			viewpage = (String) request.getAttribute("viewpage");
 			break;
 		case ("/logout.do"):
 			command = new LogoutCommand();
 			command.execute(request, response);
-			viewpage = "main.jsp";
+			viewpage = "main.do?sort=all";
+			break;
+		case ("/leave.do"):
+			command = new LeaveCommand();
+			command.execute(request, response);
+			viewpage = "main.do?sort=all";
 			break;
 		case ("/main.do"):
 			command = new MainCommand();
@@ -155,19 +165,18 @@ public class Fcontroller extends HttpServlet {
 		case ("/fundingLike.do"):
 			command = new FundingLikeCommand();
 			command.execute(request, response);
-			viewpage = "detailtest.jsp";
+			viewpage = (String) request.getAttribute("viewpage");
+			break;
+		case ("/fundingUnLike.do"):
+			command = new FundingUnlikeCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewpage");
 			break;
 		case ("/fundingOrder.do"):
 			command = new FundingPaymentCommand();
 			command.execute(request, response);
 			viewpage = "fundingOrder.jsp";
 			break;
-//		case ("/fundingPayment_view.do"):
-//			viewpage = "";
-//			break;
-//		case ("/fundingPayment.do"):
-//			viewpage = "";
-//			break;
 //		case ("/fundingaddress.do"):
 //			viewpage = "";
 //			break;
@@ -221,17 +230,14 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "/pages/myorder_detail.jsp";
 			break;
-//		case ("/myinformation_view.do"):
-//			viewpage = "";
-//			break;
-//		case ("/myinfomation_modify.do"):
-//			command = new MyinformationModifyCommand();
-//			command.execute(request, response);
-//			viewpage = "mypage.do";
-//			break;
+		case ("/myinformation_modify.do"):
+			command = new MyinformationModifyCommand();
+			command.execute(request, response);
+			viewpage = "logout.do?change=pw";
+			break;
 		}// customer
 
-		// seller�슜 switch
+		// seller용 switch
 		switch (path) {
 		case ("/slogin.do"):
 			command = new SLoginCommand();
@@ -254,7 +260,7 @@ public class Fcontroller extends HttpServlet {
 		case ("/sFOApply.do"):
 			command = new SFOApplyCommand();
 			command.execute(request, response);
-			viewpage = "main.jsp";
+			viewpage = "main.do?sort=all";
 			break;
 		case ("/sQApply_view.do"):
 			command = new SFOApplyCommand();
@@ -262,7 +268,7 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "sQApply_view.jsp";
 			break;
 		case ("/sQApply.do"):
-			viewpage = "main.do";
+			viewpage = "main.do?sort=all";
 			break;
 		case ("/SFOApply.do"):
 			viewpage = "";
@@ -270,12 +276,13 @@ public class Fcontroller extends HttpServlet {
 		case ("/sMypage.do"):
 			command = new SMypageCommand();
 			command.execute(request, response);
-			viewpage = "sMypage.jsp";
-		case ("/sMFManage.do"):
-			command = new SMFManageCommand();
-			command.execute(request, response);
-			viewpage = "sMFManage.jsp";
+			viewpage = "/pages/Smypage.jsp";
 			break;
+//		case ("/sMFManage.do"):
+//			command = new SMFManageCommand();
+//			command.execute(request, response);
+//			viewpage = "sMFManage.jsp";
+//			break; 삭제하기
 		case ("/sMFDetail.do"):
 			command = new SMFDetailCommand();
 			command.execute(request, response);
@@ -306,81 +313,108 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "sFAnswer.jsp";
 			break;
-		case("/aCList.do"):
+		case ("/sDManage.do"):
+			viewpage = "";
+			break;
+		case ("/Funding/smyinformation_modify.do"):
+			command = new SMyinformationModifyCommand();
+			command.execute(request, response);
+			viewpage = "sMypage.do";
+			break;
+		case ("/movemycal.do"):
+			command = new SMFCApplyCommand();
+			command.execute(request, response);
+			viewpage = "/pages/mycal.jsp";
+			break;
+		}// seller
+
+		// admin용 switch
+		switch (path) {
+		case ("/aLogin.do"):
+			command = new ALoginCommand();
+			command.execute(request, response);
+			viewpage = (String) request.getAttribute("viewPage");
+			break;
+		case ("/aLogout.do"):
+			command = new ALogoutCommand();
+			command.execute(request, response);
+			viewpage = "aLogin.jsp";
+			break;
+		case ("/aCList.do"):
 			command = new ACListCommand();
 			command.execute(request, response);
-			viewpage="aCList.jsp";
+			viewpage = "aCList.jsp";
 			break;
-		case("/aCAWList.do"):
+		case ("/aCAWList.do"):
 			command = new ACAWListCommand();
 			command.execute(request, response);
-			viewpage="aCAWList.jsp";
+			viewpage = "aCAWList.jsp";
 			break;
 //		case("/aCADetail.do"):
 //			viewpage="";
 //			break;
-		case("/aCApprove.do"):
+		case ("/aCApprove.do"):
 			command = new ACApproveCommand();
 			command.execute(request, response);
-			viewpage="aCAWList.do";
+			viewpage = "aCAWList.do";
 			break;
-		case("/aCReject.do"):
+		case ("/aCReject.do"):
 			command = new ACRejectCommand();
 			command.execute(request, response);
-			viewpage="aCAWList.do";
+			viewpage = "aCAWList.do";
 			break;
-		case("/aSQWList.do"):
+		case ("/aSQWList.do"):
 			command = new ASQWListCommand();
 			command.execute(request, response);
-			viewpage="aSQWList.jsp";
+			viewpage = "aSQWList.jsp";
 			break;
-		case("/aSQDetail.do"):
+		case ("/aSQDetail.do"):
 			command = new ASQDetailCommand();
 			command.execute(request, response);
-			viewpage="aSQDetail.jsp";
+			viewpage = "aSQDetail.jsp";
 			break;
-		case("/aSQualify.do"):
+		case ("/aSQualify.do"):
 			command = new ASQualifyCommand();
 			command.execute(request, response);
-			viewpage="aSQWList.do";
+			viewpage = "aSQWList.do";
 			break;
-		case("/aSreject.do"):
+		case ("/aSreject.do"):
 			command = new ASrejectCommand();
 			command.execute(request, response);
-			viewpage="aSQWList.do";
+			viewpage = "aSQWList.do";
 			break;
-		case("/aFAWList.do"):
+		case ("/aFAWList.do"):
 			command = new AFAWListCommand();
 			command.execute(request, response);
-			viewpage="aFAWList.jsp";
+			viewpage = "aFAWList.jsp";
 			break;
-		case("/aFADetail.do"):
+		case ("/aFADetail.do"):
 			command = new AFADetailCommand();
 			command.execute(request, response);
-			viewpage="aFADetail.jsp";
+			viewpage = "aFADetail.jsp";
 			break;
-		case("/aFApprove.do"):
+		case ("/aFApprove.do"):
 			command = new AFApproveCommand();
 			command.execute(request, response);
-			viewpage="aFAWList.do";
+			viewpage = "aFAWList.do";
 			break;
-		case("/aFreject.do"):
+		case ("/aFreject.do"):
 			command = new AFRejectCommand();
 			command.execute(request, response);
-			viewpage="aFAWList.do";
+			viewpage = "aFAWList.do";
 			break;
-		case("/aSAList.do"):
+		case ("/aSAList.do"):
 			command = new SystemQuestionlistCommand();
 			command.execute(request, response);
-			viewpage="aSAList.jsp";
+			viewpage = "aSAList.jsp";
 			break;
-//		case("/aSAListDetail.do"):
-//			viewpage="";
-//			break;
+		case ("/aSAListDetail.do"):
+			viewpage = "aSQAnswer.jsp";
+			break;
 //		case("/aSACreate.do"):
 //			viewpage="";
 //			break;
-		case("/aFList.do"):
+		case ("/aFList.do"):
 			command = new AFListCommand();
 			command.execute(request, response);
 			viewpage = "aFList.jsp";
@@ -396,19 +430,46 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "aNoticeList.jsp";
 			break;
-		case("/ncreate_view.do"):
-			viewpage="";
+		case ("/anoticeCreate_view.do"):
+			viewpage = "aNoticeCreate.jsp";
 			break;
-		case("/ncreate.do"):
-			viewpage="";
+		case ("/anoticeCreate.do"):
+			command = new ANCreateCommand();
+			command.execute(request, response);
+			viewpage = "anotice_list.do";
 			break;
-		case("/nmodify.do"):
-			viewpage="";
+		case ("/anoticeContent_view.do"):
+			command = new ANContentCommand();
+			command.execute(request, response);
+			viewpage = "aNContentView.jsp";
 			break;
-		case("/nremove.do"):
-			viewpage="";
+		case ("/anoticeModify.do"):
+			command = new ANModifyCommand();
+			command.execute(request, response);
+			viewpage = "anotice_list.do";
 			break;
-		}//admin.
+		case ("/anoticeRemove.do"):
+			command = new ANRemoveCommand();
+			command.execute(request, response);
+			viewpage = "anotice_list.do";
+			break;
+		case ("/asystemqDetail.do"):
+			command = new ASystemQDetailCommand();
+			command.execute(request, response);
+			viewpage = "aSQAnswer.jsp";
+			break;
+
+		case ("/systemQuestionRemove.do"):
+			command = new ASystemQuestionRemoveCommand();
+			command.execute(request, response);
+			viewpage = "asystemqDetail.do";
+			break;
+		case ("/aSystemQAnswerInsert.do"):
+			command = new ASystemQAnswerInsertCommand();
+			command.execute(request, response);
+			viewpage = "asystemqDetail.do";
+			break;
+		}// admin.
 
 		RequestDispatcher rd = request.getRequestDispatcher(viewpage);
 		rd.forward(request, response);

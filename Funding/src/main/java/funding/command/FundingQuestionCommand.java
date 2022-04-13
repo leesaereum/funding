@@ -20,8 +20,7 @@ public class FundingQuestionCommand implements FCommand {
 		System.out.println("커맨드입장");
 		FDaoC dao = new FDaoC();
 		dao.question_create(question_funding, id, question_content);
-		String viewpage = "fundingContent_view.do?fid="+question_funding+"/detail__tab__tab=tab-questions";
-		System.out.println(viewpage);
+		String viewpage = "fundingContent_view.do?fid="+question_funding+"&tab=3";
 		request.setAttribute("viewpage", viewpage);
 	}
 
