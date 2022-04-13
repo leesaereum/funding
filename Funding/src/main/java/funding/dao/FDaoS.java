@@ -926,5 +926,70 @@ public class FDaoS {
 		}
 		return myfq_list;
 	}
+	public FDtoFunding calfunding(String num) {
+		FDtoFunding dto = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "select funding_num, funding_title, "
+					+ "(select sum(order_price*order_count) from order1 o where o.order_funding = f.funding_num) as total"
+					+ " from funding f where funding_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, num);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				int funding_num = resultSet.getInt(1);
+				String funding_title = resultSet.getString(2);
+				int total = resultSet.getInt(3);
+				
+				dto = new FDtoFunding(funding_num, funding_title, total);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}
+	public String calinf(String num) {
+		String cal_state = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "select calculate_state"
+					+ " from calculate where funding_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, num);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				cal_state = resultSet.getString(2);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return cal_state;
+	}
 
 }

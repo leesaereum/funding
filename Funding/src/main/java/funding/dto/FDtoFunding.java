@@ -34,6 +34,14 @@ public class FDtoFunding {
 	}
 
 	
+	public FDtoFunding(int funding_num, String funding_title, int total) {
+		super();
+		this.funding_num = funding_num;
+		this.funding_title = funding_title;
+		this.total = total;
+	}
+
+
 	public FDtoFunding(int funding_num, String funding_seller, String funding_banner, String funding_title, Timestamp funding_createAt, Timestamp funding_deleteAt, Timestamp funding_openAt, Timestamp funding_closeAt, int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
 		
 		this.funding_num = funding_num;

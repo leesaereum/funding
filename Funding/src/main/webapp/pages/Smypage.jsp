@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
 								<p class="list__date">${Mfunding.funding_openAt }</p>
 								<p class="list__date">${Mfunding.funding_closeAt }</p>
 								<p class="list__title">${Mfunding.funding_state }</p>
-								<a href="${Mfunding.funding_num }">상세보기</a>
+								<a href="/Funding/movemycal.do?funding_num=${Mfunding.funding_num }">상세보기</a>
 							</li>
 						</c:forEach>
 					</ul>
