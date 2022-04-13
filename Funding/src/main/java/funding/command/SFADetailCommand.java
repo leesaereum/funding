@@ -14,11 +14,10 @@ public class SFADetailCommand implements FCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+		String question_num = request.getParameter("question_num");
 		FDaoS daoS = new FDaoS();
-		ArrayList<FDtoFundingQuestion> dtosFQ = daoS.FQuestion_list();
-		request.setAttribute("FQlist", dtosFQ);
+		FDtoFundingQuestion dtosFQ = daoS.FQuestion_list(question_num);
+		request.setAttribute("FAnswer_detail", dtosFQ);
 	}
 
 }

@@ -92,6 +92,7 @@ if (fid == null) {
 		<div class="detail__right">
 			<p class="detail__dday"></p>
 				<h1 class="detail__title">${funding.funding_title}</h1>
+			<p class="detail__funding__seller">${funding.funding_seller}</p>
 			<p class="detail__rate__txt">
 				${funding.funding_achievement}<span>%</span>
 			</p>
@@ -101,16 +102,8 @@ if (fid == null) {
 			<div class="detail__amount__box">
 					<p class="detail__amount__goal">${funding.funding_purpose}</p>
 				<p class="detail__amount__funded">
-					${funding.total }<span>원</span>
+					${funding.total }
 				</p>
-			</div>
-			<div class="detail__seller__box">
-				<div class="detail__seller__logo__box">
-					<img class="detail__seller__logo">
-				</div>
-				<div class="detail__seller__nameAndDetail">
-					<p class="detail__seller__name">${funding.funding_seller}</p>
-				</div>
 			</div>
 
 			<div class="detail__funding__form">
@@ -188,9 +181,22 @@ if (fid == null) {
 
 		}
 		
+		let tab = <%=request.getParameter("tab")%>;
+		if(tab !== null){
+			$(".detail__tab__tab").removeClass("detail__tab__selected");
+			$(".detail__tab").removeClass("selected");
+			$(".detail__tab__tab").eq(2).addClass("detail__tab__selected");
+			$(".detail__tab").eq(2).addClass("selected");
+			
+		}
+		
 		let goal = $(".detail__amount__goal").html() * 1;
 		goal = goal.toLocaleString();
 		$(".detail__amount__goal").html("목표금액 " + goal + "원");
+		
+		let funded = $(".detail__amount__funded").html() * 1;
+		funded = funded.toLocaleString();
+		$(".detail__amount__funded").html(funded+"<span>원</span>")
 		
 		let closeDay = "${funding.funding_closeAt}";
 		closeDay = closeDay.split(" ")[0];

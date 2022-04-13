@@ -93,9 +93,6 @@
 			<h1 class="notice__pageTitle">펀딩 정산 내역</h1>
 		</div>
 		<div class="notice__box">
-			<div class="notice__header">
-				<p class="notice__title">${funding.funding_title}</p>
-			</div>
 			<div class="notice__content">
 				<div class="notice__header">
 					<p class="notice__title">펀딩명</p>
@@ -103,24 +100,14 @@
 					<p class="notice__name">정산 상태</p>
 				</div>
 
-				<div id="notice__content"></div>
+				<div class="notice__header">
+					<p class="notice__title">${funding.funding_title}</p>
+					<p class="ordering__price">${funding.total }</p>
+					<p class="notice__name">${cal}</p>
+				</div>
+			</div>
+			<a href="" class="notice__toList">정산 신청</a> <a
+				href="javascript:history.back();" class="notice__toList">목록</a>
 		</div>
-		<a href="" class="notice__toList">정산 신청</a>
-		<a href="javascript:history.back();" class="notice__toList">목록</a>
-	</div>
-	<script>
-		let txt = '';
-		let priceTxt = '';
-		let dateTxt = '';
-		dateTxt = "${ordering.order_At}";
-		dateTxt = moment(dateTxt).format("YYYY-MM-DD")
-		priceTxt = "${ordering.order_price}";
-		priceTxt = (priceTxt * 1).toLocaleString();
-		txt += '<div class="notice__header"><p class="notice__title"></p>'
-		txt += '<p class="ordering__price">' + priceTxt + '원</p>'
-		txt += '<p class="notice__name">${ordering.order_count}개</p>'
-		txt += '<p class="ordering__date">' + dateTxt + '</p></div>'
-		$("#notice__content").html(txt);
-	</script>
 </body>
 </html>

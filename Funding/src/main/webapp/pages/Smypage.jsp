@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
 								<p class="list__title">${myfq.question_content }</p>
 								<p class="list__seller">${myfq.question_state }</p>
 								<p class="list__date">${myfq.question_at }</p>
-							<a href="/Funding/question_num=${myfq.question_num}">상세보기</a>
+							<a href="/Funding/sFADetail.do?question_num=${myfq.question_num}">상세보기</a>
 						</c:forEach>
 					</ul>
 					<div class="pages__box" id="pages__box__7">
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
 								<p class="list__date">${Mfunding.funding_openAt }</p>
 								<p class="list__date">${Mfunding.funding_closeAt }</p>
 								<p class="list__title">${Mfunding.funding_state }</p>
-								<a href="${Mfunding.funding_num }">상세보기</a>
+								<a href="/Funding/movemycal.do?funding_num=${Mfunding.funding_num }">상세보기</a>
 							</li>
 						</c:forEach>
 					</ul>

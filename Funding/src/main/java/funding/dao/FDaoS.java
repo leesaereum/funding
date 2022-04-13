@@ -608,18 +608,20 @@ public class FDaoS {
 	//-----------------------------------------------------------------------------------
 	
 	//funding question
-	public ArrayList<FDtoFundingQuestion> FQuestion_list(){
-		ArrayList<FDtoFundingQuestion> dtosFQ = new ArrayList<FDtoFundingQuestion>();
+	public FDtoFundingQuestion FQuestion_list(String num){
+		FDtoFundingQuestion dtosFQ = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select question_num, question_customer, question_content, question_at, question_state "
-					+ "from funding_question "
-					+ "where question_funding in (select funding_num from funding)";
+			String query = "select question_num, question_customer, question_content, question_at, question_state, "
+					+ "(select funding_title from funding f where f.funding_num = q.question_num) "
+					+ "from funding_question q "
+					+ "where question_num = ?";
 			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, num);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
@@ -628,10 +630,9 @@ public class FDaoS {
 				String question_content = resultSet.getString("question_content");
 				Timestamp question_at = resultSet.getTimestamp("question_at");
 				String question_state = resultSet.getString("question_state");
+				String question_funding_title = resultSet.getString(6);
 				
-				FDtoFundingQuestion dtoFQ = new FDtoFundingQuestion(question_num, question_customer, question_content, question_at, question_state);
-				
-				dtosFQ.add(dtoFQ);
+				dtosFQ = new FDtoFundingQuestion(question_num, question_customer, question_content, question_at, question_state, question_funding_title);
 			}
 			
 		} catch (Exception e) {
@@ -696,7 +697,7 @@ public class FDaoS {
 		System.out.println(answer);
 		try {
 			connection = dataSource.getConnection();
-			String query = "update funding_question set question_state = '답변대기' , question_answer = ? , question_answer_at = now() "
+			String query = "update funding_question set question_state = '답변완료' , question_answer = ? , question_answer_at = now() "
 					+ "where question_num = ?;";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, answer);
@@ -925,6 +926,71 @@ public class FDaoS {
 			}
 		}
 		return myfq_list;
+	}
+	public FDtoFunding calfunding(String num) {
+		FDtoFunding dto = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "select funding_num, funding_title, "
+					+ "(select sum(order_price*order_count) from order1 o where o.order_funding = f.funding_num) as total"
+					+ " from funding f where funding_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, num);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				int funding_num = resultSet.getInt(1);
+				String funding_title = resultSet.getString(2);
+				int total = resultSet.getInt(3);
+				
+				dto = new FDtoFunding(funding_num, funding_title, total);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}
+	public String calinf(String num) {
+		String cal_state = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "select calculate_state"
+					+ " from calculate where funding_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, num);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				cal_state = resultSet.getString(2);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return cal_state;
 	}
 
 }
