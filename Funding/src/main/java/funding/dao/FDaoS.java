@@ -248,8 +248,6 @@ public class FDaoS {
 
 	}
 	
-	//수정하기 -----------
-	
 
 	// calculate funding
 	public ArrayList<FDtoCalculate> list(String num, String funding_num, String id) {
