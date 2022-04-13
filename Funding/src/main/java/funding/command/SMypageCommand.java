@@ -74,6 +74,7 @@ public class SMypageCommand implements FCommand {
 //		}else {
 //			myfq = daoS.myfq(id, 1);	
 //		}
+		
 		request.setAttribute("myFundingCount", myFundingCount);
 		request.setAttribute("myLikeCount", myLikeCount);
 		request.setAttribute("mySystemQuestionCount", mySystemQuestionCount);
