@@ -66,6 +66,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		<%session.removeAttribute("loginFirst");%>;
 	}
 	
+	let message = "<%= request.getAttribute("change") %>"
+	if(message === "pw"){
+		toast("비밀번호가 변경되었습니다. 다시 로그인 해주세요");
+	}
 });
 
 //funding_num, funding_seller, funding_banner, funding_title, 
@@ -146,9 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	<jsp:include page="./components/banner.jsp" />
 	<jsp:include page="./components/categories.jsp" />
 	<div class="fundingCards" id="fundingCards"></div>
-	<div id="loadMoreBox">
-		<div class="loadMore" onclick="loadMore()">더보기</div>
-	</div>
 	<div id="toast"></div>
 </body>
 </html>

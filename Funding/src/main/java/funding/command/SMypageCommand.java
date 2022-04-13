@@ -46,7 +46,7 @@ public class SMypageCommand implements FCommand {
 		ArrayList<FDtoFunding> mylikelist = null;
 		ArrayList<FDtoSystemQuestion> myquestionlist = null;
 		ArrayList<FDtoFundingQuestion> myfundingquestionlist = null;
-		
+		ArrayList<FDtoFundingQuestion> myfq = daoS.myfq(id);
 		ArrayList<FDtoFunding> myopenlist = daoS.Mfunding_list(id);
 		
 		if(tab == 1) {
@@ -69,10 +69,16 @@ public class SMypageCommand implements FCommand {
 		}else {
 			myfundingquestionlist = dao.myfundingquestion_list(id, 1);	
 		}
+//		if(tab == 6) {
+//			myfq = daoS.myfq(id, page);
+//		}else {
+//			myfq = daoS.myfq(id, 1);	
+//		}
 		request.setAttribute("myFundingCount", myFundingCount);
 		request.setAttribute("myLikeCount", myLikeCount);
 		request.setAttribute("mySystemQuestionCount", mySystemQuestionCount);
 		request.setAttribute("myFundingQuestionCount", myFundingQuestionCount);
+		request.setAttribute("myfq", myfq);
 		
 		request.setAttribute("funding", myfundinglist);
 		request.setAttribute("like", mylikelist);

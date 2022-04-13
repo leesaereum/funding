@@ -6,6 +6,33 @@ public class FDtoFundingContent {
 	int content_funding;
 	int content_numbering;
 	String content_content;
+	
+	
+	String funding_seller;
+	
+	
+	
+	public FDtoFundingContent(int content_funding, String funding_seller, String content_content) {
+		super();
+		this.content_funding = content_funding;
+		this.funding_seller = funding_seller;
+		this.content_content = content_content;
+	}
+	
+	
+	
+	public String getFunding_seller() {
+		return funding_seller;
+	}
+
+
+
+	public void setFunding_seller(String funding_seller) {
+		this.funding_seller = funding_seller;
+	}
+
+
+
 	public int getContent_num() {
 		return content_num;
 	}
@@ -38,7 +65,9 @@ public class FDtoFundingContent {
 		this.content_numbering = content_numbering;
 		this.content_content = content_content;
 	}
-	
-	
+	public FDtoFundingContent(String content_content) {
+		super();
+		this.content_content = content_content;
+	}
 	
 }

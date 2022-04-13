@@ -188,7 +188,30 @@ document.addEventListener('DOMContentLoaded', function() {
 					</div>
 				</form>
 			</div>
-			<div class="tab__content" id="tab__6__content"></div>
+			<div class="tab__content" id="tab__6__content">
+			<div class="list__wrap">
+					<div class="list__header">
+						<h1 class="list__pageTitle">내 펀딩 목록</h1>
+					</div>
+
+					<ul class="list__box">
+						<li class="list__liner"><p class="list__title">펀딩명</p>
+							<p class="list__date">오픈일</p>
+							<p class="list__date">마감일</p>
+							<p class="list__title">상태</p>
+						</li>
+						<c:forEach items="${Mfunding}" var="Mfunding">
+							<li class="list__liner">
+								<p class="list__title">${Mfunding.funding_title }</p>
+								<p class="list__date">${Mfunding.funding_openAt }</p>
+								<p class="list__date">${Mfunding.funding_closeAt }</p>
+								<p class="list__title">${Mfunding.funding_state }</p>
+								<a href="/Funding/sMFDetail.do?funding_num=${Mfunding.funding_num}">상세보기</a>
+							</li>
+						</c:forEach>
+					</ul>
+					<div class="pages__box" id="pages__box__6"></div>
+				</div></div>
 			<div class="tab__content" id="tab__7__content">
 				<div class="list__wrap">
 					<div class="list__header">
@@ -197,21 +220,47 @@ document.addEventListener('DOMContentLoaded', function() {
 
 					<ul class="list__box">
 						<li class="list__liner"><p class="list__title">펀딩명</p>
-							<p class="list__seller">질문</p>
+							<p class="list_title">질문</p>
+							<p class="list__seller">질문 상태</p>
 							<p class="list__date">질문 생성일</p>
 						<c:forEach items="${myfq}" var="myfq">
-							<li class="list__liner"><a
-								href="/Funding/fundingContent_view.do?fid=${myfq.question_funding}"
-								class="list__title">${myfq.question_funding_title }</a>
-								<p class="list__seller">${myfq.question_content }</p>
+							<li class="list__liner">
+								<p class="list__title">${myfq.question_funding_title }</p>
+								<p class="list__title">${myfq.question_content }</p>
+								<p class="list__seller">${myfq.question_state }</p>
 								<p class="list__date">${myfq.question_at }</p>
+							<a href="/Funding/question_num=${myfq.question_num}">상세보기</a>
 						</c:forEach>
 					</ul>
-					<div class="pages__box" id="pages__box__6"></div>
+					<div class="pages__box" id="pages__box__7">
+					</div>
 				</div>
 			</div>
 			</div>
-			<div class="tab__content" id="tab__8__content"></div>
+			<div class="tab__content" id="tab__8__content">
+				<div class="list__wrap">
+					<div class="list__header">
+						<h1 class="list__pageTitle">내 펀딩 목록</h1>
+					</div>
+
+					<ul class="list__box">
+						<li class="list__liner"><p class="list__title">펀딩명</p>
+							<p class="list__date">오픈일</p>
+							<p class="list__date">마감일</p>
+							<p class="list__title">상태</p>
+						</li>
+						<c:forEach items="${Mfunding}" var="Mfunding">
+							<li class="list__liner">
+								<p class="list__title">${Mfunding.funding_title }</p>
+								<p class="list__date">${Mfunding.funding_openAt }</p>
+								<p class="list__date">${Mfunding.funding_closeAt }</p>
+								<p class="list__title">${Mfunding.funding_state }</p>
+								<a href="${Mfunding.funding_num }">상세보기</a>
+							</li>
+						</c:forEach>
+					</ul>
+					<div class="pages__box" id="pages__box__8"></div>
+				</div>
 		</div>
 	</div>
 

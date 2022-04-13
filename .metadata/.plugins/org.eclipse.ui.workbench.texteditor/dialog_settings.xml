@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="detail"/>
+		<item key="selection" value="SMy"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="smy"/>
+			<item value="mypage"/>
 			<item value="detail"/>
 			<item value="system."/>
 			<item value="sys"/>
@@ -21,8 +23,6 @@
 			<item value="myfu"/>
 			<item value="my"/>
 			<item value="SMFManageCommand"/>
-			<item value="Login"/>
-			<item value="sMypage"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

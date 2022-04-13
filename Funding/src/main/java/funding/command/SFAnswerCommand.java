@@ -1,6 +1,7 @@
 package funding.command;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,16 +18,11 @@ public class SFAnswerCommand implements FCommand {
 		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession();
-		Object num = session.getAttribute("question_num");
-		String q_num = (String)num;
-		FDaoS daoS = new FDaoS();
+		String id = (String) session.getAttribute("id");
 		
-		String answer = request.getParameter("question_answer");
-		System.out.println("answercontent" + answer);
-		//FDtoFundingQuestion dtoFA = daoS.FAnswer_detail(q_num);
-		//request.setAttribute("FAnswer_detail",dtoFA);
-		
-		daoS.FAnswer_Update(q_num, answer);
+		FDaoS dao = new FDaoS();
+		ArrayList<FDtoFundingQuestion> myfq = dao.myfq(id);
+		request.setAttribute("myfq", myfq);
 	}
 
 }

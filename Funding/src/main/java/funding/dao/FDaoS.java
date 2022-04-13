@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -13,6 +14,8 @@ import javax.sql.DataSource;
 
 import funding.dto.FDtoCalculate;
 import funding.dto.FDtoFunding;
+import funding.dto.FDtoFundingContent;
+import funding.dto.FDtoFundingOption;
 import funding.dto.FDtoFundingQuestion;
 import funding.dto.FDtoNotice;
 
@@ -245,6 +248,59 @@ public class FDaoS {
 
 	}
 	
+	//수정하기 -----------
+	
+
+	// calculate funding
+	public ArrayList<FDtoCalculate> list(String nNUM, int funding, String id) {
+		ArrayList<FDtoCalculate> list = new ArrayList<FDtoCalculate>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "select c.calculate_num, c.calculate_funding, c.calculate_seller, c.calculate_admin, "
+					+ "c.calculate_cost, c.calculate_createAt, "
+					+ "c.calculate_approveAt, c.calculate_state from calculate c , funding f "
+					+ "where f.funding_seller = ? and f.funding_num = ?"; 
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			preparedStatement.setInt(2, funding);
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				int calculate_num = resultSet.getInt(1);
+				int calculate_funding = resultSet.getInt(2);
+				String calculate_seller = resultSet.getString(3);
+				String calculate_admin = resultSet.getString(4);
+				int calculate_cost = resultSet.getInt(5);
+				Timestamp calculate_createAt = resultSet.getTimestamp(6);
+				Timestamp calculate_approveAt = resultSet.getTimestamp(7);
+				String calculate_state = resultSet.getString(8);
+
+				FDtoCalculate dto = new FDtoCalculate(calculate_num, calculate_funding, calculate_seller, calculate_admin, calculate_cost,
+									calculate_createAt, calculate_approveAt, calculate_state);
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}catch (NumberFormatException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null ) preparedStatement.close();
+				if(connection != null ) connection.close();
+				if (resultSet != null) resultSet.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
 	public void sMFCapply(int calculate_funding, String calculate_seller) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -266,146 +322,8 @@ public class FDaoS {
 			
 		}
 	}
-
-	// calculate funding
-	public ArrayList<FDtoCalculate> list() {
-		ArrayList<FDtoCalculate> dtoCalculates = new ArrayList<FDtoCalculate>();
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-
-		try {
-			connection = dataSource.getConnection();
-			String query = "select c.calcuate_funding from calculate c, admin ad, funding ";
-			preparedStatement = connection.prepareStatement(query);
-			resultSet = preparedStatement.executeQuery();
-
-			while (resultSet.next()) {
-				int calculate_funding = resultSet.getInt("calculate_funding");
-				String calculate_seller = resultSet.getString("calculate_seller");
-				String calculate_admin = resultSet.getString("calculate_admin");
-				int calculate_cost = resultSet.getInt("calculate_cost");
-				Timestamp calculate_createAt = resultSet.getTimestamp("createAt");
-				Timestamp calculate_approveAt = resultSet.getTimestamp("approveAt");
-				String calculate_state = resultSet.getString("calculate_state");
-
-				FDtoCalculate dtoCalculate = new FDtoCalculate(calculate_cost, calculate_funding, calculate_seller,
-						calculate_admin, calculate_cost, calculate_approveAt, calculate_approveAt);
-				dtoCalculates.add(dtoCalculate);
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} finally {
-			try {
-				if(preparedStatement != null ) preparedStatement.close();
-				if(connection != null ) connection.close();
-				if (resultSet != null) resultSet.close();
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return dtoCalculates;
-	}
-
-	public String calcFunding_title(String funding_title) {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-
-		String title = null;
-
-		try {
-			connection = dataSource.getConnection();
-			String query = "select funding_title from funding where funding_seller = (select "
-					+ "calculate_seller from calculate)";
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, title);
-
-			resultSet = preparedStatement.executeQuery();
-
-			if (resultSet.next()) {
-				title = resultSet.getString("funding_title");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (connection != null)
-					connection.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return funding_title;
-	}
-
-	public String calcAdmin_name(String admin_name) {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-
-		String ad_name = null;
-
-		try {
-			connection = dataSource.getConnection();
-			String query = "select admin_name from admin";
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, ad_name);
-
-			resultSet = preparedStatement.executeQuery();
-
-			if (resultSet.next()) {
-				ad_name = resultSet.getString("funding_title");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-				if (connection != null)
-					connection.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return admin_name;
-	}
 	
-	public void sMypage_count(int funding_num) {
-		
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		try {
-			connection = dataSource.getConnection();
-			String query = "select count(funding_num) from funding "
-					+"where funding_seller in (select seller_id from seller)";
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setInt(1, funding_num);
-			
-			preparedStatement.executeUpdate();
-
-		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}finally {
-			try {
-				if(preparedStatement != null) preparedStatement.close();
-				if(connection != null ) connection.close();
-			}catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	//Manage funding list
+	//Manage funding list (SMFManangeCommand)
 	public ArrayList<FDtoFunding> Mfunding_list(String id) {
 		ArrayList<FDtoFunding> list = new ArrayList<FDtoFunding>();
 		Connection connection = null;
@@ -413,7 +331,7 @@ public class FDaoS {
 		ResultSet resultset = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT funding_num, funding_title, funding_openAt, funding_closeAt FROM funding where funding_seller = ?";
+			String query = "SELECT funding_num, funding_title, funding_openAt, funding_closeAt,funding_state FROM funding where funding_seller = ?";
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
 			resultset = preparedstatement.executeQuery();
@@ -423,7 +341,8 @@ public class FDaoS {
 				String funding_title = resultset.getString(2);
 				Timestamp funding_openAt = resultset.getTimestamp(3);
 				Timestamp funding_closeAt = resultset.getTimestamp(4);
-				FDtoFunding dto = new FDtoFunding(funding_num, funding_title, funding_openAt, funding_closeAt);
+				String funding_state = resultset.getString(5);
+				FDtoFunding dto = new FDtoFunding(funding_num, funding_title, funding_openAt, funding_closeAt,funding_state);
 				list.add(dto);
 			}
 		} catch (Exception e) {
@@ -439,6 +358,8 @@ public class FDaoS {
 		}
 		return list;
 	}//Mfunding_list end
+	
+	//Detail_List (SMFDetailCommand-1page)
 	public FDtoFunding selectDetail(String num) {
 		FDtoFunding dto = null;
 		Connection connection = null;
@@ -447,9 +368,8 @@ public class FDaoS {
 		try {
 			connection = dataSource.getConnection();
 			String query = "SELECT funding_num, funding_banner, funding_title, "
-					+ "funding_openAt, funding_closeAt, funding_purpose, funding_fee, "
-					+ "(select content_content from funding_content c where c.content_funding = f.funding_num "
-					+ " From funding f where funding_num = ?";
+					+ "funding_openAt, funding_closeAt, funding_purpose, funding_fee from funding "
+					+ "where funding_num = ?";
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, num);
 			resultset = preparedstatement.executeQuery();
@@ -462,8 +382,7 @@ public class FDaoS {
 				Timestamp funding_closeAt = resultset.getTimestamp(5);
 				int funding_purpose = resultset.getInt(6);
 				int funding_fee = resultset.getInt(7);
-				String funding_content = resultset.getString(8);
-				dto = new FDtoFunding(funding_num, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_purpose, funding_fee, funding_content);
+				dto = new FDtoFunding(funding_num, funding_banner, funding_title, funding_openAt, funding_closeAt, funding_purpose, funding_fee);
 					
 			}
 		} catch (Exception e) {
@@ -479,38 +398,214 @@ public class FDaoS {
 		}
 		return dto;
 	}
-	//Mfunding_detail(modify and delete)
-	public void sMfunding_detail(String funding_num, String funding_title, String funding_openAt, String funding_closeAt,
-			int funding_purpose, int funding_hits, String funding_state, int funding_fee) {
+	
+	//selectOption list (SMFDetailCommand-2page)
+		public ArrayList<FDtoFundingOption> selectOption(String num){
+			ArrayList<FDtoFundingOption> options = new ArrayList<FDtoFundingOption>();
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			ResultSet resultset = null;
+			
+			try {
+				connection = dataSource.getConnection();
+				String query = "SELECT option_num, option_name, option_price, option_amount FROM funding_option where option_funding = ?";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, num);
+				resultset = preparedStatement.executeQuery();
+				
+				while(resultset.next()) {
+					int option_num = resultset.getInt("option_num");
+					String option_name = resultset.getString("option_name");
+					int option_price = resultset.getInt("option_price");
+					int option_amount = resultset.getInt("option_amount");
+					
+					FDtoFundingOption option =  new  FDtoFundingOption(option_num, option_name, option_price, option_amount);
+					options.add(option);
+				}
+			}catch (Exception e) {
+				// TODO: handle exception
+			}try {
+				if (connection != null) connection.close();
+				if (preparedStatement != null) preparedStatement.close();
+				if (resultset != null) resultset.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return options;
+		}//end
+	
+	//selectDetail_List(SMFDetailCommand-3page)	
+	public FDtoFundingContent selectDetail1(String num) {
+		FDtoFundingContent dto1 = null;
 		Connection connection = null;
-		PreparedStatement preparedstatement = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultset = null;
 		
 		try {
-			connection = dataSource.getConnection();
-			String query = "update funding set funding_title= ?, funding_openAt=?, "
-						+ "funding_closeAt=?, funding_purpose=?, funding_hits=?, funding_state=?, funding_fee=? "
-						+ "WHERE funding_num = ?";
-			preparedstatement = connection.prepareStatement(query);
-			preparedstatement.setString(1,funding_title);
-			preparedstatement.setString(2,funding_openAt);
-			preparedstatement.setString(3,funding_closeAt);
-			preparedstatement.setInt(4,funding_purpose);
-			preparedstatement.setInt(5,funding_hits);
-			preparedstatement.setString(6,funding_state);
-			preparedstatement.setInt(7,funding_fee);
-			preparedstatement.executeUpdate();
-			
+			connection= dataSource.getConnection();
+			String query = "select content_content from funding_content fc inner join funding f on fc.content_funding "
+					+ "and f.funding_num=? ";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, num);
+			resultset = preparedStatement.executeQuery();
+			System.out.println(resultset.next());
+			while(resultset.next()) {
+				String content_content = resultset.getString(1);
+				dto1 = new FDtoFundingContent(content_content);
+				System.out.println(content_content);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				if (connection != null) connection.close();
-				if (preparedstatement != null) preparedstatement.close();
+				if (preparedStatement != null) preparedStatement.close();
+				if (resultset != null) resultset.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-	}//Mfunding_detail end
+		return dto1;
+	}
+	
+	//Detail_List_Modify(1page)
+//	public void modifySelectDetail(String num, String banner, String title, String openAt, String closeAt, int purpose, int fee)
+	public void modifySelectDetail(String num, String banner, String title, String openAt, String closeAt, String purpose, String fee) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE funding SET funding_banner = ?, funding_title = ?, funding_openAt =?, funding_closeAt = ? , "
+							+ "funding_purpose = ?, funding_fee = ? Where funding_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, banner);
+			preparedStatement.setString(2, title);
+			preparedStatement.setString(3, openAt);
+			preparedStatement.setString(4, closeAt);
+			preparedStatement.setString(5, purpose);
+			preparedStatement.setString(6, fee);
+			preparedStatement.setString(7, num);
+			preparedStatement.executeUpdate();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+
+				if(preparedStatement!=null) preparedStatement.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}	
+
+	//Detail_List_Modify(2page)
+//	public void modifySelectDetail1(String num, String name, int price, int amount)
+	public void modifySelectDetail1(String num, String name, String price, String amount) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE funding_option SET option_ name= ?, option_price = ?, option_amount =? "
+							+ "Where option_funding = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, name);
+			preparedStatement.setInt(2, Integer.parseInt(price));
+			preparedStatement.setInt(3, Integer.parseInt(amount));
+			preparedStatement.setString(4, num);
+			preparedStatement.executeUpdate();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+
+				if(preparedStatement!=null) preparedStatement.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+//	public void modifySelectDetail2(String num, String content)
+	public void modifySelectDetail2(String num, String content) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE funding_content SET content_content= ? "
+							+"Where content_funding = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, content);
+			preparedStatement.setString(2, num);
+			preparedStatement.executeUpdate();
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+
+				if(preparedStatement!=null) preparedStatement.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	//Detail_List_Delete
+	public void deleteSelectDetail(String num) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "DELETE FROM funding WHERE funding_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, num);
+			preparedStatement.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement!=null) preparedStatement.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void deleteSelectDetail1(String num) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "DELETE FROM funding WHERE funding_num = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, num);
+			preparedStatement.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement!=null) preparedStatement.close();
+				if(connection!=null) connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	//-----------------------------------------------------------------------------------
 	
 	//funding question
 	public ArrayList<FDtoFundingQuestion> FQuestion_list(){
@@ -792,4 +887,44 @@ public class FDaoS {
 			}
 		}
 	}
+	public ArrayList<FDtoFundingQuestion> myfq(String id){
+		ArrayList<FDtoFundingQuestion> myfq_list = new ArrayList<FDtoFundingQuestion>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "select (select funding_title from funding f where f.funding_num = q.question_funding), "
+					+ "question_num, question_funding, question_content, question_at, question_state"
+					+ " from funding_question q where question_seller = ? order by question_funding";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				String question_funding_title = resultSet.getString(1);
+				int question_num = resultSet.getInt(2);
+				int question_funding = resultSet.getInt(3);
+				String question_content = resultSet.getString(4);
+				Timestamp question_at = resultSet.getTimestamp(5);
+				String question_state = resultSet.getString(6);
+				FDtoFundingQuestion dto = new FDtoFundingQuestion(question_num, question_funding, question_content, question_funding_title, question_at, question_state);
+				myfq_list.add(dto);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null ) preparedStatement.close();
+				if(connection != null ) connection.close();
+				if (resultSet != null) resultSet.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return myfq_list;
+	}
+
 }

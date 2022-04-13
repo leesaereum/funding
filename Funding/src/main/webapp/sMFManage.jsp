@@ -51,6 +51,11 @@
 
 
 </style>
+<script type="text/javascript">
+	//function del() {
+		
+	//}
+</script>
 <body>
 <jsp:include page="/components/header.jsp" />
 	<div class="notice__wrap">
@@ -66,6 +71,8 @@
 					<a href="/Funding/sMFDetail.do?funding_num=${Mfunding.funding_num}"
 					class="sFmanage__title">${Mfunding.funding_title }</a>
 					<p class="sFmanage__date">${Mfunding.funding_openAt }</p>
+					<!--<p><input type="button" value="삭제" onclick="del()"></p>-->
+					<a href = "sMFDDelete.do?funding_num=${Mfunding.funding_num }">X</a>
 				</li>
 			</c:forEach>
 		</ul>

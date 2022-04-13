@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import funding.dao.FDaoS;
 import funding.dto.FDtoFunding;
+import funding.dto.FDtoFundingContent;
+import funding.dto.FDtoFundingOption;
 
 public class SMFDetailCommand implements FCommand {
 
@@ -18,17 +21,16 @@ public class SMFDetailCommand implements FCommand {
 		String funding_num =request.getParameter("funding_num");
 		FDaoS daoS = new FDaoS();
 		FDtoFunding dto = daoS.selectDetail(funding_num);
-		//ArrayList<> options = daoS.selectOption(funding_num);
 		request.setAttribute("Mfunding", dto);
 		
-		//daoS.sMfunding_detail(funding_num, funding_title, funding_openAt, funding_closeAt,
-				//	funding_purpose, funding_fee);
-	
-		//String funding_title= request.getParameter("funding_title"); 
-		//String funding_openAt= request.getParameter("funding_openAt");
-		//String funding_closeAt= request.getParameter("funding_closeAt"); 
-		//int	funding_purpose=Integer.parseInt(request.getParameter("funding_purpose")); 
-		//int funding_fee= Integer.parseInt(request.getParameter("funding_fee"));
+		ArrayList<FDtoFundingOption> options = daoS.selectOption(funding_num);
+		//System.out.println(options.get(0).getOption_name());
+		request.setAttribute("Mfunding_options", options);
+		
+		
+		FDtoFundingContent dto1 = daoS.selectDetail1(funding_num);
+		request.setAttribute("Mfunding1", dto1);
+		
 	}
 
 }
