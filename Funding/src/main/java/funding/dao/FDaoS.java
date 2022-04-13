@@ -794,5 +794,42 @@ public class FDaoS {
 	}
 	public ArrayList<FDtoFundingQuestion> myfq(String id){
 		ArrayList<FDtoFundingQuestion> list = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "select (select funding_title from funding f where f.funding_num = q.question_funding), "
+					+ "question_num, question_funding, question_content, question_at, question_state"
+					+ " from funding_question q where question_seller = ? order by question_funding";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, id);
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				String question_funding_title = resultSet.getString(1);
+				int question_num = resultSet.getInt(2);
+				int question_funding = resultSet.getInt(3);
+				String question_content = resultSet.getString(4);
+				Timestamp question_at = resultSet.getTimestamp(5);
+				String question_state = resultSet.getString(6);
+				
+				FDtoFundingQuestion dto = new FDtoFundingQuestion(question_num, question_funding, question_content, question_funding_title, question_at, question_state);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null ) preparedStatement.close();
+				if(connection != null ) connection.close();
+				if (resultSet != null) resultSet.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
 	}
 }

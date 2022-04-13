@@ -197,14 +197,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 					<ul class="list__box">
 						<li class="list__liner"><p class="list__title">펀딩명</p>
-							<p class="list__seller">질문</p>
+							<p class="list_title">질문</p>
+							<p class="list__seller">질문 상태</p>
 							<p class="list__date">질문 생성일</p>
 						<c:forEach items="${myfq}" var="myfq">
-							<li class="list__liner"><a
-								href="/Funding/fundingContent_view.do?fid=${myfq.question_funding}"
-								class="list__title">${myfq.question_funding_title }</a>
-								<p class="list__seller">${myfq.question_content }</p>
+							<li class="list__liner">
+								<p class="list__title">${myfq.question_funding_title }</p>
+								<p class="list__title">${myfq.question_content }</p>
+								<p class="list__seller">${myfq.question_state }</p>
 								<p class="list__date">${myfq.question_at }</p>
+							<a href="/Funding/funding_qeustion_detail?question_num=${myfq.question_num}">상세보기</a>
 						</c:forEach>
 					</ul>
 					<div class="pages__box" id="pages__box__6"></div>

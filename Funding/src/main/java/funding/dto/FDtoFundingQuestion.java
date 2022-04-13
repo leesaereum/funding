@@ -142,6 +142,17 @@ public class FDtoFundingQuestion {
 		this.question_funding_title = question_funding_title;
 	}
 
+	public FDtoFundingQuestion(int question_num, int question_funding, String question_content,
+			String question_funding_title, Timestamp question_at, String question_state) {
+		super();
+		this.question_num = question_num;
+		this.question_funding = question_funding;
+		this.question_content = question_content;
+		this.question_funding_title = question_funding_title;
+		this.question_at = question_at;
+		this.question_state = question_state;
+	}
+
 	
 
 
