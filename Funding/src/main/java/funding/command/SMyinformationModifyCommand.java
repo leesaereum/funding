@@ -17,11 +17,13 @@ public class SMyinformationModifyCommand implements FCommand {
 
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		String pw = request.getParameter("pw1");
+		String pw = request.getParameter("customer_pw");
 		String phone = request.getParameter("phone");
 		
 		FDaoS dao = new FDaoS();
+		FDaoC daoc = new FDaoC();
 		dao.update_infor(id, pw, phone);
+		daoc.update_infor(id, pw, phone);
 	}
 
 }
