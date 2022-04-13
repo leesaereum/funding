@@ -101,24 +101,16 @@
 		<div class="question__box">
 			<div class="question__header">
 				<p class="question__num">${FAnswer_detail.question_num }</p>
-				<p class="question__title">${FAnswer_detail.question_title }</p>
+				<p class="question__title">${FAnswer_detail.question_funding_title }</p>
 				<p class="question__name">${FAnswer_detail.question_customer }</p>
 				<p class="question__date"></p>
 			</div>
-			<div class="question__content">${FAnswer_detail.question_content }
-			<a href="/Funding/sFAnswer_detail.jsp?question_num=${FAnswer_detail.question_num }">답변하기</a>
-			</div>
+			<div class="question__content">${FAnswer_detail.question_content }</div>
 			
 		</div>
-		<div class="question__box">
-			<div class="question__header">
-				<p class="question__name">판매자</p>
-				<p class="answer__date">${FAnswer_detail.question_answer_at }</p>
-			</div>
-			<div class="question__content" name="FAnswer_update">${FAnswer_detail.question_answer }</div>
-			
-		</div>
-		<a href="/Funding/sFADetail.do?question_num=${FAnswer_detail.question_num}" class="question__toList">목록</a>
+			<div><a class="question__toList" href="/Funding/sFAnswer_detail.jsp?question_num=${FAnswer_detail.question_num }">답변하기</a></div>
+
+		<a href="javascript:history.back();" class="question__toList">목록</a>
 	</div>
 	</form>
 </body>

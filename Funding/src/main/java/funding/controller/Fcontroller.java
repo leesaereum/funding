@@ -177,9 +177,6 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "fundingOrder.jsp";
 			break;
-//		case ("/fundingaddress.do"):
-//			viewpage = "";
-//			break;
 		case ("/fundingQuestion.do"):
 			command = new FundingQuestionCommand();
 			command.execute(request, response);
@@ -303,15 +300,15 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "sMFCApply.jsp";
 			break;
-		case ("/sFADetail.do"):
+		case ("/sFADetail.do")://디테일입장
 			command = new SFADetailCommand();
 			command.execute(request, response);
-			viewpage = "sFADetail.jsp";
+			viewpage = "sFAnswer.jsp";
 			break;
-		case ("/sFAnswer.do"):
+		case ("/sFAnswer.do")://등록하기
 			command = new SFAnswerCommand();
 			command.execute(request, response);
-			viewpage = "sFAnswer.jsp";
+			viewpage =(String)request.getAttribute("viewpage");
 			break;
 //		case ("/sDManage.do"):
 //			viewpage = "";

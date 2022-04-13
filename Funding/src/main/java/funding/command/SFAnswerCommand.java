@@ -16,13 +16,14 @@ public class SFAnswerCommand implements FCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		String answer_content = request.getParameter("answer_content");
+		String question_num = request.getParameter("question_num");
 		
 		FDaoS dao = new FDaoS();
-		ArrayList<FDtoFundingQuestion> myfq = dao.myfq(id);
-		request.setAttribute("myfq", myfq);
+		dao.FAnswer_Update(question_num, answer_content);
+		
+		String viewpage = "sFADetail.do?question_num="+question_num;
+		request.setAttribute("viewpage", viewpage);
 	}
 
 }
