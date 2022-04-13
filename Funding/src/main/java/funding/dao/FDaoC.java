@@ -933,7 +933,7 @@ public class FDaoC {
 					+ "(select sum(order_price*order_count) from order1 o where o.order_funding = f.funding_num group by order_funding) as total, "
 					+ "(select count(distinct order_customer) from order1 o where o.order_funding = f.funding_num) as count,"
 					+ "funding_num,  "
-					+ "(select seller_profile from seller s where f.funding_seller = s.seller_id) as seller_profile"
+					+ "(select seller_profile from seller s where f.funding_seller = s.seller_id) as seller_profile "
 					+ "from funding f where funding_num = ? ;";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, fnum);
