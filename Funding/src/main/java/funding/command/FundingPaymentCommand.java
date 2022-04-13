@@ -38,7 +38,6 @@ public class FundingPaymentCommand implements FCommand {
 			Integer order_option1 = Integer.parseInt(request.getParameter("order_option1"));
 			Integer order_price1 = Integer.parseInt(request.getParameter("order_price1"));
 			Integer order_count1 = Integer.parseInt(request.getParameter("order_count1"));
-			Integer order_address = Integer.parseInt(request.getParameter("order_address1"));
 			dao.OrderInsert(order_customer, order_funding, order_option1, order_price1, order_count1);
 			
 		}
