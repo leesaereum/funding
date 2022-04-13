@@ -18,6 +18,10 @@ public class FDtoSystemQuestion {
 	public FDtoSystemQuestion() {
 	}
 
+	
+	
+	
+	
 	public FDtoSystemQuestion(int question_num, String question_title, Timestamp question_at, String question_state, int countQuestion) {
 		super();
 		this.question_num = question_num;

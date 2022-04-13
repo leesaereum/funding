@@ -297,7 +297,7 @@ public class FDaoA {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT funding_num, funding_seller, funding_title, funding_state FROM funding WHERE funding_state NOT IN ('진행')";
+			String query = "SELECT funding_num, funding_seller, funding_title, funding_state FROM funding, seller WHERE funding_seller = seller_id and seller_state = '승인' and funding_state NOT IN ('진행')";
 
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
