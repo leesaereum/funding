@@ -252,7 +252,7 @@ public class FDaoS {
 	
 
 	// calculate funding
-	public ArrayList<FDtoCalculate> list(String nNUM, int funding, String id) {
+	public ArrayList<FDtoCalculate> list(String num, String funding_num, String id) {
 		ArrayList<FDtoCalculate> list = new ArrayList<FDtoCalculate>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -266,7 +266,7 @@ public class FDaoS {
 					+ "where f.funding_seller = ? and f.funding_num = ?"; 
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, id);
-			preparedStatement.setInt(2, funding);
+			preparedStatement.setString(2, funding_num);
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
@@ -301,7 +301,7 @@ public class FDaoS {
 		return list;
 	}
 	
-	public void sMFCapply(int calculate_funding, String calculate_seller) {
+	public void sMFCapply(String funding_num, String seller) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
@@ -314,8 +314,8 @@ public class FDaoS {
 					+ "where o.order_funding = calculate.calculate_funding group by o.order_funding)";
 			preparedStatement = connection.prepareStatement(query);
 		
-			preparedStatement.setInt(1, calculate_funding);
-			preparedStatement.setString(2, calculate_seller);
+			preparedStatement.setInt(1, Integer.parseInt(funding_num));
+			preparedStatement.setString(2, seller);
 
 			preparedStatement.executeUpdate();
 		}catch(Exception e) {

@@ -17,6 +17,7 @@ public class SMFCApplyCommand implements FCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String funding_num = request.getParameter("funding_num");
+		String funding_seller = request.getParameter(funding_num);
 		
 		FDaoS daoS = new FDaoS();
 		FDtoFunding dto = daoS.calfunding(funding_num);
@@ -24,6 +25,12 @@ public class SMFCApplyCommand implements FCommand {
 		request.setAttribute("funding", dto);
 		request.setAttribute("cal", result);
 		
+		String num = request.getParameter("calculate_num");
+		String seller =request.getParameter("funding_seller");
+		System.out.println("seller" + seller);
+		ArrayList<FDtoCalculate> list = daoS.list(num, funding_num, seller);
+		request.setAttribute("funding", list);
+		daoS.sMFCapply(funding_num,seller);
 		
 		
 	}

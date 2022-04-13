@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Open 펀딩 정산 신청페이지</title>
+<title>펀딩 정산 신청페이지</title>
 <link rel="stylesheet" href="/Funding/styles/init.css">
 <link rel="stylesheet" href="/Funding/styles/base.css">
 </head>
@@ -114,8 +114,8 @@ text-align: center;
 			<c:forEach items="${list }" var="list">
 				<li class="sMFCApply__liner">
 				
-				<p class="sMFCApply__seller">${list.calculate_seller }</p>
-				<p class="sMFCApply__admin">${list.calculate_admin }</p>
+				<p class="sMFCApply__seller">${list.funding_seller }</p>
+				<p class="sMFCApply__admin">${list.funding_admin }</p>
 				<p class="sMFCApply__cost">${list.calculate_cost }</p>
 				<p class="sMFCApply__date">${list.calculate_createAt }</p>
 				<p class="sMFCApply__date">${list.calculate_approveAt }</p>
@@ -123,6 +123,7 @@ text-align: center;
 				</li>
 			</c:forEach>
 		</ul>
+			<a href="/Funding/sMFCApply.do?funding_num=${list.funding_num}" class="notice__toList">신청하기</a>
 	</div>
 </body>
 </html>

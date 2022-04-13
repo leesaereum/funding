@@ -313,9 +313,9 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "sFAnswer.jsp";
 			break;
-		case ("/sDManage.do"):
-			viewpage = "";
-			break;
+//		case ("/sDManage.do"):
+//			viewpage = "";
+//			break;
 		case ("/Funding/smyinformation_modify.do"):
 			command = new SMyinformationModifyCommand();
 			command.execute(request, response);
