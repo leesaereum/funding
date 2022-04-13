@@ -621,44 +621,6 @@ public class FDaoS {
 			}
 		}
 	}
-	
-	public ArrayList<FDtoFundingReview> FReview_list(){
-		ArrayList<FDtoFundingReview> dtosFR = new ArrayList<FDtoFundingReview>();
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultset = null;
-		
-		try {
-			connection = dataSource.getConnection();
-			String query = "select review_num, review_customer, review_title, review_content, "
-					+ "review_at, review_rate "
-					+ "from funding_review r , funding_question q "
-					+ "where q.question_funding = r.review_funding";
-			preparedStatement = connection.prepareStatement(query);
-			resultset = preparedStatement.executeQuery();
-			
-			while(resultset.next()) {
-				int review_num = resultset.getInt("review_num"); //1234로 써도 되고, Column 이름으로 써도 됨!
-				String review_customer = resultset.getString("review_customer");
-				int review_funding = resultset.getInt("review_funding");
-				String review_title = resultset.getString("review_title");
-				String review_content = resultset.getString("review_content");
-				Timestamp review_at = resultset.getTimestamp("review_at");
-				int review_rate = resultset.getInt("review_rate");
-				System.out.println(review_num);
-				
-				FDtoFundingReview dtoFR = new FDtoFundingReview(review_num, review_customer
-											, review_funding, review_title, review_content, review_at, review_rate);
-				
-				dtosFR.add(dtoFR);
-			}
-		}catch (Exception e) {
-			// TODO: handle exception
-		}
-		return dtosFR;
-	}
-	//수정하기 위에
-	//--------------------------------------------------------------------------------
 
 	public void fundingDataInsert(String funding_seller, String funding_banner, String funding_title,
 			Date funding_openAt, Date funding_closeAt, int funding_purpose, int funding_fee) {
@@ -807,5 +769,31 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
+	}
+	public void update_infor(String id, String pw, String phone) {
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		try {
+			connection = dataSource.getConnection();
+			String query = "update seller set seller_pw = ?, seller_phone = ? where seller_id = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, pw);
+			preparedstatement.setString(2, phone);
+			preparedstatement.setString(3, id);
+			preparedstatement.executeUpdate();
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) connection.close();
+				if (preparedstatement != null) preparedstatement.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	public ArrayList<FDtoFundingQuestion> myfq(String id){
+		ArrayList<FDtoFundingQuestion> list = null;
 	}
 }
