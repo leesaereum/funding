@@ -888,7 +888,7 @@ public class FDaoS {
 		}
 	}
 	public ArrayList<FDtoFundingQuestion> myfq(String id){
-		ArrayList<FDtoFundingQuestion> list = null;
+		ArrayList<FDtoFundingQuestion> myfq_list = new ArrayList<FDtoFundingQuestion>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -909,9 +909,8 @@ public class FDaoS {
 				String question_content = resultSet.getString(4);
 				Timestamp question_at = resultSet.getTimestamp(5);
 				String question_state = resultSet.getString(6);
-				
 				FDtoFundingQuestion dto = new FDtoFundingQuestion(question_num, question_funding, question_content, question_funding_title, question_at, question_state);
-				list.add(dto);
+				myfq_list.add(dto);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -925,7 +924,7 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
-		return list;
+		return myfq_list;
 	}
 
 }

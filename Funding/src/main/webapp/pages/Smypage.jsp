@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			<div class="tab__content" id="tab__6__content">
 			<div class="list__wrap">
 					<div class="list__header">
-						<h1 class="list__pageTitle">OPEN 펀딩 목록</h1>
+						<h1 class="list__pageTitle">내 펀딩 목록</h1>
 					</div>
 
 					<ul class="list__box">
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			<div class="tab__content" id="tab__8__content">
 				<div class="list__wrap">
 					<div class="list__header">
-						<h1 class="list__pageTitle">OPEN 펀딩 목록</h1>
+						<h1 class="list__pageTitle">내 펀딩 목록</h1>
 					</div>
 
 					<ul class="list__box">
