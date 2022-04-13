@@ -83,7 +83,7 @@ width: 300px;
 text-align: center;
 }
 .sMFCApply__seller{
-	width: calc(100% - 600px);
+	width: calc(100% - 750px);
 	text-align: center;
 }
 </style>
@@ -108,7 +108,9 @@ text-align: center;
 				<p class="sMFCApply__seller">판매자ID</p>
 				<p class="sMFCApply__admin">관리자ID</p>
 				<p class="sMFCApply__cost">정산금액</p>
-				<p class="sMFCApply__date">펀딩오픈일</p></li>
+				<p class="sMFCApply__date">펀딩오픈일</p>
+				<p class="sMFCApply__date">펀딩승인일</p>
+				<p class="sMFCApply__state">정산상태</p></li>
 			<c:forEach items="${list }" var="list">
 				<li class="sMFCApply__liner">
 				
