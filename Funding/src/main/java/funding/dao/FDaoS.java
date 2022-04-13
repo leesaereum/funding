@@ -413,7 +413,7 @@ public class FDaoS {
 		ResultSet resultset = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT funding_num, funding_title, funding_openAt, funding_closeAt FROM funding where funding_seller = ?";
+			String query = "SELECT funding_num, funding_title, funding_openAt, funding_closeAt,funding_state FROM funding where funding_seller = ?";
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
 			resultset = preparedstatement.executeQuery();
@@ -423,7 +423,8 @@ public class FDaoS {
 				String funding_title = resultset.getString(2);
 				Timestamp funding_openAt = resultset.getTimestamp(3);
 				Timestamp funding_closeAt = resultset.getTimestamp(4);
-				FDtoFunding dto = new FDtoFunding(funding_num, funding_title, funding_openAt, funding_closeAt);
+				String funding_state = resultset.getString(5);
+				FDtoFunding dto = new FDtoFunding(funding_num, funding_title, funding_openAt, funding_closeAt,funding_state);
 				list.add(dto);
 			}
 		} catch (Exception e) {

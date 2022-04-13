@@ -245,12 +245,13 @@ public class FDtoFunding {
 	}
 
 	public FDtoFunding(int funding_num, String funding_title,
-			Timestamp funding_openAt,Timestamp funding_closeAt) {
+			Timestamp funding_openAt,Timestamp funding_closeAt, String funding_state) {
 		super();
 		this.funding_num = funding_num;
 		this.funding_title = funding_title;
 		this.funding_openAt = funding_openAt;
 		this.funding_closeAt = funding_closeAt;
+		this.funding_state = funding_state;
 	}
 	public int getOrder_num() {
 		return order_num;
@@ -326,9 +327,6 @@ public class FDtoFunding {
 		this.funding_fee = funding_fee;
 		this.content_content = content_content;
 	}
-
-
-	
 	
 }
 
