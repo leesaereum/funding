@@ -248,7 +248,7 @@ public class FDaoS {
 
 	}
 	
-
+	//--------------------------------------정산하기---------------------------------------------
 	// calculate funding
 	public ArrayList<FDtoCalculate> list(String num, String funding_num, String id) {
 		ArrayList<FDtoCalculate> list = new ArrayList<FDtoCalculate>();
@@ -276,6 +276,15 @@ public class FDaoS {
 				Timestamp calculate_createAt = resultSet.getTimestamp(6);
 				Timestamp calculate_approveAt = resultSet.getTimestamp(7);
 				String calculate_state = resultSet.getString(8);
+				
+				System.out.println(calculate_num);
+				System.out.println(calculate_funding);
+				System.out.println(calculate_seller);
+				System.out.println(calculate_admin);
+				System.out.println(calculate_cost);
+				System.out.println(calculate_createAt);
+				System.out.println(calculate_approveAt);
+				System.out.println(calculate_state);
 
 				FDtoCalculate dto = new FDtoCalculate(calculate_num, calculate_funding, calculate_seller, calculate_admin, calculate_cost,
 									calculate_createAt, calculate_approveAt, calculate_state);
