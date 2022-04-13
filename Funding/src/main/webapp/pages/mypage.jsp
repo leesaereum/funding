@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			</div>
 			<div class="tab__content" id="tab__5__content">
 				<h2 class="my__title">개인정보 관리</h2>
-				<form name="form" action="/myinformation_modify.do">
+				<form name="form" method="post" action="/Funding/myinformation_modify.do">
 					<div class="my__formzone">
 						<div class="my__liner">
 							<p class="my__form__subtitle">변경할 비밀번호</p>
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						</div>
 						<div class="my__liner">
 							<p class="my__form__subtitle">전화번호</p>
-							<input class="my__form__input" type="password" id="phone"
+							<input class="my__form__input" id="phone"
 								placeholder="ex)010-0000-0000" name="phone">
 						</div>
 						<div class="my__form__submit" onclick="checkMyForm()">변경하기</div>
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	<script>
 		function checkMyForm() {
 			let form = document.form;
-			console.log(form)
+			form.submit();
 		}
 		
 		function leave(){

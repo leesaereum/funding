@@ -16,7 +16,7 @@ public class MyinformationModifyCommand implements FCommand {
 
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		String pw = request.getParameter("pw1");
+		String pw = request.getParameter("customer_pw");
 		String phone = request.getParameter("phone");
 		
 		FDaoC dao = new FDaoC();

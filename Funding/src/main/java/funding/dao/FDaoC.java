@@ -664,7 +664,7 @@ public class FDaoC {
 			int offs = (page - 1) * 10;
 			String query = "SELECT question_customer, (select funding_title from funding f where f.funding_num = q.question_funding),"
 					+ " question_content, question_at, question_state, question_answer, question_answer_at, question_funding "
-					+ " FROM funding_question q where question_customer = ? order by question_at desc limit 10 ofset "+offs;
+					+ " FROM funding_question q where question_customer = ? order by question_at desc limit 10 offset "+offs;
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
 			resultset = preparedstatement.executeQuery();
@@ -1391,7 +1391,7 @@ public void unlike(String like_customer, int like_funding) {
 		PreparedStatement preparedstatement = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "update customer set customer_pw = ?, customer_phone = ? where custeomr_id = ?";
+			String query = "update customer set customer_pw = ?, customer_phone = ? where customer_id = ?";
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, pw);
 			preparedstatement.setString(2, phone);

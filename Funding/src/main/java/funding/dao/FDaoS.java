@@ -14,7 +14,6 @@ import javax.sql.DataSource;
 import funding.dto.FDtoCalculate;
 import funding.dto.FDtoFunding;
 import funding.dto.FDtoFundingQuestion;
-import funding.dto.FDtoFundingReview;
 import funding.dto.FDtoNotice;
 
 public class FDaoS {
@@ -792,8 +791,5 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
-	}
-	public ArrayList<FDtoFundingQuestion> myfq(String id){
-		ArrayList<FDtoFundingQuestion> list = null;
 	}
 }

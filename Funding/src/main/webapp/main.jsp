@@ -66,6 +66,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		<%session.removeAttribute("loginFirst");%>;
 	}
 	
+	let message = "<%= request.getAttribute("change") %>"
+	if(message === "pw"){
+		toast("비밀번호가 변경되었습니다. 다시 로그인 해주세요");
+	}
 });
 
 //funding_num, funding_seller, funding_banner, funding_title, 
