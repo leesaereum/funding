@@ -320,6 +320,11 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "sMypage.do";
 			break;
+		case ("/movemycal.do"):
+			command = new SMFCApplyCommand();
+			command.execute(request, response);
+			viewpage = "/pages/mycal.jsp";
+			break;
 		}// seller
 
 		// admin용 switch
