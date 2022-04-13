@@ -181,6 +181,15 @@ if (fid == null) {
 
 		}
 		
+		let tab = <%=request.getParameter("tab")%>;
+		if(tab !== null){
+			$(".detail__tab__tab").removeClass("detail__tab__selected");
+			$(".detail__tab").removeClass("selected");
+			$(".detail__tab__tab").eq(2).addClass("detail__tab__selected");
+			$(".detail__tab").eq(2).addClass("selected");
+			
+		}
+		
 		let goal = $(".detail__amount__goal").html() * 1;
 		goal = goal.toLocaleString();
 		$(".detail__amount__goal").html("목표금액 " + goal + "원");
