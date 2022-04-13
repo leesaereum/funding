@@ -887,7 +887,6 @@ public class FDaoS {
 			}
 		}
 	}
-<<<<<<< HEAD
 	public ArrayList<FDtoFundingQuestion> myfq(String id){
 		ArrayList<FDtoFundingQuestion> list = null;
 		Connection connection = null;
@@ -928,6 +927,5 @@ public class FDaoS {
 		}
 		return list;
 	}
-=======
->>>>>>> newdong
+
 }

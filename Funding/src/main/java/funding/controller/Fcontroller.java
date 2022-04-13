@@ -312,7 +312,6 @@ public class Fcontroller extends HttpServlet {
 			command.execute(request, response);
 			viewpage = "sFAnswer.jsp";
 			break;
-<<<<<<< HEAD
 		case ("/sDManage.do"):
 			viewpage = "";
 			break;
@@ -336,9 +335,6 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "aLogin.jsp";
 			break;
 		case ("/aCList.do"):
-=======
-		case("/aCList.do"):
->>>>>>> yejin
 			command = new ACListCommand();
 			command.execute(request, response);
 			viewpage = "aCList.jsp";
