@@ -237,17 +237,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	if(tab === 1){
 		for (var i = 1; i <= myFundingpages; i++) {
 			if(i === currentPage){
-				myFundingpageTxt += '<a class="selected" href="/Funding/mypage.do?tab='+tab+'&page='+i+'">'+i+'</a>'
+				myFundingpageTxt += '<a class="selected" href="/Funding/sMypage.do?tab='+tab+'&page='+i+'">'+i+'</a>'
 			}else{
-				myFundingpageTxt += '<a href="/Funding/mypage.do?tab='+tab+'&page='+i+'">'+i+'</a>'
+				myFundingpageTxt += '<a href="/Funding/sMypage.do?tab='+tab+'&page='+i+'">'+i+'</a>'
 			}
 		}
 	}else{
 		for (var i = 1; i <= myFundingpages; i++) {
 			if(i === 1){
-				myFundingpageTxt += '<a class="selected" href="/Funding/mypage.do?tab=1&page='+i+'">'+i+'</a>'
+				myFundingpageTxt += '<a class="selected" href="/Funding/sMypage.do?tab=1&page='+i+'">'+i+'</a>'
 			}else{
-				myFundingpageTxt += '<a href="/Funding/mypage.do?tab=1&page='+i+'">'+i+'</a>'
+				myFundingpageTxt += '<a href="/Funding/sMypage.do?tab=1&page='+i+'">'+i+'</a>'
 			}
 		}
 	}
@@ -260,40 +260,41 @@ document.addEventListener('DOMContentLoaded', function() {
 	if(tab === 2){
 		for (var i = 1; i <= myLikepages; i++) {
 			if(i === currentPage){
-				myLikepagesTxt += '<a class="selected" href="/Funding/mypage.do?tab=2&page='+i+'">'+i+'</a>'
+				myLikepagesTxt += '<a class="selected" href="/Funding/sMypage.do?tab=2&page='+i+'">'+i+'</a>'
 			}else{
-				myLikepagesTxt += '<a href="/Funding/mypage.do?tab=2&page='+i+'">'+i+'</a>'
+				myLikepagesTxt += '<a href="/Funding/sMypage.do?tab=2&page='+i+'">'+i+'</a>'
 			}
 		}
 	}else{
 		for (var i = 1; i <= myLikepages; i++) {
 			if(i === 1){
-				myLikepagesTxt += '<a class="selected" href="/Funding/mypage.do?tab=2&page='+i+'">'+i+'</a>'
+				myLikepagesTxt += '<a class="selected" href="/Funding/sMypage.do?tab=2&page='+i+'">'+i+'</a>'
 			}else{
-				myLikepagesTxt += '<a href="/Funding/mypage.do?tab=2&page='+i+'">'+i+'</a>'
+				myLikepagesTxt += '<a href="/Funding/sMypage.do?tab=2&page='+i+'">'+i+'</a>'
 			}
 		}
 	}
 	
 	
 	let mySystemQuestionCount = ${mySystemQuestionCount}
+	console.log(mySystemQuestionCount)
 	let mySQpages = Math.floor((mySystemQuestionCount - 1) / 10) + 1;
 	let mySQpagesTxt = "";
 	
 	if(tab === 3){
 		for (var i = 1; i <= mySQpages; i++) {
 			if(i === currentPage){
-				mySQpagesTxt += '<a class="selected" href="/Funding/mypage.do?tab=2&page='+i+'">'+i+'</a>'
+				mySQpagesTxt += '<a class="selected" href="/Funding/sMypage.do?tab=3&page='+i+'">'+i+'</a>'
 			}else{
-				mySQpagesTxt += '<a href="/Funding/mypage.do?tab=2&page='+i+'">'+i+'</a>'
+				mySQpagesTxt += '<a href="/Funding/sMypage.do?tab=3&page='+i+'">'+i+'</a>'
 			}
 		}
 	}else{
 		for (var i = 1; i <= mySQpages; i++) {
 			if(i === 1){
-				mySQpagesTxt += '<a class="selected" href="/Funding/mypage.do?tab=3&page='+i+'">'+i+'</a>'
+				mySQpagesTxt += '<a class="selected" href="/Funding/sMypage.do?tab=3&page='+i+'">'+i+'</a>'
 			}else{
-				mySQpagesTxt += '<a href="/Funding/mypage.do?tab=3&page='+i+'">'+i+'</a>'
+				mySQpagesTxt += '<a href="/Funding/sMypage.do?tab=3&page='+i+'">'+i+'</a>'
 			}
 		}
 	}
@@ -307,17 +308,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	if(tab === 4){
 		for (var i = 1; i <= myFQpages; i++) {
 			if(i === currentPage){
-				myFQpagesTxt += '<a class="selected" href="/Funding/mypage.do?tab=4&page='+i+'">'+i+'</a>'
+				myFQpagesTxt += '<a class="selected" href="/Funding/sMypage.do?tab=4&page='+i+'">'+i+'</a>'
 			}else{
-				myFQpagesTxt += '<a href="/Funding/mypage.do?tab=2&page='+i+'">'+i+'</a>'
+				myFQpagesTxt += '<a href="/Funding/sMypage.do?tab=4&page='+i+'">'+i+'</a>'
 			}
 		}
 	}else{
 		for (var i = 1; i <= myFQpages; i++) {
 			if(i === 1){
-				myFQpagesTxt += '<a class="selected" href="/Funding/mypage.do?tab=4&page='+i+'">'+i+'</a>'
+				myFQpagesTxt += '<a class="selected" href="/Funding/sMypage.do?tab=4&page='+i+'">'+i+'</a>'
 			}else{
-				myFQpagesTxt += '<a href="/Funding/mypage.do?tab=2&page='+i+'">'+i+'</a>'
+				myFQpagesTxt += '<a href="/Funding/sMypage.do?tab=4&page='+i+'">'+i+'</a>'
 			}
 		}
 	}

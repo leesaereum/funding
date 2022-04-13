@@ -35,7 +35,15 @@ public class FDaoC {
 		PreparedStatement preparedstatement = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "DELETE FROM customer WHERE customer_id = ?";
+			
+			String query = "DELETE FROM address WHERE address_customer = ?";
+			preparedstatement = connection.prepareStatement(query);
+			preparedstatement.setString(1, id);
+			preparedstatement.executeUpdate();
+			
+			if (preparedstatement != null) preparedstatement.close();
+			
+			query = "DELETE FROM customer WHERE customer_id = ?";
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
 			preparedstatement.executeUpdate();
@@ -206,7 +214,7 @@ public class FDaoC {
 		int count = 0;
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT * FROM system_question where question_customer = ?";
+			String query = "SELECT count(question_num) FROM system_question where question_customer = ?";
 			preparedstatement = connection.prepareStatement(query);
 			preparedstatement.setString(1, id);
 			resultset = preparedstatement.executeQuery();
