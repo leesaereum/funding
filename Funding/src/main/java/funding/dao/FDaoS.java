@@ -913,8 +913,11 @@ public class FDaoS {
 				int total = resultSet.getInt(3);
 				
 				dto = new FDtoFunding(funding_num, funding_title, total);
+				System.out.println("dto ; " + dto);
+				System.out.println("title : "+funding_title);
 			}
-
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -942,7 +945,7 @@ public class FDaoS {
 			preparedStatement.setString(1, num);
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				cal_state = resultSet.getString(2);
+				cal_state = resultSet.getString(1);
 			}
 			
 		} catch (Exception e) {
