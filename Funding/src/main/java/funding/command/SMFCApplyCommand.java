@@ -24,11 +24,13 @@ public class SMFCApplyCommand implements FCommand {
 		request.setAttribute("funding", dto);
 		request.setAttribute("cal", result);
 		
+		System.out.println("funding_num : " + funding_num);
+		
 		String num = request.getParameter("calculate_num");
 		String seller =request.getParameter("funding_seller");
 		System.out.println("seller" + seller);
 		ArrayList<FDtoCalculate> list = daoS.list(num, funding_num, seller);
-		request.setAttribute("funding", list);
+		request.setAttribute("list", list);
 		daoS.sMFCapply(funding_num,seller);
 		
 		

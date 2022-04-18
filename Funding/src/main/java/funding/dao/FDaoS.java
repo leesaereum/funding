@@ -250,7 +250,7 @@ public class FDaoS {
 	
 	//--------------------------------------정산하기---------------------------------------------
 	// calculate funding
-	public ArrayList<FDtoCalculate> list(String num, String funding_num, String id) {
+	public ArrayList<FDtoCalculate> list(String num, String funding_num, String seller) {
 		ArrayList<FDtoCalculate> list = new ArrayList<FDtoCalculate>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -263,7 +263,7 @@ public class FDaoS {
 					+ "c.calculate_approveAt, c.calculate_state from calculate c , funding f "
 					+ "where f.funding_seller = ? and f.funding_num = ?"; 
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, id);
+			preparedStatement.setString(1, seller);
 			preparedStatement.setString(2, funding_num);
 			resultSet = preparedStatement.executeQuery();
 
@@ -960,6 +960,7 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("state :" + cal_state);
 		return cal_state;
 	}
 
