@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="sMFCApply.do" method="get">
-		판매자ID <input type="text" value="${ }" readonly="readonly"><br>
+		판매자ID <input type="text" value="" readonly="readonly"><br>
 		관리자ID<input type="text" value="" readonly="readonly"><br>
 		정산금액<input type="text" value="" readonly="readonly"><br>
 		정산신청일<input type="text" value="" readonly="readonly"><br>
