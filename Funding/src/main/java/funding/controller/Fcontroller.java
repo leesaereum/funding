@@ -56,6 +56,8 @@ import funding.command.SFOApplyCommand;
 import funding.command.SLoginCommand;
 import funding.command.SLogoutCommand;
 import funding.command.SMFCApplyCommand;
+import funding.command.SMFCApplyDetailCommand;
+import funding.command.SMFCApplyViewCommand;
 import funding.command.SMFDetailCommand;
 import funding.command.SMFDetailDeleteCommand;
 import funding.command.SMFDetailModifyCommand;
@@ -296,9 +298,14 @@ public class Fcontroller extends HttpServlet {
 			viewpage = "sMFDDelete.jsp";
 			break;
 		case ("/sMFCApply.do"):
-			command = new SMFCApplyCommand();
+			command = new SMFCApplyDetailCommand();
 			command.execute(request, response);
 			viewpage = "sMFCApply.jsp";
+			break;
+		case ("/sMFCApply_view.do"):
+			command = new SMFCApplyViewCommand();
+			command.execute(request, response);
+			viewpage = "sMFCApply_view.jsp";
 			break;
 		case ("/sFADetail.do")://디테일입장
 			command = new SFADetailCommand();

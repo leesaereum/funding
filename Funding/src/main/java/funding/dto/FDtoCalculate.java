@@ -16,8 +16,24 @@ public class FDtoCalculate {
 	public FDtoCalculate() {
 		// TODO Auto-generated constructor stub
 	}
+
 	
-	
+
+
+	public FDtoCalculate(int calculate_funding, String calculate_seller, String calculate_admin, int calculate_cost,
+			Timestamp calculate_createAt, Timestamp calculate_approveAt, String calculate_state) {
+		super();
+		this.calculate_funding = calculate_funding;
+		this.calculate_seller = calculate_seller;
+		this.calculate_admin = calculate_admin;
+		this.calculate_cost = calculate_cost;
+		this.calculate_createAt = calculate_createAt;
+		this.calculate_approveAt = calculate_approveAt;
+		this.calculate_state = calculate_state;
+	}
+
+
+
 
 	public FDtoCalculate(int calculate_num, int calculate_funding, String calculate_seller, String calculate_admin,
 			int calculate_cost, Timestamp calculate_createAt, Timestamp calculate_approveAt, String calculate_state) {
@@ -95,13 +111,13 @@ public class FDtoCalculate {
 	public void setCalculate_cost(int calculate_cost) {
 		this.calculate_cost = calculate_cost;
 	}
-
-	public Timestamp getCalculate_At() {
+	
+	public Timestamp getCalculate_createAt() {
 		return calculate_createAt;
 	}
-
-	public void setCalculate_At(Timestamp calculate_At) {
-		this.calculate_createAt = calculate_At;
+	
+	public void setCalculate_createAt(Timestamp calculate_createAt) {
+		this.calculate_createAt = calculate_createAt;
 	}
 
 	public Timestamp getCalculate_approveAt() {
@@ -126,6 +142,7 @@ public class FDtoCalculate {
 		this.calculate_funding = calculate_funding;
 		this.calculate_seller = calculate_seller;
 	}
+
 	
 	
 }

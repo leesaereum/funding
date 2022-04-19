@@ -105,25 +105,24 @@ text-align: center;
 		</div>
 		<ul class="sMFCApply__box">
 			<li class="sMFCApply__liner">
+				<p class="sMFCApply__seller">펀딩번호</p>
 				<p class="sMFCApply__seller">판매자ID</p>
 				<p class="sMFCApply__admin">관리자ID</p>
 				<p class="sMFCApply__cost">정산금액</p>
-				<p class="sMFCApply__date">펀딩오픈일</p>
+				<p class="sMFCApply__date">정산신청일</p>
 				<p class="sMFCApply__date">펀딩승인일</p>
 				<p class="sMFCApply__state">정산상태</p></li>
-			<c:forEach items="${list }" var="list">
 				<li class="sMFCApply__liner">
-				
-				<p class="sMFCApply__seller">${list.funding_seller }</p>
-				<p class="sMFCApply__admin">${list.funding_admin }</p>
+				<p class="sMFCApply__seller">${list.calculate_funding }</p>
+				<p class="sMFCApply__seller">${list.calculate_seller }</p>
+				<p class="sMFCApply__admin">${list.calculate_admin }</p>
 				<p class="sMFCApply__cost">${list.calculate_cost }</p>
 				<p class="sMFCApply__date">${list.calculate_createAt }</p>
 				<p class="sMFCApply__date">${list.calculate_approveAt }</p>
 				<p class="sMFCApply__state">${list.calculate_state }</p>					
 				</li>
-			</c:forEach>
 		</ul>
-			<a href="/Funding/sMFCApply.do?funding_num=${list.funding_num}" class="notice__toList">신청하기</a>
+			<a href="/Funding/sMFCApply_view.do?calculate_funding=${fNum }" class="notice__toList">신청하기</a>
 	</div>
 </body>
 </html>

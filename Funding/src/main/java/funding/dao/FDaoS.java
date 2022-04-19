@@ -249,46 +249,34 @@ public class FDaoS {
 	}
 	
 	//--------------------------------------정산하기---------------------------------------------
-	// calculate funding
-	public ArrayList<FDtoCalculate> list(String num, String funding_num, String seller) {
-		ArrayList<FDtoCalculate> list = new ArrayList<FDtoCalculate>();
+	// calculate funding list
+	public FDtoCalculate list(String fNum, String seller) {
+		FDtoCalculate dto = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "select c.calculate_num, c.calculate_funding, c.calculate_seller, c.calculate_admin, "
-					+ "c.calculate_cost, c.calculate_createAt, "
-					+ "c.calculate_approveAt, c.calculate_state from calculate c , funding f "
-					+ "where f.funding_seller = ? and f.funding_num = ?"; 
+			String query = "select calculate_funding, calculate_seller, "
+					+"calculate_admin, calculate_cost, calculate_createAt, calculate_approveAt, "
+					+"calculate_state from calculate "
+					+"where calculate_seller = ? and calculate_funding = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, seller);
-			preparedStatement.setString(2, funding_num);
+			preparedStatement.setString(2, fNum);
 			resultSet = preparedStatement.executeQuery();
 
-			while (resultSet.next()) {
-				int calculate_num = resultSet.getInt(1);
-				int calculate_funding = resultSet.getInt(2);
-				String calculate_seller = resultSet.getString(3);
-				String calculate_admin = resultSet.getString(4);
-				int calculate_cost = resultSet.getInt(5);
-				Timestamp calculate_createAt = resultSet.getTimestamp(6);
-				Timestamp calculate_approveAt = resultSet.getTimestamp(7);
-				String calculate_state = resultSet.getString(8);
-				
-				System.out.println(calculate_num);
-				System.out.println(calculate_funding);
-				System.out.println(calculate_seller);
-				System.out.println(calculate_admin);
-				System.out.println(calculate_cost);
-				System.out.println(calculate_createAt);
-				System.out.println(calculate_approveAt);
-				System.out.println(calculate_state);
+			if (resultSet.next()) {
+				int calculate_funding = resultSet.getInt(1);
+				String calculate_seller = resultSet.getString(2);
+				String calculate_admin = resultSet.getString(3);
+				int calculate_cost = resultSet.getInt(4);
+				Timestamp calculate_createAt = resultSet.getTimestamp(5);
+				Timestamp calculate_approveAt = resultSet.getTimestamp(6);
+				String calculate_state = resultSet.getString(7);
 
-				FDtoCalculate dto = new FDtoCalculate(calculate_num, calculate_funding, calculate_seller, calculate_admin, calculate_cost,
-									calculate_createAt, calculate_approveAt, calculate_state);
-				list.add(dto);
+				dto = new FDtoCalculate(calculate_funding, calculate_seller, calculate_admin, calculate_cost, calculate_createAt, calculate_approveAt, calculate_state);
 			}
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -305,23 +293,21 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
-		return list;
+		return dto;
 	}
 	
-	public void sMFCapply(String funding_num, String seller) {
+	public void sMFCapply(String fNum, String seller) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query ="insert into calculate (calculate_funding, calculate_seller, calculate_admin, calculate_createAt, calculate_state) "
-					+ "values('?','?','admin@admin.com',now(),'정산대기') "
-					+ "update calculate set calculate_cost = "
-					+ "(select sum(order_price * order_count) from order1 o "
-					+ "where o.order_funding = calculate.calculate_funding group by o.order_funding)";
+			String query ="insert into calculate (calculate_funding, calculate_seller, calculate_admin, calculate_cost, calculate_createAt, calculate_state) "
+						 +"values('?','?','admin@admin.com',(select sum(order_price * order_count) from order1 o ,calculate c "
+						 +"where o.order_funding = c.calculate_funding group by o.order_funding) ,now(),'정산대기')";
 			preparedStatement = connection.prepareStatement(query);
 		
-			preparedStatement.setInt(1, Integer.parseInt(funding_num));
+			preparedStatement.setString(1, fNum);
 			preparedStatement.setString(2, seller);
 
 			preparedStatement.executeUpdate();
@@ -913,8 +899,6 @@ public class FDaoS {
 				int total = resultSet.getInt(3);
 				
 				dto = new FDtoFunding(funding_num, funding_title, total);
-				System.out.println("dto ; " + dto);
-				System.out.println("title : "+funding_title);
 			}
 			
 			
@@ -939,8 +923,8 @@ public class FDaoS {
 		ResultSet resultSet = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "select calculate_state"
-					+ " from calculate where funding_num = ?";
+			String query = "select c.calculate_state"
+					+ " from calculate c, funding f where f.funding_num = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, num);
 			resultSet = preparedStatement.executeQuery();
@@ -960,7 +944,6 @@ public class FDaoS {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("state :" + cal_state);
 		return cal_state;
 	}
 
