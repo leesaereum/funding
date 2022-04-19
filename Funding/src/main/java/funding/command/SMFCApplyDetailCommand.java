@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import funding.dao.FDaoS;
 import funding.dto.FDtoCalculate;
+import funding.dto.FDtoFunding;
 
 public class SMFCApplyDetailCommand implements FCommand {
 

@@ -29,6 +29,10 @@ public class FDtoFunding {
 //	int option_price;
 //	int option_amount;
 	
+	
+	
+	
+	
 	int order_num;
 	public FDtoFunding() {
 	}
@@ -209,6 +213,8 @@ public class FDtoFunding {
 		this.funding_state = funding_state;
 		this.funding_fee = funding_fee;
 	}
+	
+	
 
 	
 	
@@ -335,6 +341,8 @@ public class FDtoFunding {
 		this.funding_fee = funding_fee;
 //		this.content_content = content_content;
 	}
+
+	
 	
 }
 
