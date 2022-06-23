@@ -35,11 +35,12 @@
     <fullyQualifiedTypeName name="funding.command.AFListCommand"/>
     <fullyQualifiedTypeName name="funding.command.ASQDetailCommand"/>
     <fullyQualifiedTypeName name="funding.command.ANListCommand"/>
-    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="funding.dao.FDaoC"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="funding.dao.FDaoS"/>
-    <fullyQualifiedTypeName name="funding.dto.FDtoFunding"/>
     <fullyQualifiedTypeName name="funding.dto.FDtoFundingQuestion"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="funding.command.SMFCApplyCommand"/>
+    <fullyQualifiedTypeName name="funding.dto.FDtoFunding"/>
 </qualifiedTypeNameHistroy>

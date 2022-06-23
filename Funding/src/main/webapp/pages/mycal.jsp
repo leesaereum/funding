@@ -106,8 +106,8 @@
 					<p class="notice__name">${cal}</p>
 				</div>
 			</div>
-			<a href="" class="notice__toList">정산 신청</a> <a
-				href="javascript:history.back();" class="notice__toList">목록</a>
+			<a href="" class="notice__toList">정산 신청</a> 
+			<a href="javascript:history.back();" class="notice__toList">목록</a>
 		</div>
 </body>
 </html>

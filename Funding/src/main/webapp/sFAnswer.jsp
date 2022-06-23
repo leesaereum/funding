@@ -110,7 +110,7 @@
 		</div>
 			<div><a class="question__toList" href="/Funding/sFAnswer_detail.jsp?question_num=${FAnswer_detail.question_num }">답변하기</a></div>
 
-		<a href="javascript:history.back();" class="question__toList">목록</a>
+		<a href="/Funding/sMypage.do?tab=7" class="question__toList">목록</a>
 	</div>
 	</form>
 </body>
